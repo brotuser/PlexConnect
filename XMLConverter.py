@@ -978,13 +978,14 @@ class CCommandCollection(CCommandHelper):
         from PIL import Image
         from PIL import ImageFont
         from PIL import ImageDraw
+        
            
         # Catch the Params
         param = param.replace(' ','+')
         params = eval('['+self._(param)+']')
         fanartpath = sys.path[0]+"/assets/fanart"
         cachepath = fanartpath+"/cache"
-        cachefile = ntpath.basename(urllib.unquote(params[3]))+urllib.unquote(params[1]).replace(' ','+')+params[0] # Cache Filname
+        cachefile = ntpath.basename(urllib.unquote(params[3])).replace("&width=1920&height=1080",'+')+urllib.unquote(params[1]).replace(' ','+')+params[0] # Cache Filname
         cachefile = unicodedata.normalize('NFKD',unicode(cachefile,"utf8")).encode("ascii","ignore")  # Only ASCII CHARS
         
         # Already created?
