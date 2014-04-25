@@ -6,9 +6,9 @@
   <body>
     <scroller id="com.sample.menu-items-with-sections" volatile="true" onVolatileReload="atv.loadAndSwapURL('{{URL()}}')">
       <header>
-        <simpleHeader>
-          <title>{{VAL(title2)}}</title>
-        </simpleHeader>
+        <imageHeader>
+          <image insets="650, 0, 0, 0" required="true">{{URL(:/fanart/cache/{{LFBG("seasons","{{EVAL(quote_plus(("{{VAL(title2)}}")))}}","1080","{{IMAGEURL(art:::)}}","{{IMAGEURL(banner:::)}}")}}.png)}}</image>
+        </imageHeader>
       </header>
       <items>
       <collectionDivider alignment="left">

@@ -2,11 +2,17 @@
   <head>
     <script src="{{URL(:/js/utils.js)}}" />
     <script src="{{URL(:/js/selectAudioAndSubs.js)}}" />
+    <script src="{{URL(:/js/settings.js)}}" />
   </head>
 
   <body>
-    <itemDetail id="com.apple.trailer" volatile="true" onVolatileReload="atv.loadAndSwapURL('{{URL()}}&amp;PlexConnect=EpisodePrePlay')">
-      <title>{{VAL(Video/index)}}. {{VAL(Video/title)}}</title>
+    <itemDetailWithImageHeader id="com.sample.movie-grid" volatile="true" onVolatileReload="atv.loadAndSwapURL('{{URL()}}&amp;PlexConnect=EpisodePrePlay')">
+      <header>
+	    <imageHeader>
+	      <image insets="{{VAL(^aTVScreenResolution:1:720=1039|1080=1019)}}, 0, 0, 0" required="true">{{URL(:/fanart/cache/{{LFBG("tv","{{EVAL(quote_plus("{{VAL(Video/index)}}. {{VAL(Video/title)}}"))}}","{{VAL(^aTVScreenResolution)}}","{{IMAGEURL(Video/art:::)}}")}}.png)}}</image>
+	    </imageHeader>
+	  </header>
+      <!-- <title>{{VAL(Video/index)}}. {{VAL(Video/title)}}</title> -->
       <subtitle>{{VAL(Video/studio)}}</subtitle>
       <rating>{{contentRating(Video/contentRating)}}</rating>
       <summary>{{VAL(Video/summary)}}</summary>{{CUT($showsynopsis::Hide=CUT|Show=)}}
@@ -134,6 +140,6 @@
         </shelf>
       </bottomShelf>
 
-		</itemDetail>
+		</itemDetailWithImageHeader>
 	</body>
 </atv>
