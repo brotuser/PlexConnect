@@ -60,12 +60,13 @@
     <!-- Grid -->
     <scroller id="Library_Grid">
     {{CUT($libraryview:CUT:=CUT|Grid=|Grid =CUT)}}
-      <header>
-        <simpleHeader>
-          <title>{{TEXT(Plex Library)}}</title>
-        </simpleHeader>
-      </header>
       
+      <header>
+	    <imageHeader>
+	      <image insets="0, 0, {{VAL(^aTVScreenResolution:1:720=360|1080=540)}}, 0" required="true">{{URL(:/fanart/cache/{{LFBG("seasons","{{EVAL(quote_plus("{{TEXT(Plex Library)}}"))}}","{{VAL(^aTVScreenResolution)}}","")}}.png)}}</image>
+	    </imageHeader>
+	  </header>
+	  
       <items>
         <!-- servers -->
         <__COPY__>

@@ -1006,15 +1006,17 @@ class CCommandCollection(CCommandHelper):
                 background = Image.open(fanartpath+"/blank.jpg")
             
             background = background.convert('RGB')
-            im = Image.new("RGB", (1920, 1080), "black")
+            
             
             # Setup Resolution
             if params[2] == "720":
+                im = Image.new("RGB", (1280, 720), "black")
                 background = background.resize((1280, 720), Image.ANTIALIAS)
                 gradient = gradient.resize((1280, 720), Image.ANTIALIAS)
                 destWidth = 1280
                 destHeight = 720
             else:
+                im = Image.new("RGB", (1920, 1080), "black")
                 background = background.resize((1920, 1080), Image.ANTIALIAS)
                 gradient = gradient.resize((1920, 1080), Image.ANTIALIAS)
                 destWidth = 1920
