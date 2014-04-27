@@ -7,11 +7,13 @@
     <scroller id="com.sample.menu-items-with-sections" volatile="true" onVolatileReload="atv.loadAndSwapURL('{{URL()}}')">
       <header>
         <imageHeader>
-          <image insets="0, 0, {{VAL(^aTVScreenResolution:1:720=460|1080=690)}}, 0" required="true">{{URL(:/fanart/cache/{{LFBG("galaxy","{{EVAL(quote_plus("{{VAL(title1)}}"))}}","{{EVAL(quote_plus("{{VAL(title2)}}"))}}","{{IMAGEURL(art:::)}}","720","HelveticaNeueThin.ttf","60","FFFFFF","30","FFFFFF","center","top","","80","2","darkend2")}})}}</image>
-</imageHeader>
+	      <image insets="0, 0, {{VAL(^aTVScreenResolution:1:720=480|1080=720)}}, 0" required="true">{{URL(:/fanart/cache/{{LFBG("galaxy","{{EVAL(quote_plus("{{VAL(title1)}}"))}}","{{EVAL(quote_plus("{{VAL(title2)}}"))}}","","{{VAL(^aTVScreenResolution)}}","HelveticaNeueThin.ttf","60","FFFFFF","30","FFFFFF","center","top","","120","","cleargrid")}})}}</image>
+	    </imageHeader>
       </header>
       <items>
-      
+      <collectionDivider alignment="left">
+            <title></title>
+        </collectionDivider>
         <shelf id="coverflow" columnCount="{{EVAL(min({{VAL(size:0)}},5))}}">
           <sections>
             <shelfSection>
@@ -33,7 +35,9 @@
             </shelfSection>
           </sections>
         </shelf>
-       
+        <collectionDivider alignment="left">
+            <title></title>
+        </collectionDivider>
       </items>
     </scroller>
   </body>

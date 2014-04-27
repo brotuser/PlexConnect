@@ -11,11 +11,11 @@
     {{VAR(channels:NoKey:FALSE)}}  <!--this sets the var to FALSE-->
     
     <!--Channels List-->
-    <listWithPreview id="com.sample.menu-items-with-sections">
+    <itemCollectionWithImageHeader id="com.sample.menu-items-with-sections">
       <header>
-        <simpleHeader>
-          <title>{{TEXT(Plex Channels)}}</title>
-        </simpleHeader>
+	    <imageHeader>
+	      <image insets="0, 0, {{VAL(^aTVScreenResolution:1:720=540|1080=810)}}, 0" required="true">{{URL(:/fanart/cache/{{LFBG("galaxy","{{EVAL(quote_plus("{{TEXT(Plex Channels)}}"))}}","","","{{VAL(^aTVScreenResolution)}}","HelveticaNeueThin.ttf","60","FFFFFF","30","FFFFFF","right","top","80","40","","clearlist")}})}}</image>
+	    </imageHeader>
       </header>
       <menu>
         <sections>
@@ -110,7 +110,7 @@
           
         </sections>
       </menu>
-    </listWithPreview>
+    </itemCollectionWithImageHeader>
     {{CUT(#channels::FALSE=CUT|TRUE=)}}  <!--CUT if no channel added-->
     
     <!--No Channels Available-->
