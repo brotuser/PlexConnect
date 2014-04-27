@@ -7,7 +7,7 @@
     <itemCollectionWithImageHeader id="com.sample.menu-items-with-sections">
       <header>
         <imageHeader>
-	      <image insets="0, 0, {{VAL(^aTVScreenResolution:1:720=540|1080=810)}}, 0" required="true">{{URL(:/fanart/cache/{{LFBG("galaxy","{{EVAL(quote_plus("{{VAL(title1:Plex Channels)}}"))}}","{{EVAL(quote_plus("{{VAL(title2)}}"))}}","","{{VAL(^aTVScreenResolution)}}","HelveticaNeueThin.ttf","60","FFFFFF","30","FFFFFF","right","top","80","40","","clearlist")}})}}</image>
+	      <image insets="0, 0, {{VAL(^aTVScreenResolution:1:720=540|1080=810)}}, 0" required="true">{{URL(:/fanart/cache/{{LFBG("galaxy","{{EVAL(quote_plus("{{VAL(title1:Plex Channels)}}"))}}","{{EVAL(quote_plus("{{VAL(title2)}}"))}}","","{{VAL(^aTVScreenResolution)}}","HelveticaNeueThin.ttf","60","FFFFFF","30","FFFFFF","right","top","80","40","","clearbook")}})}}</image>
 	    </imageHeader>
       </header>
       <menu>
