@@ -15,7 +15,7 @@
         </styles>
 	   <header>
 	     <imageHeader>
-	       <image insets="0, 0, {{VAL(^aTVScreenResolution:1:720=460|1080=690)}}, 0" required="true">{{URL(:/fanart/cache/{{LFBG("movie","{{EVAL(quote_plus("{{VAL(Video/title)}}"))}}","{{VAL(^aTVScreenResolution)}}","{{IMAGEURL(Video/art:::)}}")}}.png)}}</image>
+	       <image insets="0, 0, {{VAL(^aTVScreenResolution:1:720=460|1080=690)}}, 0" required="true">{{URL(:/fanart/cache/{{LFBG("galaxy","{{EVAL(quote_plus("{{VAL(Video/title)}}"))}}","","{{IMAGEURL(Video/art:::)}}","{{VAL(^aTVScreenResolution)}}","HelveticaNeueThin.ttf","30","FFFFFF","","","left","top","350","290","2","darkend","bottomleft","bottomleft","linemovie")}})}}</image>
 	     </imageHeader>
 	   </header>
 	   <title>{{VAL(Video/title)}}</title>

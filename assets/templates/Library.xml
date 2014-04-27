@@ -63,7 +63,7 @@
       
       <header>
 	    <imageHeader>
-	      <image insets="0, 0, {{VAL(^aTVScreenResolution:1:720=360|1080=540)}}, 0" required="true">{{URL(:/fanart/cache/{{LFBG("seasons","{{EVAL(quote_plus("{{TEXT(Plex Library)}}"))}}","{{VAL(^aTVScreenResolution)}}","")}}.png)}}</image>
+	      <image insets="0, 0, {{VAL(^aTVScreenResolution:1:720=480|1080=720)}}, 0" required="true">{{URL(:/fanart/cache/{{LFBG("galaxy","{{EVAL(quote_plus("{{TEXT(Plex Library)}}"))}}","Python Backgrounds Test","","{{VAL(^aTVScreenResolution)}}","HelveticaNeueThin.ttf","60","FFFFFF","30","FFFFFF","center","top","","120","0","clear2")}})}}</image>
 	    </imageHeader>
 	  </header>
 	  

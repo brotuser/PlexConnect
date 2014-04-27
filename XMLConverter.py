@@ -965,97 +965,196 @@ class CCommandCollection(CCommandHelper):
         else:
             res = self.path[srcXML]+'/'+addpath
         return res
-    
-    # Layered Fullscreen Background    
+
     def ATTRIB_LFBG(self, src, srcXML, param):
-        key, leftover, dfltd = self.getKey(src, srcXML, param) 
-        
+    # Layered Fullscreen Background
+    # usage:
+    # {{LFBG(<TEMPLATE>,                            +
+    #  1     <TITLE>,                               +
+    #  2     <SUBTILE>,                             +
+    #  3     <FANART>,                              +
+    #  4     <RESOLUTION>                           +
+    #  5  [, <FONT>,                                +
+    #  6      <TITLESIZEATV2>,                      +
+    #  7     <TITLECOLOR>,                          +
+    #  8     <SUBTITLESIZEATV2>,                    +
+    #  9     <SUBTITLECOLOR>,                       +
+    # 10     <ANCHOR-X>,                            +
+    # 11     <ANCHOR-Y>,                            +
+    # 12     <ANCHOR-X-OFFSET>,                     +
+    # 13     <ANCHOR-Y-OFFSET>,                     +
+    # 14     <IMAGEBLUR>,                           -
+    # 15     <LAYERNAME-1>,...<LAYERNAME-N> ]       +
+    # )}}
+    #
+    # return a png-Filename
+        import re
         import sys
         import ntpath
         import os.path
         import urllib
+        import math
         import unicodedata
         from PIL import Image
         from PIL import ImageFont
         from PIL import ImageDraw
+        from PIL import ImageFilter
         
-           
+        
         # Catch the Params
         param = param.replace(' ','+')
         params = eval('['+self._(param)+']')
         fanartpath = sys.path[0]+"/assets/fanart"
         cachepath = fanartpath+"/cache"
-        cachefile = ntpath.basename(urllib.unquote(params[3])).replace("&width=1920&height=1080",'+')+urllib.unquote(params[1]).replace(' ','+')+params[0] # Cache Filname
+        cachefile = urllib.unquote(params[1]).replace(' ','+')+"+"+urllib.unquote(params[2]).replace(' ','+')+"+"+ntpath.basename(urllib.unquote(params[3])).replace("&width=1920&height=1080",'+')+"+"+params[0]+"+"+params[4] # Cache Filname
         cachefile = unicodedata.normalize('NFKD',unicode(cachefile,"utf8")).encode("ascii","ignore")  # Only ASCII CHARS
+        cachefile = re.sub(r'\W+', '+', cachefile) # No Special Chars        
         
         # Already created?
         if os.path.isfile(cachepath+"/"+cachefile+".png"):
             dprint(__name__, 1, 'GradBG: {0}', cachepath+"/"+cachefile+".png")  # Debug 
-            return cachefile # Bye Bye
+            return cachefile+".png" # Bye Bye
             
         # No it's not
         else:
-            gradient = Image.open(fanartpath+"/gradient"+params[0]+".png")
-            line = Image.open(fanartpath+"/line"+params[0]+params[2]+".png")
             
             # Setup Background
             if params[3] != "":
-                urllib.urlretrieve(urllib.unquote(params[3]), cachepath+"/tmp.png")
+                urllib.urlretrieve(urllib.unquote(params[3]), cachepath+"/tmp.png")                
                 background = Image.open(cachepath+"/tmp.png") 
             else:
-                background = Image.open(fanartpath+"/blank.jpg")
-            
+                if os.path.isfile(fanartpath+"/styles/"+params[0]+"/blank.jpg"):
+                  background = Image.open(fanartpath+"/styles/"+params[0]+"/blank.jpg")
+                else:
+                  background = Image.open(fanartpath+"/blank.jpg")
             background = background.convert('RGB')
-            
-            
-            # Setup Resolution
-            if params[2] == "720":
+                        
+            # Set Resolution and Merge Layers
+            if params[4] == "720":
                 im = Image.new("RGB", (1280, 720), "black")
                 background = background.resize((1280, 720), Image.ANTIALIAS)
-                gradient = gradient.resize((1280, 720), Image.ANTIALIAS)
-                destWidth = 1280
-                destHeight = 720
-            else:
+                # Blur BG
+                if params[14] != None and params[14] != "":
+                  for i in range(0,int(params[14])):
+                    background = background.filter(ImageFilter.BLUR)
+                im.paste(background, (0, 0), 0)
+                
+                layerrange = range(15, len(params))
+                for layercounter in layerrange:
+                  if params[layercounter] != None:
+                    layer = Image.open(fanartpath+"/styles/"+params[0]+"/"+params[layercounter]+".png")
+                    layer = layer.resize((1280, 720), Image.ANTIALIAS)
+                    im.paste(layer, ( 0, 0),layer)
+
+            else: # 1080
                 im = Image.new("RGB", (1920, 1080), "black")
                 background = background.resize((1920, 1080), Image.ANTIALIAS)
-                gradient = gradient.resize((1920, 1080), Image.ANTIALIAS)
-                destWidth = 1920
-                destHeight = 1080
+                if params[14] != None and params[14] != "":
+                  background = background.filter(ImageFilter.GaussianBlur(int(params[14])))
+                  im.paste(background, (0, 0), 0)
+                
+                layerrange = range(15, len(params))
+                for layercounter in layerrange:
+                  if params[layercounter] != None:
+                   layer = Image.open(fanartpath+"/"+params[0]+"/"+params[layercounter]+".png")
+                   layer = layer.resize((1920, 1080), Image.ANTIALIAS)
+                   im.paste(layer, ( 0, 0),layer)                              
             
-            # Merge Layers
-            im.paste(background, (0, 0), 0)
-            im.paste(gradient, (0, 0), gradient)
-            im.paste(line, (0, 0), line)   
+                        
+            # Set Title Color From Hex
+            if params[7] != None and len(params[7]) > 0:
+                titlecolor = tuple(int(params[7][i:i+len(params[7])/3], 16) for i in range(0, len(params[7]), len(params[7])/3)) 
+            else: # Default Subtitle Color
+              titlecolor = (206, 127, 26) 
+ 
+            # Set Subtitle Color From Hex
+            if params[9] != None and len(params[9]) > 0:
+              subtitlecolor = tuple(int(params[9][i:i+len(params[9])/3], 16) for i in range(0, len(params[9]), len(params[9])/3)) 
+            else: # Default Subtitle Color
+              subtitlecolor = (255, 255, 255)        
             
-            # Setup Text
-            txt = unicode(urllib.unquote(params[1]), 'utf-8').replace('+',' ')
-            color = (206, 127, 26)       
-            font = fanartpath+"/HelveticaBold.ttf"
-            fontsize = destHeight / 36;
-            draw = ImageDraw.Draw(im)
-            w, h = draw.textsize(txt, ImageFont.truetype(font, fontsize))
+            # Set Font      
+            if params[5] != None and params[5] != "":  
+              font = fanartpath+"/styles/"+params[0]+"/"+params[5]
+            else: # Default Font
+              font = fanartpath+"/HelveticaBold.ttf"
             
-            # Text Position
-            if params[0] == "tv":
-                txty = (destHeight * 100 / 720) - fontsize
-                txtx = destWidth*100/366
-            elif params[0] == "seasons":
-                txty = destHeight - (2*fontsize)
-                txtx = (destWidth - w) / 2
-            elif params[0] == "movie":
-                txty = (destHeight * 100 / 225) - fontsize
-                txtx = destWidth*100/366
-            else: #Fallback
-                txty = destHeight*100/720-h
-                txtx = destWidth*100/366
+            # Set Title Font Size
+            if params[6] != None and params[6] != "": 
+              titlefontsize = int(params[6])
+            else: # Default Title Size
+              titlefontsize = int(params[4]) / 24
+            
+            # Set Subtitle Font Size
+            if params[8] != None and params[8] != "":
+              subtitlefontsize = int(params[8])
+            else:  # Default Subtitle Size
+              subtitlefontsize = int(params[4])/36
+   
+            # Setup Title Type Space
+            if params[1] != None and params[1] != "":
+              title = unicode(urllib.unquote(params[1]), 'utf-8').replace('+',' ').strip()
+              titledraw = ImageDraw.Draw(im)
+              titlewidth, titleheight = titledraw.textsize(title, ImageFont.truetype(font, int(titlefontsize)))
+            
+            # Setup Subtitle Type Space
+            if params[2] != None and params[2] != "":
+              subtitle = unicode(urllib.unquote(params[2]), 'utf-8').replace('+',' ').strip()
+              subtitledraw = ImageDraw.Draw(im)
+              subtitlewidth, subtitleheight = subtitledraw.textsize(subtitle, ImageFont.truetype(font, int(subtitlefontsize)))
+
+            # Anchor and Offset X
+            if params[10] != None or params[10] != "" or params[12] != None or params[12] != "": 
+              if params[10] == "right":
+                titlex = 1280 - titlewidth - int(params[12])
+                if params[2] != None and params[2] != "":
+                  subtitlex = 1280 - subtitlewidth - int(params[12])
+              elif params[10] == "center":
+                titlex = ( 1280 - titlewidth ) / 2
+                if params[2] != None and params[2] != "":
+                  subtitlex = ( 1280 - subtitlewidth ) / 2
+              else:
+                titlex = int(params[12])
+                if params[2] != None and params[2] != "":
+                  subtitlex = int(params[12])
+            else:
+              titlex = 80
+              if params[2] != None and params[2] != "":
+                subtitlex = 80
+              
+            # Anchor and Offset Y
+            if params[11] != None or params[11] != "" or params[13] != None or params[13] != "": 
+              if params[11] == "bottom":
+                titley = 720 - titleheight - int(params[13])
+              elif params[11] == "middle":
+                titley = ( 720 - titleheight ) / 2
+              else:
+                titley = int(params[13])
+            else:
+              titley = 80
+            
+            subtitley = int(titley) + (int(titlefontsize) * 130 / 100)
+              
+            # Handle 1080 / atv3 Text
+            if params[4] == "1080":
+                titlefontsize = int(titlefontsize)*1080/720
+                subtitlefontsize = int(subtitlefontsize)*1080/720  
+                titlex = int(titlex)*1080/720
+                subtitlex = int(subtitlex)*1080/720 
+                titlex = int(titlex)*1080/720
+                subtitley = int(subtitlex)*1080/720 
+              
             # Write    
-            draw.text((txtx, txty), txt , font=ImageFont.truetype(font, fontsize), fill=color)
+            if params[1] != None and params[1] != "":
+              titledraw.text((int(titlex), int(titley)), title , font=ImageFont.truetype(font, int(titlefontsize)), fill=titlecolor)
+            if params[2] != None and params[2] != "":
+              subtitledraw.text((int(subtitlex), int(subtitley)), subtitle, font=ImageFont.truetype(font, int(subtitlefontsize)), fill=subtitlecolor)
 
             # Save to Cache
             im.save(sys.path[0]+"/assets/fanart/cache/"+cachefile+".png")
                 
         dprint(__name__, 1, 'GradBG: {0}', sys.path[0]+"/fanart/cache/"+cachefile+".png")  # Debug        
-        return cachefile
+        return cachefile+".png"
 
     def ATTRIB_IMAGEURL(self, src, srcXML, param):
         key, leftover, dfltd = self.getKey(src, srcXML, param)
