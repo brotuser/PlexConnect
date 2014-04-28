@@ -92,7 +92,7 @@ def generate(self, src, srcXML, param):
             if params[14] != None and params[14] != "":
               for i in range(0,int(params[14])):
                 background = background.filter(ImageFilter.BLUR)
-              im.paste(background, (0, 0), 0)
+            im.paste(background, (0, 0), 0)
             
             layerrange = range(15, len(params))
             for layercounter in layerrange:
@@ -148,20 +148,16 @@ def generate(self, src, srcXML, param):
         if params[10] != None or params[10] != "" or params[12] != None or params[12] != "": 
           if params[10] == "right":
             titlex = 1280 - titlewidth - int(params[12])
-            if params[2] != None and params[2] != "":
-              subtitlex = 1280 - subtitlewidth - int(params[12])
+            subtitlex = 1280 - subtitlewidth - int(params[12])
           elif params[10] == "center":
             titlex = ( 1280 - titlewidth ) / 2
-            if params[2] != None and params[2] != "":
-              subtitlex = ( 1280 - subtitlewidth ) / 2
+            subtitlex = ( 1280 - subtitlewidth ) / 2
           else:
             titlex = int(params[12])
-            if params[2] != None and params[2] != "":
-              subtitlex = int(params[12])
+            subtitlex = int(params[12])
         else:
           titlex = 80
-          if params[2] != None and params[2] != "":
-            subtitlex = 80
+          subtitlex = 80
           
         # Anchor and Offset Y
         if params[11] != None or params[11] != "" or params[13] != None or params[13] != "": 
@@ -182,9 +178,9 @@ def generate(self, src, srcXML, param):
             subtitlefontsize = int(subtitlefontsize)*1080/720  
             titlex = int(titlex)*1080/720
             titley = int(titley)*1080/720
-            if subtitlex != None:
+            if subtitlex:
               subtitlex = int(subtitlex)*1080/720 
-            if subtitley != None:
+            if subtitley:
               subtitley = int(subtitley)*1080/720 
           
         # Write    
