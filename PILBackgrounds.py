@@ -181,9 +181,11 @@ def generate(self, src, srcXML, param):
             titlefontsize = int(titlefontsize)*1080/720
             subtitlefontsize = int(subtitlefontsize)*1080/720  
             titlex = int(titlex)*1080/720
-            subtitlex = int(subtitlex)*1080/720 
-            titlex = int(titlex)*1080/720
-            subtitley = int(subtitlex)*1080/720 
+            titley = int(titley)*1080/720
+            if subtitlex != None:
+              subtitlex = int(subtitlex)*1080/720 
+            if subtitley != None:
+            subtitley = int(subtitley)*1080/720 
           
         # Write    
         if params[1] != None and params[1] != "":
