@@ -185,7 +185,7 @@ def generate(self, src, srcXML, param):
             if subtitlex != None:
               subtitlex = int(subtitlex)*1080/720 
             if subtitley != None:
-            subtitley = int(subtitley)*1080/720 
+              subtitley = int(subtitley)*1080/720 
           
         # Write    
         if params[1] != None and params[1] != "":
