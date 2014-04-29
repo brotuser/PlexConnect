@@ -6,6 +6,10 @@ import urllib
 import os.path
 import unicodedata
 from Debug import * 
+from Version import __VERSION__  # for {{EVAL()}}, display in settings page
+import Settings, ATVSettings
+import PlexAPI
+
 from PIL import Image
 from PIL import ImageFont
 from PIL import ImageDraw
@@ -41,16 +45,22 @@ def generate(self, src, srcXML, param):
     fanartpath = sys.path[0]+"/assets/fanart"
     cachepath = fanartpath+"/cache"
     # cachefile = urllib.unquote(params[1]).replace(' ','+')+"+"+urllib.unquote(params[2]).replace(' ','+')+"+"+ntpath.basename(urllib.unquote(params[3])).replace("&width=1920",'+').replace("&height=1080",'+') # Cache Filname
-    cachefile = urllib.unquote(params[1]).replace(' ','+')+"+"+urllib.unquote(params[2]).replace(' ','+') # Cache Filname
-    cachefile = unicodedata.normalize('NFKD',unicode(cachefile,"utf8")).encode("ascii","ignore")  # Only ASCII CHARS
-    cachefile = re.sub(r'\W+', '+', cachefile) # No Special Chars         
-    cachefile = cachefile+"+"+params[0];
+
+    cachefileTitle = normalizeString(params[1])
+    cachefileSubtitle = normalizeString(params[2])
+    cachefileStyle = normalizeString(params[0])
     layerrange = range(15, len(params))
+    cachefileLayers = ""
     for layercounter in layerrange:
        if params[layercounter] != None:
-         cachefile = cachefile+"+"+params[layercounter]
-    cachefile = cachefile+"+"+params[4]
-    
+         cachefileLayers = cachefileLayers+"+"+normalizeString(params[layercounter])   
+    # fix for extra long subtitles 
+    if len(cachefileSubtitle) > 50:
+      cachefileSubtitle = cachefileSubtitle[0:50]
+          
+    cachefile = cachefileTitle+"+"+cachefileSubtitle+"+"+cachefileStyle+cachefileLayers
+
+
     # Already created?
     if os.path.isfile(cachepath+"/"+cachefile+".png"):
         return cachefile+".png" # Bye Bye
@@ -99,89 +109,119 @@ def generate(self, src, srcXML, param):
               if params[layercounter] != None:
                layer = Image.open(fanartpath+"/styles/"+params[0]+"/"+params[layercounter]+".png")
                layer = layer.resize((1920, 1080), Image.ANTIALIAS)
-               im.paste(layer, ( 0, 0),layer)                              
-        
-                    
-        # Set Title Color From Hex
-        if params[7] != None and len(params[7]) > 0:
-            titlecolor = tuple(int(params[7][i:i+len(params[7])/3], 16) for i in range(0, len(params[7]), len(params[7])/3)) 
-        else: # Default Subtitle Color
-          titlecolor = (206, 127, 26) 
-
-        # Set Subtitle Color From Hex
-        if params[9] != None and len(params[9]) > 0:
-          subtitlecolor = tuple(int(params[9][i:i+len(params[9])/3], 16) for i in range(0, len(params[9]), len(params[9])/3)) 
-        else: # Default Subtitle Color
-          subtitlecolor = (255, 255, 255)        
+               im.paste(layer, ( 0, 0),layer)                                               
         
         # Set Font      
         if params[5] != None and params[5] != "":  
           font = fanartpath+"/styles/"+params[0]+"/"+params[5]
         else: # Default Font
-          font = fanartpath+"/HelveticaBold.ttf"
+          font = fanartpath+"/HelveticaBold.ttf"        
         
-        # Set Title Font Size
-        if params[6] != None and params[6] != "": 
-          titlefontsize = int(params[6])
-        else: # Default Title Size
-          titlefontsize = int(params[4]) / 24
-        
-        # Set Subtitle Font Size
-        if params[8] != None and params[8] != "":
-          subtitlefontsize = int(params[8])
-        else:  # Default Subtitle Size
-          subtitlefontsize = int(params[4])/36
-
         # Setup Title Type Space
         if params[1] != None and params[1] != "":
+        
+          # Set Title Color From Hex
+          if params[7] != None and len(params[7]) > 0:
+            titlecolor = tuple(int(params[7][i:i+len(params[7])/3], 16) for i in range(0, len(params[7]), len(params[7])/3)) 
+          else: # Default Subtitle Color
+            titlecolor = (206, 127, 26)
+            
+          # Set Title Font Size
+          if params[6] != None and params[6] != "": 
+            titlefontsize = int(params[6])
+          else: # Default Title Size
+            titlefontsize = int(params[4]) / 24
+          
           title = unicode(urllib.unquote(params[1]), 'utf-8').replace('+',' ').strip()
           titledraw = ImageDraw.Draw(im)
           titlewidth, titleheight = titledraw.textsize(title, ImageFont.truetype(font, int(titlefontsize)))
-        
+          
+          # Anchor and Offset X
+          if params[10] != None or params[10] != "" or params[12] != None or params[12] != "": 
+            if params[10] == "right":
+              titlex = 1280 - titlewidth - int(params[12])
+            elif params[10] == "center":
+              titlex = ( 1280 - titlewidth ) / 2
+            else:
+              titlex = int(params[12])
+          else:
+            titlex = 80
+ 
+          # Anchor and Offset Y
+          if params[11] != None or params[11] != "" or params[13] != None or params[13] != "": 
+            if params[11] == "bottom":
+              titley = 720 - titleheight - int(params[13])
+            elif params[11] == "middle":
+              titley = ( 720 - titleheight ) / 2
+            else:
+              titley = int(params[13])
+          else:
+            titley = 80
+
         # Setup Subtitle Type Space
         if params[2] != None and params[2] != "":
-          subtitle = unicode(urllib.unquote(params[2]), 'utf-8').replace('+',' ').strip()
+          
+          # Set Subtitle Color From Hex
+          if params[9] != None and len(params[9]) > 0:
+            subtitlecolor = tuple(int(params[9][i:i+len(params[9])/3], 16) for i in range(0, len(params[9]), len(params[9])/3)) 
+          else: # Default Subtitle Color
+            subtitlecolor = (255, 255, 255)
+        
+          # Set Subtitle Font Size
+          if params[8] != None and params[8] != "":
+            subtitlefontsize = int(params[8])
+          else:  # Default Subtitle Size
+            subtitlefontsize = int(params[4])/36
+            
+          
+          subtitle = params[2]
+          # fix for extra long subtitles 
+          if len(subtitle) > 80:
+            subtitle = subtitle[0:80]+"..."
+          subtitle = unicode(urllib.unquote(subtitle), 'utf-8').replace('+',' ').strip()
+          
           subtitledraw = ImageDraw.Draw(im)
           subtitlewidth, subtitleheight = subtitledraw.textsize(subtitle, ImageFont.truetype(font, int(subtitlefontsize)))
-
-        # Anchor and Offset X
-        if params[10] != None or params[10] != "" or params[12] != None or params[12] != "": 
-          if params[10] == "right":
-            titlex = 1280 - titlewidth - int(params[12])
-            subtitlex = 1280 - subtitlewidth - int(params[12])
-          elif params[10] == "center":
-            titlex = ( 1280 - titlewidth ) / 2
-            subtitlex = ( 1280 - subtitlewidth ) / 2
-          else:
-            titlex = int(params[12])
-            subtitlex = int(params[12])
-        else:
-          titlex = 80
-          subtitlex = 80
           
-        # Anchor and Offset Y
-        if params[11] != None or params[11] != "" or params[13] != None or params[13] != "": 
-          if params[11] == "bottom":
-            titley = 720 - titleheight - int(params[13])
-          elif params[11] == "middle":
-            titley = ( 720 - titleheight ) / 2
+          # Anchor and Offset X
+          if params[10] != None or params[10] != "" or params[12] != None or params[12] != "": 
+            if params[10] == "right":
+              subtitlex = 1280 - subtitlewidth - int(params[12])
+            elif params[10] == "center":
+              subtitlex = ( 1280 - subtitlewidth ) / 2
+            else:
+              subtitlex = int(params[12])
           else:
-            titley = int(params[13])
-        else:
-          titley = 80
+            subtitlex = 80
+            
+          # Anchor and Offset Y
+          if params[11] != None or params[11] != "" or params[13] != None or params[13] != "": 
+            if params[1] != None and params[1] != "":
+              subtitley = int(titley) + (int(titlefontsize) * 130 / 100)
+            elif params[11] == "bottom":
+              subtitley = 720 - titleheight - int(params[13])
+            elif params[11] == "middle":
+              subtitley = ( 720 - titleheight ) / 2
+            else:
+              subtitley = int(params[13])
+          else:
+            subtitley = 80
         
-        subtitley = int(titley) + (int(titlefontsize) * 130 / 100)
-          
+                  
         # Handle 1080 / atv3 Text
         if params[4] == "1080":
-            titlefontsize = int(titlefontsize)*1080/720
-            subtitlefontsize = int(subtitlefontsize)*1080/720  
-            titlex = int(titlex)*1080/720
-            titley = int(titley)*1080/720
-            if subtitlex:
-              subtitlex = int(subtitlex)*1080/720 
-            if subtitley:
-              subtitley = int(subtitley)*1080/720 
+            if titlefontsize != None:
+              titlefontsize = int(titlefontsize)*1080/720
+            if subtitlefontsize != None:
+              subtitlefontsize = int(subtitlefontsize)*1080/720  
+            if titlex != None:
+              titlex = int(titlex)*1080/720
+            if subtitlex != None:
+              subtitlex = int(subtitlex)*1080/720
+            if titlex != None:
+              titlex = int(titlex)*1080/720
+            if subtitley != None:
+             subtitley = int(subtitlex)*1080/720 
           
         # Write    
         if params[1] != None and params[1] != "":
@@ -193,3 +233,11 @@ def generate(self, src, srcXML, param):
         im.save(sys.path[0]+"/assets/fanart/cache/"+cachefile+".png")
             
     return cachefile+".png"
+    
+    
+def normalizeString(str):
+    str = urllib.unquote(str).replace(' ','+')
+    str = unicodedata.normalize('NFKD',unicode(str,"utf8")).encode("ascii","ignore")  # Only ASCII CHARS
+    str = re.sub(r'\W+', '+', str) # No Special Chars  
+    return str
+    
