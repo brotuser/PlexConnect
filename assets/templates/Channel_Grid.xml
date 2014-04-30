@@ -12,9 +12,11 @@
     
     <!--Channels Grid-->
     <scroller id="Channels_Grid">
+     <header>
 	  <imageHeader>
-	    <image insets="0, 0, {{VAL(^aTVScreenResolution:1:720=480|1080=720)}}, 0" required="true">{{URL(:/fanart/cache/{{LFBG("galaxy","{{EVAL(quote_plus("{{TEXT(Plex Channels)}}"))}}","","","{{VAL(^aTVScreenResolution)}}","HelveticaNeueThin.ttf","60","FFFFFF","30","FFFFFF","center","top","","110","","Grid")}})}}</image>
+	    <image insets="0, 0, {{VAL(^aTVScreenResolution:1:720=480|1080=720)}}, 0" required="true">{{URL(:/fanart/cache/{{LFBG("galaxy","{{EVAL(quote_plus("{{TEXT(Plex Channels)}}"))}}","","","{{VAL(^aTVScreenResolution)}}","HelveticaNeueThin.ttf","60","FFFFFF","30","FFFFFF","center","top","","110","","ChannelGrid")}})}}</image>
 	  </imageHeader>
+      </header>
       <items>
         <!-- video channels: owned servers -->
         <__COPY__>
