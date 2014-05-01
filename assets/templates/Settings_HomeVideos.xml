@@ -9,7 +9,7 @@
     <itemCollectionWithImageHeader id="SettingsPage_HomeVideos">
       <header>
         <imageHeader>
-        	      <image insets="0, 0, {{VAL(^aTVScreenResolution:1:720=640|1080=960)}}, 0" required="true">{{URL(:/fanart/cache/{{LFBG("galaxy","{{EVAL(quote_plus("{{TEXT(Settings)}}"))}}","","","{{VAL(^aTVScreenResolution)}}","HelveticaNeueThin.ttf","60","","FFFFFF","","right","top","80","40","","settings")}})}}</image>
+        	      <image insets="0, 0, {{VAL(^aTVScreenResolution:1:720=680|1080=1020)}}, 0" required="true">{{URL(:/fanart/cache/{{LFBG("galaxy","{{EVAL(quote_plus("{{TEXT(Settings)}}"))}}","","","{{VAL(^aTVScreenResolution)}}","HelveticaNeueThin.ttf","60","","FFFFFF","","right","top","80","40","","Settings")}})}}</image>
         </imageHeader>
       </header>
       <preview>
