@@ -8,7 +8,7 @@
     <itemDetailWithImageHeader id="com.apple.trailer" volatile="true" onVolatileReload="atv.loadAndSwapURL('{{URL()}}&amp;PlexConnect=EpisodePrePlay')">
       <header>
 	    <imageHeader>
-	      <image insets="0, 0, {{VAL(^aTVScreenResolution:1:720=680|1080=1019)}}, 0" required="true">{{URL(:/fanart/cache/{{LFBG("galaxy","{{EVAL(quote_plus("{{VAL(Video/index)}}. {{VAL(Video/title)}}"))}}","{{EVAL(quote_plus("{{VAL(Video/studio)}}"))}}","{{IMAGEURL(Video/art:::)}}","{{VAL(^aTVScreenResolution)}}","HelveticaNeueThin.ttf","30","FFFFFF","20","FFFFFF","left","top","350","75","2","darkend","bottomleft","linetv")}})}}</image>
+	      <image insets="0, 0, {{VAL(^aTVScreenResolution:1:720=680|1080=1019)}}, 0" required="true">{{URL(:/fanart/cache/{{LFBG("galaxy","{{EVAL(quote_plus("{{VAL(Video/index)}}. {{VAL(Video/title)}}"))}}","{{EVAL(quote_plus("{{VAL(Video/studio)}}"))}}","{{IMAGEURL(Video/art:::)}}","{{VAL(^aTVScreenResolution)}}","HelveticaNeueThin.ttf","30","20","FFFFFF","FFFFFF","left","top","350","75","2","darkend","bottomleft","linetv")}})}}</image>
 	    </imageHeader>
 	  </header>
 	  <title>{{VAL(Video/index)}}. {{VAL(Video/title)}}</title>
