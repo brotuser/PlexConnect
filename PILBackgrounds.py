@@ -168,11 +168,22 @@ def resizedMerge (background, params, fanartpath):
         im.paste(layer, ( 0, 0),layer)
     return im 
     
-def createFileHandle(params):
-    # filter text
+def createFileHandle(params):    
     cachefileStyle = normalizeString(params[0])
     cachefileTitle = normalizeString(params[1])
     cachefileSubtitle = normalizeString(params[2])
+    cachefileRes = normalizeString(params[4])
+    
+    t1s = normalizeString(params[6])
+    t1c = normalizeString(params[8])
+    t1x = normalizeString(params[10])
+    t1y = normalizeString(params[12])
+    
+    t2s = normalizeString(params[7])
+    t2c = normalizeString(params[9])
+    t2x = normalizeString(params[11])
+    t2y = normalizeString(params[13])
+    
     # add layers
     layerrange = range(15, len(params))
     cachefileLayers = ""
@@ -180,17 +191,16 @@ def createFileHandle(params):
        if params[layercounter] != None:
          cachefileLayers = cachefileLayers+"+"+normalizeString(params[layercounter])   
     # fix for extra long subtitles 
-    if len(cachefileSubtitle) > 50:
-      cachefileSubtitle = cachefileSubtitle[0:50]    
-    cachefile = cachefileTitle+"+"+cachefileSubtitle+"+"+cachefileStyle+cachefileLayers  
-
+    if len(cachefileSubtitle) > 30:
+      cachefileSubtitle = cachefileSubtitle[0:30]    
+    cachefile = cachefileTitle+"+"+cachefileSubtitle+"+"+cachefileStyle+"+"+cachefileLayers+"+"+t1s+"+"+t1c+"+"+t1x+"+"+t1y+"+"+t2s+"+"+t2c+"+"+t2x+"+"+t2y+"+"+cachefileRes
     return cachefile
     
-def normalizeString(str):
-    str = urllib.unquote(str).replace(' ','+')
-    str = unicodedata.normalize('NFKD',unicode(str,"utf8")).encode("ascii","ignore")  # Only ASCII CHARS
-    str = re.sub(r'\W+', '+', str) # No Special Chars  
-    return str
+def normalizeString(text):
+    text = urllib.unquote(str(text)).replace(' ','+')
+    text = unicodedata.normalize('NFKD',unicode(text,"utf8")).encode("ascii","ignore")  # Only ASCII CHARS
+    text = re.sub(r'\W+', '+', text) # No Special Chars  
+    return text
     
 def fullHDtext(number):
     number = int(number)*1080/720
