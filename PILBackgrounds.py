@@ -126,15 +126,16 @@ def textToImage(index, im, params, fanartpath):
       else:
         offsety = 80
       # Subtitle   
-      if index == 2 and ( params[1] != None or params[1] != "" ):
+      
+      if index > 1 and ( params[1] != None or params[1] != "" ):
         title = unicode(urllib.unquote(params[1]), 'utf-8').replace('+',' ').strip()
-        titledraw = ImageDraw.Draw(im)
+        #titledraw = ImageDraw.Draw(im)
         if params[6] != None and params[6] != "": 
           titlefontsize = int(params[6])
         else: # Default Size
           titlefontsize = int(params[4]) / 24
-        titlewidth, titleheight = titledraw.textsize(title, ImageFont.truetype(font, int(titlefontsize)))
-        offsety = offsety + (titleheight * 120 / 100)        
+        # titlewidth, titleheight = titledraw.textsize(title, ImageFont.truetype(font, int(titlefontsize)))
+        offsety = offsety + (titlefontsize * 130 / 100)        
     else:
       offsety = 80    
     # Handle 1080 / atv3 Text
