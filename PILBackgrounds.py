@@ -65,10 +65,10 @@ def generate(self, src, srcXML, param):
     # No it's not
     else:             
       # Set Resolution and Merge Layers
-      if params[4] == "720":
-        im = resizedMerge(background, params, fanartpath) 
-      else: # 1080
-        im = resizedMerge(background, params, fanartpath)               
+      #if params[4] == "720":
+      im = resizedMerge(background, params, fanartpath) 
+      #else: # 1080
+       # im = resizedMerge(background, params, fanartpath)               
       # Setup Title Type Space
       if params[1] != None and params[1] != "":
         im = textToImage(1, im, params, fanartpath)  
@@ -106,12 +106,30 @@ def textToImage(index, im, params, fanartpath):
     text = unicode(urllib.unquote(params[index]), 'utf-8').replace('+',' ').strip()
     draw = ImageDraw.Draw(im)
     width, height = draw.textsize(text, ImageFont.truetype(font, int(fontsize)))  
+    
+
+     
+    if str(params[4])=="poster":
+      renderwidth = 512
+      renderheight = 768
+    elif str(params[4])=="16X9":
+      renderwidth = 768
+      renderheight = 432
+    elif str(params[4])=="flow":
+      renderwidth = 768
+      renderheight= 256 
+    elif str(params[4])=="square":
+      renderwidth = 768
+      renderheight = 768
+    else:
+      renderwidth = 1280
+      renderheight = 720
     # Anchor and Offset X
     if params[10] != None or params[10] != "" or params[12] != None or params[12] != "": 
       if params[10] == "right":
-        offsetx = 1280 - width - int(params[12])
+        offsetx = renderwidth - width - int(params[12])
       elif params[10] == "center":
-        offsetx = ( 1280 - width ) / 2
+        offsetx = ( renderwidth - width ) / 2
       elif params[10] == "left":
         offsetx = int(params[12])
       else:
@@ -121,9 +139,9 @@ def textToImage(index, im, params, fanartpath):
     # Anchor and Offset Y
     if ( params[11] != None or params[11] != "" ) or ( params[13] != None or params[13] != "" ): 
       if params[11] == "bottom":
-        offsety = 720 - height - int(params[13])
+        offsety = renderheight - height - int(params[13])
       elif params[11] == "middle":
-        offsety = ( 720 - height ) / 2
+        offsety = ( renderheight - height ) / 2
       elif params[11] == "top" or params[11] == "":
         offsety = int(params[13])
       else:
@@ -150,14 +168,31 @@ def textToImage(index, im, params, fanartpath):
     draw.text((int(offsetx), int(offsety)), text , font=ImageFont.truetype(font, int(fontsize)), fill=textcolor)
     return im    
 
-def resizedMerge (background, params, fanartpath):  
-    height = int(params[4])
-    if height == 720:
-      width = 1280
+def resizedMerge (background, params, fanartpath):
+   
+    
+    if params[4] == "poster":
+      height = 768
+      width = 512
+    elif params[4] == "16X9":
+      height = 432
+      width = 768     
+    elif params[4] == "flow":
+      height = 256
+      width = 768 
+    elif params[4] == "square":
+      height = 768
+      width = 768
     else:
-      width = 1920
+      height = int(params[4])
+      if height == 720:
+        width = 1280
+      else:
+        width = 1920
+        
     im = Image.new("RGB", (width, height), "black")
     background = background.resize((width, height), Image.ANTIALIAS)
+
     # Blur BG
     if params[14] != None and params[14] != "":
       for i in range(0,int(params[14])):
