@@ -47,8 +47,11 @@ def generate(self, src, srcXML, param):
 
     # Setup Background
     if params[3] != "":
-      urllib.urlretrieve(urllib.unquote(params[3]), cachepath+"/tmp.png")  
-      background = Image.open(cachepath+"/tmp.png") 
+      if os.path.isfile(stylepath+"/"+urllib.unquote(params[3])):
+        background = Image.open(stylepath+"/"+urllib.unquote(params[3]))
+      else:
+        urllib.urlretrieve(urllib.unquote(params[3]), cachepath+"/tmp.png")  
+        background = Image.open(cachepath+"/tmp.png") 
     else:
       if os.path.isfile(stylepath+"/blank.jpg"):
         background = Image.open(stylepath+"/blank.jpg")
@@ -81,7 +84,7 @@ def textToImage(index, im, params, fanartpath):
     if params[5] != None and params[5] != "":  
       font = fanartpath+"/styles/"+params[0]+"/"+params[5]
     else: # Default Font
-      font = fanartpath+"/HelveticaBold.ttf"  
+      font = fanartpath+"/OpenSans-Bold.ttf"  
     # Set Font Size
     if params[index+5] != None and params[index+5] != "": 
       fontsize = int(params[index+5])

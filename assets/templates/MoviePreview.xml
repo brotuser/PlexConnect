@@ -7,12 +7,12 @@
   <body>
     <preview>
       <scrollerPreview id="com.sample.moreInfoPreview">
-       <header>
+        <header>
           <metadataHeader>
             <title>{{VAL(title2)}}</title>
             <subtitle>{{VAL(size)}} {{TEXT(Movies)}}</subtitle>
           </metadataHeader>
-	  </header>
+        </header>
         <items>
           <grid id="grid_0" columnCount="5">
             <items>

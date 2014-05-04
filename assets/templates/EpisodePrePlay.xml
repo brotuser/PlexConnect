@@ -1,24 +1,25 @@
 <atv>
   <head>
     <script src="{{URL(:/js/utils.js)}}" />
+     <script src="{{URL(:/js/scrobble.js)}}" />
     <script src="{{URL(:/js/selectAudioAndSubs.js)}}" />
     <script src="{{URL(:/js/settings.js)}}" />
   </head>
+
   <body>
-    <itemDetailWithImageHeader id="com.apple.trailer" volatile="true" onVolatileReload="atv.loadAndSwapURL('{{URL()}}&amp;PlexConnect=EpisodePrePlay')">
+    <itemDetailWithImageHeader id="com.sample.movie-grid" volatile="true" onVolatileReload="atv.loadAndSwapURL('{{URL()}}&amp;PlexConnect=EpisodePrePlay')">
       <header>
 	    <imageHeader>
-	      <image insets="0, 0, {{VAL(^aTVScreenResolution:1:720=680|1080=1020)}}, 0" required="true">{{URL(:/fanart/cache/{{LFBG("galaxy","{{EVAL(quote_plus("{{VAL(Video/grandparentTitle)}}"))}}","{{EVAL(quote_plus("{{VAL(Video/index)}}. {{VAL(Video/title)}}"))}}","{{IMAGEURL(Video/art:::)}}","{{VAL(^aTVScreenResolution)}}","HelveticaNeueThin.ttf","30","20","FFFFFF","FFFFFF","left","top","350","40","2","EpisodePrePlay")}})}}</image>
+	      <image insets="0, 0, {{VAL(^aTVScreenResolution:1:720=680|1080=1020)}}, 0" required="true">{{URL(:/fanart/cache/{{LFBG("tv","{{EVAL(quote_plus("{{VAL(Video/index)}}. {{VAL(Video/title)}}"))}}","{{VAL(^aTVScreenResolution)}}","{{IMAGEURL(Video/art:::)}}")}}.png)}}</image>
 	    </imageHeader>
 	  </header>
-	  <title>{{VAL(Video/index)}}. {{VAL(Video/title)}}</title>
+      <!-- <title>{{VAL(Video/index)}}. {{VAL(Video/title)}}</title> -->
       <subtitle>{{VAL(Video/studio)}}</subtitle>
       <rating>{{contentRating(Video/contentRating)}}</rating>
       <summary>{{VAL(Video/summary)}}</summary>{{CUT($showsynopsis::Hide=CUT|Show=)}}
       <summary>{{VAL(Video/summary)}}</summary>{{CUT(Video/viewCount:CUT:=)}}{{CUT($showsynopsis::Show=CUT|Hide=)}}
       <summary>{{TEXT(Synopsis hidden.)}}</summary>{{CUT(Video/viewCount)}}{{CUT($showsynopsis::Show=CUT|Hide=)}}
-      <image style="sixteenByNinePoster">{{IMAGEURL(Video/thumb::768)}}</image>
-      <defaultImage>resource://16x9.png</defaultImage>
+      <image style="moviePoster">{{IMAGEURL(Video/parentThumb::768)}}</image>
 
       <table>
         <columnDefinitions>
@@ -97,6 +98,14 @@
                   <image>resource://Play.png</image>
                   <focusedImage>resource://PlayFocused.png</focusedImage>
                 </actionButton>
+                <actionButton id="scrobbleMenu" 
+                				onHoldSelect="scrobbleMenu('{{URL(key)}}&amp;PlexConnect=ScrobbleMenuVideo')">
+                  <title>{{TEXT(Watch Status)}}</title>
+                  <image>resource://More.png</image>
+                  <focusedImage>resource://MoreFocused.png</focusedImage>
+                  <!--<badge></badge>-->
+                </actionButton>
+                
                 <actionButton id="selectAudioAndSubs"
                               onHoldSelect="selectAudioAndSubs('{{VAL(%baseURL)}}', '{{VAL(%accesstoken)}}', '{{VAL(Video/Media/Part/id)}}')"
                               onSelect="selectAudioAndSubs('{{VAL(%baseURL)}}', '{{VAL(%accesstoken)}}', '{{VAL(Video/Media/Part/id)}}')"
@@ -106,6 +115,12 @@
                   <title>{{TEXT(Audio/Subs)}}</title>
                   <image>resource://Queue.png</image>
                   <focusedImage>resource://QueueFocused.png</focusedImage>
+                </actionButton>
+                <actionButton id="Settings" onSelect="atv.loadURL('{{URL(:/)}}&amp;PlexConnect=Settings')">
+                  <title>{{TEXT(Settings)}}</title>
+                  <image>resource://WishList.png</image>
+                  <focusedImage>resource://WishListFocused.png</focusedImage>
+                  <!--<badge></badge>-->
                 </actionButton>
               </items>
             </shelfSection>

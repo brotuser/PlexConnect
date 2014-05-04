@@ -288,6 +288,12 @@ def XML_PMS2aTV(PMS_address, path, options):
     elif cmd == 'TVSection':
         XMLtemplate = 'TVSection.xml'
     
+    elif cmd == 'LibraryOnDeck':
+        XMLtemplate = 'Library_OnDeck.xml'    
+        
+    elif cmd == 'LibraryRecentlyAdded':
+        XMLtemplate = 'Library_RecentlyAdded.xml'
+    
     elif cmd.find('SectionPreview') != -1:
         XMLtemplate = cmd + '.xml'
     
@@ -326,6 +332,10 @@ def XML_PMS2aTV(PMS_address, path, options):
         XMLtemplate = 'Settings_VideoOSD.xml'
         path = ''  # clear path - we don't need PMS-XML
     
+    elif cmd=='SettingsLibrary':
+        XMLtemplate = 'Settings_Library.xml'
+        path = ''  # clear path - we don't need PMS-XML
+        
     elif cmd=='SettingsMovies':
         XMLtemplate = 'Settings_Movies.xml'
         path = ''  # clear path - we don't need PMS-XML
@@ -338,8 +348,8 @@ def XML_PMS2aTV(PMS_address, path, options):
         XMLtemplate = 'Settings_HomeVideos.xml'
         path = ''  # clear path - we don't need PMS-XML
 
-    elif cmd=='SettingsTopLevel':
-        XMLtemplate = 'Settings_TopLevel.xml'
+    elif cmd=='SettingsChannels':
+        XMLtemplate = 'Settings_Channels.xml'
         path = ''  # clear path - we don't need PMS-XML
         
     elif cmd.startswith('SettingsToggle:'):
@@ -392,8 +402,14 @@ def XML_PMS2aTV(PMS_address, path, options):
     elif path.find('SearchResults') != -1:
         XMLtemplate = 'ChannelsVideoSearchResults.xml'
         
-    elif path=='/library/sections':  # from PlexConnect.xml -> for //local, //myplex
-        XMLtemplate = 'Library.xml'
+    elif PMS_address=='owned' and path=='/library/sections':  # from PlexConnect.xml -> for //local, //myplex
+        XMLtemplate = 'Library_'+g_ATVSettings.getSetting(options['PlexConnectUDID'], 'libraryview')+'.xml'
+        
+    elif PMS_address=='shared' and path=='/library/sections':  # from PlexConnect.xml -> for //local, //myplex
+        XMLtemplate = 'Library_'+g_ATVSettings.getSetting(options['PlexConnectUDID'], 'libraryview_remote')+'.xml'   
+        
+    #elif path=='/library/sections':  # from PlexConnect.xml -> for //local, //myplex
+     #   XMLtemplate = 'Library.xml'
     
     elif path=='/channels/all':
         XMLtemplate = 'Channel_'+g_ATVSettings.getSetting(options['PlexConnectUDID'], 'channelview')+'.xml'

@@ -7,13 +7,13 @@
     {{VAR(sections:NoKey:FALSE)}}  <!--this sets the var to FALSE-->
     
     <!-- List -->
-    <itemCollectionWithImageHeader id="com.sample.menu-items-with-sections">
+    <listWithPreview id="com.sample.menu-items-with-sections">
     {{CUT($libraryview::=CUT|List=|List =CUT)}}
-       <header>
-	    <imageHeader>
-	      <image insets="0, 0, {{VAL(^aTVScreenResolution:1:720=680|1080=1020)}}, 0" required="true">{{URL(:/fanart/cache/{{LFBG("galaxy","{{EVAL(quote_plus("{{TEXT(Plex Library)}}"))}}","","","{{VAL(^aTVScreenResolution)}}","HelveticaNeueThin.ttf","60","30","FFFFFF","FFFFFF","right","top","80","40","","List")}})}}</image>
-	    </imageHeader>
-	  </header>
+      <header>
+        <simpleHeader>
+          <title>{{TEXT(Plex Library)}}</title>
+        </simpleHeader>
+      </header>
       <menu>
         <sections>
           
@@ -55,16 +55,16 @@
         
         </sections>
       </menu>
-    </itemCollectionWithImageHeader>{{CUT(#sections::FALSE=CUT|TRUE=)}}  <!--CUT if no section added-->
+    </listWithPreview>{{CUT(#sections::FALSE=CUT|TRUE=)}}  <!--CUT if no section added-->
     
     <!-- Grid -->
     <scroller id="Library_Grid">
     {{CUT($libraryview:CUT:=CUT|Grid=|Grid =CUT)}}
-       <header>
-	    <imageHeader>
-	      <image insets="0, 0, {{VAL(^aTVScreenResolution:1:720=480|1080=720)}}, 0" required="true">{{URL(:/fanart/cache/{{LFBG("galaxy","{{EVAL(quote_plus("{{TEXT(Plex Library)}}"))}}","","","{{VAL(^aTVScreenResolution)}}","HelveticaNeueThin.ttf","60","30","FFFFFF","FFFFFF","center","top","","120","","Grid")}})}}</image>
-	    </imageHeader>
-	  </header>
+      <header>
+        <simpleHeader>
+          <title>{{TEXT(Plex Library)}}</title>
+        </simpleHeader>
+      </header>
       
       <items>
         <!-- servers -->
@@ -108,11 +108,11 @@
     <!-- Bookcase -->
     <scroller id="Library_Bookcase">
     {{CUT($libraryview:CUT:=CUT|Bookcase=|Bookcase =CUT)}}
-       <header>
-	    <imageHeader>
-	      <image insets="0, 0, {{VAL(^aTVScreenResolution:1:720=480|1080=720)}}, 0" required="true">{{URL(:/fanart/cache/{{LFBG("galaxy","{{EVAL(quote_plus("{{TEXT(Plex Library)}}"))}}","Python Backgrounds Test","","{{VAL(^aTVScreenResolution)}}","HelveticaNeueThin.ttf","60","30","FFFFFF","FFFFFF","center","top","","120","","clearbook")}})}}</image>
-	    </imageHeader>
-	  </header>
+      <header>
+        <simpleHeader>
+          <title>{{TEXT(Plex Library)}}</title>
+        </simpleHeader>
+      </header>
       
       <items>
         <!-- servers -->

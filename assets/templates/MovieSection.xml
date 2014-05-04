@@ -15,7 +15,7 @@
     <scroller id="com.sample.movie-showcase-grid">
       <header>
 	    <imageHeader>
-	      <image insets="0, 0, {{VAL(^aTVScreenResolution:1:720=480|1080=720)}}, 0" required="true">{{URL(:/fanart/cache/{{LFBG("galaxy","{{EVAL(quote_plus("{{VAL(title1)}}"))}}","","","{{VAL(^aTVScreenResolution)}}","HelveticaNeueThin.ttf","60","30","FFFFFF","FFFFFF","center","top","","120","","cleargrid")}})}}</image>
+	      <image insets="0, 0, {{VAL(^aTVScreenResolution:1:720=480|1080=720)}}, 0" required="true">{{URL(:/fanart/cache/{{LFBG("galaxy","{{EVAL(quote_plus("{{VAL(title1)}}"))}}","","red.jpg","{{VAL(^aTVScreenResolution)}}","OpenSans/OpenSans-Light.ttf","60","30","FFFFFF","FFFFFF","center","top","","120","","ChannelGrid")}})}}</image>
 	    </imageHeader>
       </header>
       

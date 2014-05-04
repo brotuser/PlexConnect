@@ -9,7 +9,7 @@
     <itemCollectionWithImageHeader id="SettingsPage_VideoOSD">
       <header>
         <imageHeader>
-        	      <image insets="0, 0, {{VAL(^aTVScreenResolution:1:720=680|1080=1020)}}, 0" required="true">{{URL(:/fanart/cache/{{LFBG("galaxy","{{EVAL(quote_plus("{{TEXT(Settings)}}"))}}","","","{{VAL(^aTVScreenResolution)}}","HelveticaNeueThin.ttf","60","","FFFFFF","","right","top","80","40","","Settings")}})}}</image>
+        	      <image insets="0, 0, {{VAL(^aTVScreenResolution:1:720=680|1080=1020)}}, 0" required="true">{{URL(:/fanart/cache/{{LFBG("galaxy","{{EVAL(quote_plus("{{TEXT(Settings)}}"))}}","","","{{VAL(^aTVScreenResolution)}}","OpenSans/OpenSans-Light.ttf","60","","FFFFFF","","right","top","80","40","","Settings")}})}}</image>
         </imageHeader>
       </header>
       <preview>
@@ -36,24 +36,6 @@
 
       <menu>
         <sections>
-          <menuSection>
-            <header>
-              <horizontalDivider alignment="left">
-                <title>{{TEXT(Library)}}</title>
-              </horizontalDivider>
-            </header>
-            <items>
-              <oneLineMenuItem id="LibraryView" onSelect="toggleSettings('LibraryView', 'Settings_TopLevel')">
-                <label>{{TEXT(Library View)}}</label>
-                <rightLabel>{{SETTING(libraryview)}}</rightLabel>
-              </oneLineMenuItem>
-              <!--oneLineMenuItem id="ShowTitles_Library" onSelect="toggleSettings('ShowTitles_Library', 'Settings_TopLevel')">
-                <label>{{TEXT(Poster Titles)}}</label>
-                <rightLabel>{{SETTING(showtitles_library)}}</rightLabel>
-              </oneLineMenuItem-->
-            </items>
-          </menuSection>
-          
           <menuSection>
             <header>
               <horizontalDivider alignment="left">

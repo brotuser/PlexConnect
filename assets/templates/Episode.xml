@@ -1,20 +1,46 @@
 <atv>
   <head>
     <script src="{{URL(:/js/utils.js)}}" />
+    <script src="{{URL(:/js/scrobble.js)}}" />
   </head>
 
+  {{VAR(studio:grandparentStudio)}}
+  {{VAR(contentRating:grandparentContentRating)}}
+  {{VAR(title1:title1)}}
+  {{VAR(title2:title2)}}
+  {{VAR(artwork:art)}}
+  
   <body>
+
+
     <itemCollectionWithImageHeader id="com.sample.menu-items-with-sections" volatile="true" onVolatileReload="atv.loadAndSwapURL('{{URL()}}')">
-      <header>
-	    <imageHeader>
-	      <image insets="0, 0, {{VAL(^aTVScreenResolution:1:720=640|1080=960)}}, 0" required="true">{{URL(:/fanart/cache/{{LFBG("galaxy","{{EVAL(quote_plus("{{VAL(title1)}}"))}}","{{EVAL(quote_plus("{{VAL(title2)}}"))}}","","{{VAL(^aTVScreenResolution)}}","HelveticaNeueThin.ttf","60","30","FFFFFF","FFFFFF","right","top","80","40","","clearlist")}})}}</image>
-	    </imageHeader>
-      </header> 
+	<header>
+	 <!--Fullscreen--> 
+        <imageHeader>
+          <image insets="800, 0, 0, 150" required="true">{{URL(:/fanart/cache/{{LFBG("seasons","{{EVAL(quote_plus(("{{VAL(title2)}}")))}}","{{VAL(^aTVScreenResolution)}}","{{IMAGEURL(art:::)}}","{{IMAGEURL(banner:::)}}")}}.png)}}</image>
+        </imageHeader>{{CUT($episode_list::Fullscreen=|Banner=CUT)}}
+     <!--Banner-->
+        <imageHeader>
+          <image insets="50, 0, 0, 0" required="true">{{IMAGEURL(banner)}}</image>
+        </imageHeader>{{CUT($episode_list::Banner=|Fullscreen=CUT)}}
+      </header>
       <menu>
         <sections>
           <menuSection>
             <items>
-              <twoLineEnhancedMenuItem id="{{VAL(ratingKey)}}"
+            <oneLineMenuItem id="none">
+                <label>{{VAL(#title2)}}</label>
+                <preview>
+                  <keyedPreview>
+                    <title>{{VAL(title)}}</title>
+                    <summary>{{VAL(summary)}}</summary>{{CUT($showsynopsis::Hide=CUT|Show=)}}
+                    <summary>{{VAL(summary)}}</summary>{{CUT(viewCount:CUT:=)}}{{CUT($showsynopsis::Show=CUT|Hide=)}}
+                    <summary>{{TEXT(Synopsis hidden.)}}</summary>{{CUT(viewCount)}}{{CUT($showsynopsis::Show=CUT|Hide=)}}
+                    <image>{{IMAGEURL(thumb::768)}}</image>
+                  </keyedPreview>
+                </preview>
+              </oneLineMenuItem>
+              <oneLineMenuItem id="{{VAL(ratingKey)}}"
                                          onPlay="atv.loadURL('{{URL(key)}}&amp;PlexConnect=Play')"
                                          onSelect="atv.loadURL('{{URL(key)}}&amp;PlexConnect=EpisodePrePlay')"
                                          onHoldSelect="scrobbleMenu('{{URL(key)}}&amp;PlexConnect=ScrobbleMenuVideo')">
@@ -22,22 +48,36 @@
                 <label>{{VAL(title)}}</label>
                 <ordinal>{{VAL(index)}}</ordinal>
                 <maxOrdinalDigits>2</maxOrdinalDigits>
-                <image>{{IMAGEURL(thumb::800)}}</image>
-                <!--<defaultImage>resource://16X9.png</defaultImage>      This causes the thumbnail to be too small, not sure why.-->
                 <accessories>
-                  <unplayedDot/>{{CUT(viewOffset)}}
-                  <partiallyPlayedDot/>
+                <unplayedDot/>{{CUT(viewOffset)}}
+                  <progressBar percentage="{{EVAL({{VAL(viewOffset:0)}} * 100 / {{VAL(duration:1)}})}}"/>{{CUT(viewOffset:CUT:=)}}
+                <!---<progressBar percentage="100"/>{{CUT(viewCount:CUT:=)}}{{CUT(viewOffset)}}-->
                 </accessories>{{CUT(viewCount)}}
+
                 <preview>
-                  <keyedPreview>
+                  <longDescriptionPreview>
                     <title>{{VAL(title)}}</title>
-                    <summary>{{VAL(summary)}}</summary>{{CUT($showsynopsis::Hide=CUT|Show=)}}
-                    <summary>{{VAL(summary)}}</summary>{{CUT(viewCount:CUT:=)}}{{CUT($showsynopsis::Show=CUT|Hide=)}}
+                    <summary><![CDATA[{{VAL(summary)}}]]></summary>{{CUT($showsynopsis::Hide=CUT|Show=)}}
+                    <summary><![CDATA[{{VAL(summary)}}]]></summary>{{CUT(viewCount:CUT:=)}}{{CUT($showsynopsis::Show=CUT|Hide=)}}
                     <summary>{{TEXT(Synopsis hidden.)}}</summary>{{CUT(viewCount)}}{{CUT($showsynopsis::Show=CUT|Hide=)}}
+                    <rating>{{VAL(#contentRating)}}</rating>
                     <image>{{IMAGEURL(thumb::800)}}</image>
-                  </keyedPreview>
+                    <metadata>
+                      <label>{{VAL(#title1)}}</label>
+                      <label>Aired: {{VAL(originallyAvailableAt)}}</label>
+                      <label>Studio: {{VAL(#studio)}}</label>
+                      <label>Runtime: {{getDurationString(duration)}}</label>
+                      <label>Quality: {{VAL(Media/videoResolution:Unknown:1080=1080p|720=720p|576=576 SD|480=480 SD|sd=SD)}}   {{VAL(Media/audioCodec:Unknown:ac3=AC3|aac=AAC|mp3=MP3|dca=DTS|drms=DRMS)}} {{VAL(Media/audioChannels:Unknown:2=Stereo 2.0|6=5.1|8=7.1)}} </label>
+                      <starRating hasUserSetRating="true">
+                        <percentage>{{EVAL({{VAL(userRating:0)}} * 10)}}</percentage>
+                      </starRating>{{CUT(userRating:CUT:0=)}}
+                      <starRating>
+                        <percentage>{{EVAL({{VAL(rating:0)}} * 10)}}</percentage>
+                      </starRating>{{CUT(userRating::0=CUT)}}             
+                    </metadata>
+                  </longDescriptionPreview>
                 </preview>
-              </twoLineEnhancedMenuItem>{{CUT(Video/title:CUT:=)}}
+              </oneLineMenuItem>{{CUT(Video/title:CUT:=)}}
 
               <oneLineMenuItem id="none">
                 <label>{{TEXT(No episodes)}}</label>
@@ -47,5 +87,6 @@
         </sections>
       </menu>
     </itemCollectionWithImageHeader>
-  </body>
+
+    </body>
 </atv>
