@@ -4,7 +4,7 @@
   </head>
 
   <body>
-    <listWithPreview id="Movie_List">
+    <itemCollectionWithImageHeader id="Movie_List">
     {{CUT(size:CUT:0=CUT|1=)}}
       <header>
 	    <imageHeader>
@@ -37,7 +37,7 @@
           </menuSection>
         </sections>
       </menu>
-    </listWithPreview>
+    </itemCollectionWithImageHeader>
     
     <!--No Items Available-->
     <dialog id="com.sample.error-dialog">
