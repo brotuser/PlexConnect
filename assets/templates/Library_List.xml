@@ -10,13 +10,15 @@
           
       <itemCollectionWithImageHeader id="com.sample.menu-items-with-sections">
       <header>
-        <imageHeader>
-            <image insets="100, 0, 0, 0" required="true">{{URL(:/thumbnails/header{{VAL(^aTVScreenResolution)}}.png)}}</image>
-        </imageHeader>
+	    <imageHeader>
+	      <image insets="0, 0, {{VAL(^aTVScreenResolution:1:720=690|1080=1020)}}, 0" required="true">{{URL(:/fanart/cache/{{LFBG("galaxy","{{EVAL(quote_plus("{{TEXT(Plex Library)}}"))}}","","grey.jpg","{{VAL(^aTVScreenResolution)}}","OpenSans/OpenSans-Light.ttf","60","30","FFFFFF","FFFFFF","right","top","80","40","","List")}})}}</image>
+	    </imageHeader>
       </header>
           
       <menu>
         <sections>
+          
+          
           
           <!-- local servers -->
           <menuSection>
@@ -29,6 +31,8 @@
             </header>{{CUT(@main/size:CUT:0=CUT|1=CUT|2=)}}
             
             <items> 
+              
+                
                 
               <!-- /library/sections -->
               <oneLineMenuItem id="{{VAL(key)}}"
@@ -44,12 +48,19 @@
                 </preview>
               </oneLineMenuItem>{{CUT($sectionsposition::Top=|Bottom=CUT|Flow=|Middle=CUT)}} 
             
-              <!-- OnDeck -->
+            
+            
+            
+              <!-- 
+              OnDeck -->
               <oneLineMenuItem id="{{VAL(ondeck)}}"
                                        onPlay="atv.loadURL('{{URL(:/)}}&amp;PlexConnect=LibraryOnDeck')"
                                        onSelect="atv.loadURL('{{URL(:/)}}&amp;PlexConnect=LibraryOnDeck')">
                 <label>{{TEXT(On Deck)}}</label>
               </oneLineMenuItem>{{CUT($library_ondeck::checked=|unchecked=CUT)}}             
+              
+              
+              
               
             <!-- /library/sections -->
               <oneLineMenuItem id="{{VAL(key)}}"
@@ -64,6 +75,9 @@
                   <link>{{URL(key)}}/recentlyAdded?X-Plex-Container-Start=0&amp;X-Plex-Container-Size=20&amp;PlexConnect=SectionPreview-{{VAL(type)}}</link>{{CUT(type:CUT:a=CUT|photo=|q=CUT)}}
                 </preview>
               </oneLineMenuItem>{{CUT($sectionsposition::Top=CUT|Bottom=CUT|Flow=CUT|Middle=)}} 
+                
+                
+                
                 
               <!-- Recently Added -->
               <oneLineMenuItem id="{{VAL(recentlyadded)}}"

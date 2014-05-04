@@ -6,7 +6,7 @@
   </head>
 
   <body>
-    <itemCollectionWithImageHeader id="SettingsPage">
+    <itemCollectionWithImageHeader id="SettingsPage" >
       <header>
         <imageHeader>
         	      <image insets="0, 0, {{VAL(^aTVScreenResolution:1:720=680|1080=1020)}}, 0" required="true">{{URL(:/fanart/cache/{{LFBG("galaxy","{{EVAL(quote_plus("{{TEXT(Settings)}}"))}}","","","{{VAL(^aTVScreenResolution)}}","OpenSans/OpenSans-Light.ttf","60","","FFFFFF","","right","top","80","40","","Settings")}})}}</image>
