@@ -10,12 +10,23 @@ from Debug import *  # dprint()
 
 
 options = { \
-	'episode_list'            		:('Fullscreen', 'Banner'), \
-	'tvshow_list'             		:('Fullscreen', 'Banner'), \
-    'tvshow_cover'            		:('Fullscreen', 'Banner'), \
+    'template'                      :('default', 'stoffez', 'galaxy'), \
+#galaxy
+	'episode_list'                  :('Fullscreen', 'Banner'), \
+    'tvshow_list'                   :('Fullscreen', 'Banner'), \
+    'tvshow_cover'                  :('Fullscreen', 'Banner'), \
+    'imageheader'               	:('Show', 'Hide'), \
+    'pilicons'                      :('unchecked', 'checked'), \
+    'pilflow'                   	:('unchecked', 'checked'), \
+#stoffez
+    'fanart'            			:('Off', 'On'), \
+    'imageheader'               	:('Off', 'On'), \
+    'libheader'               		:('Off', 'On'), \
+    
+    
     'movieview'         	  		:('Grid', 'List', 'Detailed List'), \
     'homevideoview'     	  		:('Grid', 'List', 'Detailed List'), \
-    'actorview'         	  		:('Movies', 'Portrait'), \
+    'actorview'         	  		:('Portrait' , 'Movies'), \
     'showview'          	  		:('Grid', 'List', 'Bookcase'), \
     'flattenseason'     	  		:('False', 'True'), \
     'seasonview'        	  		:('Coverflow', 'List'), \
@@ -43,10 +54,6 @@ options = { \
     'tv_navbar_more'            	:('checked', 'unchecked'), \
     'libraryview'               	:('Grid', 'List', 'Bookcase'), \
     'libraryview_remote'        	:('TopGrid', 'Bookcase', 'List'), \
-    'imageheader'               	:('Show', 'Hide'), \
-    'template'                      :('default', 'galaxy'), \
-    'pilicons'                      :('unchecked', 'checked'), \
-    'pilflow'                   	:('unchecked', 'checked'), \
     'sectionicons'              	:('Fanart', 'Plex', 'Apple', 'Custom'), \
     'sectionicons_shared'       	:('Apple', 'Plex', 'Fanart', 'Custom'), \
     'sectionsposition'          	:('Flow', 'Top', 'Middle', 'Bottom'), \
@@ -54,6 +61,8 @@ options = { \
     'library_ondeck'            	:('checked', 'unchecked'), \
     'library_recentlyadded'     	:('checked', 'unchecked'), \
     'library_channels'          	:('unchecked', 'checked'), \
+    
+
     'transcodequality'  :('1080p 40.0Mbps', \
                           '480p 2.0Mbps', \
                           '720p 3.0Mbps', '720p 4.0Mbps', \
