@@ -79,7 +79,7 @@
                 <accessories>
                   <arrow/>
                 </accessories>
-             </oneLineMenuItem>{{CUT($style::default=CUT)}}
+             </oneLineMenuItem>{{CUT($template::default=CUT)}}
              <oneLineMenuItem id="Top Level" onSelect="atv.loadURL('{{URL(:/)}}&amp;PlexConnect=SettingsTopLevel')">
                 <label>{{TEXT(Top Level Options)}}</label>
                 <accessories>
