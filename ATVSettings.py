@@ -10,34 +10,50 @@ from Debug import *  # dprint()
 
 
 options = { \
-    'libraryview'       :('List', 'Grid', 'Bookcase'), \
-    'movieview'         :('Grid', 'List', 'Detailed List'), \
-    'homevideoview'     :('Grid', 'List', 'Detailed List'), \
-    'actorview'         :('Movies', 'Portrait'), \
-    'showview'          :('List', 'Grid', 'Bookcase'), \
-    'flattenseason'     :('False', 'True'), \
-    'seasonview'        :('List', 'Coverflow'), \
-    'channelview'       :('List', 'Grid', 'Bookcase'), \
-    'durationformat'    :('Hours/Minutes', 'Minutes'), \
-    'showtitles_movies'         :('Highlighted Only', 'Show All'), \
-    'showtitles_tvshows'        :('Highlighted Only', 'Show All'), \
-    'showtitles_homevideos'     :('Highlighted Only', 'Show All'), \
-    'showtitles_channels'       :('Highlighted Only', 'Show All'), \
-    'movies_navbar_unwatched'   :('checked', 'unchecked'), \
-    'movies_navbar_byfolder'    :('checked', 'unchecked'), \
-    'movies_navbar_collections' :('checked', 'unchecked'), \
-    'movies_navbar_genres'      :('checked', 'unchecked'), \
-    'movies_navbar_decades'     :('checked', 'unchecked'), \
-    'movies_navbar_directors'   :('checked', 'unchecked'), \
-    'movies_navbar_actors'      :('checked', 'unchecked'), \
-    'movies_navbar_more'        :('checked', 'unchecked'), \
+	'episode_list'            		:('Fullscreen', 'Banner'), \
+	'tvshow_list'             		:('Fullscreen', 'Banner'), \
+    'tvshow_cover'            		:('Fullscreen', 'Banner'), \
+    'movieview'         	  		:('Grid', 'List', 'Detailed List'), \
+    'homevideoview'     	  		:('Grid', 'List', 'Detailed List'), \
+    'actorview'         	  		:('Movies', 'Portrait'), \
+    'showview'          	  		:('Grid', 'List', 'Bookcase'), \
+    'flattenseason'     	  		:('False', 'True'), \
+    'seasonview'        	  		:('Coverflow', 'List'), \
+    'channelview'       	  		:('List', 'Grid', 'Bookcase'), \
+    'durationformat'    	  		:('Hours/Minutes', 'Minutes'), \
+    'showtitles_library'        	:('Show All', 'Highlighted Only'), \
+    'showtitles_movies'         	:('Show All', 'Highlighted Only'), \
+    'showtitles_tvshows'        	:('Show All', 'Highlighted Only'), \
+    'showtitles_homevideos'     	:('Show All', 'Highlighted Only'), \
+    'showtitles_channels'       	:('Show All', 'Highlighted Only'), \
+    'movies_navbar_unwatched'   	:('checked', 'unchecked'), \
+    'movies_navbar_byfolder'    	:('checked', 'unchecked'), \
+    'movies_navbar_collections' 	:('checked', 'unchecked'), \
+    'movies_navbar_genres'      	:('checked', 'unchecked'), \
+    'movies_navbar_decades'     	:('checked', 'unchecked'), \
+    'movies_navbar_directors'   	:('checked', 'unchecked'), \
+    'movies_navbar_actors'      	:('checked', 'unchecked'), \
+    'movies_navbar_more'        	:('checked', 'unchecked'), \
     'homevideos_navbar_unwatched'   :('checked', 'unchecked'), \
     'homevideos_navbar_byfolder'    :('checked', 'unchecked'), \
     'homevideos_navbar_collections' :('checked', 'unchecked'), \
     'homevideos_navbar_genres'      :('checked', 'unchecked'), \
-    'tv_navbar_unwatched'       :('checked', 'unchecked'), \
-    'tv_navbar_genres'          :('checked', 'unchecked'), \
-    'tv_navbar_more'            :('checked', 'unchecked'), \
+    'tv_navbar_unwatched'       	:('checked', 'unchecked'), \
+    'tv_navbar_genres'          	:('checked', 'unchecked'), \
+    'tv_navbar_more'            	:('checked', 'unchecked'), \
+    'libraryview'               	:('Grid', 'List', 'Bookcase'), \
+    'libraryview_remote'        	:('TopGrid', 'Bookcase', 'List'), \
+    'imageheader'               	:('Show', 'Hide'), \
+    'template'                      :('default', 'galaxy'), \
+    'pilicons'                      :('unchecked', 'checked'), \
+    'pilflow'                   	:('unchecked', 'checked'), \
+    'sectionicons'              	:('Fanart', 'Plex', 'Apple', 'Custom'), \
+    'sectionicons_shared'       	:('Apple', 'Plex', 'Fanart', 'Custom'), \
+    'sectionsposition'          	:('Flow', 'Top', 'Middle', 'Bottom'), \
+    'library_search'            	:('Hide', 'Show'), \
+    'library_ondeck'            	:('checked', 'unchecked'), \
+    'library_recentlyadded'     	:('checked', 'unchecked'), \
+    'library_channels'          	:('unchecked', 'checked'), \
     'transcodequality'  :('1080p 40.0Mbps', \
                           '480p 2.0Mbps', \
                           '720p 3.0Mbps', '720p 4.0Mbps', \

@@ -104,12 +104,12 @@ function updatePage(url)
   }
   
   // read new XML
-	if (navbarItemNumber == '1') // First navbar item is a special case
-	{
-		atv.loadAndSwapURL(url);
-	}
-	else
-	{
+	//if (navbarItemNumber == '1') // First navbar item is a special case
+	//)){
+	//	atv.loadAndSwapURL(url);
+	//}
+	//else
+	//{
 		var req = new XMLHttpRequest();
 		req.onreadystatechange = function(){
 			if(req.readyState == 4)
@@ -121,7 +121,7 @@ function updatePage(url)
 				atv.loadAndSwapXML(doc);
 			}
 		};
-	};
+	//};
   req.open('GET', url, false);
   req.send();
 };

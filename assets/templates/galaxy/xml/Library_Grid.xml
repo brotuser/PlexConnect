@@ -1,0 +1,293 @@
+<atv>
+  <head>
+    <script src="{{URL(:/js/utils.js)}}" />
+    <script src="{{URL(:/js/scrobble.js)}}" />
+    <script src="{{URL(:/js/settings.js)}}" />
+  </head>
+
+  <body>
+      {{ADDXML(OnDeck::/library/onDeck)}}      
+      {{ADDXML(RecentlyAdded::/library/recentlyAdded)}}
+      {{VAR(sections:NoKey:FALSE)}}  <!--this sets the var to FALSE-->
+      {{VAR(items:NoKey:FALSE)}}
+
+    {{ADDXML(VideoChannels::/channels/all)}}
+    <!-- Grid -->
+    <scroller id="Library_Grid">
+    {{CUT($libraryview:CUT:=CUT|Grid=|Grid =CUT)}}
+      <header>
+       <imageHeader>
+	     <image insets="0, 0, {{VAL(^aTVScreenResolution:1:720=280|1080=720)}}, 0" required="true">{{URL(:/fanartcache/{{LFBG("galaxy","{{EVAL(quote_plus("{{TEXT(Plex Library)}}"))}}","","librarybg.jpg","{{VAL(^aTVScreenResolution)}}","fonts/OpenSans/OpenSans-Light.ttf","30","30","FAFAFA","FFFFFF","left","top","60","30","")}})}}</image>
+	   </imageHeader>
+      </header>{{CUT($imageheader::Hide=CUT|Show=)}}{{CUT(^aTVFirmwareVersion:CUT:=CUT|6.0=)}}
+
+      <header>
+       <simpleHeader>
+          <title>{{TEXT(Plex Library)}}</title>
+        </simpleHeader>
+      </header>{{CUT($imageheader::Show=CUT|Hide=)}}
+            
+        <items>
+
+       <showcase accessibilityLabel="Showcase movies" id="showcase_1">
+        <initialSelection>
+          <indexPath>
+            <index>3</index>
+          </indexPath>
+        </initialSelection>
+        {{COPY(Server:@main/size::0=|1=COPY)}}
+        <items>
+          {{COPY(Server:@main/size::0=|1=COPY)}}
+          <showcasePoster id="{{VAL(key)}}" accessibilityLabel="{{VAL(title)}}"  
+                          onPlay="atv.loadURL('{{URL(key)}}')"
+                          onSelect="atv.loadURL('{{URL(key)}}')"
+                          onHoldSelect="refreshSection('{{VAL(key)}}', '{{URL(refreshKey)}}')">
+            {{COPY(Directory)}}
+            {{VAR(items:NoKey:TRUE)}}
+            <image>{{IMAGEURL(thumb::768)}}</image>{{CUT($sectionicons::Apple=CUT|Plex=|Fanart=CUT|Custom=CUT)}}
+            
+            <image>{{URL(:/templates/galaxy/images/flow/{{VAL(type)}}-flow.jpg)}}</image>{{CUT($sectionicons::Apple=|Plex=CUT|Fanart=CUT|Custom=CUT)}}
+            <image>{{URL(:/fanartcache/{{LFBG("galaxy","{{VAL(title)}}","","{{IMAGEURL(art::768)}}","flow","fonts/OpenSans/OpenSans-Bold.ttf","50","60","FFFFFF","FFFFFF","right","top","20","20","","ListIcon")}})}}</image>{{CUT($sectionicons::Apple=CUT|Plex=CUT|Fanart=|Custom=CUT)}}
+            <defaultImage>resource://Poster.png</defaultImage>
+          </showcasePoster>         
+          <!-- search -->
+          <showcasePoster id="{{VAL(searchKey)}}"
+                          onPlay="atv.loadURL('{{URL(searchKey)}}')"
+                          onSelect="atv.loadURL('{{URL(searchKey)}}')">
+            <image>{{IMAGEURL(thumb::768)}}</image>{{CUT($sectionicons::Apple=CUT|Plex=|Fanart=CUT|Custom=CUT)}}
+            <image>{{URL(:/fanartcache/{{LFBG("galaxy","{{TEXT(Search)}}","{{EVAL(quote_plus("Section Flow Test"))}}","flow/search-flow.png","flow","fonts/OpenSans/OpenSans-Bold.ttf","60","40","FFFFFF","FFFFFF","right","top","40","40","","ListIcon")}})}}</image>{{CUT($sectionicons::Apple=CUT|Plex=CUT|Fanart=|Custom=CUT)}}
+            <image>{{URL(:/templates/galaxy/images/flow/search-flow.jpg)}}</image>{{CUT($sectionicons::Apple=|Plex=CUT|Fanart=CUT|Custom=CUT)}}
+
+            <defaultImage>resource://Poster.png</defaultImage>
+            
+          </showcasePoster>{{CUT($library_search::Show=|Hide=CUT)}} 
+        </items>
+      </showcase>{{CUT($sectionsposition::Top=CUT|Bottom=CUT|Flow=|Middle=CUT))}}         
+      
+        <!-- servers -->
+        <__COPY__>
+        {{COPY(Server:@main/size::0=|1=COPY)}}
+          <collectionDivider alignment="left" accessibilityLabel="Show_Bookcase_Divider">
+            <title>{{VAL(name)}}{{VAL(local::0=&lt;{{TEXT(remote)}}&gt;|0 =)}}</title>
+          </collectionDivider>{{CUT(@main/size:CUT:0=CUT|1=CUT|2=)}}
+          <shelf id="Library_Grid_{{VAL(name)}}" columnCount="5">
+            <sections>
+              <shelfSection>
+                <items>
+                  <!-- /library/sections -->
+                  <moviePoster id="{{VAL(key)}}" accessibilityLabel="{{VAL(title)}}" featured="true" 
+                               alwaysShowTitles="{{VAL($sectionicons::Apple=true|Plex=false|Fanart=true)}}"
+                               onPlay="atv.loadURL('{{URL(key)}}')"
+                               onSelect="atv.loadURL('{{URL(key)}}')"
+                               onHoldSelect="refreshSection('{{VAL(key)}}', '{{URL(refreshKey)}}')">
+                  {{COPY(Directory)}}
+                  {{VAR(sections:NoKey:TRUE)}}  <!--within COPY this sets the var to TRUE-->
+                  
+                    <title>{{VAL(title)}}</title>
+                    <image>{{IMAGEURL(thumb::768)}}</image>{{CUT($sectionicons::Apple=CUT|Plex=CUT|Fanart=|Custom=CUT)}}
+                    <image>{{URL(:/templates/galaxy/images/flow/icons/search.jpg)}}</image>{{CUT($sectionicons::Apple=|Plex=CUT|Fanart=CUT|Custom=CUT)}}
+                    <image>{{IMAGEURL(art::768)}}</image>{{CUT($sectionicons::Apple=CUT|Plex=|Fanart=CUT|Custom=CUT)}}
+                    <defaultImage>resource://16X9.png</defaultImage>
+                    <!--badgeCount></badgeCount-->
+                  </moviePoster>
+                  
+                  <!-- search -->
+                  <moviePoster id="{{VAL(searchKey)}}" featured="true" alwaysShowTitles="{{VAL($sectionicons::Apple=true|Plex=false|Fanart=true)}}"
+                               onPlay="atv.loadURL('{{URL(searchKey)}}')"
+                               onSelect="atv.loadURL('{{URL(searchKey)}}')">
+                    <title>{{TEXT(Search)}}</title>
+                    <image>{{URL(:/templates/galaxy/images/flow/icons/search.jpg)}}</image>{{CUT($sectionicons::Apple=|Plex=CUT|Fanart=CUT|Custom=CUT)}}
+                    <defaultImage>resource://16X9.png</defaultImage>
+                  </moviePoster>{{CUT($library_search::Show=|Hide=CUT)}} 
+                  
+                </items>
+              </shelfSection>
+            </sections>
+          </shelf>{{CUT($sectionsposition::Top=|Bottom=CUT|Flow=CUT|Middle=CUT))}}    
+        </__COPY__>  
+
+            
+       <!-- ON Deck -->
+      <collectionDivider alignment="left" accessibilityLabel="On Deck">
+        {{CUT(@OnDeck/Server/size:CUT:0=CUT|1=)}}
+        <title>{{TEXT(On Deck)}}</title>
+      </collectionDivider>{{CUT($library_ondeck::checked=|unchecked=CUT)}}
+      <shelf id="shelf_1" columnCount="5">
+        {{CUT(@OnDeck/size:CUT:0=CUT|1=)}}
+        <sections>
+          <shelfSection>
+            {{COPY(Server:@OnDeck/size::0=|1=COPY)}}
+            <items>
+                <moviePoster id="{{VAL(key)}}" accessibilityLabel="{{VAL(title)}}" alwaysShowTitles="{{VAL($showtitles_library::Highlighted Only=false|Show All=true)}}"
+                            onPlay="atv.loadURL('{{URL(key)}}&amp;PlexConnect=Play')"
+                            onSelect="atv.loadURL('{{URL(key)}}&amp;PlexConnect={{VAL(type::movie=Movie|episode=Episode)}}PrePlay')"
+                            onHoldSelect="scrobbleMenu('{{URL(key)}}&amp;PlexConnect=ScrobbleMenuVideo')">
+                  {{COPY(@OnDeck/Server/Video)}}
+                  {{VAR(items:NoKey:TRUE)}}  <!--within COPY this sets the var to TRUE-->
+                  <title>{{VAL(type::movie={{VAL(title)}}|episode={{VAL(grandparentTitle)}})}}</title>
+                  <subtitle>{{VAL(type::movie={{VAL(year)}}|episode={{episodestring(parentIndex:0:index:0)}})}}</subtitle>
+                  <image>{{IMAGEURL({{VAL(type::movie=thumb|episode=grandparentThumb)}}::768)}}</image>
+                  <defaultImage>resource://Poster.png</defaultImage>
+                </moviePoster>
+              </items>
+            </shelfSection>
+          </sections>
+        </shelf>{{CUT($library_ondeck::checked=|unchecked=CUT)}}{{CUT(@OnDeck/Server/size:CUT:0=CUT|1=)}}  
+        
+        <!-- servers -->
+        <__COPY__>
+        {{COPY(Server:@main/size::0=|1=COPY)}}
+          <collectionDivider alignment="left" accessibilityLabel="Show_Bookcase_Divider">
+            <title>{{VAL(name)}}{{VAL(local::0=&lt;{{TEXT(remote)}}&gt;|0 =)}}</title>
+          </collectionDivider>{{CUT(@main/size:CUT:0=CUT|1=CUT|2=)}}
+          <shelf id="Library_Grid_{{VAL(name)}}" columnCount="5">
+            <sections>
+              <shelfSection>
+                <items>
+                  <!-- /library/sections -->
+                  <moviePoster id="{{VAL(key)}}" accessibilityLabel="{{VAL(title)}}" featured="true" 
+                               alwaysShowTitles="{{VAL($sectionicons::Apple=true|Plex=false|Fanart=true)}}"
+                               onPlay="atv.loadURL('{{URL(key)}}')"
+                               onSelect="atv.loadURL('{{URL(key)}}')"
+                               onHoldSelect="refreshSection('{{VAL(key)}}', '{{URL(refreshKey)}}')">
+                  {{COPY(Directory)}}
+                  {{VAR(sections:NoKey:TRUE)}}  <!--within COPY this sets the var to TRUE-->
+                  
+                    <title>{{VAL(title)}}</title>
+                    <image>{{IMAGEURL(thumb::768)}}</image>{{CUT($sectionicons::Apple=CUT|Plex=CUT|Fanart=|Custom=CUT)}}
+                    <image>{{URL(:/templates/galaxy/images/flow/icons/search.jpg)}}</image>{{CUT($sectionicons::Apple=|Plex=CUT|Fanart=CUT|Custom=CUT)}}
+                    <image>{{IMAGEURL(art::768)}}</image>{{CUT($sectionicons::Apple=CUT|Plex=|Fanart=CUT|Custom=CUT)}}
+                    <defaultImage>resource://16X9.png</defaultImage>
+                    <!--badgeCount></badgeCount-->
+                  </moviePoster>
+                  
+                  <!-- search -->
+                  <moviePoster id="{{VAL(searchKey)}}" featured="true" alwaysShowTitles="{{VAL($sectionicons::Apple=true|Plex=false|Fanart=true)}}"
+                               onPlay="atv.loadURL('{{URL(searchKey)}}')"
+                               onSelect="atv.loadURL('{{URL(searchKey)}}')">
+                    <title>{{TEXT(Search)}}</title>
+                    <image>{{URL(:/templates/galaxy/images/flow/icons/search.jpg)}}</image>{{CUT($sectionicons::Apple=|Plex=CUT|Fanart=CUT|Custom=CUT)}}
+                    <defaultImage>resource://16X9.png</defaultImage>
+                  </moviePoster>{{CUT($library_search::Show=|Hide=CUT)}} 
+                  
+                </items>
+              </shelfSection>
+            </sections>
+          </shelf>{{CUT($sectionsposition::Top=CUT|Bottom=CUT|Flow=CUT|Middle=))}}    
+        </__COPY__>  
+   
+        
+         <collectionDivider alignment="left" accessibilityLabel="Recently Added">
+          {{CUT(@RecentlyAdded/Server/size:CUT:0=CUT|1=)}}
+          <title>{{TEXT(Recently Added)}}</title>
+        </collectionDivider>{{CUT($library_recentlyadded::checked=|unchecked=CUT)}}{{CUT(@RecentlyAdded/Server/size:CUT:0=CUT|1=)}}  
+        <shelf id="shelf_2" columnCount="5">
+          {{CUT(@RecentlyAdded/Server/size:CUT:0=CUT|1=)}}
+          <sections>
+            <shelfSection>
+              {{COPY(Server:@RecentlyAdded/size::0=|1=COPY)}}
+              <items>
+              
+              
+                <moviePoster id="{{VAL(key)}}" accessibilityLabel="{{VAL(title)}}" alwaysShowTitles="{{VAL($showtitles_library::Highlighted Only=false|Show All=true)}}"
+                            onPlay="atv.loadURL('{{URL(key)}}&amp;PlexConnect=Play')"
+                            onSelect="atv.loadURL('{{URL(key)}}&amp;PlexConnect={{VAL(type::movie=Movie|episode=Episode)}}PrePlay')"
+                            onHoldSelect="scrobbleMenu('{{URL(key)}}&amp;PlexConnect=ScrobbleMenuVideo')">
+                  {{COPY(@RecentlyAdded/Server/Directory)}}
+                  {{VAR(items:NoKey:TRUE)}} 
+                  <title>{{VAL(title)}}</title>
+                  <subtitle>{{VAL(parentTitle)}}</subtitle>
+                  <image>{{IMAGEURL(thumb::768)}}</image>        
+                  <defaultImage>resource://Poster.png</defaultImage>
+                </moviePoster>
+                
+                
+              </items>
+            </shelfSection>
+          </sections>
+        </shelf>{{CUT($library_recentlyadded::checked=|unchecked=CUT)}}{{CUT(@RecentlyAdded/Server/size:CUT:0=CUT|1=)}}
+        
+        
+        
+        
+   
+        <collectionDivider alignment="left" accessibilityLabel="Channels">
+            <title>{{TEXT(Channels)}}</title>
+        </collectionDivider>{{CUT($library_channels:CUT:checked=|unchecked=CUT)}}{{CUT(@VideoChannels/Server/size:CUT:0=CUT|1=)}} 
+        <shelf id="shelf_3" columnCount="5">
+            {{CUT(@VideoChannels/Server/size:CUT:0=CUT|1=)}}
+            <sections>                             
+                <shelfSection>
+                    {{COPY(@VideoChannels/Server:size::0=|1=COPY)}}
+                    <items>
+                        <!-- /library/sections -->
+                        <moviePoster id="Video_{{VAL(key)}}" featured="true" alwaysShowTitles="{{VAL($showtitles_channels::Highlighted Only=false|Show All=true)}}"
+                                       onPlay="atv.loadURL('{{URL(key)}}&amp;PlexConnect=ChannelsVideo')"
+                                       onSelect="atv.loadURL('{{URL(key)}}&amp;PlexConnect=ChannelsVideo')">
+                            {{COPY(Directory)}}
+                            {{VAR(channels:NoKey:TRUE)}}  <!--within COPY this sets the var to TRUE-->
+                            <title>{{VAL(title)}}</title>
+                            <image>{{IMAGEURL(thumb::)}}</image>
+                            <defaultImage>resource://Square.png</defaultImage>
+                        </moviePoster>
+                    </items>
+                </shelfSection>
+          </sections>
+        </shelf>{{CUT($library_channels:CUT:checked=|unchecked=CUT)}}{{CUT(@VideoChannels/Server/size:CUT:0=CUT|1=)}}     
+
+        <!-- servers -->
+        <__COPY__>
+        {{COPY(Server:@main/size::0=|1=COPY)}}
+          <collectionDivider alignment="left" accessibilityLabel="Show_Bookcase_Divider">
+            <title>{{VAL(name)}}{{VAL(local::0=&lt;{{TEXT(remote)}}&gt;|0 =)}}</title>
+          </collectionDivider>{{CUT(@main/size:CUT:0=CUT|1=CUT|2=)}}
+          <shelf id="Library_Grid_{{VAL(name)}}" columnCount="5">
+            <sections>
+              <shelfSection>
+                <items>
+                  <!-- /library/sections -->
+                  <moviePoster id="{{VAL(key)}}" accessibilityLabel="{{VAL(title)}}" featured="true" 
+                               alwaysShowTitles="{{VAL($sectionicons::Apple=true|Plex=false|Fanart=true)}}"
+                               onPlay="atv.loadURL('{{URL(key)}}')"
+                               onSelect="atv.loadURL('{{URL(key)}}')"
+                               onHoldSelect="refreshSection('{{VAL(key)}}', '{{URL(refreshKey)}}')">
+                  {{COPY(Directory)}}
+                  {{VAR(sections:NoKey:TRUE)}}  <!--within COPY this sets the var to TRUE-->
+                  
+                    <title>{{VAL(title)}}</title>
+                    <image>{{IMAGEURL(thumb::768)}}</image>{{CUT($sectionicons::Apple=CUT|Plex=CUT|Fanart=|Custom=CUT)}}
+                    <image>{{URL(:/templates/galaxy/images/flow/icons/search.jpg)}}</image>{{CUT($sectionicons::Apple=|Plex=CUT|Fanart=CUT|Custom=CUT)}}
+                    <image>{{IMAGEURL(art::768)}}</image>{{CUT($sectionicons::Apple=CUT|Plex=|Fanart=CUT|Custom=CUT)}}
+                    <defaultImage>resource://16X9.png</defaultImage>
+                    <!--badgeCount></badgeCount-->
+                  </moviePoster>
+                  
+                  <!-- search -->
+                  <moviePoster id="{{VAL(searchKey)}}" featured="true" alwaysShowTitles="{{VAL($sectionicons::Apple=true|Plex=false|Fanart=true)}}"
+                               onPlay="atv.loadURL('{{URL(searchKey)}}')"
+                               onSelect="atv.loadURL('{{URL(searchKey)}}')">
+                    <title>{{TEXT(Search)}}</title>
+                    <image>{{URL(:/templates/galaxy/images/flow/icons/search.jpg)}}</image>{{CUT($sectionicons::Apple=|Plex=CUT|Fanart=CUT|Custom=CUT)}}
+                    <defaultImage>resource://16X9.png</defaultImage>
+                  </moviePoster>{{CUT($library_search::Show=|Hide=CUT)}} 
+                  
+                </items>
+              </shelfSection>
+            </sections>
+          </shelf>{{CUT($sectionsposition::Top=CUT|Bottom=|Flow=CUT|Middle=CUT))}}    
+        </__COPY__>  
+
+
+
+        </items>  
+    </scroller>
+    
+    <!--No Sections Available-->
+    <dialog id="com.sample.error-dialog">
+    {{CUT(#sections::FALSE=|TRUE=CUT)}}
+      <title>PlexConnect</title>
+      <description>{{TEXT(No Plex Library Sections Available)}}</description>
+    </dialog>
+    
+  </body>
+</atv>

@@ -3,6 +3,10 @@ import sys
 import math 
 import ntpath
 import urllib
+import urllib2
+
+
+
 import os.path
 import unicodedata
 from Debug import * 
@@ -40,24 +44,30 @@ from PIL import ImageFilter
 def generate(self, src, srcXML, param):
     # Catch the Params
     params = eval('['+self._(param.replace(' ','+'))+']')
-    fanartpath = sys.path[0]+"/assets/fanart"
-    cachepath = fanartpath+"/cache"  
-    stylepath = fanartpath+"/styles/"+params[0]
+    cachepath = sys.path[0]+"/assets/fanartcache"  
+    stylepath = sys.path[0]+"/assets/templates/"+str(params[0])
     cachefile = createFileHandle(params)
 
     # Setup Background
     if params[3] != "":
-      if os.path.isfile(stylepath+"/"+urllib.unquote(params[3])):
-        background = Image.open(stylepath+"/"+urllib.unquote(params[3]))
-      else:
-        urllib.urlretrieve(urllib.unquote(params[3]), cachepath+"/tmp.png")  
-        background = Image.open(cachepath+"/tmp.png") 
+      url = urllib.unquote(params[3])
+      if os.path.isfile(stylepath+"/images/"+url):
+        background = Image.open(stylepath+"/images/"+url)
+      elif url[0][0] != "/": 
+        try:
+          bgfile = urllib2.urlopen(url)
+        except urllib2.URLError, e:
+          dprint(__name__, 1, 'error: {0}', e.code+" "+e.msg+" // url:"+ url )  # Debug
+          background = Image.open(stylepath+"/images/blank.jpg")  
+        else:
+          output = open(cachepath+"/tmp.png",'wb')
+          output.write(bgfile.read())
+          output.close()  
+          background = Image.open(cachepath+"/tmp.png") 
     else:
-      if os.path.isfile(stylepath+"/blank.jpg"):
-        background = Image.open(stylepath+"/blank.jpg")
-      else:
-        background = Image.open(fanartpath+"/blank.jpg")
-    background = background.convert('RGB') 
+      if os.path.isfile(stylepath+"/images/blank.jpg"):
+        background = Image.open(stylepath+"/images/blank.jpg")
+        background = background.convert('RGB') 
       
     # Already created?
     if os.path.isfile(cachepath+"/"+cachefile+".png"):
@@ -66,25 +76,25 @@ def generate(self, src, srcXML, param):
     else:             
       # Set Resolution and Merge Layers
       #if params[4] == "720":
-      im = resizedMerge(background, params, fanartpath) 
+      im = resizedMerge(background, params, stylepath) 
       #else: # 1080
        # im = resizedMerge(background, params, fanartpath)               
       # Setup Title Type Space
       if params[1] != None and params[1] != "":
-        im = textToImage(1, im, params, fanartpath)  
+        im = textToImage(1, im, params, stylepath)  
       # Setup Subtitle Type Space
       if params[2] != None and params[2] != "":
-        im = textToImage(2, im, params, fanartpath)  
+        im = textToImage(2, im, params, stylepath)  
       # Save to Cache
-      im.save(sys.path[0]+"/assets/fanart/cache/"+cachefile+".png")   
+      im.save(cachepath+"/"+cachefile+".png")   
     return cachefile+".png"
 
-def textToImage(index, im, params, fanartpath):
+def textToImage(index, im, params, stylepath):
     # Set Font      
     if params[5] != None and params[5] != "":  
-      font = fanartpath+"/styles/"+params[0]+"/"+params[5]
-    else: # Default Font
-      font = fanartpath+"/OpenSans-Bold.ttf"  
+      font = stylepath+"/"+params[5]
+  #  else: # Default Font
+   #   font = /OpenSans-Bold.ttf"  
     # Set Font Size
     if params[index+5] != None and params[index+5] != "": 
       fontsize = int(params[index+5])
@@ -168,7 +178,7 @@ def textToImage(index, im, params, fanartpath):
     draw.text((int(offsetx), int(offsety)), text , font=ImageFont.truetype(font, int(fontsize)), fill=textcolor)
     return im    
 
-def resizedMerge (background, params, fanartpath):
+def resizedMerge (background, params, stylepath):
    
     
     if params[4] == "poster":
@@ -202,7 +212,7 @@ def resizedMerge (background, params, fanartpath):
     layerrange = range(15, len(params))
     for layercounter in layerrange:
       if params[layercounter] != None:
-        layer = Image.open(fanartpath+"/styles/"+params[0]+"/"+params[layercounter]+".png")
+        layer = Image.open(stylepath+"/images/"+params[layercounter]+".png")
         layer = layer.resize((width, height), Image.ANTIALIAS)
         im.paste(layer, ( 0, 0),layer)
     return im 

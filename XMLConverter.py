@@ -401,15 +401,17 @@ def XML_PMS2aTV(PMS_address, path, options):
     
     elif path.find('SearchResults') != -1:
         XMLtemplate = 'ChannelsVideoSearchResults.xml'
-        
-    elif PMS_address=='owned' and path=='/library/sections':  # from PlexConnect.xml -> for //local, //myplex
+    
+    elif path=='/library/sections' and g_ATVSettings.getSetting(options['PlexConnectUDID'], 'template') == "default":
+       XMLtemplate = 'Library.xml'    
+    
+    elif path=='/library/sections' and PMS_address=='owned' and  g_ATVSettings.getSetting(options['PlexConnectUDID'], 'template') != "default":  # from PlexConnect.xml -> for //local, //myplex
         XMLtemplate = 'Library_'+g_ATVSettings.getSetting(options['PlexConnectUDID'], 'libraryview')+'.xml'
         
-    elif PMS_address=='shared' and path=='/library/sections':  # from PlexConnect.xml -> for //local, //myplex
+    elif PMS_address=='shared' and path=='/library/sections' and g_ATVSettings.getSetting(options['PlexConnectUDID'], 'template') != "default": # from PlexConnect.xml -> for //local, //myplex
         XMLtemplate = 'Library_'+g_ATVSettings.getSetting(options['PlexConnectUDID'], 'libraryview_remote')+'.xml'   
         
-    #elif path=='/library/sections':  # from PlexConnect.xml -> for //local, //myplex
-     #   XMLtemplate = 'Library.xml'
+
     
     elif path=='/channels/all':
         XMLtemplate = 'Channel_'+g_ATVSettings.getSetting(options['PlexConnectUDID'], 'channelview')+'.xml'
@@ -511,7 +513,12 @@ def XML_PMS2aTV(PMS_address, path, options):
     dprint(__name__, 1, "XMLTemplate: "+XMLtemplate)
 
     # get XMLtemplate
-    aTVTree = etree.parse(sys.path[0]+'/assets/templates/'+XMLtemplate)
+    template = g_ATVSettings.getSetting(options['PlexConnectUDID'], 'template')
+    if template == "default":
+      aTVTree = etree.parse(sys.path[0]+'/assets/templates/default/xml/'+XMLtemplate)
+    else:
+      aTVTree = etree.parse(sys.path[0]+'/assets/templates/'+template+'/xml/'+XMLtemplate)
+
     aTVroot = aTVTree.getroot()
     
     # convert PMS XML to aTV XML using provided XMLtemplate
