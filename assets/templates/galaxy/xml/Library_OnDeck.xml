@@ -13,7 +13,7 @@
       <itemCollectionWithImageHeader id="com.sample.menu-items-with-sections">
       <header>
         <imageHeader>
-            <image insets="100, 0, 0, 0" required="true">{{URL(:/thumbnails/header{{VAL(^aTVScreenResolution)}}.png)}}</image>
+            <image insets="{{VAL(^aTVScreenResolution:1:720=50|1080=80)}}, 0, 0, 0" required="true">{{URL(:/thumbnails/header{{VAL(^aTVScreenResolution)}}.png)}}</image>
         </imageHeader>
       </header>
           

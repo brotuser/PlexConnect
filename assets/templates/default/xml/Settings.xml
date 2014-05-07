@@ -6,7 +6,7 @@
   </head>
 
   <body>
-    <listWithPreview id="SettingsPage">
+    <listWithPreview id="SettingsPage" volatile="true">
       <header>
         <simpleHeader>
           <title>{{TEXT(Settings)}}</title>

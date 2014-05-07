@@ -17,17 +17,10 @@
     {{CUT($libraryview:CUT:=CUT|Grid=|Grid =CUT)}}
       <header>
        <imageHeader>
-	     <image insets="0, 0, {{VAL(^aTVScreenResolution:1:720=280|1080=720)}}, 0" required="true">{{URL(:/fanartcache/{{LFBG("galaxy","{{EVAL(quote_plus("{{TEXT(Plex Library)}}"))}}","","librarybg.jpg","{{VAL(^aTVScreenResolution)}}","fonts/OpenSans/OpenSans-Light.ttf","30","30","FAFAFA","FFFFFF","left","top","60","30","")}})}}</image>
+	     <image insets="0, 0, {{VAL(^aTVScreenResolution:1:720=640|1080=720)}}, 0" required="true">{{URL(:/fanartcache/{{LFBG("galaxy","{{EVAL(quote_plus("{{TEXT(Plex Library)}}"))}}","","librarybg.jpg","{{VAL(^aTVScreenResolution)}}","fonts/OpenSans/OpenSans-Light.ttf","30","30","FAFAFA","FFFFFF","left","top","60","30","")}})}}</image>
 	   </imageHeader>
-      </header>{{CUT($imageheader::Hide=CUT|Show=)}}{{CUT(^aTVFirmwareVersion:CUT:=CUT|6.0=)}}
-
-      <header>
-       <simpleHeader>
-          <title>{{TEXT(Plex Library)}}</title>
-        </simpleHeader>
-      </header>{{CUT($imageheader::Show=CUT|Hide=)}}
-            
-        <items>
+      </header>
+      <items>
 
        <showcase accessibilityLabel="Showcase movies" id="showcase_1">
         <initialSelection>
@@ -44,9 +37,8 @@
                           onHoldSelect="refreshSection('{{VAL(key)}}', '{{URL(refreshKey)}}')">
             {{COPY(Directory)}}
             {{VAR(items:NoKey:TRUE)}}
-            <image>{{IMAGEURL(thumb::768)}}</image>{{CUT($sectionicons::Apple=CUT|Plex=|Fanart=CUT|Custom=CUT)}}
-            
-            <image>{{URL(:/templates/galaxy/images/flow/{{VAL(type)}}-flow.jpg)}}</image>{{CUT($sectionicons::Apple=|Plex=CUT|Fanart=CUT|Custom=CUT)}}
+            <image>{{IMAGEURL(thumb::768)}}</image>{{CUT($sectionicons::Apple=CUT|Plex=|Fanart=CUT|Custom=CUT)}} 
+            <image>{{URL(:/templates/galaxy/images/flow/{{VAL(type)}}-flow.png)}}</image>{{CUT($sectionicons::Apple=|Plex=CUT|Fanart=CUT|Custom=CUT)}}
             <image>{{URL(:/fanartcache/{{LFBG("galaxy","{{VAL(title)}}","","{{IMAGEURL(art::768)}}","flow","fonts/OpenSans/OpenSans-Bold.ttf","50","60","FFFFFF","FFFFFF","right","top","20","20","","ListIcon")}})}}</image>{{CUT($sectionicons::Apple=CUT|Plex=CUT|Fanart=|Custom=CUT)}}
             <defaultImage>resource://Poster.png</defaultImage>
           </showcasePoster>         

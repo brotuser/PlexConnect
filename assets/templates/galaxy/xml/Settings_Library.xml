@@ -30,7 +30,7 @@
             <label>https://github.com/ibaa/plexconnect</label>
             <label>http://forums.plexapp.com/...plexconnect</label>
           </metadataValues>
-          <image>{{URL(:/thumbnails/PlexConnectLogo.png)}}</image>
+          <image>{{URL(:/templates/galaxy/images/PlexConnectLogo.png)}}</image>
         </keyedPreview>
       </preview>
 
@@ -46,14 +46,6 @@
               <oneLineMenuItem id="LibraryView" onSelect="toggleSettings('LibraryView', 'Settings_Library')">
                 <label>{{TEXT(Library View)}}</label>
                 <rightLabel>{{SETTING(libraryview)}}</rightLabel>
-              </oneLineMenuItem>
-              <oneLineMenuItem id="PilIcons" onSelect="toggleSettings('PilIcons', 'Settings_Library')">
-                <label>{{TEXT(PIL Icons)}}</label>
-                <rightLabel>{{SETTING(pilicons)}}</rightLabel>
-              </oneLineMenuItem>
-              <oneLineMenuItem id="PilFlow" onSelect="toggleSettings('PilFlow', 'Settings_Library')">
-                <label>{{TEXT(PIL Flow)}}</label>
-                <rightLabel>{{SETTING(pilflow)}}</rightLabel>
               </oneLineMenuItem>
               <oneLineMenuItem id="SectionIcons" onSelect="toggleSettings('SectionIcons', 'Settings_Library')">
                 <label>{{TEXT(Library Icons)}}</label>
@@ -82,27 +74,28 @@
               </oneLineMenuItem> 
                </items>
               </menuSection>
-            <menuSection>
-            <header>
+        <!--Removed Below iOS 6.0-->
+              <menuSection>
+             <header>
               <horizontalDivider alignment="left">
-                <title>{{TEXT(Fanart)}}</title>
+                <title>{{TEXT(Fanart and Header)}}</title>
               </horizontalDivider>
             </header>
             <items>
-             <oneLineMenuItem id="Episode_List" onSelect="toggleSettings('Episode_List', 'Settings_Library')">
-                <label>{{TEXT(Episode List)}}</label>
-                <rightLabel>{{SETTING(episode_list)}}</rightLabel>
+              <oneLineMenuItem id="Fanart" onSelect="toggleSettings('Fanart', 'Settings_Library')">
+                <label>{{TEXT(Fanart)}}</label>
+                <rightLabel>{{SETTING(fanart)}}</rightLabel>
               </oneLineMenuItem>
-              <oneLineMenuItem id="Tvshow_List" onSelect="toggleSettings('Tvshow_List', 'Settings_Library')">
-                <label>{{TEXT(Season List)}}</label>
-                <rightLabel>{{SETTING(tvshow_list)}}</rightLabel>
+              <oneLineMenuItem id="LibHeader" onSelect="toggleSettings('LibHeader', 'Settings_Library')">
+                <label>{{TEXT(Library Header)}}</label>
+                <rightLabel>{{SETTING(libheader)}}</rightLabel>
               </oneLineMenuItem>
-                <oneLineMenuItem id="Tvshow_Cover" onSelect="toggleSettings('Tvshow_Cover', 'Settings_Library')">
-                <label>{{TEXT(Season Coverflow)}}</label>
-                <rightLabel>{{SETTING(tvshow_cover)}}</rightLabel>
-              </oneLineMenuItem>
-                </items>
-          </menuSection>
+              <oneLineMenuItem id="ImageHeader" onSelect="toggleSettings('ImageHeader', 'Settings_Library')">
+                <label>{{TEXT(Section Headers)}}</label>
+                <rightLabel>{{SETTING(imageheader)}}</rightLabel>
+              </oneLineMenuItem>  
+               </items>
+              </menuSection>{{CUT(^aTVFirmwareVersion:CUT:=CUT|6.0=)}}
               <menuSection>
            <header>
               <horizontalDivider alignment="left">
@@ -110,10 +103,6 @@
               </horizontalDivider>
             </header>
             <items>
-              <oneLineMenuItem id="ImageHeader" onSelect="toggleSettings('ImageHeader', 'Settings_Library')">
-                <label>{{TEXT(Sections Header)}}</label>
-                <rightLabel>{{SETTING(imageheader)}}</rightLabel>
-              </oneLineMenuItem>
               <oneLineMenuItem id="Library_Search" onSelect="toggleSettings('Library_Search', 'Settings_Library')">
                 <label>{{TEXT(Search Section)}}</label>
                 <rightLabel>{{SETTING(Library_search)}}</rightLabel>
@@ -122,7 +111,7 @@
                 <label>{{TEXT(Poster Titles)}}</label>
                 <rightLabel>{{SETTING(showtitles_library)}}</rightLabel>
               </oneLineMenuItem> 
-              <oneLineMenuItem id="ChannelView" onSelect="toggleSettings('ChannelView', 'Settings_TopLevel')">
+              <oneLineMenuItem id="ChannelView" onSelect="toggleSettings('ChannelView', 'Settings_Library')">
                 <label>{{TEXT(Channel View)}}</label>
                 <rightLabel>{{SETTING(channelview)}}</rightLabel>
               </oneLineMenuItem>            
