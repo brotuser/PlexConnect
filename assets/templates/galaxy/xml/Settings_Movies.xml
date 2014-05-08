@@ -10,7 +10,7 @@
       <header>
         <imageHeader>
           <image insets="0, 0, {{VAL(^aTVScreenResolution:1:720=680|1080=1020)}}, 0" required="true">
-            {{URL(:/fanartcache/{{LFBG("galaxy","{{EVAL(quote_plus("{{TEXT(Settings)}}"))}}","","backgrounds/settings.jpg","{{VAL(^aTVScreenResolution)}}","fonts/OpenSans/OpenSans-Light.ttf","60","","9A9A9A","","right","top","80","40","","Settings")}})}}
+            {{URL(:/fanartcache/{{LFBG("galaxy","{{EVAL(quote_plus("{{TEXT(Settings)}}"))}}","","backgrounds/settings.jpg","{{VAL(^aTVScreenResolution)}}","fonts/OpenSans/OpenSans-Light.ttf","60","","9A9A9A","","right","top","80","40","","DetailedList")}})}}
           </image>
         </imageHeader>
       </header>

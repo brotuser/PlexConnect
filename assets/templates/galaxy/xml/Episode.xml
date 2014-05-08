@@ -18,11 +18,7 @@
 	 <!--Fullscreen--> 
         <imageHeader>
 	      <image insets="0, 0, {{VAL(^aTVScreenResolution:1:720=640|1080=960)}}, 0" required="true">{{URL(:/fanartcache/{{LFBG("galaxy","{{EVAL(quote_plus("{{VAL(title1)}}"))}}","{{EVAL(quote_plus("{{VAL(title2)}}"))}}","{{IMAGEURL(art:::)}}","{{VAL(^aTVScreenResolution)}}","fonts/OpenSans/OpenSans-Light.ttf","60","30","FFFFFF","FFFFFF","right","top","80","40","2","List")}})}}</image>
-        </imageHeader>{{CUT($episode_list::Fullscreen=|Banner=CUT)}}
-     <!--Banner-->
-        <imageHeader>
-          <image insets="50, 0, 0, 0" required="true">{{IMAGEURL(banner)}}</image>
-        </imageHeader>{{CUT($episode_list::Banner=|Fullscreen=CUT)}}
+        </imageHeader>
       </header>
       <menu>
         <sections>

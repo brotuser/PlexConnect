@@ -8,7 +8,7 @@
       <header>
         <imageHeader>
           <image insets="0, 0, {{VAL(^aTVScreenResolution:1:720=640|1080=960)}}, 0" required="true">
-           {{URL(:/fanartcache/{{LFBG("galaxy","{{EVAL(quote_plus("{{VAL(title1:Plex Channels)}}"))}}","{{EVAL(quote_plus("{{VAL(title2)}}"))}}","backgrounds/channel.jpg","{{VAL(^aTVScreenResolution)}}","fonts/OpenSans/OpenSans-Light.ttf","60","30","98B178","FFFFFF","right","top","80","40","","List")}})}}
+           {{URL(:/fanartcache/{{LFBG("galaxy","{{EVAL(quote_plus("{{VAL(title1:Plex Channels)}}"))}}","{{EVAL(quote_plus("{{VAL(title2)}}"))}}","backgrounds/channel.jpg","{{VAL(^aTVScreenResolution)}}","fonts/OpenSans/OpenSans-Light.ttf","60","30","98B178","FFFFFF","right","top","80","40","","DetailedList")}})}}
           </image>
         </imageHeader>
       </header>

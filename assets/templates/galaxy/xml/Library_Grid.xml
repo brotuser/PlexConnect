@@ -13,11 +13,11 @@
 
     {{ADDXML(VideoChannels::/channels/all)}}
     <!-- Grid -->
-    <scroller id="Library_Grid">
+    <scroller id="Library_Grid" >
     {{CUT($libraryview:CUT:=CUT|Grid=|Grid =CUT)}}
       <header>
        <imageHeader>
-	     <image insets="0, 0, {{VAL(^aTVScreenResolution:1:720=460|1080=720)}}, 0" required="true">{{URL(:/fanartcache/{{LFBG("galaxy","{{EVAL(quote_plus("{{TEXT(Plex Library)}}"))}}","","backgrounds/library.jpg","{{VAL(^aTVScreenResolution)}}","fonts/OpenSans/OpenSans-Light.ttf","60","30","FAFAFA","FFFFFF","center","top","0","110","")}})}}</image>
+	     <image insets="0, 0, {{VAL(^aTVScreenResolution:1:720=460|1080=720)}}, 0" required="true">{{URL(:/fanartcache/{{LFBG("galaxy","{{EVAL(quote_plus("{{TEXT(Plex Library)}}"))}}","","backgrounds/library.jpg","{{VAL(^aTVScreenResolution)}}","fonts/OpenSans/OpenSans-Light.ttf","60","30","FAFAFA","FFFFFF","center","top","0","110","","LibraryFlow")}})}}</image>
 	   </imageHeader>
       </header>
       <items>
@@ -182,15 +182,19 @@
               
                 <moviePoster id="{{VAL(key)}}" accessibilityLabel="{{VAL(title)}}" alwaysShowTitles="{{VAL($showtitles_library::Highlighted Only=false|Show All=true)}}"
                             onPlay="atv.loadURL('{{URL(key)}}&amp;PlexConnect=Play')"
-                            onSelect="atv.loadURL('{{URL(key)}}&amp;PlexConnect={{VAL(type::movie=Movie|episode=Episode)}}PrePlay')"
+                            onSelect="atv.loadURL('{{URL(key)}}&amp;PlexConnect={{VAL(type::movie=MoviePrePlay|episode=EpisodePrePlay|season=season)}}')"           
                             onHoldSelect="scrobbleMenu('{{URL(key)}}&amp;PlexConnect=ScrobbleMenuVideo')">
                   {{COPY(@RecentlyAdded/Server/Directory)}}
                   {{VAR(items:NoKey:TRUE)}} 
                   <title>{{VAL(title)}}</title>
                   <subtitle>{{VAL(parentTitle)}}</subtitle>
+                  <badgeCount>{{unwatchedCountGrid(leafCount:0:viewedLeafCount:0)}}</badgeCount>{{CUT($showunwatched::False=CUT|True=)}}
                   <image>{{IMAGEURL(thumb::768)}}</image>        
                   <defaultImage>resource://Poster.png</defaultImage>
                 </moviePoster>
+                
+                
+                
                 
                 
               </items>

@@ -57,7 +57,7 @@ def generate(self, src, srcXML, param):
         try:
           bgfile = urllib2.urlopen(url)
         except urllib2.URLError, e:
-          dprint(__name__, 1, 'error: {0}', e.code+" "+e.msg+" // url:"+ url )  # Debug
+          dprint(__name__, 1, 'error: {0}', str(e.code)+" "+e.msg+" // url:"+ url )  # Debug
           background = Image.open(stylepath+"/images/blank.jpg")  
         else:
           output = open(cachepath+"/tmp.png",'wb')
