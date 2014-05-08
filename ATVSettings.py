@@ -17,8 +17,8 @@ options = { \
     'libraryview_remote'        	:('TopGrid', 'Bookcase', 'List'), \
     'sectionicons'              	:('Fanart', 'Apple', 'Custom', 'Plex'), \
     'sectionicons_shared'       	:('Fanart', 'Apple', 'Custom', 'Plex'), \
-    'sectionsposition'          	:('Top', 'Flow'), \
-    'library_search'            	:('Hide', 'Show'), \
+    'sectionsposition'          	:('Flow', 'Top'), \
+    'library_search'            	:('Show', 'Hide'), \
     'library_ondeck'            	:('checked', 'unchecked'), \
     'library_recentlyadded'     	:('checked', 'unchecked'), \
     'library_channels'          	:('unchecked', 'checked'), \

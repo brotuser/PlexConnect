@@ -37,9 +37,9 @@
                           onHoldSelect="refreshSection('{{VAL(key)}}', '{{URL(refreshKey)}}')">
             {{COPY(Directory)}}
             {{VAR(items:NoKey:TRUE)}}
-            <image>{{IMAGEURL(thumb::768)}}</image>{{CUT($sectionicons::Apple=CUT|Plex=|Fanart=CUT|Custom=CUT)}} 
-            <image>{{URL(:/fanartcache/{{LFBG("galaxy","{{VAL(title)}}","","flow/{{VAL(type)}}-flow-plex.png","flow","fonts/OpenSans/OpenSans-Bold.ttf","40","","FFFFFF","FFFFFF","right","top","40","20","","ListIcon")}})}}</image>{{CUT($sectionicons::Apple=CUT|Plex=CUT|Fanart=|Custom=CUT)}}
-            <image>{{URL(:/fanartcache/{{LFBG("galaxy","{{VAL(title)}}","","flow/{{VAL(type)}}-flow.png","flow","fonts/OpenSans/OpenSans-Bold.ttf","40","","FFFFFF","FFFFFF","right","top","40","20","","ListIcon")}})}}</image>{{CUT($sectionicons::Apple=|Plex=CUT|Fanart=CUT|Custom=CUT)}}
+            <image>{{IMAGEURL(thumb::768)}}</image>{{CUT($sectionicons::Apple=CUT|Plex=|Fanart=CUT)}} 
+            <image>{{URL(:/fanartcache/{{LFBG("galaxy","{{VAL(title)}}","","flow/{{VAL(type)}}-flow-plex.png","flow","fonts/OpenSans/OpenSans-Bold.ttf","40","","FFFFFF","FFFFFF","right","top","40","20","","ListIcon")}})}}</image>{{CUT($sectionicons::Apple=CUT|Plex=CUT|Fanart=)}}
+            <image>{{URL(:/fanartcache/{{LFBG("galaxy","{{VAL(title)}}","","flow/{{VAL(type)}}-flow.png","flow","fonts/OpenSans/OpenSans-Bold.ttf","40","","FFFFFF","FFFFFF","right","top","40","20","","ListIcon")}})}}</image>{{CUT($sectionicons::Apple=|Plex=CUT|Fanart=CUT)}}
 
             <defaultImage>resource://Poster.png</defaultImage>
           </showcasePoster>         
@@ -47,8 +47,8 @@
           <showcasePoster id="{{VAL(searchKey)}}"
                           onPlay="atv.loadURL('{{URL(searchKey)}}')"
                           onSelect="atv.loadURL('{{URL(searchKey)}}')">
-            <image>{{IMAGEURL(thumb::768)}}</image>{{CUT($sectionicons::Apple=CUT|Plex=|Fanart=CUT|Custom=CUT)}}
-            <image>{{URL(:/fanartcache/{{LFBG("galaxy","{{TEXT(Search)}}","","flow/search-flow.png","flow","fonts/OpenSans/OpenSans-Bold.ttf","40","","FFFFFF","FFFFFF","right","top","40","20","","ListIcon")}})}}</image>{{CUT($sectionicons::Apple=|Plex=CUT|Fanart=CUT|Custom=CUT)}}
+            <image>{{IMAGEURL(thumb::768)}}</image>{{CUT($sectionicons::Apple=CUT|Plex=|Fanart=CUT)}}
+            <image>{{URL(:/fanartcache/{{LFBG("galaxy","{{TEXT(Search)}}","","flow/search-flow.png","flow","fonts/OpenSans/OpenSans-Bold.ttf","40","","FFFFFF","FFFFFF","right","top","40","20","","ListIcon")}})}}</image>{{CUT($sectionicons::Apple=|Plex=CUT|Fanart=)}}
             <defaultImage>resource://Poster.png</defaultImage>
             
           </showcasePoster>{{CUT($library_search::Show=|Hide=CUT)}} 
@@ -75,9 +75,9 @@
                   {{VAR(sections:NoKey:TRUE)}}  <!--within COPY this sets the var to TRUE-->
                   
                     <title>{{VAL(title)}}</title>
-                    <image>{{IMAGEURL(thumb::768)}}</image>{{CUT($sectionicons::Apple=CUT|Plex=CUT|Fanart=|Custom=CUT)}}
-                    <image>{{URL(:/templates/galaxy/images/flow/icons/{{VAL(type)}}.jpg)}}</image>{{CUT($sectionicons::Apple=|Plex=CUT|Fanart=CUT|Custom=CUT)}}
-                    <image>{{IMAGEURL(art::768)}}</image>{{CUT($sectionicons::Apple=CUT|Plex=|Fanart=CUT|Custom=CUT)}}
+                    <image>{{IMAGEURL(thumb::768)}}</image>{{CUT($sectionicons::Apple=CUT|Plex=|Fanart=CUT)}}
+                    <image>{{URL(:/templates/galaxy/images/flow/icons/{{VAL(type)}}.jpg)}}</image>{{CUT($sectionicons::Apple=|Plex=CUT|Fanart=CUT)}}
+                    <image>{{IMAGEURL(art::768)}}</image>{{CUT($sectionicons::Apple=CUT|Plex=CUT|Fanart=)}}
                     <defaultImage>resource://16X9.png</defaultImage>
                     <!--badgeCount></badgeCount-->
                   </moviePoster>
@@ -87,7 +87,7 @@
                                onPlay="atv.loadURL('{{URL(searchKey)}}')"
                                onSelect="atv.loadURL('{{URL(searchKey)}}')">
                     <title>{{TEXT(Search)}}</title>
-                    <image>{{URL(:/templates/galaxy/images/flow/icons/search.jpg)}}</image>{{CUT($sectionicons::Apple=|Plex=CUT|Fanart=CUT|Custom=CUT)}}
+                    <image>{{URL(:/templates/galaxy/images/flow/icons/search.jpg)}}</image>{{CUT($sectionicons::Apple=|Plex=CUT|Fanart=CUT)}}
                     <defaultImage>resource://16X9.png</defaultImage>
                   </moviePoster>{{CUT($library_search::Show=|Hide=CUT)}} 
                   
@@ -145,9 +145,9 @@
                   {{VAR(sections:NoKey:TRUE)}}  <!--within COPY this sets the var to TRUE-->
                   
                     <title>{{VAL(title)}}</title>
-                    <image>{{IMAGEURL(thumb::768)}}</image>{{CUT($sectionicons::Apple=CUT|Plex=CUT|Fanart=|Custom=CUT)}}
-                    <image>{{URL(:/templates/galaxy/images/flow/icons/{{VAL(type)}}.jpg)}}</image>{{CUT($sectionicons::Apple=|Plex=CUT|Fanart=CUT|Custom=CUT)}}
-                    <image>{{IMAGEURL(art::768)}}</image>{{CUT($sectionicons::Apple=CUT|Plex=|Fanart=CUT|Custom=CUT)}}
+                    <image>{{IMAGEURL(thumb::768)}}</image>{{CUT($sectionicons::Apple=CUT|Plex=|Fanart=CUT)}}
+                    <image>{{URL(:/templates/galaxy/images/flow/icons/{{VAL(type)}}.jpg)}}</image>{{CUT($sectionicons::Apple=|Plex=CUT|Fanart=CUT)}}
+                    <image>{{IMAGEURL(art::768)}}</image>{{CUT($sectionicons::Apple=CUT|Plex=|Fanart=CUT)}}
                     <defaultImage>resource://16X9.png</defaultImage>
                     <!--badgeCount></badgeCount-->
                   </moviePoster>
@@ -157,7 +157,7 @@
                                onPlay="atv.loadURL('{{URL(searchKey)}}')"
                                onSelect="atv.loadURL('{{URL(searchKey)}}')">
                     <title>{{TEXT(Search)}}</title>
-                    <image>{{URL(:/templates/galaxy/images/flow/icons/search.jpg)}}</image>{{CUT($sectionicons::Apple=|Plex=CUT|Fanart=CUT|Custom=CUT)}}
+                    <image>{{URL(:/templates/galaxy/images/flow/icons/search.jpg)}}</image>
                     <defaultImage>resource://16X9.png</defaultImage>
                   </moviePoster>{{CUT($library_search::Show=|Hide=CUT)}} 
                   
@@ -246,9 +246,9 @@
                   {{VAR(sections:NoKey:TRUE)}}  <!--within COPY this sets the var to TRUE-->
                   
                     <title>{{VAL(title)}}</title>
-                    <image>{{IMAGEURL(thumb::768)}}</image>{{CUT($sectionicons::Apple=CUT|Plex=CUT|Fanart=|Custom=CUT)}}
-                    <image>{{URL(:/templates/galaxy/images/flow/icons/search.jpg)}}</image>{{CUT($sectionicons::Apple=|Plex=CUT|Fanart=CUT|Custom=CUT)}}
-                    <image>{{IMAGEURL(art::768)}}</image>{{CUT($sectionicons::Apple=CUT|Plex=|Fanart=CUT|Custom=CUT)}}
+                    <image>{{IMAGEURL(thumb::768)}}</image>{{CUT($sectionicons::Apple=CUT|Plex=|Fanart=CUT)}}
+                    <image>{{URL(:/templates/galaxy/images/flow/icons/{{VAL(type)}}.jpg)}}</image>{{CUT($sectionicons::Apple=|Plex=CUT|Fanart=CUT)}}
+                    <image>{{IMAGEURL(art::768)}}</image>{{CUT($sectionicons::Apple=CUT|Plex=|Fanart=CUT)}}
                     <defaultImage>resource://16X9.png</defaultImage>
                     <!--badgeCount></badgeCount-->
                   </moviePoster>
@@ -258,7 +258,7 @@
                                onPlay="atv.loadURL('{{URL(searchKey)}}')"
                                onSelect="atv.loadURL('{{URL(searchKey)}}')">
                     <title>{{TEXT(Search)}}</title>
-                    <image>{{URL(:/templates/galaxy/images/flow/icons/search.jpg)}}</image>{{CUT($sectionicons::Apple=|Plex=CUT|Fanart=CUT|Custom=CUT)}}
+                    <image>{{URL(:/templates/galaxy/images/flow/icons/search.jpg)}}</image>
                     <defaultImage>resource://16X9.png</defaultImage>
                   </moviePoster>{{CUT($library_search::Show=|Hide=CUT)}} 
                   
