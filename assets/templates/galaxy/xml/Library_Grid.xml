@@ -17,7 +17,7 @@
     {{CUT($libraryview:CUT:=CUT|Grid=|Grid =CUT)}}
       <header>
        <imageHeader>
-	     <image insets="0, 0, {{VAL(^aTVScreenResolution:1:720=640|1080=720)}}, 0" required="true">{{URL(:/fanartcache/{{LFBG("galaxy","{{EVAL(quote_plus("{{TEXT(Plex Library)}}"))}}","","librarybg.jpg","{{VAL(^aTVScreenResolution)}}","fonts/OpenSans/OpenSans-Light.ttf","30","30","FAFAFA","FFFFFF","left","top","60","30","")}})}}</image>
+	     <image insets="0, 0, {{VAL(^aTVScreenResolution:1:720=460|1080=720)}}, 0" required="true">{{URL(:/fanartcache/{{LFBG("galaxy","{{EVAL(quote_plus("{{TEXT(Plex Library)}}"))}}","","backgrounds/library.jpg","{{VAL(^aTVScreenResolution)}}","fonts/OpenSans/OpenSans-Light.ttf","60","30","FAFAFA","FFFFFF","center","top","0","110","")}})}}</image>
 	   </imageHeader>
       </header>
       <items>
@@ -38,8 +38,9 @@
             {{COPY(Directory)}}
             {{VAR(items:NoKey:TRUE)}}
             <image>{{IMAGEURL(thumb::768)}}</image>{{CUT($sectionicons::Apple=CUT|Plex=|Fanart=CUT|Custom=CUT)}} 
-            <image>{{URL(:/templates/galaxy/images/flow/{{VAL(type)}}-flow.png)}}</image>{{CUT($sectionicons::Apple=|Plex=CUT|Fanart=CUT|Custom=CUT)}}
-            <image>{{URL(:/fanartcache/{{LFBG("galaxy","{{VAL(title)}}","","{{IMAGEURL(art::768)}}","flow","fonts/OpenSans/OpenSans-Bold.ttf","50","60","FFFFFF","FFFFFF","right","top","20","20","","ListIcon")}})}}</image>{{CUT($sectionicons::Apple=CUT|Plex=CUT|Fanart=|Custom=CUT)}}
+            <image>{{URL(:/fanartcache/{{LFBG("galaxy","{{VAL(title)}}","","flow/{{VAL(type)}}-flow-plex.png","flow","fonts/OpenSans/OpenSans-Bold.ttf","40","","FFFFFF","FFFFFF","right","top","40","20","","ListIcon")}})}}</image>{{CUT($sectionicons::Apple=CUT|Plex=CUT|Fanart=|Custom=CUT)}}
+            <image>{{URL(:/fanartcache/{{LFBG("galaxy","{{VAL(title)}}","","flow/{{VAL(type)}}-flow.png","flow","fonts/OpenSans/OpenSans-Bold.ttf","40","","FFFFFF","FFFFFF","right","top","40","20","","ListIcon")}})}}</image>{{CUT($sectionicons::Apple=|Plex=CUT|Fanart=CUT|Custom=CUT)}}
+
             <defaultImage>resource://Poster.png</defaultImage>
           </showcasePoster>         
           <!-- search -->
@@ -47,9 +48,7 @@
                           onPlay="atv.loadURL('{{URL(searchKey)}}')"
                           onSelect="atv.loadURL('{{URL(searchKey)}}')">
             <image>{{IMAGEURL(thumb::768)}}</image>{{CUT($sectionicons::Apple=CUT|Plex=|Fanart=CUT|Custom=CUT)}}
-            <image>{{URL(:/fanartcache/{{LFBG("galaxy","{{TEXT(Search)}}","{{EVAL(quote_plus("Section Flow Test"))}}","flow/search-flow.png","flow","fonts/OpenSans/OpenSans-Bold.ttf","60","40","FFFFFF","FFFFFF","right","top","40","40","","ListIcon")}})}}</image>{{CUT($sectionicons::Apple=CUT|Plex=CUT|Fanart=|Custom=CUT)}}
-            <image>{{URL(:/templates/galaxy/images/flow/search-flow.jpg)}}</image>{{CUT($sectionicons::Apple=|Plex=CUT|Fanart=CUT|Custom=CUT)}}
-
+            <image>{{URL(:/fanartcache/{{LFBG("galaxy","{{TEXT(Search)}}","","flow/search-flow.png","flow","fonts/OpenSans/OpenSans-Bold.ttf","40","","FFFFFF","FFFFFF","right","top","40","20","","ListIcon")}})}}</image>{{CUT($sectionicons::Apple=|Plex=CUT|Fanart=CUT|Custom=CUT)}}
             <defaultImage>resource://Poster.png</defaultImage>
             
           </showcasePoster>{{CUT($library_search::Show=|Hide=CUT)}} 
@@ -77,7 +76,7 @@
                   
                     <title>{{VAL(title)}}</title>
                     <image>{{IMAGEURL(thumb::768)}}</image>{{CUT($sectionicons::Apple=CUT|Plex=CUT|Fanart=|Custom=CUT)}}
-                    <image>{{URL(:/templates/galaxy/images/flow/icons/search.jpg)}}</image>{{CUT($sectionicons::Apple=|Plex=CUT|Fanart=CUT|Custom=CUT)}}
+                    <image>{{URL(:/templates/galaxy/images/flow/icons/{{VAL(type)}}.jpg)}}</image>{{CUT($sectionicons::Apple=|Plex=CUT|Fanart=CUT|Custom=CUT)}}
                     <image>{{IMAGEURL(art::768)}}</image>{{CUT($sectionicons::Apple=CUT|Plex=|Fanart=CUT|Custom=CUT)}}
                     <defaultImage>resource://16X9.png</defaultImage>
                     <!--badgeCount></badgeCount-->
@@ -147,7 +146,7 @@
                   
                     <title>{{VAL(title)}}</title>
                     <image>{{IMAGEURL(thumb::768)}}</image>{{CUT($sectionicons::Apple=CUT|Plex=CUT|Fanart=|Custom=CUT)}}
-                    <image>{{URL(:/templates/galaxy/images/flow/icons/search.jpg)}}</image>{{CUT($sectionicons::Apple=|Plex=CUT|Fanart=CUT|Custom=CUT)}}
+                    <image>{{URL(:/templates/galaxy/images/flow/icons/{{VAL(type)}}.jpg)}}</image>{{CUT($sectionicons::Apple=|Plex=CUT|Fanart=CUT|Custom=CUT)}}
                     <image>{{IMAGEURL(art::768)}}</image>{{CUT($sectionicons::Apple=CUT|Plex=|Fanart=CUT|Custom=CUT)}}
                     <defaultImage>resource://16X9.png</defaultImage>
                     <!--badgeCount></badgeCount-->

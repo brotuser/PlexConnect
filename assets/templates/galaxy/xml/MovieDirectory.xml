@@ -7,7 +7,7 @@
     <scroller id="com.sample.homevideo-grid">
       <header>
  	  <imageHeader>
-	      <image insets="0, 0, {{VAL(^aTVScreenResolution:1:720=480|1080=720)}}, 0" required="true">{{URL(:/fanartcache/{{LFBG("galaxy","{{EVAL(quote_plus("{{VAL(title1)}}"))}}","{{EVAL(quote_plus("{{VAL(title2)}}"))}}","red.jpg","{{VAL(^aTVScreenResolution)}}","fonts/OpenSans/OpenSans-Light.ttf","60","30","FFFFFF","FFFFFF","center","top","","80","","Grid")}})}}</image>
+	      <image insets="0, 0, {{VAL(^aTVScreenResolution:1:720=480|1080=720)}}, 0" required="true">{{URL(:/fanartcache/{{LFBG("galaxy","{{EVAL(quote_plus("{{VAL(title1)}}"))}}","{{EVAL(quote_plus("{{VAL(title2)}}"))}}","backgrounds/movie.jpg","{{VAL(^aTVScreenResolution)}}","fonts/OpenSans/OpenSans-Light.ttf","60","30","9BAEB9","FFFFFF","center","top","","110","","Grid")}})}}</image>
 	    </imageHeader>
       </header>
       <items>
@@ -19,7 +19,7 @@
               {{COPY(Directory)}}
               <title>{{VAL(title)}}</title>
               <subtitle>{{VAL(year:&#x00AD;)}}</subtitle>
-              <image>{{URL(:/thumbnails/Folder.png)}}</image>
+              <image>{{URL(:/templates/galaxy/images/Folder.png)}}</image>
               <defaultImage>resource://Poster.png</defaultImage>
             </moviePoster>
             
@@ -55,11 +55,11 @@
                              onSelect="atv.loadURL('{{URL(key)}}&amp;PlexConnect=MovieByFolder')">
                 {{COPY(Directory)}}
                 <label>{{VAL(title)}}</label>
-                <image>{{URL(:/thumbnails/Folder.png)}}</image>
+                <image>{{URL(:/templates/galaxy/images/Folder.png)}}</image>
                 <defaultImage>resource://Poster.png</defaultImage>
                 <preview>
                   <crossFadePreview>
-                    <image>{{URL(:/thumbnails/Folder.png)}}</image>
+                    <image>{{URL(:/templates/galaxy/images/Folder.png)}}</image>
                   </crossFadePreview>
                 </preview>
               </twoLineEnhancedMenuItem>
@@ -92,7 +92,7 @@
     <itemCollectionWithImageHeader id="HomeVideo_DetailedList">
       <header>
 	  <imageHeader>
-	      <image insets="0, 0, {{VAL(^aTVScreenResolution:1:720=640|1080=960)}}, 0" required="true">{{URL(:/fanart/cache/{{LFBG("galaxy","{{EVAL(quote_plus("{{VAL(title1)}}"))}}","{{EVAL(quote_plus("{{VAL(title2)}}"))}}","","{{VAL(^aTVScreenResolution)}}","HelveticaNeueThin.ttf","60","30","FFFFFF","FFFFFF","right","top","80","40","","List")}})}}</image>
+	      <image insets="0, 0, {{VAL(^aTVScreenResolution:1:720=640|1080=960)}}, 0" required="true">{{URL(:/fanartcache/{{LFBG("galaxy","{{EVAL(quote_plus("{{VAL(title1)}}"))}}","{{EVAL(quote_plus("{{VAL(title2)}}"))}}","","{{VAL(^aTVScreenResolution)}}","HelveticaNeueThin.ttf","60","30","FFFFFF","FFFFFF","right","top","80","40","","List")}})}}</image>
 	    </imageHeader>
       </header>
 
@@ -105,11 +105,11 @@
                              onSelect="atv.loadURL('{{URL(key)}}&amp;PlexConnect=MovieByFolder')">
                 {{COPY(Directory)}}
                 <label>{{VAL(title)}}</label>
-                <image>{{URL(:/thumbnails/Folder.png)}}</image>
+                <image>{{URL(:/templates/galaxy/images/Folder.png)}}</image>
                 <defaultImage>resource://Poster.png</defaultImage>
                 <preview>
                   <crossFadePreview>
-                    <image>{{URL(:/thumbnails/Folder.png)}}</image>
+                    <image>{{URL(:/templates/galaxy/images/Folder.png)}}</image>
                   </crossFadePreview>
                 </preview>
               </twoLineEnhancedMenuItem>

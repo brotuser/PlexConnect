@@ -7,8 +7,10 @@
     <itemCollectionWithImageHeader id="com.sample.menu-items-with-sections">
       <header>
         <imageHeader>
-	      <image insets="0, 0, {{VAL(^aTVScreenResolution:1:720=640|1080=960)}}, 0" required="true">{{URL(:/fanartcache/{{LFBG("galaxy","{{EVAL(quote_plus("{{VAL(title1:Plex Channels)}}"))}}","{{EVAL(quote_plus("{{VAL(title2)}}"))}}","grey.jpg","{{VAL(^aTVScreenResolution)}}","fonts/OpenSans/OpenSans-Light.ttf","60","30","FFFFFF","FFFFFF","right","top","80","40","","List")}})}}</image>
-	    </imageHeader>
+          <image insets="0, 0, {{VAL(^aTVScreenResolution:1:720=640|1080=960)}}, 0" required="true">
+           {{URL(:/fanartcache/{{LFBG("galaxy","{{EVAL(quote_plus("{{VAL(title1:Plex Channels)}}"))}}","{{EVAL(quote_plus("{{VAL(title2)}}"))}}","backgrounds/channel.jpg","{{VAL(^aTVScreenResolution)}}","fonts/OpenSans/OpenSans-Light.ttf","60","30","98B178","FFFFFF","right","top","80","40","","List")}})}}
+          </image>
+        </imageHeader>
       </header>
       <menu>
         <sections>
@@ -58,7 +60,7 @@
                 <rightLabel>another 100 files...</rightLabel>
                 -->
                 <image>{{IMAGEURL(thumb::384)}}</image>
-                <!--<image>http://trailers.apple.com/thumbnails/DirectoryLink.jpg</image>-->
+                <!--<image>http://trailers.apple.com/templates/galaxy/images/DirectoryLink.jpg</image>-->
                 <!--<defaultImage>resource://Poster.png</defaultImage>-->
                 <preview>
                   <crossFadePreview>
@@ -77,7 +79,7 @@
                 <rightLabel>another 100 files...</rightLabel>
                 -->
                 <image>{{IMAGEURL(thumb::384)}}</image>
-                <!--<image>http://trailers.apple.com/thumbnails/DirectoryLink.jpg</image>-->
+                <!--<image>http://trailers.apple.com/templates/galaxy/images/DirectoryLink.jpg</image>-->
                 <!--<defaultImage>resource://Poster.png</defaultImage>-->
                 <preview>
                   <crossFadePreview>

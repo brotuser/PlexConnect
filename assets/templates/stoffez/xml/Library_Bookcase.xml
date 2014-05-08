@@ -45,7 +45,7 @@
                 <title>{{TEXT(Search)}}</title>
                 <image>{{IMAGEURL(searchThumb::384)}}</image>  <!--searchThumb not yet defined-->
                 <defaultImage>resource://Square.png</defaultImage>
-              </squarePoster>{{CUT($library_search::Show=|Hide=CUT)}} 
+              </squarePoster>{{CUT($stoffez_library_search::Show=|Hide=CUT)}} 
               
             </items>
           </grid>

@@ -7,7 +7,7 @@
 
   <body>
       {{ADDXML(OnDeck::/library/onDeck)}}      
-      {{ADDXML(RecentlyAdded::/library/recentlyAdded?stack=0)}}
+      {{ADDXML(RecentlyAdded::/library/recentlyAdded)}}
       {{ADDXML(VideoChannels::/channels/all)}}
       {{VAR(items:NoKey:FALSE)}}
       {{VAR(sections:NoKey:FALSE)}}  <!--this sets the var to FALSE-->
@@ -15,7 +15,7 @@
     <scroller id="com.sample.movie-showcase-grid">
       <header>
         <imageHeader>
-            <image insets="{{VAL(^aTVScreenResolution:1:720=50|1080=80)}}, 0, 0, 0" required="true">{{URL(:/thumbnails/header{{VAL(^aTVScreenResolution)}}.png)}}</image>
+            <image insets="{{VAL(^aTVScreenResolution:1:720=50|1080=80)}}, 0, 0, 0" required="true">{{URL(:/templates/galaxy/images/header{{VAL(^aTVScreenResolution)}}.png)}}</image>
         </imageHeader>
       </header>
       <items>

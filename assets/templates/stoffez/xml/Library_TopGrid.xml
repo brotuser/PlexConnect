@@ -14,12 +14,12 @@
 
     <scroller id="com.sample.movie-showcase-grid">
       <header>
-        <imageHeader>
+        <imageheader>
             <image insets="{{VAL(^aTVScreenResolution:1:720=50|1080=80)}}, 0, 0, 0" required="true">{{URL(:/templates/stoffez/images/header{{VAL(^aTVScreenResolution)}}.png)}}</image>
-        </imageHeader>{{CUT($libheader::Off=CUT|On=)}}{{CUT(^aTVFirmwareVersion:CUT:=CUT|6.0=)}}
+        </imageheader>{{CUT($stoffez_libheader::Off=CUT|On=)}}{{CUT(^aTVFirmwareVersion:CUT:=CUT|6.0=)}}
         <simpleHeader>
             <title>{{TEXT(Plex Library)}}</title>
-        </simpleHeader>{{CUT($libheader::On=CUT|Off=)}}
+        </simpleHeader>{{CUT($stoffez_libheader::On=CUT|Off=)}}
       </header>
       <items>
            
@@ -37,25 +37,25 @@
                     <items>
                         <!-- /library/sections -->
                         <moviePoster id="{{VAL(key)}}" accessibilityLabel="{{VAL(title)}}" featured="true" 
-                                               alwaysShowTitles="{{VAL($sectionicons::Apple=true|Plex=false|Fanart=true)}}"
+                                               alwaysShowTitles="{{VAL($stoffez_sectionicons::Apple=true|Plex=false|stoffez_fanart=true)}}"
                                                onPlay="atv.loadURL('{{URL(key)}}')"
                                                onSelect="atv.loadURL('{{URL(key)}}')"
                                                onHoldSelect="refreshSection('{{VAL(key)}}', '{{URL(refreshKey)}}')">
                             {{COPY(Directory)}}
                             {{VAR(sections:NoKey:TRUE)}}  <!--within COPY this sets the var to TRUE-->
                             <title>{{VAL(title)}}</title>
-                            <image>{{URL(:/templates/stoffez/images/{{VAL(type)}}.png)}}</image>{{CUT($sectionicons_shared::Apple=|Custom=CUT)}}
-                            <image>{{URL(:/templates/stoffez/images/{{EVAL("{{VAL(title)}}".replace(' ', ''))}}.png)}}</image>{{CUT($sectionicons_shared::Apple=CUT|Custom=)}}
+                            <image>{{URL(:/templates/stoffez/images/{{VAL(type)}}.png)}}</image>{{CUT($stoffez_sectionicons_shared::Apple=|Custom=CUT)}}
+                            <image>{{URL(:/templates/stoffez/images/{{EVAL("{{VAL(title)}}".replace(' ', ''))}}.png)}}</image>{{CUT($stoffez_sectionicons_shared::Apple=CUT|Custom=)}}
                             <defaultImage>resource://16X9.png</defaultImage>
                         </moviePoster>
                         
                         <!-- search -->
-                        <moviePoster id="{{VAL(searchKey)}}" featured="true" alwaysShowTitles="{{VAL($sectionicons::Apple=true|Plex=false|Fanart=true)}}"
+                        <moviePoster id="{{VAL(searchKey)}}" featured="true" alwaysShowTitles="{{VAL($stoffez_sectionicons::Apple=true|Plex=false|stoffez_fanart=true)}}"
                                                onPlay="atv.loadURL('{{URL(searchKey)}}')"
                                                onSelect="atv.loadURL('{{URL(searchKey)}}')">
                         <title>{{TEXT(Search)}}</title>
                         <image>{{URL(:/templates/stoffez/images/search.png)}}</image>
-                      </moviePoster>{{CUT($library_search::Show=|Hide=CUT)}} 
+                      </moviePoster>{{CUT($stoffez_library_search::Show=|Hide=CUT)}} 
                     </items>
                 </shelfSection>
           </sections>
@@ -66,14 +66,14 @@
           <collectionDivider alignment="left" accessibilityLabel="On Deck">
             {{CUT(@OnDeck/Server/size:CUT:0=CUT|1=)}}
             <title>{{TEXT(On Deck)}}</title>
-        </collectionDivider>{{CUT($library_ondeck::checked=|unchecked=CUT)}}
+        </collectionDivider>{{CUT($stoffez_library_ondeck::checked=|unchecked=CUT)}}
         <shelf id="shelf_1" columnCount="7">
           {{CUT(@OnDeck/Server/size:CUT:0=CUT|1=)}}
           <sections>
             <shelfSection>
               {{COPY(Server:@OnDeck/size::0=|1=COPY)}}
               <items>
-                <moviePoster id="{{VAL(key)}}" accessibilityLabel="{{VAL(title)}}" alwaysShowTitles="{{VAL($showtitles_library::Highlighted Only=false|Show All=true)}}"
+                <moviePoster id="{{VAL(key)}}" accessibilityLabel="{{VAL(title)}}" alwaysShowTitles="{{VAL($stoffez_showtitles_library::Highlighted Only=false|Show All=true)}}"
                             onPlay="atv.loadURL('{{URL(key)}}&amp;PlexConnect=Play')"
                             onSelect="atv.loadURL('{{URL(key)}}&amp;PlexConnect={{VAL(type::movie=Movie|episode=Episode)}}PrePlay')"
                             onHoldSelect="scrobbleMenu('{{URL(key)}}&amp;PlexConnect=ScrobbleMenuVideo')">
@@ -87,19 +87,19 @@
               </items>
             </shelfSection>
           </sections>
-        </shelf>{{CUT($library_ondeck::checked=|unchecked=CUT)}}{{CUT(@OnDeck/Server/size:CUT:0=CUT|1=)}}  
+        </shelf>{{CUT($stoffez_library_ondeck::checked=|unchecked=CUT)}}{{CUT(@OnDeck/Server/size:CUT:0=CUT|1=)}}  
 
         <collectionDivider alignment="left" accessibilityLabel="Recently Added">
           {{CUT(@RecentlyAdded/Server/size:CUT:0=CUT|1=)}}
           <title>{{TEXT(Recently Added)}}</title>
-        </collectionDivider>{{CUT($library_recentlyadded::checked=|unchecked=CUT)}}{{CUT(@RecentlyAdded/Server/size:CUT:0=CUT|1=)}}  
+        </collectionDivider>{{CUT($stoffez_library_channels::checked=|unchecked=CUT)}}{{CUT(@RecentlyAdded/Server/size:CUT:0=CUT|1=)}}  
         <shelf id="shelf_2" columnCount="7">
           {{CUT(@RecentlyAdded/Server/size:CUT:0=CUT|1=)}}
           <sections>
             <shelfSection>
               {{COPY(Server:@RecentlyAdded/size::0=|1=COPY)}}
               <items>
-                <moviePoster id="{{VAL(key)}}" accessibilityLabel="{{VAL(title)}}" alwaysShowTitles="{{VAL($showtitles_library::Highlighted Only=false|Show All=true)}}"
+                <moviePoster id="{{VAL(key)}}" accessibilityLabel="{{VAL(title)}}" alwaysShowTitles="{{VAL($stoffez_showtitles_library::Highlighted Only=false|Show All=true)}}"
                             onPlay="atv.loadURL('{{URL(key)}}&amp;PlexConnect=Play')"
                             onSelect="atv.loadURL('{{URL(key)}}&amp;PlexConnect={{VAL(type::movie=Movie|episode=Episode)}}PrePlay')"
                             onHoldSelect="scrobbleMenu('{{URL(key)}}&amp;PlexConnect=ScrobbleMenuVideo')">
@@ -113,7 +113,7 @@
               </items>
             </shelfSection>
           </sections>
-        </shelf>{{CUT($library_recentlyadded::checked=|unchecked=CUT)}}{{CUT(@RecentlyAdded/Server/size:CUT:0=CUT|1=)}}
+        </shelf>{{CUT($stoffez_library_channels::checked=|unchecked=CUT)}}{{CUT(@RecentlyAdded/Server/size:CUT:0=CUT|1=)}}
               
          
         <collectionDivider alignment="left" accessibilityLabel="Channels">

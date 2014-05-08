@@ -20,7 +20,7 @@
               {{COPY(Directory)}}
               <title>{{VAL(title)}}</title>
               <subtitle>{{VAL(year:&#x00AD;)}}</subtitle>
-              <image>{{URL(:/thumbnails/Folder.png)}}</image>
+              <image>{{URL(:/templates/galaxy/images/Folder.png)}}</image>
               <defaultImage>resource://Poster.png</defaultImage>
             </moviePoster>
             
@@ -58,11 +58,11 @@
                              onSelect="atv.loadURL('{{URL(key)}}&amp;PlexConnect=HomeVideoByFolder')">
                 {{COPY(Directory)}}
                 <label>{{VAL(title)}}</label>
-                <image>{{URL(:/thumbnails/Folder.png)}}</image>
+                <image>{{URL(:/templates/galaxy/images/Folder.png)}}</image>
                 <defaultImage>resource://Poster.png</defaultImage>
                 <preview>
                   <crossFadePreview>
-                    <image>{{URL(:/thumbnails/Folder.png)}}</image>
+                    <image>{{URL(:/templates/galaxy/images/Folder.png)}}</image>
                   </crossFadePreview>
                 </preview>
               </twoLineEnhancedMenuItem>
@@ -109,11 +109,11 @@
                              onSelect="atv.loadURL('{{URL(key)}}&amp;PlexConnect=HomeVideoByFolder')">
                 {{COPY(Directory)}}
                 <label>{{VAL(title)}}</label>
-                <image>{{URL(:/thumbnails/Folder.png)}}</image>
+                <image>{{URL(:/templates/galaxy/images/Folder.png)}}</image>
                 <defaultImage>resource://Poster.png</defaultImage>
                 <preview>
                   <crossFadePreview>
-                    <image>{{URL(:/thumbnails/Folder.png)}}</image>
+                    <image>{{URL(:/templates/galaxy/images/Folder.png)}}</image>
                   </crossFadePreview>
                 </preview>
               </twoLineEnhancedMenuItem>

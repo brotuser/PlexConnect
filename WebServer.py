@@ -44,7 +44,7 @@ def JSConverter(file, options):
     f.close()
     
     # PlexConnect {{URL()}}->baseURL
-    for path in set(re.findall(r'\{\{URL\((.+?)\)\}\}', JS)):
+    for path in set(re.findall(r'\{\{URL\((.*?)\)\}\}', JS)):
         JS = JS.replace('{{URL(%s)}}' % path, g_param['baseURL']+path)
     
     # localization
@@ -165,11 +165,12 @@ class MyHandler(BaseHTTPRequestHandler):
                 # serve .js files to aTV
                 # application, main: ignore path, send /assets/js/application.js
                 # otherwise: path should be '/js', send /assets/js/*.js
+               
                 dirname = path.dirname(self.path)
                 basename = path.basename(self.path)
-                if basename in ("application.js", "main.js", "javascript-packed.js") or \
+                if basename in ("application.js", "main.js", "javascript-packed.js", "bootstrap.js") or \
                    basename.endswith(".js") and dirname == '/js':
-                    if basename in ("main.js", "javascript-packed.js"):
+                    if basename in ("main.js", "javascript-packed.js", "bootstrap.js"):
                         basename = "application.js"
                     dprint(__name__, 1, "serving /js/{0}", basename)
                     JS = JSConverter(basename, options)

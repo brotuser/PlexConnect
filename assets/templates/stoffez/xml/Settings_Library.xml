@@ -47,13 +47,13 @@
                 <label>{{TEXT(Library View)}}</label>
                 <rightLabel>{{SETTING(libraryview)}}</rightLabel>
               </oneLineMenuItem>
-              <oneLineMenuItem id="SectionIcons" onSelect="toggleSettings('SectionIcons', 'Settings_Library')">
+              <oneLineMenuItem id="stoffez_sectionicons" onSelect="toggleSettings('stoffez_sectionicons', 'Settings_Library')">
                 <label>{{TEXT(Library Icons)}}</label>
-                <rightLabel>{{SETTING(sectionicons)}}</rightLabel>
+                <rightLabel>{{SETTING(stoffez_sectionicons)}}</rightLabel>
               </oneLineMenuItem>
-              <oneLineMenuItem id="SectionsPosition" onSelect="toggleSettings('SectionsPosition', 'Settings_Library')">
+              <oneLineMenuItem id="stoffez_sectionsposition" onSelect="toggleSettings('stoffez_sectionsposition', 'Settings_Library')">
                 <label>{{TEXT(Library Sections)}}</label>
-                <rightLabel>{{SETTING(sectionsposition)}}</rightLabel>
+                <rightLabel>{{SETTING(stoffez_sectionsposition)}}</rightLabel>
               </oneLineMenuItem>
               </items>
               </menuSection>
@@ -64,13 +64,13 @@
               </horizontalDivider>
             </header>
             <items>
-                <oneLineMenuItem id="LibraryView_Remote" onSelect="toggleSettings('LibraryView_Remote', 'Settings_Library')">
+                <oneLineMenuItem id="stoffez_libraryview_remote" onSelect="toggleSettings('stoffez_libraryview_remote', 'Settings_Library')">
                 <label>{{TEXT(Library View)}}</label>
-                <rightLabel>{{SETTING(libraryview_remote)}}</rightLabel>
+                <rightLabel>{{SETTING(stoffez_libraryview_remote)}}</rightLabel>
               </oneLineMenuItem>
-              <oneLineMenuItem id="SectionIcons_Shared" onSelect="toggleSettings('SectionIcons_Shared', 'Settings_Library')">
+              <oneLineMenuItem id="stoffez_sectionicons_shared" onSelect="toggleSettings('stoffez_sectionicons_shared', 'Settings_Library')">
                 <label>{{TEXT(Library Icons)}}</label>
-                <rightLabel>{{SETTING(sectionicons_shared)}}</rightLabel>
+                <rightLabel>{{SETTING(stoffez_sectionicons_shared)}}</rightLabel>
               </oneLineMenuItem> 
                </items>
               </menuSection>
@@ -82,17 +82,17 @@
               </horizontalDivider>
             </header>
             <items>
-              <oneLineMenuItem id="Fanart" onSelect="toggleSettings('Fanart', 'Settings_Library')">
+              <oneLineMenuItem id="stoffez_fanart" onSelect="toggleSettings('stoffez_fanart', 'Settings_Library')">
                 <label>{{TEXT(Fanart)}}</label>
-                <rightLabel>{{SETTING(fanart)}}</rightLabel>
+                <rightLabel>{{SETTING(stoffez_fanart)}}</rightLabel>
               </oneLineMenuItem>
-              <oneLineMenuItem id="LibHeader" onSelect="toggleSettings('LibHeader', 'Settings_Library')">
+              <oneLineMenuItem id="stoffez_libheader" onSelect="toggleSettings('stoffez_libheader', 'Settings_Library')">
                 <label>{{TEXT(Library Header)}}</label>
-                <rightLabel>{{SETTING(libheader)}}</rightLabel>
+                <rightLabel>{{SETTING(stoffez_libheader)}}</rightLabel>
               </oneLineMenuItem>
-              <oneLineMenuItem id="ImageHeader" onSelect="toggleSettings('ImageHeader', 'Settings_Library')">
+              <oneLineMenuItem id="stoffez_imageheader" onSelect="toggleSettings('stoffez_imageheader', 'Settings_Library')">
                 <label>{{TEXT(Section Headers)}}</label>
-                <rightLabel>{{SETTING(imageheader)}}</rightLabel>
+                <rightLabel>{{SETTING(stoffez_imageheader)}}</rightLabel>
               </oneLineMenuItem>  
                </items>
               </menuSection>{{CUT(^aTVFirmwareVersion:CUT:=CUT|6.0=)}}
@@ -103,13 +103,13 @@
               </horizontalDivider>
             </header>
             <items>
-              <oneLineMenuItem id="Library_Search" onSelect="toggleSettings('Library_Search', 'Settings_Library')">
+              <oneLineMenuItem id="stoffez_library_search" onSelect="toggleSettings('stoffez_library_search', 'Settings_Library')">
                 <label>{{TEXT(Search Section)}}</label>
-                <rightLabel>{{SETTING(Library_search)}}</rightLabel>
+                <rightLabel>{{SETTING(stoffez_library_search)}}</rightLabel>
               </oneLineMenuItem>
-              <oneLineMenuItem id="ShowTitles_Library" onSelect="toggleSettings('ShowTitles_Library', 'Settings_Library')">
+              <oneLineMenuItem id="stoffez_showtitles_library" onSelect="toggleSettings('stoffez_showtitles_library', 'Settings_Library')">
                 <label>{{TEXT(Poster Titles)}}</label>
-                <rightLabel>{{SETTING(showtitles_library)}}</rightLabel>
+                <rightLabel>{{SETTING(stoffez_showtitles_library)}}</rightLabel>
               </oneLineMenuItem> 
               <oneLineMenuItem id="ChannelView" onSelect="toggleSettings('ChannelView', 'Settings_Library')">
                 <label>{{TEXT(Channel View)}}</label>
@@ -126,18 +126,18 @@
             </header>
             <items>
 
-              <oneLineMenuItem id="Library_OnDeck" onSelect="toggleSettings('Library_OnDeck', 'Settings_Library')">
+              <oneLineMenuItem id="stoffez_library_ondeck" onSelect="toggleSettings('stoffez_library_ondeck', 'Settings_Library')">
                 <label>{{TEXT(On Deck)}}</label>
                 <accessories>
                   <checkMark/>
-                </accessories>{{CUT($library_ondeck::unchecked=CUT|checked=)}}
+                </accessories>{{CUT($stoffez_library_ondeck::unchecked=CUT|checked=)}}
               </oneLineMenuItem>
 
-              <oneLineMenuItem id="Library_RecentlyAdded" onSelect="toggleSettings('Library_RecentlyAdded', 'Settings_Library')">
+              <oneLineMenuItem id="stoffez_library_channels" onSelect="toggleSettings('stoffez_library_channels', 'Settings_Library')">
                 <label>{{TEXT(Recently Added)}}</label>
                 <accessories>
                   <checkMark/>
-                </accessories>{{CUT($library_recentlyadded::unchecked=CUT|checked=)}}
+                </accessories>{{CUT($stoffez_library_channels::unchecked=CUT|checked=)}}
               </oneLineMenuItem>               
               <oneLineMenuItem id="Library_Channels" onSelect="toggleSettings('Library_Channels', 'Settings_Library')">
                 <label>{{TEXT(Channels)}}</label>

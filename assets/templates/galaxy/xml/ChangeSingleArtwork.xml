@@ -7,8 +7,9 @@
     <scroller id="single_artwork_select">
       <header>
         <imageHeader>
-                	    <image insets="0, 0, {{VAL(^aTVScreenResolution:1:720=480|1080=720)}}, 0" required="true">{{URL(:/fanartcache/{{LFBG("galaxy","{{EVAL(quote_plus("{{VAL(title2)}}"))}}","{{EVAL(quote_plus("{{TEXT(Select Artwork)}}"))}}","grey.jpg","{{VAL(^aTVScreenResolution)}}","fonts/OpenSans/OpenSans-Light.ttf","60","30","FFFFFF","FFFFFF","center","top","","110","","ChannelGrid")}})}}</image>
-
+          <image insets="0, 0, {{VAL(^aTVScreenResolution:1:720=480|1080=720)}}, 0" required="true">
+            {{URL(:/fanartcache/{{LFBG("galaxy","{{EVAL(quote_plus("{{VAL(title2)}}"))}}","{{EVAL(quote_plus("{{TEXT(Select Artwork)}}"))}}","backgrounds/music.jpg","{{VAL(^aTVScreenResolution)}}","fonts/OpenSans/OpenSans-Light.ttf","60","30","FFFFFF","FFFFFF","center","top","","110","","ChannelGrid")}})}}
+          </image>
         </imageHeader>
       </header>
      

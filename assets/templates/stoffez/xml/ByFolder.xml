@@ -20,7 +20,7 @@
               {{COPY(Directory)}}
               <title>{{VAL(title)}}</title>
               <subtitle>{{VAL(year:&#x00AD;)}}</subtitle>
-              <image>{{URL(:/thumbnails/Folder.png)}}</image>
+              <image>{{URL(:/templates/stoffez/images/Folder.png)}}</image>
               <defaultImage>resource://16X9.png</defaultImage>
             </moviePoster>
             

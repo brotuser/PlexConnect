@@ -5,7 +5,7 @@
     <script src="{{URL(:/js/updateXML.js)}}" />
   </head>
   <body>
-    <viewWithNavigationBar id="PlexConnect_Navigation" onNavigate="loadMenuPage(event)"  onVolatileReload="updatePage('{{URL()}}/Settings.xml&amp;PlexConnectUDID=' + atv.device.udid);">
+    <viewWithNavigationBar id="PlexConnect_Navigation" onNavigate="loadMenuPage(event)" >
       <navigation currentIndex="0">
         <navigationItem id="Library">
           <title>{{TEXT(Library)}}</title>

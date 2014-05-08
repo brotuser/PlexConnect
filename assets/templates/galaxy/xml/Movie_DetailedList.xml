@@ -8,10 +8,9 @@
     {{CUT(size:CUT:0=CUT|1=)}}
       <header>
 	    <imageHeader>
-	      <image insets="0, 0, {{VAL(^aTVScreenResolution:1:720=540|1080=810)}}, 0" required="true">{{URL(:/fanartcache/{{LFBG("galaxy","{{EVAL(quote_plus("{{VAL(title1)}}"))}}","{{EVAL(quote_plus("{{VAL(title2)}}"))}}","red.jpg","{{VAL(^aTVScreenResolution)}}","fonts/OpenSans/OpenSans-Light.ttf","60","30","FFFFFF","FFFFFF","right","top","80","40","","List")}})}}</image>
+	      <image insets="0, 0, {{VAL(^aTVScreenResolution:1:720=640|1080=960)}}, 0" required="true">{{URL(:/fanartcache/{{LFBG("galaxy","{{EVAL(quote_plus("{{VAL(title1)}}"))}}","{{EVAL(quote_plus("{{VAL(title2)}}"))}}","backgrounds/movie.jpg","{{VAL(^aTVScreenResolution)}}","fonts/OpenSans/OpenSans-Light.ttf","60","30","9BAEB9","FFFFFF","right","top","80","40","","List")}})}}</image>
 	    </imageHeader>
       </header>
-
       <menu>
         <sections>
           <menuSection>
@@ -30,7 +29,7 @@
                   <keyedPreview>
                     <title>{{VAL(title)}}</title>
                     <summary>{{VAL(summary)}}</summary>
-                    <image>{{IMAGEURL(thumb::384)}}</image>
+                    <image >{{IMAGEURL(thumb::768)}}</image>
 										<metadataKeys>
 											<label>{{TEXT(Actors)}}</label>
 											<label>{{TEXT(Director)}}</label>

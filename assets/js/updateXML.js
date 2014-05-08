@@ -1,10 +1,3 @@
-function reloadPMS_XML(path) {
-  atv.loadAndSwapURL("{{URL()}}" + path);
-};
-
-
-
-
 // atv.Document extensions
 if( atv.Document ) {
   atv.Document.prototype.getElementById = function(id) {
@@ -59,7 +52,7 @@ function loadItem(event)
   // Get navbar item URL
 	var item = document.getElementById(navbarID);
   var url = item.getElementByTagName('url').textContent;
-  if (url.indexOf("{{URL()}}")!=-1)
+  if (url.indexOf("{{URL(/)}}")!=-1)
   {
     url = url + "&PlexConnectUDID=" + atv.device.udid;
     url = url + "&PlexConnectATVName=" + encodeURIComponent(atv.device.displayName);
@@ -98,18 +91,18 @@ function loadMenuPages(url, event)
 function updatePage(url)
 {
   // add UDID
-  if (url.indexOf("{{URL()}}")!=-1)
+  if (url.indexOf("{{URL(/)}}")!=-1)
   {
     url = url + "&PlexConnectUDID=" + atv.device.udid;
   }
   
   // read new XML
-	//if (navbarItemNumber == '1') // First navbar item is a special case
-	//)){
-	//	atv.loadAndSwapURL(url);
-	//}
-	//else
-	//{
+	if (navbarItemNumber == '1') // First navbar item is a special case
+	{
+		atv.loadAndSwapURL(url);
+	}
+	else
+	{
 		var req = new XMLHttpRequest();
 		req.onreadystatechange = function(){
 			if(req.readyState == 4)
@@ -121,7 +114,7 @@ function updatePage(url)
 				atv.loadAndSwapXML(doc);
 			}
 		};
-	//};
+	};
   req.open('GET', url, false);
   req.send();
 };

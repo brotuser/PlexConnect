@@ -6,14 +6,14 @@
   <body>
     <scroller id="com.sample.menu-items-with-sections" volatile="true" onVolatileReload="atv.loadAndSwapURL('{{URL()}}')">
       <header>
-    <!--On-->
+    <!--Fullscreen-->
         <imageHeader>
 	      <image insets="0, 0, {{VAL(^aTVScreenResolution:1:720=480|1080=720)}}, 0" required="true">{{URL(:/fanartcache/{{LFBG("galaxy","{{EVAL(quote_plus("{{VAL(title1)}}"))}}","{{EVAL(quote_plus("{{VAL(title2)}}"))}}","{{IMAGEURL(art:::)}}","{{VAL(^aTVScreenResolution)}}","fonts/OpenSans/OpenSans-Light.ttf","60","30","FFFFFF","FFFFFF","center","top","","120","2")}})}}</image>
-        </imageHeader>{{CUT($fanart::On=|Off=CUT)}}{{CUT(^aTVFirmwareVersion:CUT:=CUT|6.0=)}}
-    <!--Off-->
-        <simpleHeader>
-          <title>{{VAL(title2)}}</title>
-        </simpleHeader>{{CUT($fanart::Off=|On=CUT)}}
+        </imageHeader>{{CUT($tvshow_cover::Fullscreen=|Banner=CUT)}}
+    <!--Banner-->
+        <imageHeader>
+          <image insets="4, 0, 0, 0" required="true">{{IMAGEURL(banner)}}</image>
+        </imageHeader>{{CUT($tvshow_cover::Banner=|Fullscreen=CUT)}}
       </header>
       <items>
         <shelf id="coverflow" columnCount="{{EVAL(min({{VAL(size:0)}},5))}}">

@@ -8,11 +8,11 @@
   <body>
       {{VAR(sections:NoKey:FALSE)}}  <!--this sets the var to FALSE-->
           
-      <itemCollectionWithImageHeader id="com.sample.menu-items-with-sections">
+      <itemCollectionWithstoffez_imageheader id="com.sample.menu-items-with-sections">
       <header>
-        <imageHeader>
+        <imageheader>
             <image insets="100, 0, 0, 0" required="true">{{URL(:/templates/stoffez/images/header{{VAL(^aTVScreenResolution)}}.png)}}</image>
-        </imageHeader>
+        </imageheader>
       </header>
           
       <menu>
@@ -42,14 +42,14 @@
                   <link>{{URL(key)}}/recentlyAdded?stack=1&amp;X-Plex-Container-Start=0&amp;X-Plex-Container-Size=20&amp;PlexConnect=SectionPreview-{{VAL(type)}}</link>{{CUT(type::a=|photo=CUT|q=)}}
                   <link>{{URL(key)}}/recentlyAdded?X-Plex-Container-Start=0&amp;X-Plex-Container-Size=20&amp;PlexConnect=SectionPreview-{{VAL(type)}}</link>{{CUT(type:CUT:a=CUT|photo=|q=CUT)}}
                 </preview>
-              </oneLineMenuItem>{{CUT($sectionsposition::Top=|Bottom=CUT|Flow=|Middle=CUT)}} 
+              </oneLineMenuItem>{{CUT($stoffez_sectionsposition::Top=|Bottom=CUT|Flow=|Middle=CUT)}} 
             
               <!-- OnDeck -->
               <oneLineMenuItem id="{{VAL(ondeck)}}"
                                        onPlay="atv.loadURL('{{URL(:/)}}&amp;PlexConnect=LibraryOnDeck')"
                                        onSelect="atv.loadURL('{{URL(:/)}}&amp;PlexConnect=LibraryOnDeck')">
                 <label>{{TEXT(On Deck)}}</label>
-              </oneLineMenuItem>{{CUT($library_ondeck::checked=|unchecked=CUT)}}             
+              </oneLineMenuItem>{{CUT($stoffez_library_ondeck::checked=|unchecked=CUT)}}             
               
             <!-- /library/sections -->
               <oneLineMenuItem id="{{VAL(key)}}"
@@ -63,14 +63,14 @@
                   <link>{{URL(key)}}/recentlyAdded?stack=1&amp;X-Plex-Container-Start=0&amp;X-Plex-Container-Size=20&amp;PlexConnect=SectionPreview-{{VAL(type)}}</link>{{CUT(type::a=|photo=CUT|q=)}}
                   <link>{{URL(key)}}/recentlyAdded?X-Plex-Container-Start=0&amp;X-Plex-Container-Size=20&amp;PlexConnect=SectionPreview-{{VAL(type)}}</link>{{CUT(type:CUT:a=CUT|photo=|q=CUT)}}
                 </preview>
-              </oneLineMenuItem>{{CUT($sectionsposition::Top=CUT|Bottom=CUT|Flow=CUT|Middle=)}} 
+              </oneLineMenuItem>{{CUT($stoffez_sectionsposition::Top=CUT|Bottom=CUT|Flow=CUT|Middle=)}} 
                 
               <!-- Recently Added -->
               <oneLineMenuItem id="{{VAL(recentlyadded)}}"
                                        onPlay="atv.loadURL('{{URL(:/)}}&amp;PlexConnect=LibraryRecentlyAdded')"
                                        onSelect="atv.loadURL('{{URL(:/)}}&amp;PlexConnect=LibraryRecentlyAdded')">
                 <label>{{TEXT(Recently Added)}}</label>
-              </oneLineMenuItem>{{CUT($library_recentlyadded::checked=|unchecked=CUT)}}              
+              </oneLineMenuItem>{{CUT($stoffez_library_channels::checked=|unchecked=CUT)}}              
                 
                <!-- Channels -->
               <oneLineMenuItem id="{{VAL(channels)}}"
@@ -91,7 +91,7 @@
                   <link>{{URL(key)}}/recentlyAdded?stack=1&amp;X-Plex-Container-Start=0&amp;X-Plex-Container-Size=20&amp;PlexConnect=SectionPreview-{{VAL(type)}}</link>{{CUT(type::a=|photo=CUT|q=)}}
                   <link>{{URL(key)}}/recentlyAdded?X-Plex-Container-Start=0&amp;X-Plex-Container-Size=20&amp;PlexConnect=SectionPreview-{{VAL(type)}}</link>{{CUT(type:CUT:a=CUT|photo=|q=CUT)}}
                 </preview>
-              </oneLineMenuItem>{{CUT($sectionsposition::Top=CUT|Bottom=|Flow=CUT|Middle=CUT)}} 
+              </oneLineMenuItem>{{CUT($stoffez_sectionsposition::Top=CUT|Bottom=|Flow=CUT|Middle=CUT)}} 
                 
               <!-- search -->
               <oneLineMenuItem id="{{VAL(searchKey)}}"
@@ -99,14 +99,14 @@
                                        onSelect="atv.loadURL('{{URL(searchKey)}}')">
                 <label>{{TEXT(Search)}}</label>
                 <accessories><arrow/></accessories>
-              </oneLineMenuItem>{{CUT($library_search::Show=|Hide=CUT)}} 
+              </oneLineMenuItem>{{CUT($stoffez_library_search::Show=|Hide=CUT)}} 
               
               </items>
           </menuSection>
         
         </sections>
       </menu>
-    </itemCollectionWithImageHeader>{{CUT($imageheader::Hide=CUT|Show=)}}{{CUT(^aTVFirmwareVersion:CUT:=CUT|6.0=)}}{{CUT(#sections::FALSE=CUT|TRUE=)}}  <!--CUT if no section added-->
+    </itemCollectionWithstoffez_imageheader>{{CUT($stoffez_imageheader::Hide=CUT|Show=)}}{{CUT(^aTVFirmwareVersion:CUT:=CUT|6.0=)}}{{CUT(#sections::FALSE=CUT|TRUE=)}}  <!--CUT if no section added-->
       
     <listWithPreview id="com.sample.menu-items-with-sections">
       <header>
@@ -142,14 +142,14 @@
                   <link>{{URL(key)}}/recentlyAdded?stack=1&amp;X-Plex-Container-Start=0&amp;X-Plex-Container-Size=20&amp;PlexConnect=SectionPreview-{{VAL(type)}}</link>{{CUT(type::a=|photo=CUT|q=)}}
                   <link>{{URL(key)}}/recentlyAdded?X-Plex-Container-Start=0&amp;X-Plex-Container-Size=20&amp;PlexConnect=SectionPreview-{{VAL(type)}}</link>{{CUT(type:CUT:a=CUT|photo=|q=CUT)}}
                 </preview>
-              </oneLineMenuItem>{{CUT($sectionsposition::Top=|Bottom=CUT|Flow=|Middle=CUT)}}
+              </oneLineMenuItem>{{CUT($stoffez_sectionsposition::Top=|Bottom=CUT|Flow=|Middle=CUT)}}
                 
               <!-- OnDeck -->
               <oneLineMenuItem id="{{VAL(ondeck)}}"
                                        onPlay="atv.loadURL('{{URL(:/)}}&amp;PlexConnect=LibraryOnDeck')"
                                        onSelect="atv.loadURL('{{URL(:/)}}&amp;PlexConnect=LibraryOnDeck')">
                 <label>{{TEXT(On Deck)}}</label>
-              </oneLineMenuItem>{{CUT($library_ondeck::checked=|unchecked=CUT)}}  
+              </oneLineMenuItem>{{CUT($stoffez_library_ondeck::checked=|unchecked=CUT)}}  
                 
               <!-- /library/sections -->
               <oneLineMenuItem id="{{VAL(key)}}"
@@ -163,14 +163,14 @@
                   <link>{{URL(key)}}/recentlyAdded?stack=1&amp;X-Plex-Container-Start=0&amp;X-Plex-Container-Size=20&amp;PlexConnect=SectionPreview-{{VAL(type)}}</link>{{CUT(type::a=|photo=CUT|q=)}}
                   <link>{{URL(key)}}/recentlyAdded?X-Plex-Container-Start=0&amp;X-Plex-Container-Size=20&amp;PlexConnect=SectionPreview-{{VAL(type)}}</link>{{CUT(type:CUT:a=CUT|photo=|q=CUT)}}
                 </preview>
-              </oneLineMenuItem>{{CUT($sectionsposition::Top=CUT|Bottom=CUT|Flow=CUT|Middle=)}}
+              </oneLineMenuItem>{{CUT($stoffez_sectionsposition::Top=CUT|Bottom=CUT|Flow=CUT|Middle=)}}
                 
               <!-- Recently Added -->
               <oneLineMenuItem id="{{VAL(recentlyadded)}}"
                                        onPlay="atv.loadURL('{{URL(:/)}}&amp;PlexConnect=LibraryRecentlyAdded')"
                                        onSelect="atv.loadURL('{{URL(:/)}}&amp;PlexConnect=LibraryRecentlyAdded')">
                 <label>{{TEXT(Recently Added)}}</label>
-              </oneLineMenuItem>{{CUT($library_recentlyadded::checked=|unchecked=CUT)}}               
+              </oneLineMenuItem>{{CUT($stoffez_library_channels::checked=|unchecked=CUT)}}               
                 
                <!-- Channels -->
               <oneLineMenuItem id="{{VAL(channels)}}"
@@ -191,7 +191,7 @@
                   <link>{{URL(key)}}/recentlyAdded?stack=1&amp;X-Plex-Container-Start=0&amp;X-Plex-Container-Size=20&amp;PlexConnect=SectionPreview-{{VAL(type)}}</link>{{CUT(type::a=|photo=CUT|q=)}}
                   <link>{{URL(key)}}/recentlyAdded?X-Plex-Container-Start=0&amp;X-Plex-Container-Size=20&amp;PlexConnect=SectionPreview-{{VAL(type)}}</link>{{CUT(type:CUT:a=CUT|photo=|q=CUT)}}
                 </preview>
-              </oneLineMenuItem>{{CUT($sectionsposition::Top=CUT|Bottom=|Flow=CUT|Middle=CUT)}}
+              </oneLineMenuItem>{{CUT($stoffez_sectionsposition::Top=CUT|Bottom=|Flow=CUT|Middle=CUT)}}
               
                 <!-- search -->
               <oneLineMenuItem id="{{VAL(searchKey)}}"
@@ -199,13 +199,13 @@
                                        onSelect="atv.loadURL('{{URL(searchKey)}}')">
                 <label>{{TEXT(Search)}}</label>
                 <accessories><arrow/></accessories>
-              </oneLineMenuItem>{{CUT($library_search::Show=|Hide=CUT)}}             
+              </oneLineMenuItem>{{CUT($stoffez_library_search::Show=|Hide=CUT)}}             
               
               </items>
           </menuSection>
         </sections>
       </menu>
-    </listWithPreview>{{CUT($imageheader::Hide=|Show=CUT)}}{{CUT(#sections::FALSE=CUT|TRUE=)}}  <!--CUT if no section added-->
+    </listWithPreview>{{CUT($stoffez_imageheader::Hide=|Show=CUT)}}{{CUT(#sections::FALSE=CUT|TRUE=)}}  <!--CUT if no section added-->
     
     <!--No Sections Available-->
     <dialog id="com.sample.error-dialog">

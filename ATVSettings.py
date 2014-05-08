@@ -13,8 +13,7 @@ options = { \
     'template'                      :('default', 'stoffez', 'galaxy'), \
 #TemplateSettings	
 
-    
-#stoffez
+
     'libraryview_remote'        	:('TopGrid', 'Bookcase', 'List'), \
     'sectionicons'              	:('Fanart', 'Apple', 'Custom', 'Plex'), \
     'sectionicons_shared'       	:('Fanart', 'Apple', 'Custom', 'Plex'), \
@@ -27,9 +26,25 @@ options = { \
     'fanart'            			:('Off', 'On'), \
     'imageheader'               	:('Off', 'On'), \
     'libheader'               		:('Off', 'On'), \
+
     
+#stoffez
+    'stoffez_libraryview_remote'        	:('TopGrid', 'Bookcase', 'List'), \
+    'stoffez_sectionicons'                  :('Apple', 'Custom'), \
+    'stoffez_sectionicons_shared'       	:('Apple', 'Custom'), \
+    'stoffez_sectionsposition'          	:('Top', 'Flow'), \
+    'stoffez_library_search'            	:('Hide', 'Show'), \
+    'stoffez_library_ondeck'            	:('checked', 'unchecked'), \
+    'stoffez_library_recentlyadded'     	:('checked', 'unchecked'), \
+    'stoffez_library_channels'          	:('unchecked', 'checked'), \
+    'stoffez_showtitles_library'        	:('Show All', 'Highlighted Only'), \
+    'stoffez_fanart'            			:('Off', 'On'), \
+    'stoffez_imageheader'               	:('Off', 'On'), \
+    'stoffez_libheader'               		:('Off', 'On'), \
+
     
-#iBaa defaults Dont touch    
+# ===================   
+#iBaa legacy Settings     
     'libraryview' :('Grid', 'List', 'Bookcase'), \
     'movieview' :('Grid', 'List', 'Detailed List'), \
     'homevideoview' :('Grid', 'List', 'Detailed List'), \

@@ -10,7 +10,7 @@
     <scroller id="Library_Bookcase">
       <header>
         <imageHeader>
-	     <image insets="0, 0, {{VAL(^aTVScreenResolution:1:720=280|1080=720)}}, 0" required="true">{{URL(:/fanartcache/{{LFBG("galaxy","{{EVAL(quote_plus("{{TEXT(Plex Library)}}"))}}","","librarybg.jpg","{{VAL(^aTVScreenResolution)}}","fonts/OpenSans/OpenSans-Light.ttf","30","30","FAFAFA","FFFFFF","left","top","60","30","")}})}}</image>
+	     <image insets="0, 0, {{VAL(^aTVScreenResolution:1:720=280|1080=720)}}, 0" required="true">{{URL(:/fanartcache/{{LFBG("galaxy","{{EVAL(quote_plus("{{TEXT(Plex Library)}}"))}}","still a test","backgrounds/library.jpg","{{VAL(^aTVScreenResolution)}}","fonts/OpenSans/OpenSans-Light.ttf","60","30","FFFFFF","E8B146","center","top","0","110","")}})}}</image>
 	   </imageHeader>
       </header>
       
