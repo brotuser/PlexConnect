@@ -17,7 +17,7 @@
     {{CUT($libraryview:CUT:=CUT|Grid=|Grid =CUT)}}
       <header>
        <imageHeader>
-	     <image insets="0, 0, {{VAL(^aTVScreenResolution:1:720=460|1080=720)}}, 0" required="true">{{URL(:/fanartcache/{{LFBG("galaxy","{{EVAL(quote_plus("{{TEXT(Plex Library)}}"))}}","","backgrounds/library.jpg","{{VAL(^aTVScreenResolution)}}","fonts/OpenSans/OpenSans-Light.ttf","60","30","FAFAFA","FFFFFF","center","top","0","110","","LibraryFlow")}})}}</image>
+	     <image insets="0, 0, {{VAL(^aTVScreenResolution:1:720=460|1080=720)}}, 0" required="true">{{URL(:/fanartcache/{{LFBG("galaxy","{{EVAL(quote_plus("{{TEXT(Plex Library)}}"))}}","","backgrounds/libraryflow.jpg","{{VAL(^aTVScreenResolution)}}","fonts/OpenSans/OpenSans-Light.ttf","40","","FFFFFF","","center","top","0","200","","LibraryFlow")}})}}</image>
 	   </imageHeader>
       </header>
       <items>
@@ -48,7 +48,7 @@
                           onPlay="atv.loadURL('{{URL(searchKey)}}')"
                           onSelect="atv.loadURL('{{URL(searchKey)}}')">
             <image>{{IMAGEURL(thumb::768)}}</image>{{CUT($sectionicons::Apple=CUT|Plex=|Fanart=CUT|Custom=CUT)}}
-            <image>{{URL(:/fanartcache/{{LFBG("galaxy","{{TEXT(Search)}}","","flow/search-flow.png","flow","fonts/OpenSans/OpenSans-Bold.ttf","40","","FFFFFF","FFFFFF","right","top","40","20","","ListIcon")}})}}</image>{{CUT($sectionicons::Apple=|Plex=CUT|Fanart=CUT|Custom=CUT)}}
+            <image>{{URL(:/fanartcache/{{LFBG("galaxy","{{TEXT(Search)}}","","flow/search-flow.png","flow","fonts/OpenSans/OpenSans-Bold.ttf","40","","FFFFFF","FFFFFF","right","top","40","20","","ListIcon")}})}}</image>
             <defaultImage>resource://Poster.png</defaultImage>
             
           </showcasePoster>{{CUT($library_search::Show=|Hide=CUT)}} 
