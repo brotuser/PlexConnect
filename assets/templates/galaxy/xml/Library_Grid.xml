@@ -172,31 +172,24 @@
           {{CUT(@RecentlyAdded/Server/size:CUT:0=CUT|1=)}}
           <title>{{TEXT(Recently Added)}}</title>
         </collectionDivider>{{CUT($library_recentlyadded::checked=|unchecked=CUT)}}{{CUT(@RecentlyAdded/Server/size:CUT:0=CUT|1=)}}  
-        <shelf id="shelf_2" columnCount="5">
-          {{CUT(@RecentlyAdded/Server/size:CUT:0=CUT|1=)}}
+        <shelf id="Recently_Bookshelf" columnCount="5">
           <sections>
             <shelfSection>
               {{COPY(Server:@RecentlyAdded/size::0=|1=COPY)}}
-              <items>
-              
-              
+              <items>            
                 <moviePoster id="{{VAL(key)}}" accessibilityLabel="{{VAL(title)}}" alwaysShowTitles="{{VAL($showtitles_library::Highlighted Only=false|Show All=true)}}"
                             onPlay="atv.loadURL('{{URL(key)}}&amp;PlexConnect=Play')"
                             onSelect="atv.loadURL('{{URL(key)}}&amp;PlexConnect={{VAL(type::movie=MoviePrePlay|episode=EpisodePrePlay|season=season)}}')"           
                             onHoldSelect="scrobbleMenu('{{URL(key)}}&amp;PlexConnect=ScrobbleMenuVideo')">
                   {{COPY(@RecentlyAdded/Server/Directory)}}
+
                   {{VAR(items:NoKey:TRUE)}} 
                   <title>{{VAL(title)}}</title>
                   <subtitle>{{VAL(parentTitle)}}</subtitle>
                   <badgeCount>{{unwatchedCountGrid(leafCount:0:viewedLeafCount:0)}}</badgeCount>{{CUT($showunwatched::False=CUT|True=)}}
                   <image>{{IMAGEURL(thumb::768)}}</image>        
-                  <defaultImage>resource://Poster.png</defaultImage>
+                  <defaultImage>resource://{{VAL(type::movie=Poser|episode=Poster|season=Poster|album=Square|track=Square)}}.png</defaultImage>
                 </moviePoster>
-                
-                
-                
-                
-                
               </items>
             </shelfSection>
           </sections>
