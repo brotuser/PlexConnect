@@ -862,49 +862,8 @@ class CCommandCollection(CCommandHelper):
     # XML TREE modifier commands
     # add new commands to this list!
     def TREE_COPY(self, elem, child, src, srcXML, param):
-        tag, param_enbl = self.getParam(src, param)
-
-        src, srcXML, tag = self.getBase(src, srcXML, tag)        
-        
-        # walk the src path if neccessary
-        while '/' in tag and src!=None:
-            parts = tag.split('/',1)
-            src = src.find(parts[0])
-            tag = parts[1]
-        
-        # find index of child in elem - to keep consistent order
-        for ix, el in enumerate(list(elem)):
-            if el==child:
-                break
-        
-        # duplicate child and add to tree
-        for elemSRC in src.findall(tag):
-            key = 'COPY'
-            if param_enbl!='':
-                key, leftover, dfltd = self.getKey(elemSRC, srcXML, param_enbl)
-                conv, leftover = self.getConversion(elemSRC, leftover)
-                if not dfltd:
-                    key = self.applyConversion(key, conv)
-            
-            if key:
-                el = copy.deepcopy(child)
-                XML_ExpandTree(el, elemSRC, srcXML)
-                XML_ExpandAllAttrib(el, elemSRC, srcXML)
-                
-                if el.tag=='__COPY__':
-                    for el_child in list(el):
-                        elem.insert(ix, el_child)
-                        ix += 1
-                else:
-                    elem.insert(ix, el)
-                    ix += 1
-        
-        # remove template child
-        elem.remove(child)
-        return True  # tree modified, nodes updated: restart from 1st elem
-
-
-    def TREE_MULTICOPY2(self, elem, child, src, srcXML, param):
+    
+        # is MULTICOPY?
         tags=param.split(',')
         if len(tags) > 1:
             tag, param_enbl = self.getParam(src, tags[0])
@@ -917,18 +876,21 @@ class CCommandCollection(CCommandHelper):
             parts = tag.split('/',1)
             src = src.find(parts[0])
             tag = parts[1]
-            
+        
         # find index of child in elem - to keep consistent order
         for ix, el in enumerate(list(elem)):
             if el==child:
                 break
                 
+        
         #get all requested tags    
         itemrange = src.findall(tag)
+        # is MULTICOPY?
         for i in range(len(tags)):
           if i > 0:
-              itemrange=itemrange+src.findall(tags[i])    
-        # sort by addedAt      
+            itemrange=itemrange+src.findall(tags[i])  
+            
+        # sort by addedAt (updatedAt?)     
         for elemSRC in sorted(itemrange, key=lambda x: x.attrib.get('addedAt'), reverse=True):
             key = 'COPY'
             if param_enbl!='':
@@ -953,7 +915,6 @@ class CCommandCollection(CCommandHelper):
         # remove template child
         elem.remove(child)
         return True  # tree modified, nodes updated: restart from 1st elem
-
     
     def TREE_CUT(self, elem, child, src, srcXML, param):
         key, leftover, dfltd = self.getKey(src, srcXML, param)

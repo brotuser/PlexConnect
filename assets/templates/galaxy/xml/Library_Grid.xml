@@ -184,7 +184,7 @@
                             onPlay="atv.loadURL('{{URL(key)}}&amp;PlexConnect=Play')"
                             onSelect="atv.loadURL('{{URL(key)}}&amp;PlexConnect={{VAL(type::movie=MoviePrePlay|episode=EpisodePrePlay|season=season)}}')"           
                             onHoldSelect="scrobbleMenu('{{URL(key)}}&amp;PlexConnect=ScrobbleMenuVideo')">
-                  {{MULTICOPY2(@RecentlyAdded/Server/Video,Directory)}}        
+                  {{COPY(@RecentlyAdded/Server/Video,Directory)}}        
                  
                   
                   {{VAR(items:NoKey:TRUE)}} 
