@@ -106,10 +106,11 @@
                             onHoldSelect="scrobbleMenu('{{URL(key)}}&amp;PlexConnect=ScrobbleMenuVideo')">
                   {{COPY(@RecentlyAdded/Server/Video,Directory)}}
                   {{VAR(items:NoKey:TRUE)}} 
-                  <title>{{VAL(type::movie={{VAL(title)}}|episode={{VAL(grandparentTitle)}})}}</title>
-                  <subtitle>{{VAL(type::movie={{VAL(year)}}|episode={{episodestring(parentIndex:0:index:0)}})}}</subtitle>
-                  <image>{{IMAGEURL({{VAL(type::movie=thumb|episode=parentThumb)}}::384)}}</image>
-                  <defaultImage>resource://Poster.png</defaultImage>
+                  <title>{{VAL(type::movie={{VAL(title)}}|episode={{VAL(parentTitle)}}|season={{VAL(parentTitle)}}|album={{VAL(parentTitle)}})}}</title>
+                  <subtitle>{{VAL(type::movie={{VAL(year)}}|episode={{VAL(title)}}|season={{VAL(title)}}|album={{VAL(title)}})}}</subtitle>
+                  <badgeCount>{{unwatchedCountGrid(leafCount:0:viewedLeafCount:0)}}</badgeCount>{{CUT($showunwatched::False=CUT|True=)}}
+                  <image>{{IMAGEURL(thumb::384)}}</image>        
+                  <defaultImage>resource://{{VAL(type::movie=Poser|episode=Poster|season=Poster|album=Square|track=Square)}}.png</defaultImage>
                 </moviePoster>
               </items>
             </shelfSection>
