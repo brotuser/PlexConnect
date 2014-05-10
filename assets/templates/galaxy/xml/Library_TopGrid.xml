@@ -15,11 +15,48 @@
     <scroller id="com.sample.movie-showcase-grid">
       <header>
         <imageHeader>
-            <image insets="{{VAL(^aTVScreenResolution:1:720=50|1080=80)}}, 0, 0, 0" required="true">{{URL(:/templates/galaxy/images/header{{VAL(^aTVScreenResolution)}}.png)}}</image>
-        </imageHeader>
+	     <image insets="0, 0, {{VAL(^aTVScreenResolution:1:720=460|1080=720)}}, 0" required="true">{{URL(:/fanartcache/{{LFBG("galaxy","{{EVAL(quote_plus("{{TEXT(Plex Library)}}"))}}","{{EVAL(quote_plus("{{TEXT(Plex Shared Library)}}"))}}","backgrounds/libraryflow.jpg","{{VAL(^aTVScreenResolution)}}","fonts/OpenSans/OpenSans-Light.ttf","40","","FFFFFF","","center","top","0","200","","LibraryFlow")}})}}</image>
+	   </imageHeader>
       </header>
       <items>
-           
+      
+      
+      
+      <showcase accessibilityLabel="Showcase movies" id="showcase_1">
+        <initialSelection>
+          <indexPath>
+            <index>3</index>
+          </indexPath>
+        </initialSelection>
+        {{COPY(Server:@main/size::0=|1=COPY)}}
+        <items>
+          {{COPY(Server:@main/size::0=|1=COPY)}}
+          <showcasePoster id="{{VAL(key)}}" accessibilityLabel="{{VAL(title)}}"  
+                          onPlay="atv.loadURL('{{URL(key)}}')"
+                          onSelect="atv.loadURL('{{URL(key)}}')"
+                          onHoldSelect="refreshSection('{{VAL(key)}}', '{{URL(refreshKey)}}')">
+            {{COPY(Directory)}}
+            {{VAR(items:NoKey:TRUE)}}
+            <image>{{IMAGEURL(thumb::768)}}</image>{{CUT($sectionicons::Apple=CUT|Plex=|Fanart=CUT|Custom=CUT)}} 
+            <image>{{URL(:/fanartcache/{{LFBG("galaxy","{{VAL(title)}}","","flow/{{VAL(type)}}-flow-plex.png","flow","fonts/OpenSans/OpenSans-Bold.ttf","40","","FFFFFF","FFFFFF","right","top","40","20","","ListIcon")}})}}</image>{{CUT($sectionicons::Apple=CUT|Plex=CUT|Fanart=|Custom=CUT)}}
+            <image>{{URL(:/fanartcache/{{LFBG("galaxy","{{VAL(title)}}","","flow/{{VAL(type)}}-flow.png","flow","fonts/OpenSans/OpenSans-Bold.ttf","40","","FFFFFF","FFFFFF","right","top","40","20","","ListIcon")}})}}</image>{{CUT($sectionicons::Apple=|Plex=CUT|Fanart=CUT|Custom=CUT)}}
+
+            <defaultImage>resource://Poster.png</defaultImage>
+          </showcasePoster>         
+          <!-- search -->
+          <showcasePoster id="{{VAL(searchKey)}}"
+                          onPlay="atv.loadURL('{{URL(searchKey)}}')"
+                          onSelect="atv.loadURL('{{URL(searchKey)}}')">
+            <image>{{IMAGEURL(thumb::768)}}</image>{{CUT($sectionicons::Apple=CUT|Plex=|Fanart=CUT|Custom=CUT)}}
+            <image>{{URL(:/fanartcache/{{LFBG("galaxy","{{TEXT(Search)}}","","flow/search-flow.png","flow","fonts/OpenSans/OpenSans-Bold.ttf","40","","FFFFFF","FFFFFF","right","top","40","20","","ListIcon")}})}}</image>
+            <defaultImage>resource://Poster.png</defaultImage>
+            
+          </showcasePoster>{{CUT($library_search::Show=|Hide=CUT)}} 
+        </items>
+      </showcase>{{CUT($sectionsposition::Top=CUT|Bottom=CUT|Flow=|Middle=CUT))}} 
+      
+      
+      
         <__COPY__>  
         {{COPY(Server:@main/size::0=|1=COPY)}}
         <collectionDivider alignment="left" accessibilityLabel="Library">
@@ -102,7 +139,7 @@
                             onPlay="atv.loadURL('{{URL(key)}}&amp;PlexConnect=Play')"
                             onSelect="atv.loadURL('{{URL(key)}}&amp;PlexConnect={{VAL(type::movie=Movie|episode=Episode)}}PrePlay')"
                             onHoldSelect="scrobbleMenu('{{URL(key)}}&amp;PlexConnect=ScrobbleMenuVideo')">
-                  {{COPY(@RecentlyAdded/Server/Video)}}
+                  {{COPY(@RecentlyAdded/Server/Video,Directory)}}
                   {{VAR(items:NoKey:TRUE)}} 
                   <title>{{VAL(type::movie={{VAL(title)}}|episode={{VAL(grandparentTitle)}})}}</title>
                   <subtitle>{{VAL(type::movie={{VAL(year)}}|episode={{episodestring(parentIndex:0:index:0)}})}}</subtitle>
