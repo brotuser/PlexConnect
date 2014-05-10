@@ -10,7 +10,7 @@
     <itemDetailWithImageHeader id="com.sample.movie-grid" volatile="true" onVolatileReload="atv.loadAndSwapURL('{{URL()}}&amp;PlexConnect=EpisodePrePlay')">
       <header>
 	    <imageHeader>
-	      <image insets="0, 0, {{VAL(^aTVScreenResolution:1:720=680|1080=1020)}}, 0" required="true">{{URL(:/fanartcache/{{LFBG("galaxy","{{EVAL(quote_plus("{{VAL(Video/grandparentTitle)}}"))}}","{{EVAL(quote_plus("{{VAL(Video/index)}}. {{VAL(Video/title)}}"))}}","{{IMAGEURL(Video/art:::)}}","{{VAL(^aTVScreenResolution)}}","fonts/OpenSans/OpenSans-Light.ttf","30","20","FFFFFF","FFFFFF","left","top","350","40","2","EpisodePrePlay")}})}}</image>
+	      <image insets="0, 0, {{VAL(^aTVScreenResolution:1:720=680|1080=1020)}}, 0" required="true">{{URL(:/fanartcache/{{LFBG("galaxy","{{EVAL(quote_plus("{{VAL(Video/grandparentTitle)}}"))}}","{{EVAL(quote_plus("{{VAL(Video/index)}}. {{VAL(Video/title)}}"))}}","{{IMAGEURL(Video/art:::)}}","{{VAL(^aTVScreenResolution)}}","fonts/OpenSans/OpenSans-Light.ttf","30","20","FFFFFF","FFFFFF","left","top","350","40","","EpisodePrePlay")}})}}</image>
 	    </imageHeader>
 	  </header>
       <!-- <title>{{VAL(Video/index)}}. {{VAL(Video/title)}}</title> -->
