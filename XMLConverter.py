@@ -891,7 +891,9 @@ class CCommandCollection(CCommandHelper):
             itemrange=itemrange+src.findall(tags[i])  
             
         # sort by addedAt (updatedAt?)     
-        for elemSRC in sorted(itemrange, key=lambda x: x.attrib.get('addedAt'), reverse=True):
+        if len(tags) > 1:
+          itemrange = sorted(itemrange, key=lambda x: x.attrib.get('addedAt'), reverse=True)
+        for elemSRC in itemrange:
             key = 'COPY'
             if param_enbl!='':
                 key, leftover, dfltd = self.getKey(elemSRC, srcXML, param_enbl)
