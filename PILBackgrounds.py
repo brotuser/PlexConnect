@@ -222,16 +222,15 @@ def createFileHandle(params):
     cachefileTitle = normalizeString(params[1])
     cachefileSubtitle = normalizeString(params[2])
     cachefileRes = normalizeString(params[4])
-    
+
     t1s = normalizeString(params[6])
     t1c = normalizeString(params[8])
-    t1x = normalizeString(params[10])
-    t1y = normalizeString(params[12])
-    
+    tax = normalizeString(params[10])
+    tay = normalizeString(params[11])
+    tox = normalizeString(params[12])
+    toy = normalizeString(params[13])
     t2s = normalizeString(params[7])
     t2c = normalizeString(params[9])
-    t2x = normalizeString(params[11])
-    t2y = normalizeString(params[13])
     
     # add layers
     layerrange = range(15, len(params))
@@ -242,7 +241,7 @@ def createFileHandle(params):
     # fix for extra long subtitles 
     if len(cachefileSubtitle) > 30:
       cachefileSubtitle = cachefileSubtitle[0:30]    
-    cachefile = cachefileTitle+"+"+cachefileSubtitle+"+"+cachefileStyle+"+"+cachefileLayers+"+"+t1s+"+"+t1c+"+"+t1x+"+"+t1y+"+"+t2s+"+"+t2c+"+"+t2x+"+"+t2y+"+"+cachefileRes
+    cachefile = cachefileStyle+"+"+cachefileLayers+"+"+cachefileTitle+"+"+t1s+"+"+t1c+"+"+tax+"+"+tay+"+"+tox+"+"+toy+"+"+cachefileSubtitle+"+"+t2s+"+"+t2c+"+"+cachefileRes
     return cachefile
     
 def normalizeString(text):
