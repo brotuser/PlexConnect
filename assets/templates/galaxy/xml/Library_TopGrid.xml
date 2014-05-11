@@ -28,34 +28,37 @@
             <title>{{VAL(local::0= {{TEXT(Remote)}}|0 =)}}: {{VAL(name)}}</title>
         </collectionDivider>
 
-        <shelf id="shelf_0" columnCount="4">
+        <shelf id="shelf_0" columnCount="5">
             <sections>                             
             <!-- local servers -->
                 <shelfSection>
                    
                     <items>
                         <!-- /library/sections -->
-                        <sixteenByNinePoster id="{{VAL(key)}}" featured="true" accessibilityLabel="{{VAL(title)}}" 
-                                               alwaysShowTitles="{{VAL($sectionicons::Apple=true|Plex=false|Fanart=true)}}"
-                                               onPlay="atv.loadURL('{{URL(key)}}')"
-                                               onSelect="atv.loadURL('{{URL(key)}}')"
-                                               onHoldSelect="refreshSection('{{VAL(key)}}', '{{URL(refreshKey)}}')">
-                            {{COPY(Directory)}}
-                            {{VAR(sections:NoKey:TRUE)}}  <!--within COPY this sets the var to TRUE-->
-                            <title>{{VAL(title)}}</title>
-                            <image>{{IMAGEURL(art::768)}}</image>{{CUT($sectionicons_shared::Apple=CUT|Plex=CUT|Fanart=|Custom=CUT)}}
-                            <image>{{IMAGEURL(thumb::768)}}</image>{{CUT($sectionicons_shared::Apple=CUT|Plex=|Fanart=CUT|Custom=CUT)}}
-                            <image>{{URL(:/templates/galaxy/images/icons/{{VAL(type)}}.png)}}</image>{{CUT($sectionicons_shared::Apple=|Plex=CUT|Fanart=CUT|Custom=CUT)}}
-                            <defaultImage>resource://16X9.png</defaultImage>
-                        </sixteenByNinePoster>
-                        
-                        <!-- search -->
-                        <sixteenByNinePoster id="{{VAL(searchKey)}}" featured="true" alwaysShowTitles="{{VAL($sectionicons::Apple=true|Plex=false|Fanart=true)}}"
-                                               onPlay="atv.loadURL('{{URL(searchKey)}}')"
-                                               onSelect="atv.loadURL('{{URL(searchKey)}}')">
-                        <title>{{TEXT(Search)}}</title>
-                        <image>{{URL(:/templates/galaxy/images/icons/search.png)}}</image>
-                      </sixteenByNinePoster>{{CUT($library_search::Show=|Hide=CUT)}} 
+                  <moviePoster id="{{VAL(key)}}" accessibilityLabel="{{VAL(title)}}" featured="true" 
+                               alwaysShowTitles="{{VAL($sectionicons::Apple=true|Plex=true|Fanart=true)}}"
+                               onPlay="atv.loadURL('{{URL(key)}}')"
+                               onSelect="atv.loadURL('{{URL(key)}}')"
+                               onHoldSelect="refreshSection('{{VAL(key)}}', '{{URL(refreshKey)}}')">
+                  {{COPY(Directory)}}
+                  {{VAR(sections:NoKey:TRUE)}}  <!--within COPY this sets the var to TRUE-->
+                  
+                    <title>{{VAL(title)}}</title>
+                    <image>{{IMAGEURL(art::768)}}</image>{{CUT($sectionicons::Apple=CUT|Plex=CUT|Fanart=|Custom=CUT)}}
+                    <image>{{URL(:/templates/galaxy/images/icons/{{VAL(type)}}.png)}}</image>{{CUT($sectionicons::Apple=|Plex=CUT|Fanart=CUT|Custom=CUT)}}
+                    <image>{{IMAGEURL(thumb::768)}}</image>{{CUT($sectionicons::Apple=CUT|Plex=|Fanart=CUT|Custom=CUT)}}
+                    <defaultImage>resource://16X9.png</defaultImage>
+                    <!--badgeCount></badgeCount-->
+                  </moviePoster>
+                  
+                  <!-- search -->
+                  <moviePoster id="{{VAL(searchKey)}}" featured="true" alwaysShowTitles="{{VAL($sectionicons::Apple=true|Plex=true|Fanart=true)}}"
+                               onPlay="atv.loadURL('{{URL(searchKey)}}')"
+                               onSelect="atv.loadURL('{{URL(searchKey)}}')">
+                    <title>{{TEXT(Search)}}</title>
+                    <image>{{URL(:/templates/galaxy/images/icons/search.png)}}</image>
+                    <defaultImage>resource://16X9.png</defaultImage>
+                  </moviePoster>{{CUT($library_search::Show=|Hide=CUT)}} 
                     </items>
                 </shelfSection>
           </sections>
