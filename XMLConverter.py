@@ -1320,9 +1320,9 @@ class CCommandCollection(CCommandHelper):
         else:
             return PMS_name
     def ATTRIB_LFBG(self, src, srcXML, param):
-        from PILBackgrounds import *
+        import PILBackgrounds
         res = ""
-        res = generate(self, src, srcXML, param)  
+        res = PILBackgrounds.generate(self, src, srcXML, param)  
         if res == "":
           res = sys.path[0]+'/assets/fanart/bg.jpg'     
         dprint(__name__, 1, 'serving: {0}', res+".png")  # Debug 
