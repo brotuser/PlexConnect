@@ -7,13 +7,16 @@
     <scroller id="Show_Grid">
       <header>
 	    <imageHeader>
-	      <image insets="0, 0, {{VAL(^aTVScreenResolution:1:720=480|1080=720)}}, 0" required="true">{{URL(:/fanartcache/{{LFBG("galaxy","{{EVAL(quote_plus("{{VAL(title1)}}"))}}","{{EVAL(quote_plus("{{VAL(title2)}}"))}}","backgrounds/show.jpg","{{VAL(^aTVScreenResolution)}}","fonts/OpenSans/OpenSans-Light.ttf","60","30","7CB4A9","FFFFFF","center","top","","110","","Grid")}})}}</image>
+	              <image insets="0, 0, {{VAL(^aTVScreenResolution:1:720=590|1080=885)}}, 0" required="true">{{URL(:/fanartcache/{{LFBG("galaxy","{{EVAL(quote_plus("{{VAL(title1)}}"))}}","","backgrounds/show.jpg","{{VAL(^aTVScreenResolution)}}","fonts/OpenSans/OpenSans-Light.ttf","50","20","63E4CF","FFFFFF","center","top","","90","","Simple")}})}}</image>
 	    </imageHeader>
       </header>
       <items>
+      <collectionDivider alignment="center" accessibilityLabel="{{VAL(title2)}}">
+        <title>{{VAL(title2)}}</title>
+      </collectionDivider>
         <grid columnCount="7" id="grid_0">
           <items>
-            <moviePoster id="{{VAL(key)}}" alwaysShowTitles="{{VAL($showtitles_tvshows::Highlighted Only=false|Show All=true)}}"
+            <sixteenByNinePoster id="{{VAL(key)}}" featured="true" alwaysShowTitles="{{VAL($showtitles_tvshows::Highlighted Only=false|Show All=true)}}"
                          onPlay="flattenSeason('{{URL(key)}}', '{{SETTING(flattenseason)}}', 'False')"
                          onSelect="flattenSeason('{{URL(key)}}', '{{SETTING(flattenseason)}}', 'False')"
                          onHoldSelect="scrobbleMenu('{{URL(key)}}&amp;PlexConnect=ScrobbleMenu')">
@@ -21,13 +24,13 @@
               <title>{{VAL(title)}}</title>
               <image>{{IMAGEURL(thumb::384)}}</image>
               <defaultImage>resource://Poster.png</defaultImage>
-							<badgeCount>{{unwatchedCountGrid(leafCount:0:viewedLeafCount:0)}}</badgeCount>{{CUT($showunwatched::False=CUT|True=)}}
-            </moviePoster>{{CUT(Directory/title:CUT:=)}}
+			  <badgeCount>{{unwatchedCountGrid(leafCount:0:viewedLeafCount:0)}}</badgeCount>{{CUT($showunwatched::False=CUT|True=)}}
+            </sixteenByNinePoster>{{CUT(Directory/title:CUT:=)}}
 
-            <moviePoster id="none">
+            <sixteenByNinePoster id="none">
               <title>{{TEXT(No Unwatched Shows)}}</title>
               <defaultImage>resource://Poster.png</defaultImage>
-            </moviePoster>{{CUT(Directory/title::=CUT)}}
+            </sixteenByNinePoster>{{CUT(Directory/title::=CUT)}}
           </items>
         </grid>
       </items>

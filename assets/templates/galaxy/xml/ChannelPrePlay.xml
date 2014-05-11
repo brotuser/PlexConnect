@@ -4,12 +4,17 @@
   </head>
 
   <body>
-    <itemDetail id="com.apple.trailers">
-		<title>{{VAL(Video/title)}}</title>
+    <itemDetailWithImageHeader id="com.apple.trailers">
+       <header>
+	    <imageHeader>
+	      <image insets="0, 0, {{VAL(^aTVScreenResolution:1:720=460|1080=690)}}, 0" required="true">{{URL(:/fanartcache/{{LFBG("galaxy","{{EVAL(quote_plus("{{VAL(Video/title)}}"))}}","","backgrounds/channel.jpg","{{VAL(^aTVScreenResolution)}}","fonts/OpenSans/OpenSans-Light.ttf","40","20","FFFFFF","FFFFFF","left","top","350","246","","MoviePrePlay")}})}}</image>
+	    </imageHeader>
+	  </header>
+		<!-- <title>{{VAL(Video/title)}}</title> -->
 		<subtitle>{{VAL(Video/studio)}}</subtitle>
 		<rating>{{contentRating(Video/contentRating)}}</rating>
 		<summary>{{VAL(Video/summary)}}</summary>
-		<image style="squarePoster">{{IMAGEURL(Video/thumb::384)}}</image>
+		<image style="moviePoster">{{IMAGEURL(Video/thumb::384)}}</image>
 		<defaultImage>resource://Poster.png</defaultImage>
 
 		<centerShelf>
@@ -20,7 +25,7 @@
 						<actionButton id="play" onSelect="atv.loadURL('{{URL(key)}}&amp;PlexConnect=Play')">
 							<title>{{TEXT(Play)}}</title>
 							<image>resource://Play.png</image>
-              <focusedImage>resource://PlayFocused.png</focusedImage>
+                            <focusedImage>resource://PlayFocused.png</focusedImage>
 							<!--<badge></badge>-->
 						</actionButton>
 					</items>
@@ -28,6 +33,6 @@
 			</sections>
 		</shelf>
 		</centerShelf>
-		</itemDetail>
+		</itemDetailWithImageHeader>
 	</body>
 </atv>

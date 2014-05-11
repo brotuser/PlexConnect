@@ -14,8 +14,8 @@
     <scroller id="Channels_Grid">
       <header>
         <imageHeader>
-          <image insets="0, 0, {{VAL(^aTVScreenResolution:1:720=480|1080=720)}}, 0" required="true">
-           {{URL(:/fanartcache/{{LFBG("galaxy","{{EVAL(quote_plus("{{TEXT(Plex Channels)}}"))}}","","backgrounds/channel.jpg","{{VAL(^aTVScreenResolution)}}","fonts/OpenSans/OpenSans-Light.ttf","60","30","98B178","","center","top","","110","","ChannelGrid")}})}}
+          <image insets="0, 0, {{VAL(^aTVScreenResolution:1:720=590|1080=885)}}, 0" required="true">
+           {{URL(:/fanartcache/{{LFBG("galaxy","{{EVAL(quote_plus("{{TEXT(Plex Channels)}}"))}}","","backgrounds/channel.jpg","{{VAL(^aTVScreenResolution)}}","fonts/OpenSans/OpenSans-Light.ttf","50","20","78b645","","center","top","","90","","Simple")}})}}
           </image>
         </imageHeader>
       </header>
@@ -24,15 +24,15 @@
         <!-- video channels: owned servers -->
         <__COPY__>
         {{COPY(@VideoChannels/Server:size::0=|1=COPY)}}
-          <collectionDivider alignment="left" accessibilityLabel="Show_Bookcase_Divider">
+          <collectionDivider alignment="center" accessibilityLabel="Show_Bookcase_Divider">
             <title>{{TEXT(Video)}}</title>{{CUT(@VideoChannels/size::1=|2=CUT)}}
             <title>{{TEXT(Video)}} - {{VAL(name)}}{{VAL(local::0= &lt;{{TEXT(remote)}}&gt;|0 =)}}</title>{{CUT(@VideoChannels/size:CUT:1=CUT|2=)}}
           </collectionDivider>
           
-          <grid id="Channels_Grid_Video_{{VAL(name)}}" columnCount="5">
+          <grid id="Channels_Grid_Video_{{VAL(name)}}" columnCount="7">
             <items>
               <!-- video channels per server -->
-              <moviePoster id="Video_{{VAL(key)}}" alwaysShowTitles="{{VAL($showtitles_channels::Highlighted Only=false|Show All=true)}}"
+              <sixteenByNinePoster id="Video_{{VAL(key)}}" featured="true" alwaysShowTitles="{{VAL($showtitles_channels::Highlighted Only=false|Show All=true)}}"
                            onPlay="atv.loadURL('{{URL(key)}}&amp;PlexConnect=ChannelsVideo')"
                            onSelect="atv.loadURL('{{URL(key)}}&amp;PlexConnect=ChannelsVideo')">
               {{COPY(Directory)}}
@@ -41,7 +41,7 @@
                 <image>{{IMAGEURL(thumb::384)}}</image>
                 <defaultImage>resource://Poster.png</defaultImage>
                 <!--badgeCount></badgeCount-->
-              </moviePoster>
+              </sixteenByNinePoster>
             </items>
           </grid>
         </__COPY__>
@@ -49,15 +49,15 @@
         <!-- audio channels: owned servers -->
         <__COPY__>
         {{COPY(@AudioChannels/Server:size::0=|1=COPY)}}
-          <collectionDivider alignment="left" accessibilityLabel="Show_Bookcase_Divider">
+          <collectionDivider alignment="center" accessibilityLabel="Show_Bookcase_Divider">
             <title>{{TEXT(Audio)}}</title>{{CUT(@AudioChannels/size::1=|2=CUT)}}
             <title>{{TEXT(Audio)}} - {{VAL(name)}}{{VAL(local::0= &lt;{{TEXT(remote)}}&gt;|0 =)}}</title>{{CUT(@AudioChannels/size:CUT:1=CUT|2=)}}
           </collectionDivider>
           
-          <grid id="Channels_Grid_Audio_{{VAL(name)}}" columnCount="5">
+          <grid id="Channels_Grid_Audio_{{VAL(name)}}" columnCount="7">
             <items>
               <!-- audio channels per server -->
-              <moviePoster id="Audio_{{VAL(key)}}" alwaysShowTitles="{{VAL($showtitles_channels::Highlighted Only=false|Show All=true)}}"
+              <sixteenByNinePoster id="Audio_{{VAL(key)}}" featured="true" alwaysShowTitles="{{VAL($showtitles_channels::Highlighted Only=false|Show All=true)}}"
                            onPlay="atv.loadURL('{{URL(key)}}')"
                            onSelect="atv.loadURL('{{URL(key)}}')">
               {{COPY(Directory)}}
@@ -66,7 +66,7 @@
                 <image>{{IMAGEURL(thumb::384)}}</image>
                 <defaultImage>resource://Poster.png</defaultImage>
                 <!--badgeCount></badgeCount-->
-              </moviePoster>
+              </sixteenByNinePoster>
             </items>
           </grid>
         </__COPY__>
@@ -74,15 +74,15 @@
         <!-- photo channels: owned servers -->
         <__COPY__>
         {{COPY(@PhotoChannels/Server:size::0=|1=COPY)}}
-          <collectionDivider alignment="left" accessibilityLabel="Show_Bookcase_Divider">
+          <collectionDivider alignment="center" accessibilityLabel="Show_Bookcase_Divider">
             <title>{{TEXT(Photo)}}</title>{{CUT(@PhotoChannels/size::1=|2=CUT)}}
             <title>{{TEXT(Photo)}} - {{VAL(name)}}{{VAL(local::0= &lt;{{TEXT(remote)}}&gt;|0 =)}}</title>{{CUT(@PhotoChannels/size:CUT:1=CUT|2=)}}
           </collectionDivider>
           
-          <grid id="Channels_Grid_Photo_{{VAL(name)}}" columnCount="5">
+          <grid id="Channels_Grid_Photo_{{VAL(name)}}" columnCount="7">
             <items>
               <!-- video channels per server -->
-              <moviePoster id="Photo_{{VAL(key)}}" alwaysShowTitles="{{VAL($showtitles_channels::Highlighted Only=false|Show All=true)}}"
+              <sixteenByNinePoster id="Photo_{{VAL(key)}}" featured="true" alwaysShowTitles="{{VAL($showtitles_channels::Highlighted Only=false|Show All=true)}}"
                            onPlay="atv.loadURL('{{URL(key)}}')"
                            onSelect="atv.loadURL('{{URL(key)}}')">
               {{COPY(Directory)}}
@@ -91,7 +91,7 @@
                 <image>{{IMAGEURL(thumb::384)}}</image>
                 <defaultImage>resource://Poster.png</defaultImage>
                 <!--badgeCount></badgeCount-->
-              </moviePoster>
+              </sixteenByNinePoster>
             </items>
           </grid>
         </__COPY__>
