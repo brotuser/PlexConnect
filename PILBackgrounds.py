@@ -149,7 +149,7 @@ def textToImage(index, im, params, stylepath):
     # Anchor and Offset Y
     if ( params[11] != None or params[11] != "" ) or ( params[13] != None or params[13] != "" ): 
       if params[11] == "bottom":
-        offsety = renderheight - height - int(params[13])
+        offsety = renderheight - int(params[13])
       elif params[11] == "middle":
         offsety = ( renderheight - height ) / 2
       elif params[11] == "top" or params[11] == "":
@@ -159,14 +159,14 @@ def textToImage(index, im, params, stylepath):
       # Subtitle   
       
       if index > 1 and ( params[1] != None or params[1] != "" ):
-        title = unicode(urllib.unquote(params[1]), 'utf-8').replace('+',' ').strip()
+        #title = unicode(urllib.unquote(params[1]), 'utf-8').replace('+',' ').strip()
         #titledraw = ImageDraw.Draw(im)
-        if params[6] != None and params[6] != "": 
+        if params[6] != None or params[6] != "": 
           titlefontsize = int(params[6])
         else: # Default Size
           titlefontsize = int(params[4]) / 24
-        # titlewidth, titleheight = titledraw.textsize(title, ImageFont.truetype(font, int(titlefontsize)))
-        offsety = offsety + (titlefontsize * 130 / 100)        
+        #titlewidth, titleheight = titledraw.textsize(title, ImageFont.truetype(font, int(titlefontsize)))
+        offsety = offsety + (titlefontsize * 130 / 100)   
     else:
       offsety = 80    
     # Handle 1080 / atv3 Text
