@@ -17,7 +17,7 @@
 	<header>
 	 <!--Fullscreen--> 
         <imageHeader>
-          <image insets="0, 0, {{VAL(^aTVScreenResolution:1:720=620|1080=930)}}, 0" required="true">{{URL(:/fanartcache/{{LFBG("galaxy","{{EVAL(quote_plus("{{VAL(title1)}}"))}}","{{EVAL(quote_plus("{{VAL(title2)}}"))}}","backgrounds/show.jpg","{{VAL(^aTVScreenResolution)}}","fonts/OpenSans/OpenSans-Light.ttf","50","20","63E4CF","FFFFFF","right","top","80","90","","List")}})}}</image>
+          <image insets="0, 0, {{VAL(^aTVScreenResolution:1:720=620|1080=930)}}, 0" required="true">{{URL(:/fanartcache/{{LFBG("galaxy","{{EVAL(quote_plus("{{VAL(title1)}}"))}}","{{EVAL(quote_plus("{{VAL(title2)}}"))}}","{{IMAGEURL(art:::)}}","{{VAL(^aTVScreenResolution)}}","fonts/OpenSans/OpenSans-Light.ttf","50","20","63E4CF","FFFFFF","right","top","80","90","","List")}})}}</image>
         </imageHeader>
       </header>
       <menu>
@@ -57,7 +57,7 @@
                     <summary><![CDATA[{{VAL(summary)}}]]></summary>{{CUT(viewCount:CUT:=)}}{{CUT($showsynopsis::Show=CUT|Hide=)}}
                     <summary>{{TEXT(Synopsis hidden.)}}</summary>{{CUT(viewCount)}}{{CUT($showsynopsis::Show=CUT|Hide=)}}
                     <rating>{{VAL(#contentRating)}}</rating>
-                    <image>{{IMAGEURL(thumb::800)}}</image>
+                    <image>{{IMAGEURL(thumb::768)}}</image>
                     <metadata>
                       <label>{{VAL(#title1)}}</label>
                       <label>Aired: {{VAL(originallyAvailableAt)}}</label>
