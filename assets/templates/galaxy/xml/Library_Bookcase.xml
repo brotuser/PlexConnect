@@ -10,22 +10,26 @@
     <scroller id="Library_Bookcase">
       <header>
         <imageHeader>
-	     <image insets="0, 0, {{VAL(^aTVScreenResolution:1:720=280|1080=720)}}, 0" required="true">{{URL(:/fanartcache/{{LFBG("galaxy","{{EVAL(quote_plus("{{TEXT(Plex Library)}}"))}}","still a test","backgrounds/library.jpg","{{VAL(^aTVScreenResolution)}}","fonts/OpenSans/OpenSans-Light.ttf","60","30","FFFFFF","E8B146","center","top","0","110","")}})}}</image>
+	     <image insets="0, 0, {{VAL(^aTVScreenResolution:1:720=590|1080=885)}}, 0" required="true">{{URL(:/fanartcache/{{LFBG("galaxy","{{EVAL(quote_plus("{{TEXT(Plex Library)}}"))}}","","backgrounds/library.jpg","{{VAL(^aTVScreenResolution)}}","fonts/OpenSans/OpenSans-Light.ttf","50","20","FFFFFF","FFFFFF","center","top","","90","","Simple")}})}}</image>
 	   </imageHeader>
       </header>
-      
+          
       <items>
-        <!-- servers -->
+
         <__COPY__>
-        {{COPY(Server:@main/size::0=|1=COPY)}}
-          <collectionDivider alignment="left" accessibilityLabel="Show_Bookcase_Divider">
-            <title>{{VAL(name)}}{{VAL(local::0= &lt;{{TEXT(remote)}}&gt;|0 =)}}</title>
+        <!-- servers -->
+          {{COPY(Server:@main/size::0=|1=COPY)}}
+         <collectionDivider alignment="center" accessibilityLabel="{{VAL(title2)}}">
+          <title>{{TEXT(Sections)}}</title>
+         </collectionDivider>{{CUT(@main/size:CUT:0=CUT|1=|2=CUT)}} 
+          <collectionDivider alignment="center" accessibilityLabel="Show_Bookcase_Divider">
+            <title>{{VAL(local::0= {{TEXT(Remote)}}|0 =)}}: {{VAL(name)}}</title>
           </collectionDivider>{{CUT(@main/size:CUT:0=CUT|1=CUT|2=)}}
           
-          <grid id="Library_Grid_{{VAL(name)}}" columnCount="8">
+          <grid id="Library_Grid_{{VAL(name)}}" columnCount="5">
             <items>
               <!-- /library/sections -->
-              <squarePoster id="{{VAL(key)}}" showOutline="false" alwaysShowTitles="true"
+              <sixteenByNinePoster id="{{VAL(key)}}" showOutline="false" featured="true" alwaysShowTitles="true"
                            onPlay="atv.loadURL('{{URL(key)}}')"
                            onSelect="atv.loadURL('{{URL(key)}}')"
                            onHoldSelect="refreshSection('{{VAL(key)}}', '{{URL(refreshKey)}}')">
@@ -33,19 +37,23 @@
               {{VAR(sections:NoKey:TRUE)}}  <!--within COPY this sets the var to TRUE-->
                 <title>{{VAL(title)}}</title>
                 <subtitle>{{VAL(year:&#x00AD;)}}</subtitle><!--bugfix to prevent different poster sizes-->
-                <image>{{IMAGEURL(thumb::384)}}</image>
-                <defaultImage>resource://Square.png</defaultImage>
+                 <image>{{IMAGEURL(art::768)}}</image>{{CUT($sectionicons::Apple=CUT|Plex=CUT|Fanart=|Custom=CUT)}}
+                    <image>{{URL(:/templates/galaxy/images/icons/{{VAL(type)}}.jpg)}}</image>{{CUT($sectionicons::Apple=|Plex=CUT|Fanart=CUT|Custom=CUT)}}
+                    <image>{{IMAGEURL(thumb::768)}}</image>{{CUT($sectionicons::Apple=CUT|Plex=|Fanart=CUT|Custom=CUT)}}
+                    <defaultImage>resource://16X9.png</defaultImage>
+
                 <!--badgeCount></badgeCount-->
-              </squarePoster>
+              </sixteenByNinePoster>
               
               <!-- search -->
-              <squarePoster id="{{VAL(searchKey)}}" showOutline="false" alwaysShowTitles="true"
+              <sixteenByNinePoster id="{{VAL(searchKey)}}" showOutline="false" featured="true" alwaysShowTitles="true"
                            onPlay="atv.loadURL('{{URL(searchKey)}}')"
                            onSelect="atv.loadURL('{{URL(searchKey)}}')">
                 <title>{{TEXT(Search)}}</title>
-                <image>{{IMAGEURL(searchThumb::384)}}</image>  <!--searchThumb not yet defined-->
-                <defaultImage>resource://Square.png</defaultImage>
-              </squarePoster>{{CUT($library_search::Show=|Hide=CUT)}} 
+                    <image>{{URL(:/templates/galaxy/images/icons/search.png)}}</image>
+                    <defaultImage>resource://16X9.png</defaultImage>
+
+              </sixteenByNinePoster>{{CUT($library_search::Show=|Hide=CUT)}} 
               
             </items>
           </grid>

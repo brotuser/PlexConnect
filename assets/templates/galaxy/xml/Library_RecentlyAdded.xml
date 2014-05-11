@@ -6,37 +6,37 @@
   </head>
 
   <body>
-      {{VAR(sections:NoKey:FALSE)}}  <!--this sets the var to FALSE-->
       {{ADDXML(RecentlyAdded::/library/recentlyAdded)}}
+      {{VAR(sections:NoKey:FALSE)}}  <!--this sets the var to FALSE-->
       {{VAR(items:NoKey:FALSE)}}
-
+      
       <itemCollectionWithImageHeader id="com.sample.menu-items-with-sections">
       <header>
 	    <imageHeader>
-	      <image insets="0, 0, {{VAL(^aTVScreenResolution:1:720=690|1080=1020)}}, 0" required="true">{{URL(:/fanartcache/{{LFBG("galaxy","{{EVAL(quote_plus("{{TEXT(Plex Library)}}"))}}","","grey.jpg","{{VAL(^aTVScreenResolution)}}","fonts/OpenSans/OpenSans-Light.ttf","60","30","FFFFFF","FFFFFF","right","top","80","40","","List")}})}}</image>
+	      <image insets="0, 0, {{VAL(^aTVScreenResolution:1:720=620|1080=930)}}, 0" required="true">{{URL(:/fanartcache/{{LFBG("galaxy","{{EVAL(quote_plus("{{TEXT(Plex Library)}}"))}}","{{EVAL(quote_plus("{{TEXT(Recently Added)}}"))}}","backgrounds/library.jpg","{{VAL(^aTVScreenResolution)}}","fonts/OpenSans/OpenSans-Light.ttf","50","","FFFFFF","","right","top","80","90","","List")}})}}</image>
 	    </imageHeader>
       </header>
           
       <menu>
         <sections>
           <menuSection>
-              {{COPY(Server:@RecentlyAdded/size::0=|1=COPY)}}
+          {{CUT(@RecentlyAdded/Server/size:CUT:0=CUT|1=)}}
             
             <header>
               <horizontalDivider alignment="left">
                 <title>{{TEXT(Recently Added)}}</title>
               </horizontalDivider>
-            </header>{{CUT(@RecentlyAdded/Server/size:CUT:0=CUT|1=)}}
-            
+            </header>
+
             <items>
               <twoLineMenuItem id="{{VAL(key)}}"
                                        onPlay="atv.loadURL('{{URL(key)}}&amp;PlexConnect=Play')"
-                                       onSelect="atv.loadURL('{{URL(key)}}&amp;PlexConnect={{VAL(type::movie=Movie|episode=Episode)}}PrePlay')"
+                                       onSelect="atv.loadURL('{{URL(key)}}&amp;PlexConnect={{VAL(type::movie=MoviePrePlay|episode=EpisodePrePlay|season=season)}}')"
                                        onHoldSelect="scrobbleMenu('{{URL(key)}}&amp;PlexConnect=ScrobbleMenuVideo')">
                 {{COPY(@RecentlyAdded/Server/Directory,Video)}}
                 {{VAR(items:NoKey:TRUE)}}              
-                <label>{{VAL(title)}}</label>
-                <label2>{{VAL(parentTitle)}}</label2>
+                <label>{{VAL(type::movie={{VAL(title)}}|episode={{VAL(parentTitle)}}|season={{VAL(parentTitle)}}|album={{VAL(parentTitle)}})}}</label>
+                <label2>{{VAL(type::movie={{VAL(year)}}|episode={{VAL(title)}}|season={{VAL(title)}}|album={{VAL(title)}})}}</label2>
                 <accessories>
                   <unplayedDot/>{{CUT(viewOffset)}}
                   <partiallyPlayedDot/>
@@ -48,7 +48,7 @@
                 </preview>
               </twoLineMenuItem> 
             </items>
-          </menuSection>
+          </menuSection>{{CUT(@RecentlyAdded/Server/size:CUT:0=CUT|1=)}}
         
         </sections>
       </menu>
@@ -56,3 +56,5 @@
     
   </body>
 </atv>
+
+

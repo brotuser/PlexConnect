@@ -11,7 +11,7 @@
       <itemCollectionWithImageHeader id="com.sample.menu-items-with-sections">
       <header>
 	    <imageHeader>
-	      <image insets="0, 0, {{VAL(^aTVScreenResolution:1:720=690|1080=1020)}}, 0" required="true">{{URL(:/fanartcache/{{LFBG("galaxy","{{EVAL(quote_plus("{{TEXT(Plex Library)}}"))}}","","backgrounds/library.jpg","{{VAL(^aTVScreenResolution)}}","fonts/OpenSans/OpenSans-Light.ttf","60","30","E8B146","FFFFFF","right","top","80","40","","List")}})}}</image>
+	      <image insets="0, 0, {{VAL(^aTVScreenResolution:1:720=620|1080=930)}}, 0" required="true">{{URL(:/fanartcache/{{LFBG("galaxy","{{EVAL(quote_plus("{{TEXT(Plex Library)}}"))}}","","backgrounds/library.jpg","{{VAL(^aTVScreenResolution)}}","fonts/OpenSans/OpenSans-Light.ttf","50","","FFFFFF","","right","top","80","90","","List")}})}}</image>
 	    </imageHeader>
       </header>
            
@@ -54,36 +54,21 @@
               <!-- 
               OnDeck -->
               <oneLineMenuItem id="{{VAL(ondeck)}}"
-                                       onPlay="atv.loadURL('{{URL(:/)}}&amp;PlexConnect=LibraryOnDeck')"
-                                       onSelect="atv.loadURL('{{URL(:/)}}&amp;PlexConnect=LibraryOnDeck')">
-                <label>{{TEXT(On Deck)}}</label>
+                                       onPlay="atv.loadURL('{{URL(:/PMS(owned)/library/onDeck)}}&amp;PlexConnect=LibraryOnDeck')"
+                                       onSelect="atv.loadURL('{{URL(:/PMS(owned)/library/onDeck)}}&amp;PlexConnect=LibraryOnDeck')">
+               <label>{{TEXT(On Deck)}}</label>
+
               </oneLineMenuItem>{{CUT($library_ondeck::checked=|unchecked=CUT)}}             
               
-              
-              
-              
-            <!-- /library/sections -->
-              <oneLineMenuItem id="{{VAL(key)}}"
-                                       onPlay="atv.loadURL('{{URL(key)}}')"
-                                       onSelect="atv.loadURL('{{URL(key)}}')"
-                                       onHoldSelect="refreshSection('{{VAL(key)}}', '{{URL(refreshKey)}}')">
-              {{COPY(Directory)}}
-              {{VAR(sections:NoKey:TRUE)}}  <!--within COPY this sets the var to TRUE-->
-                <label>{{VAL(title)}}</label>
-                <preview>
-                  <link>{{URL(key)}}/recentlyAdded?stack=1&amp;X-Plex-Container-Start=0&amp;X-Plex-Container-Size=20&amp;PlexConnect=SectionPreview-{{VAL(type)}}</link>{{CUT(type::a=|photo=CUT|q=)}}
-                  <link>{{URL(key)}}/recentlyAdded?X-Plex-Container-Start=0&amp;X-Plex-Container-Size=20&amp;PlexConnect=SectionPreview-{{VAL(type)}}</link>{{CUT(type:CUT:a=CUT|photo=|q=CUT)}}
-                </preview>
-              </oneLineMenuItem>{{CUT($sectionsposition::Top=CUT|Bottom=CUT|Flow=CUT|Middle=)}} 
-                
                 
                 
                 
               <!-- Recently Added -->
               <oneLineMenuItem id="{{VAL(recentlyadded)}}"
-                                       onPlay="atv.loadURL('{{URL(:/)}}&amp;PlexConnect=LibraryRecentlyAdded')"
-                                       onSelect="atv.loadURL('{{URL(:/)}}&amp;PlexConnect=LibraryRecentlyAdded')">
+                                       onPlay="atv.loadURL('{{URL(:/PMS(owned)/library/recentylAdded)}}&amp;PlexConnect=LibraryRecentlyAdded')"
+                                       onSelect="atv.loadURL('{{URL(:/PMS(owned)/library/recentylAdded)}}&amp;PlexConnect=LibraryRecentlyAdded')">
                 <label>{{TEXT(Recently Added)}}</label>
+                
               </oneLineMenuItem>{{CUT($library_recentlyadded::checked=|unchecked=CUT)}}              
                 
                <!-- Channels -->

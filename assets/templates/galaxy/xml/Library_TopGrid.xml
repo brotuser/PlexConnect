@@ -15,7 +15,7 @@
     <scroller id="com.sample.movie-showcase-grid">
       <header>
         <imageHeader>
-	     <image insets="0, 0, {{VAL(^aTVScreenResolution:1:720=470|1080=720)}}, 0" required="true">{{URL(:/fanartcache/{{LFBG("galaxy","{{EVAL(quote_plus("{{TEXT(Plex Library)}}"))}}","","backgrounds/libraryflow.jpg","{{VAL(^aTVScreenResolution)}}","fonts/OpenSans/OpenSans-Light.ttf","30","","FFFFFF","","center","top","0","190","","LibraryFlow")}})}}</image>
+	     <image insets="0, 0, {{VAL(^aTVScreenResolution:1:720=590|1080=885)}}, 0" required="true">{{URL(:/fanartcache/{{LFBG("galaxy","{{EVAL(quote_plus("{{TEXT(Plex Library)}}"))}}","","backgrounds/library.jpg","{{VAL(^aTVScreenResolution)}}","fonts/OpenSans/OpenSans-Light.ttf","50","","FFFFFF","","center","top","0","90","","Simple")}})}}</image>
 	   </imageHeader>
       </header>
       <items>
@@ -24,18 +24,18 @@
       
         <__COPY__>  
         {{COPY(Server:@main/size::0=|1=COPY)}}
-        <collectionDivider alignment="left" accessibilityLabel="Library">
-            <title>{{VAL(name)}}{{VAL(local::0= &lt;{{TEXT(remote)}}&gt;|0 =)}}</title>
+        <collectionDivider alignment="center" accessibilityLabel="Library">
+            <title>{{VAL(local::0= {{TEXT(Remote)}}|0 =)}}: {{VAL(name)}}</title>
         </collectionDivider>
 
-        <shelf id="shelf_0" columnCount="5">
+        <shelf id="shelf_0" columnCount="4">
             <sections>                             
             <!-- local servers -->
                 <shelfSection>
                    
                     <items>
                         <!-- /library/sections -->
-                        <sixteenByNinePoster id="{{VAL(key)}}" accessibilityLabel="{{VAL(title)}}" 
+                        <sixteenByNinePoster id="{{VAL(key)}}" featured="true" accessibilityLabel="{{VAL(title)}}" 
                                                alwaysShowTitles="{{VAL($sectionicons::Apple=true|Plex=false|Fanart=true)}}"
                                                onPlay="atv.loadURL('{{URL(key)}}')"
                                                onSelect="atv.loadURL('{{URL(key)}}')"
@@ -63,7 +63,7 @@
         </__COPY__>
         
         
-          <collectionDivider alignment="left" accessibilityLabel="On Deck">
+          <collectionDivider alignment="center" accessibilityLabel="On Deck">
             {{CUT(@OnDeck/Server/size:CUT:0=CUT|1=)}}
             <title>{{TEXT(On Deck)}}</title>
         </collectionDivider>{{CUT($library_ondeck::checked=|unchecked=CUT)}}
@@ -89,7 +89,7 @@
           </sections>
         </shelf>{{CUT($library_ondeck::checked=|unchecked=CUT)}}{{CUT(@OnDeck/Server/size:CUT:0=CUT|1=)}}  
 
-        <collectionDivider alignment="left" accessibilityLabel="Recently Added">
+        <collectionDivider alignment="center" accessibilityLabel="Recently Added">
           {{CUT(@RecentlyAdded/Server/size:CUT:0=CUT|1=)}}
           <title>{{TEXT(Recently Added)}}</title>
         </collectionDivider>{{CUT($library_recentlyadded::checked=|unchecked=CUT)}}{{CUT(@RecentlyAdded/Server/size:CUT:0=CUT|1=)}}  
@@ -117,7 +117,7 @@
         </shelf>{{CUT($library_recentlyadded::checked=|unchecked=CUT)}}{{CUT(@RecentlyAdded/Server/size:CUT:0=CUT|1=)}}
               
          
-        <collectionDivider alignment="left" accessibilityLabel="Channels">
+        <collectionDivider alignment="center" accessibilityLabel="Channels">
             <title>{{TEXT(Channels)}}</title>
         </collectionDivider>{{CUT($library_channels:CUT:checked=|unchecked=CUT)}}{{CUT(@VideoChannels/Server/size:CUT:0=CUT|1=)}} 
         <shelf id="shelf_3" columnCount="10">

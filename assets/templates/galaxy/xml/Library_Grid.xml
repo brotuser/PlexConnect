@@ -17,7 +17,7 @@
     {{CUT($libraryview:CUT:=CUT|Grid=|Grid =CUT)}}
       <header>
        <imageHeader>
-	     <image insets="0, 0, {{VAL(^aTVScreenResolution:1:720=470|1080=720)}}, 0" required="true">{{URL(:/fanartcache/{{LFBG("galaxy","{{EVAL(quote_plus("{{TEXT(Plex Library)}}"))}}","","backgrounds/libraryflow.jpg","{{VAL(^aTVScreenResolution)}}","fonts/OpenSans/OpenSans-Light.ttf","30","","FFFFFF","","center","top","","190","","LibraryFlow")}})}}</image>
+	     <image insets="0, 0, {{VAL(^aTVScreenResolution:1:720=590|1080=885)}}, 0" required="true">{{URL(:/fanartcache/{{LFBG("galaxy","{{EVAL(quote_plus("{{TEXT(Plex Library)}}"))}}","","backgrounds/library.jpg","{{VAL(^aTVScreenResolution)}}","fonts/OpenSans/OpenSans-Light.ttf","50","","FFFFFF","","center","top","","90","","Simple")}})}}</image>
 	   </imageHeader>
       </header>
       <items>
@@ -58,10 +58,13 @@
         <!-- servers -->
         <__COPY__>
         {{COPY(Server:@main/size::0=|1=COPY)}}
-          <collectionDivider alignment="left" accessibilityLabel="Show_Bookcase_Divider">
+          <collectionDivider alignment="center" accessibilityLabel="{{VAL(title2)}}">
+          <title>{{TEXT(Sections)}}</title>
+         </collectionDivider>{{CUT(@main/size:CUT:0=CUT|1=|2=CUT)}} 
+          <collectionDivider alignment="center" accessibilityLabel="Show_Bookcase_Divider">
             <title>{{VAL(name)}}{{VAL(local::0=&lt;{{TEXT(remote)}}&gt;|0 =)}}</title>
           </collectionDivider>{{CUT(@main/size:CUT:0=CUT|1=CUT|2=)}}
-          <shelf id="Library_Grid_{{VAL(name)}}" columnCount="5">
+          <shelf id="Library_Grid_{{VAL(name)}}" columnCount="4">
             <sections>
               <shelfSection>
                 <items>
@@ -99,7 +102,7 @@
 
             
        <!-- ON Deck -->
-      <collectionDivider alignment="left" accessibilityLabel="On Deck">
+      <collectionDivider alignment="center" accessibilityLabel="On Deck">
         {{CUT(@OnDeck/Server/size:CUT:0=CUT|1=)}}
         <title>{{TEXT(On Deck)}}</title>
       </collectionDivider>{{CUT($library_ondeck::checked=|unchecked=CUT)}}
@@ -109,7 +112,7 @@
           <shelfSection>
             {{COPY(Server:@OnDeck/size::0=|1=COPY)}}
             <items>
-                <sixteenByNinePoster id="{{VAL(key)}}" accessibilityLabel="{{VAL(title)}}" alwaysShowTitles="{{VAL($showtitles_library::Highlighted Only=false|Show All=true)}}"
+                <sixteenByNinePoster id="{{VAL(key)}}" featured="true" accessibilityLabel="{{VAL(title)}}" alwaysShowTitles="{{VAL($showtitles_library::Highlighted Only=false|Show All=true)}}"
                             onPlay="atv.loadURL('{{URL(key)}}&amp;PlexConnect=Play')"
                             onSelect="atv.loadURL('{{URL(key)}}&amp;PlexConnect={{VAL(type::movie=Movie|episode=Episode)}}PrePlay')"
                             onHoldSelect="scrobbleMenu('{{URL(key)}}&amp;PlexConnect=ScrobbleMenuVideo')">
@@ -128,7 +131,7 @@
 
    
         
-         <collectionDivider alignment="left" accessibilityLabel="Recently Added">
+         <collectionDivider alignment="center" accessibilityLabel="Recently Added">
           {{CUT(@RecentlyAdded/Server/size:CUT:0=CUT|1=)}}
           <title>{{TEXT(Recently Added)}}</title>
         </collectionDivider>{{CUT($library_recentlyadded::checked=|unchecked=CUT)}}{{CUT(@RecentlyAdded/Server/size:CUT:0=CUT|1=)}} 
@@ -160,17 +163,17 @@
         
         
    
-        <collectionDivider alignment="left" accessibilityLabel="Channels">
+        <collectionDivider alignment="center" accessibilityLabel="Channels">
             <title>{{TEXT(Channels)}}</title>
         </collectionDivider>{{CUT($library_channels:CUT:checked=|unchecked=CUT)}}{{CUT(@VideoChannels/Server/size:CUT:0=CUT|1=)}} 
-        <shelf id="shelf_3" columnCount="4">
+        <shelf id="shelf_3" columnCount="7">
             {{CUT(@VideoChannels/Server/size:CUT:0=CUT|1=)}}
             <sections>                             
                 <shelfSection>
                     {{COPY(@VideoChannels/Server:size::0=|1=COPY)}}
                     <items>
                         <!-- /library/sections -->
-                        <sixteenByNinePoster id="Video_{{VAL(key)}}" alwaysShowTitles="{{VAL($showtitles_channels::Highlighted Only=false|Show All=true)}}"
+                        <sixteenByNinePoster id="Video_{{VAL(key)}}" featured="true" alwaysShowTitles="{{VAL($showtitles_channels::Highlighted Only=false|Show All=true)}}"
                                        onPlay="atv.loadURL('{{URL(key)}}&amp;PlexConnect=ChannelsVideo')"
                                        onSelect="atv.loadURL('{{URL(key)}}&amp;PlexConnect=ChannelsVideo')">
                             {{COPY(Directory)}}
