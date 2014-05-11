@@ -6,8 +6,8 @@
   </head>
 
   <body>
-      {{ADDXML(OnDeck::/library/onDeck)}}      
-      {{ADDXML(RecentlyAdded::/library/recentlyAdded)}}
+      {{ADDXML(OnDeck::/library/onDeck?X-Plex-Container-Start=0&amp;X-Plex-Container-Size=40)}}      
+      {{ADDXML(RecentlyAdded::/library/recentlyAdded?X-Plex-Container-Start=0&amp;X-Plex-Container-Size=40)}}
       {{ADDXML(VideoChannels::/channels/all)}}
       {{VAR(items:NoKey:FALSE)}}
       {{VAR(sections:NoKey:FALSE)}}  <!--this sets the var to FALSE-->
@@ -15,7 +15,7 @@
     <scroller id="com.sample.movie-showcase-grid">
       <header>
         <imageHeader>
-	     <image insets="0, 0, {{VAL(^aTVScreenResolution:1:720=460|1080=720)}}, 0" required="true">{{URL(:/fanartcache/{{LFBG("galaxy","{{EVAL(quote_plus("{{TEXT(Plex Library)}}"))}}","{{EVAL(quote_plus("{{TEXT(Plex Shared Library)}}"))}}","backgrounds/libraryflow.jpg","{{VAL(^aTVScreenResolution)}}","fonts/OpenSans/OpenSans-Light.ttf","40","","FFFFFF","","center","top","0","200","","LibraryFlow")}})}}</image>
+	     <image insets="0, 0, {{VAL(^aTVScreenResolution:1:720=470|1080=720)}}, 0" required="true">{{URL(:/fanartcache/{{LFBG("galaxy","{{EVAL(quote_plus("{{TEXT(Plex Library)}}"))}}","","backgrounds/libraryflow.jpg","{{VAL(^aTVScreenResolution)}}","fonts/OpenSans/OpenSans-Light.ttf","30","","FFFFFF","","center","top","0","190","","LibraryFlow")}})}}</image>
 	   </imageHeader>
       </header>
       <items>
@@ -35,7 +35,7 @@
                    
                     <items>
                         <!-- /library/sections -->
-                        <moviePoster id="{{VAL(key)}}" accessibilityLabel="{{VAL(title)}}" featured="true" 
+                        <sixteenByNinePoster id="{{VAL(key)}}" accessibilityLabel="{{VAL(title)}}" 
                                                alwaysShowTitles="{{VAL($sectionicons::Apple=true|Plex=false|Fanart=true)}}"
                                                onPlay="atv.loadURL('{{URL(key)}}')"
                                                onSelect="atv.loadURL('{{URL(key)}}')"
@@ -43,20 +43,19 @@
                             {{COPY(Directory)}}
                             {{VAR(sections:NoKey:TRUE)}}  <!--within COPY this sets the var to TRUE-->
                             <title>{{VAL(title)}}</title>
-                            <image>{{IMAGEURL(thumb::768)}}</image>{{CUT($sectionicons_shared::Apple=CUT|Plex=|Fanart=CUT|Custom=CUT)}}
                             <image>{{IMAGEURL(art::768)}}</image>{{CUT($sectionicons_shared::Apple=CUT|Plex=CUT|Fanart=|Custom=CUT)}}
-                            <image>{{URL(:/templates/galaxy/icons/{{VAL(type)}}.png)}}</image>{{CUT($sectionicons_shared::Apple=|Plex=CUT|Fanart=CUT|Custom=CUT)}}
-                            <image>{{URL(:/templates/galaxy/icons/{{EVAL("{{VAL(title)}}".replace(' ', ''))}}.png)}}</image>{{CUT($sectionicons_shared::Apple=CUT|Plex=CUT|Fanart=CUT|Custom=)}}
+                            <image>{{IMAGEURL(thumb::768)}}</image>{{CUT($sectionicons_shared::Apple=CUT|Plex=|Fanart=CUT|Custom=CUT)}}
+                            <image>{{URL(:/templates/galaxy/images/icons/{{VAL(type)}}.png)}}</image>{{CUT($sectionicons_shared::Apple=|Plex=CUT|Fanart=CUT|Custom=CUT)}}
                             <defaultImage>resource://16X9.png</defaultImage>
-                        </moviePoster>
+                        </sixteenByNinePoster>
                         
                         <!-- search -->
-                        <moviePoster id="{{VAL(searchKey)}}" featured="true" alwaysShowTitles="{{VAL($sectionicons::Apple=true|Plex=false|Fanart=true)}}"
+                        <sixteenByNinePoster id="{{VAL(searchKey)}}" featured="true" alwaysShowTitles="{{VAL($sectionicons::Apple=true|Plex=false|Fanart=true)}}"
                                                onPlay="atv.loadURL('{{URL(searchKey)}}')"
                                                onSelect="atv.loadURL('{{URL(searchKey)}}')">
                         <title>{{TEXT(Search)}}</title>
-                        <image>{{URL(:/templates/galaxy/icons/search.png)}}</image>
-                      </moviePoster>{{CUT($library_search::Show=|Hide=CUT)}} 
+                        <image>{{URL(:/templates/galaxy/images/icons/search.png)}}</image>
+                      </sixteenByNinePoster>{{CUT($library_search::Show=|Hide=CUT)}} 
                     </items>
                 </shelfSection>
           </sections>
@@ -74,7 +73,7 @@
             <shelfSection>
               {{COPY(Server:@OnDeck/size::0=|1=COPY)}}
               <items>
-                <moviePoster id="{{VAL(key)}}" accessibilityLabel="{{VAL(title)}}" alwaysShowTitles="{{VAL($showtitles_library::Highlighted Only=false|Show All=true)}}"
+                <sixteenByNinePoster id="{{VAL(key)}}" accessibilityLabel="{{VAL(title)}}" alwaysShowTitles="{{VAL($showtitles_library::Highlighted Only=false|Show All=true)}}"
                             onPlay="atv.loadURL('{{URL(key)}}&amp;PlexConnect=Play')"
                             onSelect="atv.loadURL('{{URL(key)}}&amp;PlexConnect={{VAL(type::movie=Movie|episode=Episode)}}PrePlay')"
                             onHoldSelect="scrobbleMenu('{{URL(key)}}&amp;PlexConnect=ScrobbleMenuVideo')">
@@ -84,7 +83,7 @@
                   <subtitle>{{VAL(type::movie={{VAL(year)}}|episode={{episodestring(parentIndex:0:index:0)}})}}</subtitle>
                   <image>{{IMAGEURL({{VAL(type::movie=thumb|episode=grandparentThumb)}}::384)}}</image>
                   <defaultImage>resource://Poster.png</defaultImage>
-                </moviePoster>
+                </sixteenByNinePoster>
               </items>
             </shelfSection>
           </sections>
@@ -100,9 +99,9 @@
             <shelfSection>
               {{COPY(Server:@RecentlyAdded/size::0=|1=COPY)}}
               <items>
-                <moviePoster id="{{VAL(key)}}" accessibilityLabel="{{VAL(title)}}" alwaysShowTitles="{{VAL($showtitles_library::Highlighted Only=false|Show All=true)}}"
+                <sixteenByNinePoster id="{{VAL(key)}}" accessibilityLabel="{{VAL(title)}}" alwaysShowTitles="{{VAL($showtitles_library::Highlighted Only=false|Show All=true)}}"
                             onPlay="atv.loadURL('{{URL(key)}}&amp;PlexConnect=Play')"
-                            onSelect="atv.loadURL('{{URL(key)}}&amp;PlexConnect={{VAL(type::movie=Movie|episode=Episode)}}PrePlay')"
+                            onSelect="atv.loadURL('{{URL(key)}}&amp;PlexConnect={{VAL(type::movie=MoviePrePlay|episode=EpisodePrePlay|season=season)}}')"
                             onHoldSelect="scrobbleMenu('{{URL(key)}}&amp;PlexConnect=ScrobbleMenuVideo')">
                   {{COPY(@RecentlyAdded/Server/Video,Directory)}}
                   {{VAR(items:NoKey:TRUE)}} 
@@ -110,8 +109,8 @@
                   <subtitle>{{VAL(type::movie={{VAL(year)}}|episode={{VAL(title)}}|season={{VAL(title)}}|album={{VAL(title)}})}}</subtitle>
                   <badgeCount>{{unwatchedCountGrid(leafCount:0:viewedLeafCount:0)}}</badgeCount>{{CUT($showunwatched::False=CUT|True=)}}
                   <image>{{IMAGEURL(thumb::384)}}</image>        
-                  <defaultImage>resource://{{VAL(type::movie=Poser|episode=Poster|season=Poster|album=Square|track=Square)}}.png</defaultImage>
-                </moviePoster>
+                  <defaultImage>resource://{{VAL(type::movie=Poster|episode=Poster|season=Poster|album=Square|track=Square)}}.png</defaultImage>
+                </sixteenByNinePoster>
               </items>
             </shelfSection>
           </sections>
@@ -128,7 +127,7 @@
                     {{COPY(@VideoChannels/Server:size::0=|1=COPY)}}
                     <items>
                         <!-- /library/sections -->
-                        <moviePoster id="Video_{{VAL(key)}}" featured="true" alwaysShowTitles="{{VAL($showtitles_channels::Highlighted Only=false|Show All=true)}}"
+                        <sixteenByNinePoster id="Video_{{VAL(key)}}" featured="true" alwaysShowTitles="{{VAL($showtitles_channels::Highlighted Only=false|Show All=true)}}"
                                        onPlay="atv.loadURL('{{URL(key)}}&amp;PlexConnect=ChannelsVideo')"
                                        onSelect="atv.loadURL('{{URL(key)}}&amp;PlexConnect=ChannelsVideo')">
                             {{COPY(Directory)}}
@@ -136,7 +135,7 @@
                             <title>{{VAL(title)}}</title>
                             <image>{{IMAGEURL(thumb::)}}</image>
                             <defaultImage>resource://Square.png</defaultImage>
-                        </moviePoster>
+                        </sixteenByNinePoster>
                     </items>
                 </shelfSection>
           </sections>

@@ -15,21 +15,21 @@
     <scroller id="com.sample.movie-showcase-grid">
       <header>
         <imageHeader>
-	      <image insets="0, 0, {{VAL(^aTVScreenResolution:1:720=480|1080=720)}}, 0" required="true">{{URL(:/fanartcache/{{LFBG("galaxy","{{EVAL(quote_plus("{{VAL(title1)}}"))}}","","backgrounds/movie.jpg","{{VAL(^aTVScreenResolution)}}","fonts/OpenSans/OpenSans-Light.ttf","60","30","9BAEB9","FFFFFF","center","top","","110","","ChannelGrid")}})}}</image>
+	      <image insets="0, 0, {{VAL(^aTVScreenResolution:1:720=590|1080=885)}}, 0" required="true">{{URL(:/fanartcache/{{LFBG("galaxy","{{EVAL(quote_plus("{{VAL(title1)}}"))}}","","backgrounds/movie.jpg","{{VAL(^aTVScreenResolution)}}","fonts/OpenSans/OpenSans-Light.ttf","50","20","6a9acf","FFFFFF","center","top","","90","","Simple")}})}}</image>
 	    </imageHeader>
       </header>
       
       <items>
-        <collectionDivider alignment="left" accessibilityLabel="On Deck">
+        <collectionDivider alignment="center" accessibilityLabel="On Deck">
           {{CUT(@OnDeck/size:CUT:0=CUT|1=)}}
           <title>{{TEXT(On Deck)}}</title>
         </collectionDivider>
-        <shelf id="shelf_0" columnCount="7">
+        <shelf id="shelf_0" columnCount="8">
           {{CUT(@OnDeck/size:CUT:0=CUT|1=)}}
           <sections>
             <shelfSection>
               <items>
-                <moviePoster id="{{VAL(key)}}" accessibilityLabel="{{VAL(title)}}" alwaysShowTitles="{{VAL($showtitles_movies::Highlighted Only=false|Show All=true)}}"
+                <sixteenByNinePoster id="{{VAL(key)}}" featured="true" accessibilityLabel="{{VAL(title)}}" alwaysShowTitles="{{VAL($showtitles_movies::Highlighted Only=false|Show All=true)}}"
                             onPlay="atv.loadURL('{{URL(key)}}&amp;PlexConnect=Play')"
                             onSelect="atv.loadURL('{{URL(key)}}&amp;PlexConnect=MoviePrePlay')"
                             onHoldSelect="scrobbleMenu('{{URL(key)}}&amp;PlexConnect=ScrobbleMenuVideo')">
@@ -39,22 +39,22 @@
                   <subtitle>{{VAL(year:&#x00AD;)}}</subtitle>
                   <image>{{IMAGEURL(thumb::384)}}</image>
                   <defaultImage>resource://Poster.png</defaultImage>
-                </moviePoster>
+                </sixteenByNinePoster>
               </items>
             </shelfSection>
           </sections>
         </shelf>
 
-        <collectionDivider alignment="left" accessibilityLabel="Recently Added">
+        <collectionDivider alignment="center" accessibilityLabel="Recently Added">
           {{CUT(@RecentlyAdded/size:CUT:0=CUT|1=)}}
           <title>{{TEXT(Recently Added)}}</title>
         </collectionDivider>
-        <shelf id="shelf_1" columnCount="7">
+        <shelf id="shelf_1" columnCount="8">
           {{CUT(@RecentlyAdded/size:CUT:0=CUT|1=)}}
           <sections>
             <shelfSection>
               <items>
-                <moviePoster id="{{VAL(key)}}" accessibilityLabel="{{VAL(title)}}" alwaysShowTitles="{{VAL($showtitles_movies::Highlighted Only=false|Show All=true)}}"
+                <sixteenByNinePoster id="{{VAL(key)}}" featured="true" accessibilityLabel="{{VAL(title)}}" alwaysShowTitles="{{VAL($showtitles_movies::Highlighted Only=false|Show All=true)}}"
                             onPlay="atv.loadURL('{{URL(key)}}&amp;PlexConnect=Play')"
                             onSelect="atv.loadURL('{{URL(key)}}&amp;PlexConnect=MoviePrePlay')"
                             onHoldSelect="scrobbleMenu('{{URL(key)}}&amp;PlexConnect=ScrobbleMenuVideo')">
@@ -64,22 +64,22 @@
                   <subtitle>{{VAL(year:&#x00AD;)}}</subtitle>
                   <image>{{IMAGEURL(thumb::384)}}</image>
                   <defaultImage>resource://Poster.png</defaultImage>
-                </moviePoster>
+                </sixteenByNinePoster>
               </items>
             </shelfSection>
           </sections>
         </shelf>
 
-        <collectionDivider alignment="left" accessibilityLabel="Recently Released">
+        <collectionDivider alignment="center" accessibilityLabel="Recently Released">
           {{CUT(@RecentlyReleased/size:CUT:0=CUT|1=)}}
           <title>{{TEXT(Recently Released)}}</title>
         </collectionDivider>
-        <shelf id="shelf_2" columnCount="7">
+        <shelf id="shelf_2" columnCount="8">
           {{CUT(@RecentlyReleased/size:CUT:0=CUT|1=)}}
           <sections>
             <shelfSection>
               <items>
-                <moviePoster id="{{VAL(key)}}" accessibilityLabel="{{VAL(title)}}" alwaysShowTitles="{{VAL($showtitles_movies::Highlighted Only=false|Show All=true)}}"
+                <sixteenByNinePoster id="{{VAL(key)}}" featured="true" accessibilityLabel="{{VAL(title)}}" alwaysShowTitles="{{VAL($showtitles_movies::Highlighted Only=false|Show All=true)}}"
                             onPlay="atv.loadURL('{{URL(key)}}&amp;PlexConnect=Play')"
                             onSelect="atv.loadURL('{{URL(key)}}&amp;PlexConnect=MoviePrePlay')"
                             onHoldSelect="scrobbleMenu('{{URL(key)}}&amp;PlexConnect=ScrobbleMenuVideo')">
@@ -89,7 +89,7 @@
                   <subtitle>{{VAL(year:&#x00AD;)}}</subtitle>
                   <image>{{IMAGEURL(thumb::384)}}</image>
                   <defaultImage>resource://Poster.png</defaultImage>
-                </moviePoster>
+                </sixteenByNinePoster>
               </items>
             </shelfSection>
           </sections>

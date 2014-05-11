@@ -7,13 +7,16 @@
     <scroller id="com.sample.homevideo-grid">
       <header>
  	  <imageHeader>
-	      <image insets="0, 0, {{VAL(^aTVScreenResolution:1:720=480|1080=720)}}, 0" required="true">{{URL(:/fanartcache/{{LFBG("galaxy","{{EVAL(quote_plus("{{VAL(title1)}}"))}}","{{EVAL(quote_plus("{{VAL(title2)}}"))}}","backgrounds/movie.jpg","{{VAL(^aTVScreenResolution)}}","fonts/OpenSans/OpenSans-Light.ttf","60","30","9BAEB9","FFFFFF","center","top","","110","","Grid")}})}}</image>
+	      <image insets="0, 0, {{VAL(^aTVScreenResolution:1:720=590|1080=930)}}, 0" required="true">{{URL(:/fanartcache/{{LFBG("galaxy","{{EVAL(quote_plus("{{VAL(title1)}}"))}}","","backgrounds/movie.jpg","{{VAL(^aTVScreenResolution)}}","fonts/OpenSans/OpenSans-Light.ttf","50","20","6a9acf","FFFFFF","center","top","","90","","Simple")}})}}</image>
 	    </imageHeader>
       </header>
       <items>
-        <grid columnCount="7" id="grid_0">
+      <collectionDivider alignment="center" accessibilityLabel="{{VAL(title2)}}">
+        <title>{{VAL(title2)}}</title>
+      </collectionDivider>
+        <grid columnCount="8" id="grid_0">
           <items>
-            <moviePoster id="{{VAL(key)}}" alwaysShowTitles="{{VAL($showtitles_movies::Highlighted Only=false|Show All=true)}}" 
+            <sixteenByNinePoster id="{{VAL(key)}}" featured="true" alwaysShowTitles="{{VAL($showtitles_movies::Highlighted Only=false|Show All=true)}}" 
                              onPlay="atv.loadURL('{{URL(key)}}&amp;PlexConnect=MovieByFolder')"
                              onSelect="atv.loadURL('{{URL(key)}}&amp;PlexConnect=MovieByFolder')">
               {{COPY(Directory)}}
@@ -21,9 +24,9 @@
               <subtitle>{{VAL(year:&#x00AD;)}}</subtitle>
               <image>{{URL(:/templates/galaxy/images/Folder.png)}}</image>
               <defaultImage>resource://Poster.png</defaultImage>
-            </moviePoster>
+            </sixteenByNinePoster>
             
-            <moviePoster id="{{VAL(key)}}" alwaysShowTitles="{{VAL($showtitles_movies::Highlighted Only=false|Show All=true)}}"
+            <sixteenByNinePoster id="{{VAL(key)}}" featured="true" alwaysShowTitles="{{VAL($showtitles_movies::Highlighted Only=false|Show All=true)}}"
                              onPlay="atv.loadURL('{{URL(key)}}&amp;PlexConnect=Play')"
                              onSelect="atv.loadURL('{{URL(key)}}&amp;PlexConnect=MoviePrePlay')">
               {{COPY(Video)}}
@@ -31,7 +34,7 @@
               <subtitle>{{VAL(year:&#x00AD;)}}</subtitle>
               <image>{{IMAGEURL(thumb::384)}}</image>
               <defaultImage>resource://Poster.png</defaultImage>
-            </moviePoster>
+            </sixteenByNinePoster>
           </items>
         </grid>
       </items>
@@ -43,7 +46,7 @@
     <itemCollectionWithImageHeader id="HomeVideoList">
       <header>
 	  <imageHeader>
-	      <image insets="0, 0, {{VAL(^aTVScreenResolution:1:720=640|1080=960)}}, 0" required="true">{{URL(:/fanartcache/{{LFBG("galaxy","{{EVAL(quote_plus("{{VAL(title1)}}"))}}","{{EVAL(quote_plus("{{VAL(title2)}}"))}}","","{{VAL(^aTVScreenResolution)}}","fonts/OpenSans/OpenSans-Light.ttf","60","30","FFFFFF","FFFFFF","right","top","80","40","","List")}})}}</image>
+	      <image insets="0, 0, {{VAL(^aTVScreenResolution:1:720=660|1080=930)}}, 0" required="true">{{URL(:/fanartcache/{{LFBG("galaxy","{{EVAL(quote_plus("{{VAL(title1)}}"))}}","{{EVAL(quote_plus("{{VAL(title2)}}"))}}","backgrounds/movie.jpg","{{VAL(^aTVScreenResolution)}}","fonts/OpenSans/OpenSans-Light.ttf","50","20","6a9acf","FFFFFF","right","top","80","90","","List")}})}}</image>
 	    </imageHeader>
       </header>
       <menu>
@@ -92,7 +95,7 @@
     <itemCollectionWithImageHeader id="HomeVideo_DetailedList">
       <header>
 	  <imageHeader>
-	      <image insets="0, 0, {{VAL(^aTVScreenResolution:1:720=640|1080=960)}}, 0" required="true">{{URL(:/fanartcache/{{LFBG("galaxy","{{EVAL(quote_plus("{{VAL(title1)}}"))}}","{{EVAL(quote_plus("{{VAL(title2)}}"))}}","","{{VAL(^aTVScreenResolution)}}","HelveticaNeueThin.ttf","60","30","FFFFFF","FFFFFF","right","top","80","40","","List")}})}}</image>
+	      <image insets="0, 0, {{VAL(^aTVScreenResolution:1:720=660|1080=930)}}, 0" required="true">{{URL(:/fanartcache/{{LFBG("galaxy","{{EVAL(quote_plus("{{VAL(title1)}}"))}}","{{EVAL(quote_plus("{{VAL(title2)}}"))}}","backgrounds/movie.jpg","{{VAL(^aTVScreenResolution)}}","HelveticaNeueThin.ttf","50","30","6a9acf","FFFFFF","right","top","80","90","","List")}})}}</image>
 	    </imageHeader>
       </header>
 
