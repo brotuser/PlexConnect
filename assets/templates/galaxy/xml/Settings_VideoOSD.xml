@@ -9,8 +9,8 @@
     <itemCollectionWithImageHeader id="SettingsPage_VideoOSD">
       <header>
         <imageHeader>
-          <image insets="0, 0, {{VAL(^aTVScreenResolution:1:720=680|1080=1020)}}, 0" required="true">
-            {{URL(:/fanartcache/{{LFBG("galaxy","{{EVAL(quote_plus("{{TEXT(Settings)}}"))}}","","backgrounds/settings.jpg","{{VAL(^aTVScreenResolution)}}","fonts/OpenSans/OpenSans-Light.ttf","60","","9A9A9A","","right","top","80","40","","DetailedList")}})}}
+          <image insets="0, 0, {{VAL(^aTVScreenResolution:1:720=640|1080=960)}}, 0" required="true">
+           {{URL(:/fanartcache/{{LFBG("galaxy","{{EVAL(quote_plus("{{TEXT(Settings)}}"))}}","","backgrounds/settings.jpg","{{VAL(^aTVScreenResolution)}}","fonts/OpenSans/OpenSans-Light.ttf","50","","9A9A9A","","right","top","80","90","","DetailedList")}})}}
           </image>
         </imageHeader>
       </header>
