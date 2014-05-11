@@ -1,0 +1,53 @@
+<atv>
+  <head>
+    <script src="{{URL(:/js/utils.js)}}" />
+    <script src="{{URL(:/js/scrobble.js)}}" />
+  </head>
+
+  {{VAR(description:summary)}}
+  
+  <body>
+     <itemCollectionWithImageHeader id="com.sample.menu-items-with-sections" volatile="true" onVolatileReload="atv.loadAndSwapURL('{{URL()}}')">
+  	<header>
+  	<!--Fullscreen-->
+	    <imageHeader>
+	      <image insets="0, 0, {{VAL(^aTVScreenResolution:1:720=640|1080=960)}}, 0" required="true">{{URL(:/fanartcache/{{LFBG("plex","{{EVAL(quote_plus("{{VAL(title1)}}"))}}","{{EVAL(quote_plus("{{VAL(title2)}}"))}}","{{IMAGEURL(art:::)}}","{{VAL(^aTVScreenResolution)}}","fonts/OpenSans/OpenSans-Light.ttf","60","30","FFFFFF","FFFFFF","right","top","80","40","","DetailedList")}})}}</image>
+	    </imageHeader>
+	</header>
+    <!--Banner-->
+      <menu>
+        <sections>
+          <menuSection>
+            <items>
+              <twoLineEnhancedMenuItem id="{{VAL(key)}}" onPlay="atv.loadURL('{{URL(key)}}')"
+                                                         onSelect="atv.loadURL('{{URL(key)}}')"
+                                                         onHoldSelect="scrobbleMenu('{{VAL(%baseURL)}}', '{{VAL(%accesstoken)}}', '{{VAL(ratingKey)}}', '{{TEXT(Season)}}');">
+                {{COPY(Directory)}}
+                <label>{{VAL(title)}}</label>
+                <label2>{{VAL(leafCount)}} {{TEXT(Episodes)}}</label2>
+                <rightLabel>{{unwatchedCountList(leafCount:0:viewedLeafCount:0)}}</rightLabel>{{CUT($showunwatched::False=CUT|True=)}}
+                <image>{{IMAGEURL(thumb::384)}}</image>										  
+                <defaultImage>resource://Poster.png</defaultImage>
+                <preview>
+                  <keyedPreview>
+                    <title>{{VAL(title)}}</title>
+                    <summary>{{VAL(#description)}}</summary>
+                    <image>{{IMAGEURL(thumb::384)}}</image>
+
+                  </keyedPreview>
+
+                </preview>
+              </twoLineEnhancedMenuItem>{{CUT(Directory/title:CUT:=)}}
+              
+              <oneLineMenuItem id="none">
+                <label>{{TEXT(No Seasons)}}</label>
+              </oneLineMenuItem>{{CUT(Directory/title::=CUT)}}
+            </items>
+          </menuSection>
+        </sections>
+      </menu>
+    </itemCollectionWithImageHeader>
+ 
+
+ </body>
+</atv>

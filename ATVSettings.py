@@ -10,9 +10,17 @@ from Debug import *  # dprint()
 
 
 options = { \
-    'template'                      :('default', 'stoffez', 'galaxy'), \
+    'template'                      :('default', 'stoffez', 'galaxy', 'plex'), \
 #TemplateSettings	
-
+    'plex_libraryview_remote'        	:('TopGrid', 'Bookcase', 'List'), \
+    'plex_sectionicons'              	:('Fanart', 'Apple', 'Plex'), \
+    'plex_sectionicons_shared'       	:('Fanart', 'Apple', 'Plex'), \
+    'plex_sectionsposition'          	:('Flow', 'Top'), \
+    'plex_library_search'            	:('Show', 'Hide'), \
+    'plex_library_ondeck'            	:('checked', 'unchecked'), \
+    'plex_library_recentlyadded'     	:('checked', 'unchecked'), \
+    'plex_library_channels'          	:('unchecked', 'checked'), \
+    'plex_showtitles_library'        	:('Show All', 'Highlighted Only'), \
 
     'libraryview_remote'        	:('TopGrid', 'Bookcase', 'List'), \
     'sectionicons'              	:('Fanart', 'Apple', 'Plex'), \
