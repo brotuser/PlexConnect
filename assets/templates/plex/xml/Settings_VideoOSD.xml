@@ -10,7 +10,7 @@
       <header>
         <imageHeader>
           <image insets="0, 0, {{VAL(^aTVScreenResolution:1:720=640|1080=960)}}, 0" required="true">
-           {{URL(:/fanartcache/{{LFBG("plex","{{EVAL(quote_plus("{{TEXT(Settings)}}"))}}","","backgrounds/settings.jpg","{{VAL(^aTVScreenResolution)}}","fonts/OpenSans/OpenSans-Light.ttf","50","","FFFFFF","","right","top","80","90","","DetailedList")}})}}
+           {{URL(:/fanartcache/{{LFBG("plex","{{EVAL(quote_plus("{{TEXT(Settings)}}"))}}","","backgrounds/plexdefault.png","{{VAL(^aTVScreenResolution)}}","fonts/OpenSans/OpenSans-Light.ttf","50","","FFFFFF","","right","top","80","90","","DetailedList")}})}}
           </image>
         </imageHeader>
       </header>
