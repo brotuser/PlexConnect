@@ -42,7 +42,7 @@
             <items>
               <oneLineMenuItem id="ShowView" onSelect="toggleSettings('ShowView', 'Settings_TVShows')">
                 <label>{{TEXT(TV Show View)}}</label>
-                <rightLabel>{{SETTING(showview)}}</rightLabel>
+                <rightLabel>{{SETTING(plex_showview)}}</rightLabel>
               </oneLineMenuItem>
               <oneLineMenuItem id="SeasonView" onSelect="toggleSettings('SeasonView', 'Settings_TVShows')">
                 <label>{{TEXT(Season View)}}</label>

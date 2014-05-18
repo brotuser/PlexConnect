@@ -47,7 +47,7 @@
             <items>
               <oneLineMenuItem id="ChannelView" onSelect="toggleSettings('ChannelView', 'Settings_TopLevel')">
                 <label>{{TEXT(Channel View)}}</label>
-                <rightLabel>{{SETTING(channelview)}}</rightLabel>
+                <rightLabel>{{SETTING(plex_channelview)}}</rightLabel>
               </oneLineMenuItem>
               <oneLineMenuItem id="ShowTitles_Channels" onSelect="toggleSettings('ShowTitles_Channels', 'Settings_TopLevel')">
                 <label>{{TEXT(Poster Titles)}}</label>

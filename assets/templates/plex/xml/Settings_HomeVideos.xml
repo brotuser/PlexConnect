@@ -42,7 +42,7 @@
             <items>
               <oneLineMenuItem id="HomeVideoView" onSelect="toggleSettings('HomeVideoView', 'Settings_HomeVideos')">
                 <label>{{TEXT(Home Video View)}}</label>
-                <rightLabel>{{SETTING(homevideoview)}}</rightLabel>
+                <rightLabel>{{SETTING(plex_homevideoview)}}</rightLabel>
               </oneLineMenuItem>
               <oneLineMenuItem id="ShowTitles_HomeVideos" onSelect="toggleSettings('ShowTitles_HomeVideos', 'Settings_HomeVideos')">
                 <label>{{TEXT(Poster Titles)}}</label>
