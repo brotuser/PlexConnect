@@ -16,9 +16,9 @@ options = { \
 #plex
     'plex_libraryview_remote'       :('Top Paged Grid', 'Top Grid', 'Bookcase', 'List'), \
     'plex_libraryview'              :('Paged Grid', 'Grid', 'List', 'Bookcase'), \
-    'plex_movieview'                :('Paged Grid','Grid', 'List', 'Detailed List'), \
-    'plex_homevideoview'            :('Grid', 'List', 'Detailed List'), \
-    'plex_showview'                 :('List', 'Grid', 'Bookcase'), \
+    'plex_movieview'                :('Paged Grid', 'Grid', 'List', 'Detailed List'), \
+    'plex_homevideoview'            :('Paged Grid', 'Grid', 'List', 'Detailed List'), \
+    'plex_showview'                 :('Paged Grid', 'List', 'Grid', 'Bookcase'), \
     'plex_channelview'              :('List', 'Grid', 'Bookcase'), \
     'plex_sectionicons'              :('Fanart', 'Apple', 'Plex'), \
     'plex_sectionicons_shared'       :('Fanart', 'Apple', 'Plex'), \

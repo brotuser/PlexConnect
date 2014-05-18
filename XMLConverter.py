@@ -319,7 +319,7 @@ def XML_PMS2aTV(PMS_address, path, options):
         if template == "default":
           XMLtemplate = 'Show_'+g_ATVSettings.getSetting(options['PlexConnectUDID'], 'showview')+'.xml'  
         else:
-          XMLtemplate = 'Show_'+g_ATVSettings.getSetting(options['PlexConnectUDID'], template+'_showview')+'.xml' 
+          XMLtemplate = 'Show_'+g_ATVSettings.getSetting(options['PlexConnectUDID'], template+'_showview').replace(' ','')+'.xml' 
           
     elif cmd == 'TVSecondary':
         XMLtemplate = 'TVSecondary.xml'
