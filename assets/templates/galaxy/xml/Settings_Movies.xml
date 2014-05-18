@@ -40,7 +40,7 @@
         <sections>
           <menuSection>
             <items>
-              <oneLineMenuItem id="MovieView" onSelect="toggleSettings('galaxy_MovieView', 'Settings_Movies')">
+              <oneLineMenuItem id="galaxy_MovieView" onSelect="toggleSettings('galaxy_MovieView', 'Settings_Movies')">
                 <label>{{TEXT(Movie View)}}</label>
                 <rightLabel>{{SETTING(galaxy_movieview)}}</rightLabel>
               </oneLineMenuItem> 

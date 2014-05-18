@@ -45,7 +45,7 @@
               </horizontalDivider>
             </header>
             <items>
-              <oneLineMenuItem id="ChannelView" onSelect="toggleSettings('galaxy_ChannelView', 'Settings_TopLevel')">
+              <oneLineMenuItem id="galaxy_ChannelView" onSelect="toggleSettings('galaxy_ChannelView', 'Settings_TopLevel')">
                 <label>{{TEXT(Channel View)}}</label>
                 <rightLabel>{{SETTING(galaxy_channelview)}}</rightLabel>
               </oneLineMenuItem>

@@ -40,7 +40,7 @@
         <sections>
           <menuSection>
             <items>
-              <oneLineMenuItem id="ShowView" onSelect="toggleSettings('galaxy_ShowView', 'Settings_TVShows')">
+              <oneLineMenuItem id="galaxy_ShowView" onSelect="toggleSettings('galaxy_ShowView', 'Settings_TVShows')">
                 <label>{{TEXT(TV Show View)}}</label>
                 <rightLabel>{{SETTING(galaxy_showview)}}</rightLabel>
               </oneLineMenuItem>

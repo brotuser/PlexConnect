@@ -40,7 +40,7 @@
         <sections>
           <menuSection>
             <items>
-              <oneLineMenuItem id="ShowView" onSelect="toggleSettings('ShowView', 'Settings_TVShows')">
+              <oneLineMenuItem id="plex_ShowView" onSelect="toggleSettings('plex_ShowView', 'Settings_TVShows')">
                 <label>{{TEXT(TV Show View)}}</label>
                 <rightLabel>{{SETTING(plex_showview)}}</rightLabel>
               </oneLineMenuItem>

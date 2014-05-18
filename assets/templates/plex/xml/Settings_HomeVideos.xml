@@ -40,7 +40,7 @@
         <sections>
           <menuSection>
             <items>
-              <oneLineMenuItem id="HomeVideoView" onSelect="toggleSettings('HomeVideoView', 'Settings_HomeVideos')">
+              <oneLineMenuItem id="plex_HomeVideoView" onSelect="toggleSettings('plex_HomeVideoView', 'Settings_HomeVideos')">
                 <label>{{TEXT(Home Video View)}}</label>
                 <rightLabel>{{SETTING(plex_homevideoview)}}</rightLabel>
               </oneLineMenuItem>
