@@ -17,7 +17,7 @@
 					<url>{{URL(key)}}&amp;PlexConnect=TVSection</url>
 				</navigationItem>
 
-        <navigationItem id="Unwatched">
+                <navigationItem id="Unwatched">
 					<title>{{TEXT(Unwatched)}}</title>
 					<url>{{URL(key)}}/unwatched&amp;PlexConnect=AllShows</url>
 				</navigationItem>{{CUT($tv_navbar_unwatched::unchecked=CUT|checked=)}}

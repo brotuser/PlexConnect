@@ -12,8 +12,9 @@
 
       <itemCollectionWithImageHeader id="com.sample.menu-items-with-sections">
       <header>
-        <imageHeader>
-	      <image insets="0, 0, {{VAL(^aTVScreenResolution:1:720=620|1080=930)}}, 0" required="true">{{URL(:/fanartcache/{{LFBG("plex","{{EVAL(quote_plus("{{TEXT(Plex Library)}}"))}}","{{EVAL(quote_plus("{{TEXT(On Deck)}}"))}}","backgrounds/plexdefault.png","{{VAL(^aTVScreenResolution)}}","fonts/OpenSans/OpenSans-Light.ttf","50","20","FFFFFF","FFFFFF","right","top","80","90","","List")}})}}</image>
+        <imageHeader>	      
+	      	      <image insets="0, 0, {{VAL(^aTVScreenResolution:1:720=654|1080=981)}}, 0" required="true">{{URL(:/fanartcache/{{LFBG("plex","{{EVAL(quote_plus("{{TEXT(Plex Library)}}"))}}","{{EVAL(quote_plus("{{TEXT(On Deck)}}"))}}","backgrounds/plexdefault.png","{{VAL(^aTVScreenResolution)}}","fonts/OpenSans/OpenSans-Light.ttf","40","25","fafafa","d2761f","right","top","70","25","162","","PlexParadeListSub")}})}}</image>
+
         </imageHeader>
       </header>
           
@@ -22,11 +23,7 @@
           <menuSection>
               {{COPY(Server:@OnDeck/size::0=|1=COPY)}}
             
-            <header>
-              <horizontalDivider alignment="left">
-                <title>{{TEXT(On Deck)}}</title>
-              </horizontalDivider>
-            </header>{{CUT(@OnDeck/Server/size:CUT:0=CUT|1=)}}
+
             
             <items>
               <twoLineMenuItem id="{{VAL(key)}}"

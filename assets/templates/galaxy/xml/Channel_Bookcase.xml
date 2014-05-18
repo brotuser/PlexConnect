@@ -15,7 +15,7 @@
       <header>
        <imageHeader>
         <image insets="0, 0, {{VAL(^aTVScreenResolution:1:720=480|1080=720)}}, 0" required="true">
-          {{URL(:/fanartcache/{{LFBG("galaxy","{{EVAL(quote_plus("{{TEXT(Plex Channels)}}"))}}","","backgrounds/channel.jpg","{{VAL(^aTVScreenResolution)}}","fonts/OpenSans/OpenSans-Light.ttf","60","30","98B178","FFFFFF","center","top","","120","","Grid")}})}}</image>
+          {{URL(:/fanartcache/{{LFBG("galaxy","{{EVAL(quote_plus("{{TEXT(Plex Channels)}}"))}}","","backgrounds/channel.jpg","{{VAL(^aTVScreenResolution)}}","fonts/OpenSans/OpenSans-Light.ttf","60","30","98B178","FFFFFF","center","top","","120","","","Grid")}})}}</image>
         </imageHeader>
       </header>
       

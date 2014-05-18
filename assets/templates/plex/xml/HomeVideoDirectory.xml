@@ -7,13 +7,13 @@
     <scroller id="com.sample.homevideo-grid">
       <header>
  	  <imageHeader>
-	      <image insets="0, 0, {{VAL(^aTVScreenResolution:1:720=480|1080=720)}}, 0" required="true">{{URL(:/fanartcache/{{LFBG("plex","{{EVAL(quote_plus("{{VAL(title1)}}"))}}","{{EVAL(quote_plus("{{VAL(title2)}}"))}}","backgrounds/plexdefault.png","{{VAL(^aTVScreenResolution)}}","fonts/OpenSans/OpenSans-Light.ttf","60","30","FFFFFF","FFFFFF","center","top","","110","","Grid")}})}}</image>
+          <image insets="0, 0, {{VAL(^aTVScreenResolution:1:720=550|1080=825)}}, 0" required="true">{{URL(:/fanartcache/{{LFBG("plex","{{EVAL(quote_plus("{{VAL(title1)}}"))}}","{{EVAL(quote_plus("{{VAL(title2)}}"))}}","backgrounds/plexdefault.png","{{VAL(^aTVScreenResolution)}}","fonts/OpenSans/OpenSans-Light.ttf","40","25","CCCCCC","ff8800","right","top","60","25","162","","PlexGridSub")}})}}</image>
 	    </imageHeader>
       </header>
       <items>
-        <grid columnCount="5" id="grid_0">
+        <grid columnCount="7" id="grid_0">
           <items>
-            <moviePoster id="{{VAL(key)}}" alwaysShowTitles="{{VAL($showtitles_homevideos::Highlighted Only=false|Show All=true)}}" 
+            <fourByThreePoster id="{{VAL(key)}}" featured="true" alwaysShowTitles="{{VAL($showtitles_homevideos::Highlighted Only=false|Show All=true)}}" 
                              onPlay="atv.loadURL('{{URL(key)}}&amp;PlexConnect=HomeVideoByFolder')"
                              onSelect="atv.loadURL('{{URL(key)}}&amp;PlexConnect=HomeVideoByFolder')">
               {{COPY(Directory)}}
@@ -21,9 +21,9 @@
               <subtitle>{{VAL(year:&#x00AD;)}}</subtitle>
               <image>{{URL(:/templates/plex/images/Folder.png)}}</image>
               <defaultImage>resource://Poster.png</defaultImage>
-            </moviePoster>
+            </fourByThreePoster>
             
-            <sixteenByNinePoster id="{{VAL(key)}}" alwaysShowTitles="{{VAL($showtitles_homevideos::Highlighted Only=false|Show All=true)}}"
+            <fourByThreePoster id="{{VAL(key)}}" featured="true" alwaysShowTitles="{{VAL($showtitles_homevideos::Highlighted Only=false|Show All=true)}}"
                              onPlay="atv.loadURL('{{URL(key)}}&amp;PlexConnect=Play')"
                              onSelect="atv.loadURL('{{URL(key)}}&amp;PlexConnect=HomeVideoPrePlay')">
               {{COPY(Video)}}
@@ -31,7 +31,7 @@
               <subtitle>{{VAL(year:&#x00AD;)}}</subtitle>
               <image>{{IMAGEURL(thumb::384)}}</image>
               <defaultImage>resource://Poster.png</defaultImage>
-            </sixteenByNinePoster>
+            </fourByThreePoster>
           </items>
         </grid>
       </items>
@@ -42,7 +42,8 @@
 <body>
     <itemCollectionWithImageHeader id="HomeVideoList">
       <header>
-	      <image insets="0, 0, {{VAL(^aTVScreenResolution:1:720=640|1080=960)}}, 0" required="true">{{URL(:/fanartcache/{{LFBG("plex","{{EVAL(quote_plus("{{VAL(title1)}}"))}}","{{EVAL(quote_plus("{{VAL(title2)}}"))}}","backgrounds/plexdefault.png","{{VAL(^aTVScreenResolution)}}","fonts/OpenSans/OpenSans-Light.ttf","60","30","FFFFFF","FFFFFF","right","top","80","40","","List")}})}}</image>
+        <imageHeader>
+	      <image insets="0, 0, {{VAL(^aTVScreenResolution:1:720=658|1080=987)}}, 0" required="true">{{URL(:/fanartcache/{{LFBG("plex","{{EVAL(quote_plus("{{VAL(title1)}}"))}}","{{EVAL(quote_plus("{{VAL(title2)}}"))}}","backgrounds/plexdefault.png","{{VAL(^aTVScreenResolution)}}","fonts/OpenSans/OpenSans-Light.ttf","40","25","fafafa","d2761f","right","top","70","25","162","","PlexParadeListSub")}})}}</image>
 	    </imageHeader>
       </header>
 
@@ -91,7 +92,8 @@
   <body>
     <itemCollectionWithImageHeader id="HomeVideo_DetailedList">
       <header>
-	      <image insets="0, 0, {{VAL(^aTVScreenResolution:1:720=640|1080=960)}}, 0" required="true">{{URL(:/fanartcache/{{LFBG("plex","{{EVAL(quote_plus("{{VAL(title1)}}"))}}","{{EVAL(quote_plus("{{VAL(title2)}}"))}}","","{{VAL(^aTVScreenResolution)}}","fonts/OpenSans/OpenSans-Light.ttf","60","30","FFFFFF","FFFFFF","right","top","80","40","","List")}})}}</image>
+        <imageHeader>
+	      <image insets="0, 0, {{VAL(^aTVScreenResolution:1:720=658|1080=987)}}, 0" required="true">{{URL(:/fanartcache/{{LFBG("plex","{{EVAL(quote_plus("{{VAL(title1)}}"))}}","{{EVAL(quote_plus("{{VAL(title2)}}"))}}","backgrounds/plexdefault.png","{{VAL(^aTVScreenResolution)}}","fonts/OpenSans/OpenSans-Light.ttf","40","25","CCCCCC","FF8800","right","top","60","25","162","","PlexParadeListSub")}})}}</image>
 	    </imageHeader>
       </header>
 

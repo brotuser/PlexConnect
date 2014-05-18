@@ -7,16 +7,14 @@
     <scroller id="Show_Grid">
       <header>
 	    <imageHeader>
-	              <image insets="0, 0, {{VAL(^aTVScreenResolution:1:720=590|1080=885)}}, 0" required="true">{{URL(:/fanartcache/{{LFBG("plex","{{EVAL(quote_plus("{{VAL(title1)}}"))}}","","backgrounds/plexdefault.png","{{VAL(^aTVScreenResolution)}}","fonts/OpenSans/OpenSans-Light.ttf","50","20","FFFFFF","FFFFFF","center","top","","90","","Simple")}})}}</image>
+          <image insets="0, 0, {{VAL(^aTVScreenResolution:1:720=550|1080=825)}}, 0" required="true">{{URL(:/fanartcache/{{LFBG("plex","{{EVAL(quote_plus("{{VAL(title1)}}"))}}","{{EVAL(quote_plus("{{VAL(title2)}}"))}}","backgrounds/plexdefault.png","{{VAL(^aTVScreenResolution)}}","fonts/OpenSans/OpenSans-Light.ttf","40","25","CCCCCC","ff8800","right","top","60","25","162","","PlexGridSub")}})}}</image>
 	    </imageHeader>
       </header>
       <items>
-      <collectionDivider alignment="center" accessibilityLabel="{{VAL(title2)}}">
-        <title>{{VAL(title2)}}</title>
-      </collectionDivider>
+
         <grid columnCount="7" id="grid_0">
           <items>
-            <sixteenByNinePoster id="{{VAL(key)}}" featured="true" alwaysShowTitles="{{VAL($showtitles_tvshows::Highlighted Only=false|Show All=true)}}"
+            <fourByThreePoster id="{{VAL(key)}}" featured="true" alwaysShowTitles="{{VAL($showtitles_tvshows::Highlighted Only=false|Show All=true)}}"
                          onPlay="flattenSeason('{{URL(key)}}', '{{SETTING(flattenseason)}}', 'False')"
                          onSelect="flattenSeason('{{URL(key)}}', '{{SETTING(flattenseason)}}', 'False')"
                          onHoldSelect="scrobbleMenu('{{URL(key)}}&amp;PlexConnect=ScrobbleMenu')">
@@ -25,12 +23,12 @@
               <image>{{IMAGEURL(thumb::384)}}</image>
               <defaultImage>resource://Poster.png</defaultImage>
 			  <badgeCount>{{unwatchedCountGrid(leafCount:0:viewedLeafCount:0)}}</badgeCount>{{CUT($showunwatched::False=CUT|True=)}}
-            </sixteenByNinePoster>{{CUT(Directory/title:CUT:=)}}
+            </fourByThreePoster>{{CUT(Directory/title:CUT:=)}}
 
-            <sixteenByNinePoster id="none">
+            <fourByThreePoster id="none">
               <title>{{TEXT(No Unwatched Shows)}}</title>
               <defaultImage>resource://Poster.png</defaultImage>
-            </sixteenByNinePoster>{{CUT(Directory/title::=CUT)}}
+            </fourByThreePoster>{{CUT(Directory/title::=CUT)}}
           </items>
         </grid>
       </items>

@@ -8,7 +8,7 @@
     {{CUT(size:CUT:0=CUT|1=)}}
       <header>
         <imageHeader>
-          <image insets="0, 0, {{VAL(^aTVScreenResolution:1:720=590|1080=885)}}, 0" required="true">{{URL(:/fanartcache/{{LFBG("galaxy","{{EVAL(quote_plus("{{VAL(title1)}}"))}}","","backgrounds/movie.jpg","{{VAL(^aTVScreenResolution)}}","fonts/OpenSans/OpenSans-Light.ttf","50","20","6a9acf","FFFFFF","center","top","","90","","Simple")}})}}</image>
+          <image insets="0, 0, {{VAL(^aTVScreenResolution:1:720=590|1080=885)}}, 0" required="true">{{URL(:/fanartcache/{{LFBG("galaxy","{{EVAL(quote_plus("{{VAL(title1)}}"))}}","","backgrounds/movie.jpg","{{VAL(^aTVScreenResolution)}}","fonts/OpenSans/OpenSans-Light.ttf","50","20","6a9acf","FFFFFF","center","top","","90","","","Simple")}})}}</image>
 
         </imageHeader>
       </header>

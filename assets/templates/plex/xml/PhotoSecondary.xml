@@ -7,7 +7,7 @@
     <itemCollectionWithImageHeader id="com.sample.menu-items-with-sections">
       <header>
 	    <imageHeader>
-	      <image insets="0, 0, {{VAL(^aTVScreenResolution:1:720=640|1080=960)}}, 0" required="true">{{URL(:/fanartcache/{{LFBG("plex","{{EVAL(quote_plus("{{VAL(title1)}}"))}}","{{EVAL(quote_plus("{{TEXT(More...)}}"))}}","backgrounds/plexdefault.png","{{VAL(^aTVScreenResolution)}}","fonts/OpenSans/OpenSans-Light.ttf","60","30","AE739B","FFFFFF","right","top","80","40","","List")}})}}</image>
+	      <image insets="0, 0, {{VAL(^aTVScreenResolution:1:720=650|1080=975)}}, 0" required="true">{{URL(:/fanartcache/{{LFBG("plex","{{EVAL(quote_plus("{{VAL(title1)}}"))}}","{{EVAL(quote_plus("{{TEXT(More...)}}"))}}","backgrounds/plexdefault.png","{{VAL(^aTVScreenResolution)}}","fonts/OpenSans/OpenSans-Light.ttf","40","25","CCCCCC","FF8800","right","top","60","25","162","","PlexParadeListSub")}})}}</image>
 	    </imageHeader>
       </header>
       <menu>

@@ -13,7 +13,7 @@
       <itemCollectionWithImageHeader id="com.sample.menu-items-with-sections">
       <header>
 	    <imageHeader>
-	      <image insets="0, 0, {{VAL(^aTVScreenResolution:1:720=620|1080=930)}}, 0" required="true">{{URL(:/fanartcache/{{LFBG("galaxy","{{EVAL(quote_plus("{{TEXT(Plex Library)}}"))}}","{{EVAL(quote_plus("{{TEXT(Recently Added)}}"))}}","backgrounds/library.jpg","{{VAL(^aTVScreenResolution)}}","fonts/OpenSans/OpenSans-Light.ttf","50","","FFFFFF","","right","top","80","90","","List")}})}}</image>
+	      <image insets="0, 0, {{VAL(^aTVScreenResolution:1:720=620|1080=930)}}, 0" required="true">{{URL(:/fanartcache/{{LFBG("galaxy","{{EVAL(quote_plus("{{TEXT(Plex Library)}}"))}}","{{EVAL(quote_plus("{{TEXT(Recently Added)}}"))}}","backgrounds/library.jpg","{{VAL(^aTVScreenResolution)}}","fonts/OpenSans/OpenSans-Light.ttf","50","","FFFFFF","","right","top","80","90","","","List")}})}}</image>
 	    </imageHeader>
       </header>
           

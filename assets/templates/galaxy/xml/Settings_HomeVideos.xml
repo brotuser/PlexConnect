@@ -10,7 +10,7 @@
       <header>
         <imageHeader>
           <image insets="0, 0, {{VAL(^aTVScreenResolution:1:720=640|1080=960)}}, 0" required="true">
-           {{URL(:/fanartcache/{{LFBG("galaxy","{{EVAL(quote_plus("{{TEXT(Settings)}}"))}}","","backgrounds/settings.jpg","{{VAL(^aTVScreenResolution)}}","fonts/OpenSans/OpenSans-Light.ttf","50","","9A9A9A","","right","top","80","90","","DetailedList")}})}}
+           {{URL(:/fanartcache/{{LFBG("galaxy","{{EVAL(quote_plus("{{TEXT(Settings)}}"))}}","","backgrounds/settings.jpg","{{VAL(^aTVScreenResolution)}}","fonts/OpenSans/OpenSans-Light.ttf","50","","9A9A9A","","right","top","80","90","","","DetailedList")}})}}
           </image>
         </imageHeader>
       </header>
@@ -42,7 +42,7 @@
             <items>
               <oneLineMenuItem id="HomeVideoView" onSelect="toggleSettings('HomeVideoView', 'Settings_HomeVideos')">
                 <label>{{TEXT(Home Video View)}}</label>
-                <rightLabel>{{SETTING(homevideoview)}}</rightLabel>
+                <rightLabel>{{SETTING(galaxy_homevideoview)}}</rightLabel>
               </oneLineMenuItem>
               <oneLineMenuItem id="ShowTitles_HomeVideos" onSelect="toggleSettings('ShowTitles_HomeVideos', 'Settings_HomeVideos')">
                 <label>{{TEXT(Poster Titles)}}</label>

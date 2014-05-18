@@ -11,7 +11,8 @@
   	<header>
   	<!--Fullscreen-->
 	    <imageHeader>
-	      <image insets="0, 0, {{VAL(^aTVScreenResolution:1:720=640|1080=960)}}, 0" required="true">{{URL(:/fanartcache/{{LFBG("plex","{{EVAL(quote_plus("{{VAL(title1)}}"))}}","{{EVAL(quote_plus("{{VAL(title2)}}"))}}","{{IMAGEURL(art:::)}}","{{VAL(^aTVScreenResolution)}}","fonts/OpenSans/OpenSans-Light.ttf","60","30","FFFFFF","FFFFFF","right","top","80","40","","DetailedList")}})}}</image>
+	    	      <image insets="0, 0, {{VAL(^aTVScreenResolution:1:720=658|1080=987)}}, 0" required="true">{{URL(:/fanartcache/{{LFBG("plex","{{EVAL(quote_plus("{{VAL(title1)}}"))}}","{{EVAL(quote_plus("{{VAL(title2)}}"))}}","{{IMAGEURL(art:::)}}","{{VAL(^aTVScreenResolution)}}","fonts/OpenSans/OpenSans-Light.ttf","40","25","fafafa","d2761f","right","top","70","25","162","","PlexLongDescriptionListSubFanart")}})}}</image>
+
 	    </imageHeader>
 	</header>
     <!--Banner-->
@@ -29,12 +30,12 @@
                 <image>{{IMAGEURL(thumb::384)}}</image>										  
                 <defaultImage>resource://Poster.png</defaultImage>
                 <preview>
-                  <keyedPreview>
+                  <longDescriptionPreview>
                     <title>{{VAL(title)}}</title>
                     <summary>{{VAL(#description)}}</summary>
                     <image>{{IMAGEURL(thumb::384)}}</image>
 
-                  </keyedPreview>
+                  </longDescriptionPreview>
 
                 </preview>
               </twoLineEnhancedMenuItem>{{CUT(Directory/title:CUT:=)}}

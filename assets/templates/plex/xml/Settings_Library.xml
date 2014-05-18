@@ -9,8 +9,8 @@
     <itemCollectionWithImageHeader id="SettingsPage_Library">
       <header>
         <imageHeader>
-          <image insets="0, 0, {{VAL(^aTVScreenResolution:1:720=640|1080=960)}}, 0" required="true">
-           {{URL(:/fanartcache/{{LFBG("plex","{{EVAL(quote_plus("{{TEXT(Settings)}}"))}}","","backgrounds/plexdefault.png","{{VAL(^aTVScreenResolution)}}","fonts/OpenSans/OpenSans-Light.ttf","50","","FFFFFF","","right","top","80","90","","DetailedList")}})}}
+          <image insets="0, 0, {{VAL(^aTVScreenResolution:1:720=692|1080=1038)}}}, 0" required="true">
+           {{URL(:/fanartcache/{{LFBG("plex","{{EVAL(quote_plus("{{TEXT(Settings)}}"))}}","","backgrounds/plexdefault.png","{{VAL(^aTVScreenResolution)}}","fonts/OpenSans/OpenSans-Light.ttf","40","","CCCCCC","","right","top","60","25","","","PlexSettings")}})}}
           </image>
         </imageHeader>
       </header>
@@ -45,9 +45,9 @@
               </horizontalDivider>
             </header>
             <items>
-              <oneLineMenuItem id="LibraryView" onSelect="toggleSettings('LibraryView', 'Settings_Library')">
+              <oneLineMenuItem id="plex_LibraryView" onSelect="toggleSettings('plex_LibraryView', 'Settings_Library')">
                 <label>{{TEXT(Library View)}}</label>
-                <rightLabel>{{SETTING(libraryview)}}</rightLabel>
+                <rightLabel>{{SETTING(plex_libraryview)}}</rightLabel>
               </oneLineMenuItem>
               <oneLineMenuItem id="plex_SectionIcons" onSelect="plex_toggleSettings('plex_SectionIcons', 'Settings_Library')">
                 <label>{{TEXT(Library Icons)}}</label>
@@ -68,7 +68,7 @@
             <items>
                 <oneLineMenuItem id="plex_LibraryView_Remote" onSelect="toggleSettings('plex_LibraryView_Remote', 'Settings_Library')">
                 <label>{{TEXT(Library View)}}</label>
-                <rightLabel>{{SETTING(plex_plex_libraryview_remote)}}</rightLabel>
+                <rightLabel>{{SETTING(plex_libraryview_remote)}}</rightLabel>
               </oneLineMenuItem>
               <oneLineMenuItem id="plex_SectionIcons_Shared" onSelect="toggleSettings('plex_SectionIcons_Shared', 'Settings_Library')">
                 <label>{{TEXT(Library Icons)}}</label>

@@ -8,7 +8,7 @@
       <header>
     <!--Fullscreen-->
         <imageHeader>
-           <image insets="0, 0, {{VAL(^aTVScreenResolution:1:720=540|1080=885)}}, 0" required="true">{{URL(:/fanartcache/{{LFBG("galaxy","{{EVAL(quote_plus("{{VAL(title1)}}"))}}","{{EVAL(quote_plus("{{VAL(title2)}}"))}}","{{IMAGEURL(art:::)}}","{{VAL(^aTVScreenResolution)}}","fonts/OpenSans/OpenSans-Light.ttf","50","20","63E4CF","FFFFFF","center","bottom","","160","","Simple")}})}}</image>
+           <image insets="0, 0, {{VAL(^aTVScreenResolution:1:720=540|1080=885)}}, 0" required="true">{{URL(:/fanartcache/{{LFBG("galaxy","{{EVAL(quote_plus("{{VAL(title1)}}"))}}","{{EVAL(quote_plus("{{VAL(title2)}}"))}}","{{IMAGEURL(art:::)}}","{{VAL(^aTVScreenResolution)}}","fonts/OpenSans/OpenSans-Light.ttf","50","20","63E4CF","FFFFFF","center","bottom","","160","","","Simple")}})}}</image>
 
         </imageHeader>
 

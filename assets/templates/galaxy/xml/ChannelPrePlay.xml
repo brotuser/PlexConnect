@@ -7,7 +7,7 @@
     <itemDetailWithImageHeader id="com.apple.trailers">
        <header>
 	    <imageHeader>
-	      <image insets="0, 0, {{VAL(^aTVScreenResolution:1:720=460|1080=690)}}, 0" required="true">{{URL(:/fanartcache/{{LFBG("galaxy","{{EVAL(quote_plus("{{VAL(Video/title)}}"))}}","","backgrounds/channel.jpg","{{VAL(^aTVScreenResolution)}}","fonts/OpenSans/OpenSans-Light.ttf","40","20","78b645","FFFFFF","left","top","350","246","","MoviePrePlay")}})}}</image>
+	      <image insets="0, 0, {{VAL(^aTVScreenResolution:1:720=460|1080=690)}}, 0" required="true">{{URL(:/fanartcache/{{LFBG("galaxy","{{EVAL(quote_plus("{{VAL(Video/title)}}"))}}","","backgrounds/channel.jpg","{{VAL(^aTVScreenResolution)}}","fonts/OpenSans/OpenSans-Light.ttf","40","20","78b645","FFFFFF","left","top","350","246","","","MoviePrePlay")}})}}</image>
 	    </imageHeader>
 	  </header>
 		<!-- <title>{{VAL(Video/title)}}</title> -->

@@ -35,8 +35,9 @@ from PIL import ImageFilter
 # 11     <ANCHOR-Y>,                            
 # 12     <ANCHOR-X-OFFSET>,                     
 # 13     <ANCHOR-Y-OFFSET>,                     
-# 14     <IMAGEBLUR>,                           
-# 15     <LAYERNAME-1>,...<LAYERNAME-N> ]       
+# 14     <LINEHEIGHT>
+# 15     <IMAGEBLUR>,                           
+# 16     <LAYERNAME-1>,...<LAYERNAME-N> ]       
 # )}}
 #
 # return a png-Filename
@@ -158,7 +159,7 @@ def textToImage(index, im, params, stylepath):
         offsety = 80
       # Subtitle   
       
-      if index > 1 and ( params[1] != None or params[1] != "" ):
+      if index > 1 and ( params[1] != None and params[1] != "" ):
         #title = unicode(urllib.unquote(params[1]), 'utf-8').replace('+',' ').strip()
         #titledraw = ImageDraw.Draw(im)
         if params[6] != None or params[6] != "": 
@@ -166,7 +167,10 @@ def textToImage(index, im, params, stylepath):
         else: # Default Size
           titlefontsize = int(params[4]) / 24
         #titlewidth, titleheight = titledraw.textsize(title, ImageFont.truetype(font, int(titlefontsize)))
-        offsety = offsety + (titlefontsize * 130 / 100)   
+        if params[14] != None and params[14] != "":
+          offsety = offsety + (titlefontsize * int(params[14]) / 100)
+        else:
+          offsety = offsety + (titlefontsize * 130 / 100)   
     else:
       offsety = 80    
     # Handle 1080 / atv3 Text
@@ -179,7 +183,7 @@ def textToImage(index, im, params, stylepath):
     return im    
 
 def resizedMerge (background, params, stylepath):
-   
+    isatv2=0
     
     if params[4] == "poster":
       height = 768
@@ -196,25 +200,31 @@ def resizedMerge (background, params, stylepath):
     else:
       height = int(params[4])
       if height == 720:
-        width = 1280
+        isatv2 = 1
+        width = 1920
+        height = 1080
       else:
         width = 1920
         
+    
     im = Image.new("RGB", (width, height), "black")
     background = background.resize((width, height), Image.ANTIALIAS)
 
     # Blur BG
-    if params[14] != None and params[14] != "":
-      for i in range(0,int(params[14])):
+    if params[15] != None and params[15] != "":
+      for i in range(0,int(params[15])):
         background = background.filter(ImageFilter.BLUR)
     im.paste(background, (0, 0), 0)
     # Layers    
-    layerrange = range(15, len(params))
+    layerrange = range(16, len(params))
     for layercounter in layerrange:
       if params[layercounter] != None:
         layer = Image.open(stylepath+"/images/"+params[layercounter]+".png")
         layer = layer.resize((width, height), Image.ANTIALIAS)
         im.paste(layer, ( 0, 0),layer)
+        
+    if isatv2>0:
+      im = im.resize((1280, 720), Image.ANTIALIAS)
     return im 
     
 def createFileHandle(params):    
@@ -231,9 +241,10 @@ def createFileHandle(params):
     toy = normalizeString(params[13])
     t2s = normalizeString(params[7])
     t2c = normalizeString(params[9])
+    lh = normalizeString(params[14])
     
     # add layers
-    layerrange = range(15, len(params))
+    layerrange = range(16, len(params))
     cachefileLayers = ""
     for layercounter in layerrange:
        if params[layercounter] != None:
@@ -241,7 +252,7 @@ def createFileHandle(params):
     # fix for extra long subtitles 
     if len(cachefileSubtitle) > 30:
       cachefileSubtitle = cachefileSubtitle[0:30]    
-    cachefile = cachefileStyle+"+"+cachefileLayers+"+"+cachefileTitle+"+"+t1s+"+"+t1c+"+"+tax+"+"+tay+"+"+tox+"+"+toy+"+"+cachefileSubtitle+"+"+t2s+"+"+t2c+"+"+cachefileRes
+    cachefile = cachefileStyle+"+"+cachefileLayers+"+"+cachefileTitle+"+"+t1s+"+"+t1c+"+"+tax+"+"+tay+"+"+tox+"+"+toy+"+"+cachefileSubtitle+"+"+t2s+"+"+t2c+"+"+lh+"+"+cachefileRes
     return cachefile
     
 def normalizeString(text):

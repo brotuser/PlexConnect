@@ -15,7 +15,7 @@
     <scroller id="com.sample.movie-showcase-grid">
       <header>
         <imageHeader>
-	     <image insets="0, 0, {{VAL(^aTVScreenResolution:1:720=590|1080=885)}}, 0" required="true">{{URL(:/fanartcache/{{LFBG("galaxy","{{EVAL(quote_plus("{{TEXT(Plex Library)}}"))}}","","backgrounds/library.jpg","{{VAL(^aTVScreenResolution)}}","fonts/OpenSans/OpenSans-Light.ttf","50","","FFFFFF","","center","top","0","90","","Simple")}})}}</image>
+	     <image insets="0, 0, {{VAL(^aTVScreenResolution:1:720=590|1080=885)}}, 0" required="true">{{URL(:/fanartcache/{{LFBG("galaxy","{{EVAL(quote_plus("{{TEXT(Plex Library)}}"))}}","","backgrounds/library.jpg","{{VAL(^aTVScreenResolution)}}","fonts/OpenSans/OpenSans-Light.ttf","50","","FFFFFF","","center","top","0","90","","","Simple")}})}}</image>
 	   </imageHeader>
       </header>
       <items>
@@ -36,7 +36,7 @@
                     <items>
                         <!-- /library/sections -->
                   <moviePoster id="{{VAL(key)}}" accessibilityLabel="{{VAL(title)}}" featured="true" 
-                               alwaysShowTitles="{{VAL($sectionicons::Apple=true|Plex=true|Fanart=true)}}"
+                               alwaysShowTitles="{{VAL($galaxy_sectionicons::Apple=true|Plex=true|Fanart=true)}}"
                                onPlay="atv.loadURL('{{URL(key)}}')"
                                onSelect="atv.loadURL('{{URL(key)}}')"
                                onHoldSelect="refreshSection('{{VAL(key)}}', '{{URL(refreshKey)}}')">
@@ -44,21 +44,21 @@
                   {{VAR(sections:NoKey:TRUE)}}  <!--within COPY this sets the var to TRUE-->
                   
                     <title>{{VAL(title)}}</title>
-                    <image>{{IMAGEURL(art::768)}}</image>{{CUT($sectionicons::Apple=CUT|Plex=CUT|Fanart=|Custom=CUT)}}
-                    <image>{{URL(:/templates/galaxy/images/icons/{{VAL(type)}}.png)}}</image>{{CUT($sectionicons::Apple=|Plex=CUT|Fanart=CUT|Custom=CUT)}}
-                    <image>{{IMAGEURL(thumb::768)}}</image>{{CUT($sectionicons::Apple=CUT|Plex=|Fanart=CUT|Custom=CUT)}}
+                    <image>{{IMAGEURL(art::768)}}</image>{{CUT($galaxy_sectionicons::Apple=CUT|Plex=CUT|Fanart=|Custom=CUT)}}
+                    <image>{{URL(:/templates/galaxy/images/icons/{{VAL(type)}}.png)}}</image>{{CUT($galaxy_sectionicons::Apple=|Plex=CUT|Fanart=CUT|Custom=CUT)}}
+                    <image>{{IMAGEURL(thumb::768)}}</image>{{CUT($galaxy_sectionicons::Apple=CUT|Plex=|Fanart=CUT|Custom=CUT)}}
                     <defaultImage>resource://16X9.png</defaultImage>
                     <!--badgeCount></badgeCount-->
                   </moviePoster>
                   
                   <!-- search -->
-                  <moviePoster id="{{VAL(searchKey)}}" featured="true" alwaysShowTitles="{{VAL($sectionicons::Apple=true|Plex=true|Fanart=true)}}"
+                  <moviePoster id="{{VAL(searchKey)}}" featured="true" alwaysShowTitles="{{VAL($galaxy_sectionicons::Apple=true|Plex=true|Fanart=true)}}"
                                onPlay="atv.loadURL('{{URL(searchKey)}}')"
                                onSelect="atv.loadURL('{{URL(searchKey)}}')">
                     <title>{{TEXT(Search)}}</title>
                     <image>{{URL(:/templates/galaxy/images/icons/search.png)}}</image>
                     <defaultImage>resource://16X9.png</defaultImage>
-                  </moviePoster>{{CUT($library_search::Show=|Hide=CUT)}} 
+                  </moviePoster>{{CUT($galaxy_library_search::Show=|Hide=CUT)}} 
                     </items>
                 </shelfSection>
           </sections>
@@ -69,14 +69,14 @@
           <collectionDivider alignment="center" accessibilityLabel="On Deck">
             {{CUT(@OnDeck/Server/size:CUT:0=CUT|1=)}}
             <title>{{TEXT(On Deck)}}</title>
-        </collectionDivider>{{CUT($library_ondeck::checked=|unchecked=CUT)}}
+        </collectionDivider>{{CUT($galaxy_library_ondeck::checked=|unchecked=CUT)}}
         <shelf id="shelf_1" columnCount="7">
           {{CUT(@OnDeck/Server/size:CUT:0=CUT|1=)}}
           <sections>
             <shelfSection>
               {{COPY(Server:@OnDeck/size::0=|1=COPY)}}
               <items>
-                <sixteenByNinePoster id="{{VAL(key)}}" accessibilityLabel="{{VAL(title)}}" alwaysShowTitles="{{VAL($showtitles_library::Highlighted Only=false|Show All=true)}}"
+                <sixteenByNinePoster id="{{VAL(key)}}" accessibilityLabel="{{VAL(title)}}" alwaysShowTitles="{{VAL($galaxy_showtitles_library::Highlighted Only=false|Show All=true)}}"
                             onPlay="atv.loadURL('{{URL(key)}}&amp;PlexConnect=Play')"
                             onSelect="atv.loadURL('{{URL(key)}}&amp;PlexConnect={{VAL(type::movie=Movie|episode=Episode)}}PrePlay')"
                             onHoldSelect="scrobbleMenu('{{URL(key)}}&amp;PlexConnect=ScrobbleMenuVideo')">
@@ -90,19 +90,19 @@
               </items>
             </shelfSection>
           </sections>
-        </shelf>{{CUT($library_ondeck::checked=|unchecked=CUT)}}{{CUT(@OnDeck/Server/size:CUT:0=CUT|1=)}}  
+        </shelf>{{CUT($galaxy_library_ondeck::checked=|unchecked=CUT)}}{{CUT(@OnDeck/Server/size:CUT:0=CUT|1=)}}  
 
         <collectionDivider alignment="center" accessibilityLabel="Recently Added">
           {{CUT(@RecentlyAdded/Server/size:CUT:0=CUT|1=)}}
           <title>{{TEXT(Recently Added)}}</title>
-        </collectionDivider>{{CUT($library_recentlyadded::checked=|unchecked=CUT)}}{{CUT(@RecentlyAdded/Server/size:CUT:0=CUT|1=)}}  
+        </collectionDivider>{{CUT($galaxy_library_recentlyadded::checked=|unchecked=CUT)}}{{CUT(@RecentlyAdded/Server/size:CUT:0=CUT|1=)}}  
         <shelf id="shelf_2" columnCount="7">
           {{CUT(@RecentlyAdded/Server/size:CUT:0=CUT|1=)}}
           <sections>
             <shelfSection>
               {{COPY(Server:@RecentlyAdded/size::0=|1=COPY)}}
               <items>
-                <sixteenByNinePoster id="{{VAL(key)}}" accessibilityLabel="{{VAL(title)}}" alwaysShowTitles="{{VAL($showtitles_library::Highlighted Only=false|Show All=true)}}"
+                <sixteenByNinePoster id="{{VAL(key)}}" accessibilityLabel="{{VAL(title)}}" alwaysShowTitles="{{VAL($galaxy_showtitles_library::Highlighted Only=false|Show All=true)}}"
                             onPlay="atv.loadURL('{{URL(key)}}&amp;PlexConnect=Play')"
                             onSelect="atv.loadURL('{{URL(key)}}&amp;PlexConnect={{VAL(type::movie=MoviePrePlay|episode=EpisodePrePlay|season=season)}}')"
                             onHoldSelect="scrobbleMenu('{{URL(key)}}&amp;PlexConnect=ScrobbleMenuVideo')">
@@ -117,12 +117,12 @@
               </items>
             </shelfSection>
           </sections>
-        </shelf>{{CUT($library_recentlyadded::checked=|unchecked=CUT)}}{{CUT(@RecentlyAdded/Server/size:CUT:0=CUT|1=)}}
+        </shelf>{{CUT($galaxy_library_recentlyadded::checked=|unchecked=CUT)}}{{CUT(@RecentlyAdded/Server/size:CUT:0=CUT|1=)}}
               
          
         <collectionDivider alignment="center" accessibilityLabel="Channels">
             <title>{{TEXT(Channels)}}</title>
-        </collectionDivider>{{CUT($library_channels:CUT:checked=|unchecked=CUT)}}{{CUT(@VideoChannels/Server/size:CUT:0=CUT|1=)}} 
+        </collectionDivider>{{CUT($galaxy_library_channels:CUT:checked=|unchecked=CUT)}}{{CUT(@VideoChannels/Server/size:CUT:0=CUT|1=)}} 
         <shelf id="shelf_3" columnCount="10">
             {{CUT(@VideoChannels/Server/size:CUT:0=CUT|1=)}}
             <sections>                             
@@ -142,7 +142,7 @@
                     </items>
                 </shelfSection>
           </sections>
-        </shelf>{{CUT($library_channels:CUT:checked=|unchecked=CUT)}}{{CUT(@VideoChannels/Server/size:CUT:0=CUT|1=)}}          
+        </shelf>{{CUT($galaxy_library_channels:CUT:checked=|unchecked=CUT)}}{{CUT(@VideoChannels/Server/size:CUT:0=CUT|1=)}}          
     </items>
     </scroller>{{CUT(#sections::FALSE=CUT|TRUE=)}}
       

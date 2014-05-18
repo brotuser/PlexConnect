@@ -7,7 +7,7 @@
     <scroller id="Show_Bookcase">
       <header>
         <imageHeader>
-          <image insets="0, 0, {{VAL(^aTVScreenResolution:1:720=480|1080=720)}}, 0" required="true">{{URL(:/fanartcache/{{LFBG("plex","{{EVAL(quote_plus("{{VAL(title2)}}"))}}","{{EVAL(quote_plus("{{TEXT(Select Artwork)}}"))}}","grey.jpg","{{VAL(^aTVScreenResolution)}}","fonts/OpenSans/OpenSans-Light.ttf","60","30","FFFFFF","FFFFFF","center","top","","110","","ChannelGrid")}})}}</image>
+        	    <image insets="0, 0, {{VAL(^aTVScreenResolution:1:720=550|1080=825)}}, 0" required="true">{{URL(:/fanartcache/{{LFBG("plex","{{EVAL(quote_plus("{{VAL(parentTitle)}}"))}}","{{EVAL(quote_plus("{{TEXT(Select Artwork)}}"))}}","backgrounds/plexdefault.png","{{VAL(^aTVScreenResolution)}}","fonts/OpenSans/OpenSans-Light.ttf","40","25","CCCCCC","FF8800","right","top","60","25","162","","PlexPagedOnDeckSub")}})}}</image>{{CUT(Video/title:: =CUT)}}
         </imageHeader>
       </header>
       
@@ -22,13 +22,13 @@
           <sections>
             <shelfSection>
               <items>
-                <moviePoster related="true" id="{{VAL(key)}}" alwaysShowTitles="true"
+                <fourByThreePoster related="true" id="{{VAL(key)}}" featured="true" alwaysShowTitles="true"
                              onSelect="changeArtwork('{{VAL(%baseURL)}}', '{{VAL(%accesstoken)}}', '{{VAL(#key)}}', '{{VAL(key)}}', 'Main_Show_Art')">
                   {{COPY(@showPosters/Photo)}}
                   <title>{{VAL(selected::0=|1=Selected)}}</title>
                   <image>{{IMAGEURL(thumb)}}</image>
                   <defaultImage>resource://Poster.png</defaultImage>
-                </moviePoster>
+                </fourByThreePoster>
               </items>
             </shelfSection>
           </sections>
@@ -47,13 +47,13 @@
                   {{VAR(ratingKey:ratingKey)}}
                   {{VAR(size:@seasonPoster/size)}}
                   {{VAR(title:title)}}
-                  <moviePoster related="true" id="{{VAL(key)}}" alwaysShowTitles="true"
+                  <fourByThreePoster related="true" featured="true" id="{{VAL(key)}}" alwaysShowTitles="true"
                                onSelect="changeArtwork('{{VAL(%baseURL)}}', '{{VAL(%accesstoken)}}', '{{VAL(#ratingKey)}}', '{{VAL(key)}}', '{{VAL(#title)}}')">
                     {{COPY(@seasonPoster/Photo)}}
                     <title>{{VAL(selected::0=|1=Selected)}}</title>
                     <image>{{IMAGEURL(thumb)}}</image>
                     <defaultImage>resource://Poster.png</defaultImage>
-                  </moviePoster>
+                  </fourByThreePoster>
                 </items>
               </shelfSection>
             </sections>

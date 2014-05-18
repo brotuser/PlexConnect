@@ -7,8 +7,8 @@
     <listWithPreview id="com.sample.menu-items-with-sections" volatile="true" onVolatileReload="atv.loadAndSwapURL('{{URL()}}')">
       <header>
         <itemCollectionWithImageHeader>
-          <image insets="0, 0, {{VAL(^aTVScreenResolution:1:720=640|1080=810)}}, 0" required="true">
-           {{URL(:/fanartcache/{{LFBG("plex","{{EVAL(quote_plus("{{TEXT(Plex Channels)}}"))}}","","backgrounds/plexdefault.png","{{VAL(^aTVScreenResolution)}}","fonts/OpenSans/OpenSans-Light.ttf","60","30","98B178","","right","top","80","40","","List")}})}}</image>
+          	      <image insets="0, 0, {{VAL(^aTVScreenResolution:1:720=550|1080=825)}}, 0" required="true">{{URL(:/fanartcache/{{LFBG("plex","{{EVAL(quote_plus("{{VAL(title1)}}"))}}","{{EVAL(quote_plus("{{VAL(title2)}}"))}}","backgrounds/plexdefault.png","{{VAL(^aTVScreenResolution)}}","fonts/OpenSans/OpenSans-Light.ttf","40","25","CCCCCC","ff8800","right","top","60","25","162","","PlexPagedGridSub")}})}}</image>
+
         </imageHeader>
       </header>
       <menu>

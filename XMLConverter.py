@@ -298,16 +298,28 @@ def XML_PMS2aTV(PMS_address, path, options):
         XMLtemplate = cmd + '.xml'
     
     elif cmd == 'AllMovies':
-        XMLtemplate = 'Movie_'+g_ATVSettings.getSetting(options['PlexConnectUDID'], 'movieview').replace(' ','')+'.xml'  
+       template = g_ATVSettings.getSetting(options['PlexConnectUDID'], 'template')
+       if template == "default":
+         XMLtemplate = 'Movie_'+g_ATVSettings.getSetting(options['PlexConnectUDID'], 'movieview').replace(' ','')+'.xml'
+       elif PMS_address=='owned':
+         XMLtemplate = 'Movie_'+g_ATVSettings.getSetting(options['PlexConnectUDID'], template+'movieview').replace(' ','')+'.xml' 
     
     elif cmd == 'AllHomeVideos':
-        XMLtemplate = 'HomeVideo_'+g_ATVSettings.getSetting(options['PlexConnectUDID'], 'homevideoview').replace(' ','')+'.xml'  
+       template = g_ATVSettings.getSetting(options['PlexConnectUDID'], 'template')
+       if template == "default":
+         XMLtemplate = 'HomeVideo_'+g_ATVSettings.getSetting(options['PlexConnectUDID'], 'homevideoview').replace(' ','')+'.xml'
+       elif PMS_address=='owned':
+         XMLtemplate = 'HomeVideo_'+g_ATVSettings.getSetting(options['PlexConnectUDID'], template+'_homevideoview').replace(' ','')+'.xml'  
         
     elif cmd == 'MovieSecondary':
         XMLtemplate = 'MovieSecondary.xml'
     
     elif cmd == 'AllShows':
-        XMLtemplate = 'Show_'+g_ATVSettings.getSetting(options['PlexConnectUDID'], 'showview')+'.xml'  
+        template = g_ATVSettings.getSetting(options['PlexConnectUDID'], 'template')
+        if template == "default":
+          XMLtemplate = 'Show_'+g_ATVSettings.getSetting(options['PlexConnectUDID'], 'showview')+'.xml'  
+        elif PMS_address=='owned':
+          XMLtemplate = 'Show_'+g_ATVSettings.getSetting(options['PlexConnectUDID'], template+'_showview')+'.xml' 
           
     elif cmd == 'TVSecondary':
         XMLtemplate = 'TVSecondary.xml'
@@ -326,6 +338,10 @@ def XML_PMS2aTV(PMS_address, path, options):
             
     elif cmd=='Settings':
         XMLtemplate = 'Settings.xml'
+        path = ''  # clear path - we don't need PMS-XML
+
+    elif cmd=='SettingsTopLevel':
+        XMLtemplate = 'Settings_TopLevel.xml'
         path = ''  # clear path - we don't need PMS-XML
     
     elif cmd=='SettingsVideoOSD':
@@ -402,19 +418,24 @@ def XML_PMS2aTV(PMS_address, path, options):
     elif path.find('SearchResults') != -1:
         XMLtemplate = 'ChannelsVideoSearchResults.xml'
     
-    elif path=='/library/sections' and g_ATVSettings.getSetting(options['PlexConnectUDID'], 'template') == "default":
-       XMLtemplate = 'Library.xml'    
-    
-    elif path=='/library/sections' and PMS_address=='owned' and  g_ATVSettings.getSetting(options['PlexConnectUDID'], 'template') != "default":  # from PlexConnect.xml -> for //local, //myplex
-        XMLtemplate = 'Library_'+g_ATVSettings.getSetting(options['PlexConnectUDID'], 'libraryview')+'.xml'
-        
-    elif PMS_address=='shared' and path=='/library/sections' and g_ATVSettings.getSetting(options['PlexConnectUDID'], 'template') != "default": # from PlexConnect.xml -> for //local, //myplex
-        XMLtemplate = 'Library_'+g_ATVSettings.getSetting(options['PlexConnectUDID'], 'libraryview_remote')+'.xml'   
+    elif path=='/library/sections':
+        template = g_ATVSettings.getSetting(options['PlexConnectUDID'], 'template')
+        if template == "default":
+          XMLtemplate = 'Library.xml' 
+        else:
+          if PMS_address=='owned': 
+            XMLtemplate = 'Library_'+g_ATVSettings.getSetting(options['PlexConnectUDID'], template+'_libraryview').replace(' ','')+'.xml'
+          else:
+            XMLtemplate = 'Library_'+g_ATVSettings.getSetting(options['PlexConnectUDID'], template+'_libraryview_remote').replace(' ','')+'.xml'
         
 
     
     elif path=='/channels/all':
-        XMLtemplate = 'Channel_'+g_ATVSettings.getSetting(options['PlexConnectUDID'], 'channelview')+'.xml'
+        template = g_ATVSettings.getSetting(options['PlexConnectUDID'], 'template')
+        if template == "default":
+          XMLtemplate = 'Channel_'+g_ATVSettings.getSetting(options['PlexConnectUDID'], 'channelview')+'.xml'
+        elif PMS_address=='owned':
+          XMLtemplate = 'Channel_'+g_ATVSettings.getSetting(options['PlexConnectUDID'], template+'_channelview')+'.xml'
         path = ''
     
     # request PMS XML
@@ -917,6 +938,98 @@ class CCommandCollection(CCommandHelper):
         # remove template child
         elem.remove(child)
         return True  # tree modified, nodes updated: restart from 1st elem
+        
+        
+        
+    def TREE_PAGEDCOPY(self, elem, child, src, srcXML, param):
+    
+        # is MULTICOPY?
+        tags=param.split(',')
+        tag, param_enbl = self.getParam(src, tags[0])
+        src, srcXML, tag = self.getBase(src, srcXML, tag)
+        columncount=tags[1]
+        rowcount=tags[2]
+        
+
+        
+        
+        # walk the src path if neccessary
+        while '/' in tag and src!=None:
+            parts = tag.split('/',1)
+            src = src.find(parts[0])
+            tag = parts[1]
+        
+        # find index of child in elem - to keep consistent order
+        for ix, el in enumerate(list(elem)):
+            if el==child:
+                break
+
+        #get all requested tags    
+        itemrange = src.findall(tag)
+        # is MULTICOPY?
+        for i in range(len(tags)):
+          if i > 2:
+            itemrange=itemrange+src.findall(tags[i])  
+
+        maxicons = int(columncount) * int(rowcount)
+        pagecount = 0 
+        iconcount = 0
+
+        if len(tags) > 3:
+          itemrange = sorted(itemrange, key=lambda x: x.attrib.get('addedAt'), reverse=True)        
+        
+        for elemSRC in itemrange:
+
+            key = 'COPY'
+            if param_enbl!='':
+                key, leftover, dfltd = self.getKey(elemSRC, srcXML, param_enbl)
+                conv, leftover = self.getConversion(elemSRC, leftover)
+                if not dfltd:
+                    key = self.applyConversion(key, conv)
+            
+            
+            if key:
+                
+                if iconcount == 0:
+                  pagecount += 1
+                  currentgrid = etree.SubElement(elem, "grid")
+                  currentgrid.set("id","grid_"+str(pagecount))
+                  currentgrid.set("columnCount", columncount )
+                  items = etree.SubElement(currentgrid, "items")
+                elif iconcount % maxicons == 0:
+                  pagecount += 1
+                  currentgrid = etree.SubElement(elem, "grid")
+                  currentgrid.set("id","grid_"+str(pagecount))
+                  currentgrid.set("columnCount", columncount )
+                  items = etree.SubElement(currentgrid, "items")
+                 
+                
+                el = copy.deepcopy(child)
+                XML_ExpandTree(el, elemSRC, srcXML)
+                XML_ExpandAllAttrib(el, elemSRC, srcXML)
+                
+                if el.tag=='__COPY__':
+                    for el_child in list(el):
+                        items.insert(ix, el_child)
+                        ix += 1
+                        iconcount += 1
+                else:
+                    items.insert(ix, el)
+                    ix += 1
+                    iconcount += 1
+        
+        
+        
+        
+        
+        # remove template child
+        elem.remove(child)
+        return True  # tree modified, nodes updated: restart from 1st elem
+
+    
+    
+    
+    
     
     def TREE_CUT(self, elem, child, src, srcXML, param):
         key, leftover, dfltd = self.getKey(src, srcXML, param)

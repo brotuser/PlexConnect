@@ -15,7 +15,7 @@
     <scroller id="com.sample.movie-showcase-grid">
       <header>
         <imageHeader>
-	     <image insets="0, 0, {{VAL(^aTVScreenResolution:1:720=590|1080=885)}}, 0" required="true">{{URL(:/fanartcache/{{LFBG("plex","{{EVAL(quote_plus("{{TEXT(Plex Library)}}"))}}","","backgrounds/plexdefault.png","{{VAL(^aTVScreenResolution)}}","fonts/OpenSans/OpenSans-Light.ttf","50","","FFFFFF","","center","top","0","90","","Simple")}})}}</image>
+	     <image insets="0, 0, {{VAL(^aTVScreenResolution:1:720=620|1080=930)}}, 0" required="true">{{URL(:/fanartcache/{{LFBG("plex","{{EVAL(quote_plus("{{TEXT(Plex Library)}}"))}}","","backgrounds/plexdefault.png","{{VAL(^aTVScreenResolution)}}","fonts/OpenSans/OpenSans-Light.ttf","40","25","CCCCCC","FF8800","right","top","60","25","","","PlexPagedOnDeck")}})}}</image>
 	   </imageHeader>
       </header>
       <items>
@@ -24,7 +24,7 @@
       
         <__COPY__>  
         {{COPY(Server:@main/size::0=|1=COPY)}}
-        <collectionDivider alignment="center" accessibilityLabel="Library">
+        <collectionDivider alignment="left" accessibilityLabel="Library">
             <title>{{VAL(local::0= {{TEXT(Remote)}}|0 =)}}: {{VAL(name)}}</title>
         </collectionDivider>
 
@@ -66,7 +66,7 @@
         </__COPY__>
         
         
-          <collectionDivider alignment="center" accessibilityLabel="On Deck">
+          <collectionDivider alignment="left" accessibilityLabel="On Deck">
             {{CUT(@OnDeck/Server/size:CUT:0=CUT|1=)}}
             <title>{{TEXT(On Deck)}}</title>
         </collectionDivider>{{CUT($plex_library_ondeck::checked=|unchecked=CUT)}}
@@ -76,7 +76,7 @@
             <shelfSection>
               {{COPY(Server:@OnDeck/size::0=|1=COPY)}}
               <items>
-                <sixteenByNinePoster id="{{VAL(key)}}" accessibilityLabel="{{VAL(title)}}" alwaysShowTitles="{{VAL($plex_showtitles_library::Highlighted Only=false|Show All=true)}}"
+                <fourByThreePoster id="{{VAL(key)}}" accessibilityLabel="{{VAL(title)}}" alwaysShowTitles="{{VAL($plex_showtitles_library::Highlighted Only=false|Show All=true)}}"
                             onPlay="atv.loadURL('{{URL(key)}}&amp;PlexConnect=Play')"
                             onSelect="atv.loadURL('{{URL(key)}}&amp;PlexConnect={{VAL(type::movie=Movie|episode=Episode)}}PrePlay')"
                             onHoldSelect="scrobbleMenu('{{URL(key)}}&amp;PlexConnect=ScrobbleMenuVideo')">
@@ -86,13 +86,13 @@
                   <subtitle>{{VAL(type::movie={{VAL(year)}}|episode={{episodestring(parentIndex:0:index:0)}})}}</subtitle>
                   <image>{{IMAGEURL({{VAL(type::movie=thumb|episode=grandparentThumb)}}::384)}}</image>
                   <defaultImage>resource://Poster.png</defaultImage>
-                </sixteenByNinePoster>
+                </fourByThreePoster>
               </items>
             </shelfSection>
           </sections>
         </shelf>{{CUT($plex_library_ondeck::checked=|unchecked=CUT)}}{{CUT(@OnDeck/Server/size:CUT:0=CUT|1=)}}  
 
-        <collectionDivider alignment="center" accessibilityLabel="Recently Added">
+        <collectionDivider alignment="left" accessibilityLabel="Recently Added">
           {{CUT(@RecentlyAdded/Server/size:CUT:0=CUT|1=)}}
           <title>{{TEXT(Recently Added)}}</title>
         </collectionDivider>{{CUT($plex_library_recentlyadded::checked=|unchecked=CUT)}}{{CUT(@RecentlyAdded/Server/size:CUT:0=CUT|1=)}}  
@@ -102,7 +102,7 @@
             <shelfSection>
               {{COPY(Server:@RecentlyAdded/size::0=|1=COPY)}}
               <items>
-                <sixteenByNinePoster id="{{VAL(key)}}" accessibilityLabel="{{VAL(title)}}" alwaysShowTitles="{{VAL($plex_showtitles_library::Highlighted Only=false|Show All=true)}}"
+                <fourByThreePoster id="{{VAL(key)}}" accessibilityLabel="{{VAL(title)}}" alwaysShowTitles="{{VAL($plex_showtitles_library::Highlighted Only=false|Show All=true)}}"
                             onPlay="atv.loadURL('{{URL(key)}}&amp;PlexConnect=Play')"
                             onSelect="atv.loadURL('{{URL(key)}}&amp;PlexConnect={{VAL(type::movie=MoviePrePlay|episode=EpisodePrePlay|season=season)}}')"
                             onHoldSelect="scrobbleMenu('{{URL(key)}}&amp;PlexConnect=ScrobbleMenuVideo')">
@@ -113,14 +113,14 @@
                   <badgeCount>{{unwatchedCountGrid(leafCount:0:viewedLeafCount:0)}}</badgeCount>{{CUT($showunwatched::False=CUT|True=)}}
                   <image>{{IMAGEURL(thumb::384)}}</image>        
                   <defaultImage>resource://{{VAL(type::movie=Poster|episode=Poster|season=Poster|album=Square|track=Square)}}.png</defaultImage>
-                </sixteenByNinePoster>
+                </fourByThreePoster>
               </items>
             </shelfSection>
           </sections>
         </shelf>{{CUT($plex_library_recentlyadded::checked=|unchecked=CUT)}}{{CUT(@RecentlyAdded/Server/size:CUT:0=CUT|1=)}}
               
          
-        <collectionDivider alignment="center" accessibilityLabel="Channels">
+        <collectionDivider alignment="left" accessibilityLabel="Channels">
             <title>{{TEXT(Channels)}}</title>
         </collectionDivider>{{CUT($plex_library_channels:CUT:checked=|unchecked=CUT)}}{{CUT(@VideoChannels/Server/size:CUT:0=CUT|1=)}} 
         <shelf id="shelf_3" columnCount="10">
@@ -130,7 +130,7 @@
                     {{COPY(@VideoChannels/Server:size::0=|1=COPY)}}
                     <items>
                         <!-- /library/sections -->
-                        <sixteenByNinePoster id="Video_{{VAL(key)}}" featured="true" alwaysShowTitles="{{VAL($showtitles_channels::Highlighted Only=false|Show All=true)}}"
+                        <fourByThreePoster id="Video_{{VAL(key)}}" featured="true" alwaysShowTitles="{{VAL($showtitles_channels::Highlighted Only=false|Show All=true)}}"
                                        onPlay="atv.loadURL('{{URL(key)}}&amp;PlexConnect=ChannelsVideo')"
                                        onSelect="atv.loadURL('{{URL(key)}}&amp;PlexConnect=ChannelsVideo')">
                             {{COPY(Directory)}}
@@ -138,7 +138,7 @@
                             <title>{{VAL(title)}}</title>
                             <image>{{IMAGEURL(thumb::)}}</image>
                             <defaultImage>resource://Square.png</defaultImage>
-                        </sixteenByNinePoster>
+                        </fourByThreePoster>
                     </items>
                 </shelfSection>
           </sections>

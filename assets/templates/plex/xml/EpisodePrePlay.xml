@@ -10,7 +10,7 @@
     <itemDetailWithImageHeader id="com.sample.movie-grid" volatile="true" onVolatileReload="atv.loadAndSwapURL('{{URL()}}&amp;PlexConnect=EpisodePrePlay')">
       <header>
 	    <imageHeader>
-	      <image insets="0, 0, {{VAL(^aTVScreenResolution:1:720=680|1080=1020)}}, 0" required="true">{{URL(:/fanartcache/{{LFBG("plex","{{EVAL(quote_plus("{{VAL(Video/grandparentTitle)}}"))}}","{{EVAL(quote_plus("{{VAL(Video/index)}}. {{VAL(Video/title)}}"))}}","{{IMAGEURL(Video/art:::)}}","{{VAL(^aTVScreenResolution)}}","fonts/OpenSans/OpenSans-Light.ttf","40","20","FFFFFF","FFFFFF","left","top","350","26","","EpisodePrePlay")}})}}</image>
+	      <image insets="0, 0, {{VAL(^aTVScreenResolution:1:720=680|1080=1020)}}, 0" required="true">{{URL(:/fanartcache/{{LFBG("plex","{{EVAL(quote_plus("{{VAL(Video/grandparentTitle)}}"))}}","{{EVAL(quote_plus("{{VAL(Video/index)}}. {{VAL(Video/title)}}"))}}","{{IMAGEURL(Video/art:::)}}","{{VAL(^aTVScreenResolution)}}","fonts/OpenSans/OpenSans-Light.ttf","40","20","FFFFFF","FFFFFF","left","top","350","26","130","","EpisodePrePlay")}})}}</image>
 	    </imageHeader>
 	  </header>
       <!-- <title>{{VAL(Video/index)}}. {{VAL(Video/title)}}</title> -->
@@ -141,13 +141,13 @@
           <sections>
             <shelfSection>
               <items>
-                <sixteenByNinePoster related="true" alwaysShowTitles="true" id="shelf_item_1" 
+                <fourByThreePoster related="true" alwaysShowTitles="true" id="shelf_item_1" 
                                      onSelect="atv.loadAndSwapURL('{{URL(key)}}&amp;PlexConnect=EpisodePrePlay')">
                   {{COPY(@parentEpisodes/Video)}}
                   <title>{{VAL(index)}}. {{VAL(title)}}</title>
                   <image>{{IMAGEURL(thumb::384)}}</image>
                   <defaultImage>resource://16X9.png</defaultImage>
-                </sixteenByNinePoster>
+                </fourByThreePoster>
               </items>
             </shelfSection>
           </sections>

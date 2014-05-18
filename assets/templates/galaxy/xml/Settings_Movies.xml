@@ -10,7 +10,7 @@
       <header>
         <imageHeader>
           <image insets="0, 0, {{VAL(^aTVScreenResolution:1:720=640|1080=960)}}, 0" required="true">
-           {{URL(:/fanartcache/{{LFBG("galaxy","{{EVAL(quote_plus("{{TEXT(Settings)}}"))}}","","backgrounds/settings.jpg","{{VAL(^aTVScreenResolution)}}","fonts/OpenSans/OpenSans-Light.ttf","50","","9A9A9A","","right","top","80","90","","DetailedList")}})}}
+           {{URL(:/fanartcache/{{LFBG("galaxy","{{EVAL(quote_plus("{{TEXT(Settings)}}"))}}","","backgrounds/settings.jpg","{{VAL(^aTVScreenResolution)}}","fonts/OpenSans/OpenSans-Light.ttf","50","","9A9A9A","","right","top","80","90","","","DetailedList")}})}}
           </image>
         </imageHeader>
       </header>
@@ -42,7 +42,7 @@
             <items>
               <oneLineMenuItem id="MovieView" onSelect="toggleSettings('MovieView', 'Settings_Movies')">
                 <label>{{TEXT(Movie View)}}</label>
-                <rightLabel>{{SETTING(movieview)}}</rightLabel>
+                <rightLabel>{{SETTING(galaxy_movieview)}}</rightLabel>
               </oneLineMenuItem> 
 
               <oneLineMenuItem id="ActorView" onSelect="toggleSettings('ActorView', 'Settings_Movies')">

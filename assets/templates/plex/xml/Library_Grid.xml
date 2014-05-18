@@ -17,14 +17,14 @@
     {{CUT($libraryview:CUT:=CUT|Grid=|Grid =CUT)}}
       <header>
        <imageHeader>
-	     <image insets="0, 0, {{VAL(^aTVScreenResolution:1:720=590|1080=885)}}, 0" required="true">{{URL(:/fanartcache/{{LFBG("plex","{{EVAL(quote_plus("{{TEXT(Plex Library)}}"))}}","","backgrounds/plexdefault.png","{{VAL(^aTVScreenResolution)}}","fonts/OpenSans/OpenSans-Light.ttf","50","","FFFFFF","","center","top","","90","","Simple")}})}}</image>{{CUT($plex_sectionsposition::Top=|Bottom=|Flow=CUT|Middle=))}}  
-	     <image insets="0, 0, {{VAL(^aTVScreenResolution:1:720=590|1080=885)}}, 0" required="true">{{URL(:/fanartcache/{{LFBG("plex","{{EVAL(quote_plus("{{TEXT(Plex Library)}}"))}}","","backgrounds/plexdefault.png","{{VAL(^aTVScreenResolution)}}","fonts/OpenSans/OpenSans-Light.ttf","50","","FFFFFF","","center","top","","90","","TopFlow")}})}}</image>{{CUT($plex_sectionsposition::Top=CUT|Bottom=CUT|Flow=|Middle=CUT))}}  
+	     <image insets="0, 0, {{VAL(^aTVScreenResolution:1:720=620|1080=930)}}, 0" required="true">{{URL(:/fanartcache/{{LFBG("plex","{{EVAL(quote_plus("{{TEXT(Plex Library)}}"))}}","","backgrounds/plexdefault.png","{{VAL(^aTVScreenResolution)}}","fonts/OpenSans/OpenSans-Light.ttf","40","25","CCCCCC","FF8800","right","top","60","25","","","PlexPagedOnDeck")}})}}</image>{{CUT($plex_sectionsposition::Top=|Bottom=|Flow=CUT|Middle=))}}  
+	     <image insets="0, 0, {{VAL(^aTVScreenResolution:1:720=620|1080=930)}}, 0" required="true">{{URL(:/fanartcache/{{LFBG("plex","{{EVAL(quote_plus("{{TEXT(Plex Library)}}"))}}","","backgrounds/plexdefault.png","{{VAL(^aTVScreenResolution)}}","fonts/OpenSans/OpenSans-Light.ttf","40","25","CCCCCC","FF8800","right","top","60","25","","","PlexFlowLibrary")}})}}</image>{{CUT($plex_sectionsposition::Top=CUT|Bottom=CUT|Flow=|Middle=CUT))}}  
 
 	   </imageHeader>
 
       </header>
       <items>
-          <collectionDivider alignment="center" accessibilityLabel="{{VAL(title2)}}">
+          <collectionDivider alignment="left" accessibilityLabel="{{VAL(title2)}}">
           <title>{{TEXT(Sections)}}</title>
          </collectionDivider>{{CUT(@main/size:CUT:0=CUT|1=|2=CUT)}} 
        <showcase accessibilityLabel="Showcase movies" id="showcase_1" >
@@ -43,15 +43,15 @@
             {{COPY(Directory)}}
             {{VAR(items:NoKey:TRUE)}}
             <image>
-              {{URL(:/fanartcache/{{LFBG("plex","{{VAL(title)}}","","{{IMAGEURL(thumb::768)}}","square","fonts/OpenSans/OpenSans-Light.ttf","80","","FFFFFF","FFFFFF","center","bottom","40","120","","FlowIconSquare")}})}}
+              {{URL(:/fanartcache/{{LFBG("plex","{{VAL(title)}}","","{{IMAGEURL(thumb::768)}}","square","fonts/OpenSans/OpenSans-Light.ttf","80","","FFFFFF","FFFFFF","center","bottom","40","120","","","FlowIconSquare")}})}}
             </image>{{CUT($plex_sectionicons::Apple=CUT|Plex=|Fanart=CUT|Custom=CUT)}} 
             <image>
-              {{URL(:/fanartcache/{{LFBG("plex","{{VAL(title)}}","","flow/{{VAL(type)}}-flow.png","flow","fonts/OpenSans/OpenSans-Light.ttf","40","","FFFFFF","FFFFFF","center","bottom","40","61","","FlowIconApple")}})}}
+              {{URL(:/fanartcache/{{LFBG("plex","{{VAL(title)}}","","flow/{{VAL(type)}}-flow.png","flow","fonts/OpenSans/OpenSans-Light.ttf","40","","FFFFFF","FFFFFF","center","bottom","40","61","","","FlowIconApple")}})}}
             </image>{{CUT($plex_sectionicons::Apple=|Plex=CUT|Fanart=CUT|Custom=CUT)}}
             <image>
-              {{URL(:/fanartcache/{{LFBG("plex","{{VAL(title)}}","","{{IMAGEURL(art::768)}}","flow","fonts/OpenSans/OpenSans-Light.ttf","40","","FFFFFF","FFFFFF","center","top","40","5","","FlowIconFanart")}})}}
+              {{URL(:/fanartcache/{{LFBG("plex","{{VAL(title)}}","","{{IMAGEURL(art::768)}}","flow","fonts/OpenSans/OpenSans-Light.ttf","40","","FFFFFF","FFFFFF","center","top","40","5","","","FlowIconFanart")}})}}
             </image>{{CUT($plex_sectionicons::Apple=CUT|Plex=CUT|Fanart=|Custom=CUT)}}
-
+           
 
             <defaultImage>resource://Poster.png</defaultImage>
           </showcasePoster>         
@@ -59,7 +59,7 @@
           <showcasePoster id="{{VAL(searchKey)}}" accessibilityLabel="{{TEXT(Search)}}"
                           onPlay="atv.loadURL('{{URL(searchKey)}}')"
                           onSelect="atv.loadURL('{{URL(searchKey)}}')">
-            <image>{{URL(:/fanartcache/{{LFBG("plex","{{TEXT(Search)}}","","icons/search.png","flow","fonts/OpenSans/OpenSans-Bold.ttf","40","","FFFFFF","FFFFFF","right","top","40","20","","ListIcon")}})}}</image>
+            <image>{{URL(:/fanartcache/{{LFBG("plex","{{TEXT(Search)}}","","icons/search.png","flow","fonts/OpenSans/OpenSans-Bold.ttf","40","","FFFFFF","FFFFFF","right","top","40","20","","","ListIcon")}})}}</image>
             <defaultImage>resource://Poster.png</defaultImage>
             
           </showcasePoster>{{CUT($plex_library_search::Show=|Hide=CUT)}} 
@@ -74,7 +74,7 @@
         <__COPY__>
         {{COPY(Server:@main/size::0=|1=COPY)}}
 
-          <collectionDivider alignment="center" accessibilityLabel="Show_Bookcase_Divider">
+          <collectionDivider alignment="left" accessibilityLabel="Show_Bookcase_Divider">
             <title>{{VAL(name)}}{{VAL(local::0=&lt;{{TEXT(remote)}}&gt;|0 =)}}</title>
           </collectionDivider>{{CUT(@main/size:CUT:0=CUT|1=CUT|2=)}}
           <shelf id="Library_Grid_{{VAL(name)}}" columnCount="5">
@@ -117,7 +117,7 @@
 
             
        <!-- ON Deck -->
-      <collectionDivider alignment="center" accessibilityLabel="On Deck">
+      <collectionDivider alignment="left" accessibilityLabel="On Deck">
         {{CUT(@OnDeck/Server/size:CUT:0=CUT|1=)}}
         <title>{{TEXT(On Deck)}}</title>
       </collectionDivider>{{CUT($plex_library_ondeck::checked=|unchecked=CUT)}}
@@ -127,7 +127,7 @@
           <shelfSection>
             {{COPY(Server:@OnDeck/size::0=|1=COPY)}}
             <items>
-                <sixteenByNinePoster id="{{VAL(key)}}" featured="true" accessibilityLabel="{{VAL(title)}}" alwaysShowTitles="{{VAL($plex_showtitles_library::Highlighted Only=false|Show All=true)}}"
+                <fourByThreePoster id="{{VAL(key)}}" featured="true" accessibilityLabel="{{VAL(title)}}" alwaysShowTitles="{{VAL($plex_showtitles_library::Highlighted Only=false|Show All=true)}}"
                             onPlay="atv.loadURL('{{URL(key)}}&amp;PlexConnect=Play')"
                             onSelect="atv.loadURL('{{URL(key)}}&amp;PlexConnect={{VAL(type::movie=Movie|episode=Episode)}}PrePlay')"
                             onHoldSelect="scrobbleMenu('{{URL(key)}}&amp;PlexConnect=ScrobbleMenuVideo')">
@@ -137,7 +137,7 @@
                   <subtitle>{{VAL(type::movie={{VAL(year)}}|episode={{episodestring(parentIndex:0:index:0)}})}}</subtitle>
                   <image>{{IMAGEURL({{VAL(type::movie=thumb|episode=grandparentThumb)}}::384)}}</image>
                   <defaultImage>resource://Poster.png</defaultImage>
-                </sixteenByNinePoster>
+                </fourByThreePoster>
               </items>
             </shelfSection>
           </sections>
@@ -146,7 +146,7 @@
 
    
         
-         <collectionDivider alignment="center" accessibilityLabel="Recently Added">
+         <collectionDivider alignment="left" accessibilityLabel="Recently Added">
           {{CUT(@RecentlyAdded/Server/size:CUT:0=CUT|1=)}}
           <title>{{TEXT(Recently Added)}}</title>
         </collectionDivider>{{CUT($plex_library_recentlyadded::checked=|unchecked=CUT)}}{{CUT(@RecentlyAdded/Server/size:CUT:0=CUT|1=)}} 
@@ -156,7 +156,7 @@
             <shelfSection>
               {{COPY(Server:@RecentlyAdded/size::0=|1=COPY)}}
               <items>
-                <sixteenByNinePoster id="{{VAL(key)}}" accessibilityLabel="{{VAL(title)}}" featured="true" alwaysShowTitles="{{VAL($plex_showtitles_library::Highlighted Only=false|Show All=true)}}"
+                <fourByThreePoster id="{{VAL(key)}}" accessibilityLabel="{{VAL(title)}}" featured="true" alwaysShowTitles="{{VAL($plex_showtitles_library::Highlighted Only=false|Show All=true)}}"
                             onPlay="atv.loadURL('{{URL(key)}}&amp;PlexConnect=Play')"
                             onSelect="atv.loadURL('{{URL(key)}}&amp;PlexConnect={{VAL(type::movie=MoviePrePlay|episode=EpisodePrePlay|season=season)}}')"           
                             onHoldSelect="scrobbleMenu('{{URL(key)}}&amp;PlexConnect=ScrobbleMenuVideo')">
@@ -167,7 +167,7 @@
                   <badgeCount>{{unwatchedCountGrid(leafCount:0:viewedLeafCount:0)}}</badgeCount>{{CUT($showunwatched::False=CUT|True=)}}
                   <image>{{IMAGEURL(thumb::384)}}</image>        
                   <defaultImage>resource://{{VAL(type::movie=Poster|episode=Poster|season=Poster|album=Square|track=Square)}}.png</defaultImage>
-                </sixteenByNinePoster>
+                </fourByThreePoster>
               </items>
             </shelfSection>
             
@@ -178,7 +178,7 @@
         
         
    
-        <collectionDivider alignment="center" accessibilityLabel="Channels">
+        <collectionDivider alignment="left" accessibilityLabel="Channels">
             <title>{{TEXT(Channels)}}</title>
         </collectionDivider>{{CUT($plex_library_channels:CUT:checked=|unchecked=CUT)}}{{CUT(@VideoChannels/Server/size:CUT:0=CUT|1=)}} 
         <shelf id="shelf_3" columnCount="7">
@@ -188,7 +188,7 @@
                     {{COPY(@VideoChannels/Server:size::0=|1=COPY)}}
                     <items>
                         <!-- /library/sections -->
-                        <sixteenByNinePoster id="Video_{{VAL(key)}}" featured="true" alwaysShowTitles="{{VAL($showtitles_channels::Highlighted Only=false|Show All=true)}}"
+                        <fourByThreePoster id="Video_{{VAL(key)}}" featured="true" alwaysShowTitles="{{VAL($showtitles_channels::Highlighted Only=false|Show All=true)}}"
                                        onPlay="atv.loadURL('{{URL(key)}}&amp;PlexConnect=ChannelsVideo')"
                                        onSelect="atv.loadURL('{{URL(key)}}&amp;PlexConnect=ChannelsVideo')">
                             {{COPY(Directory)}}
@@ -196,7 +196,7 @@
                             <title>{{VAL(title)}}</title>
                             <image>{{IMAGEURL(thumb::)}}</image>
                             <defaultImage>resource://Square.png</defaultImage>
-                        </sixteenByNinePoster>
+                        </fourByThreePoster>
                     </items>
                 </shelfSection>
           </sections>

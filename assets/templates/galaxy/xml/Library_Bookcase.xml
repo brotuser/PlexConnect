@@ -10,7 +10,7 @@
     <scroller id="Library_Bookcase">
       <header>
         <imageHeader>
-	     <image insets="0, 0, {{VAL(^aTVScreenResolution:1:720=590|1080=885)}}, 0" required="true">{{URL(:/fanartcache/{{LFBG("galaxy","{{EVAL(quote_plus("{{TEXT(Plex Library)}}"))}}","","backgrounds/library.jpg","{{VAL(^aTVScreenResolution)}}","fonts/OpenSans/OpenSans-Light.ttf","50","20","FFFFFF","FFFFFF","center","top","","90","","Simple")}})}}</image>
+	     <image insets="0, 0, {{VAL(^aTVScreenResolution:1:720=590|1080=885)}}, 0" required="true">{{URL(:/fanartcache/{{LFBG("galaxy","{{EVAL(quote_plus("{{TEXT(Plex Library)}}"))}}","","backgrounds/library.jpg","{{VAL(^aTVScreenResolution)}}","fonts/OpenSans/OpenSans-Light.ttf","50","20","FFFFFF","FFFFFF","center","top","","90","","","Simple")}})}}</image>
 	   </imageHeader>
       </header>
           
@@ -37,9 +37,9 @@
               {{VAR(sections:NoKey:TRUE)}}  <!--within COPY this sets the var to TRUE-->
                 <title>{{VAL(title)}}</title>
                 <subtitle>{{VAL(year:&#x00AD;)}}</subtitle><!--bugfix to prevent different poster sizes-->
-                 <image>{{IMAGEURL(art::768)}}</image>{{CUT($sectionicons::Apple=CUT|Plex=CUT|Fanart=|Custom=CUT)}}
-                    <image>{{URL(:/templates/galaxy/images/icons/{{VAL(type)}}.jpg)}}</image>{{CUT($sectionicons::Apple=|Plex=CUT|Fanart=CUT|Custom=CUT)}}
-                    <image>{{IMAGEURL(thumb::768)}}</image>{{CUT($sectionicons::Apple=CUT|Plex=|Fanart=CUT|Custom=CUT)}}
+                 <image>{{IMAGEURL(art::768)}}</image>{{CUT($galaxy_sectionicons::Apple=CUT|Plex=CUT|Fanart=|Custom=CUT)}}
+                    <image>{{URL(:/templates/galaxy/images/icons/{{VAL(type)}}.jpg)}}</image>{{CUT($galaxy_sectionicons::Apple=|Plex=CUT|Fanart=CUT|Custom=CUT)}}
+                    <image>{{IMAGEURL(thumb::768)}}</image>{{CUT($galaxy_sectionicons::Apple=CUT|Plex=|Fanart=CUT|Custom=CUT)}}
                     <defaultImage>resource://16X9.png</defaultImage>
 
                 <!--badgeCount></badgeCount-->
@@ -53,7 +53,7 @@
                     <image>{{URL(:/templates/galaxy/images/icons/search.png)}}</image>
                     <defaultImage>resource://16X9.png</defaultImage>
 
-              </sixteenByNinePoster>{{CUT($library_search::Show=|Hide=CUT)}} 
+              </sixteenByNinePoster>{{CUT($galaxy_library_search::Show=|Hide=CUT)}} 
               
             </items>
           </grid>

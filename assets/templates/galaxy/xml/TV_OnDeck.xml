@@ -8,7 +8,7 @@
       <header>
         <itemCollectionWithImageHeader>
           <image insets="0, 0, {{VAL(^aTVScreenResolution:1:720=640|1080=810)}}, 0" required="true">
-           {{URL(:/fanartcache/{{LFBG("galaxy","{{EVAL(quote_plus("{{TEXT(Plex Channels)}}"))}}","","backgrounds/channel.jpg","{{VAL(^aTVScreenResolution)}}","fonts/OpenSans/OpenSans-Light.ttf","60","30","98B178","","right","top","80","40","","List")}})}}</image>
+           {{URL(:/fanartcache/{{LFBG("galaxy","{{EVAL(quote_plus("{{TEXT(Plex Channels)}}"))}}","","backgrounds/channel.jpg","{{VAL(^aTVScreenResolution)}}","fonts/OpenSans/OpenSans-Light.ttf","60","30","98B178","","right","top","80","40","","","List")}})}}</image>
         </imageHeader>
       </header>
       <menu>

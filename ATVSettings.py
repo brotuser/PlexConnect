@@ -10,9 +10,17 @@ from Debug import *  # dprint()
 
 
 options = { \
-    'template'                      :('default', 'stoffez', 'galaxy', 'plex'), \
-#TemplateSettings	
-    'plex_libraryview_remote'        	:('TopGrid', 'Bookcase', 'List'), \
+    'template'                      :('default', 'galaxy', 'plex'), \
+#TemplateSettings
+
+#plex
+    'plex_libraryview_remote'       :('Top Paged Grid', 'Top Grid', 'Bookcase', 'List'), \
+    'plex_libraryview'              :('Paged Grid', 'Grid', 'List', 'Bookcase'), \
+    'plex_movieview'                :('Paged Grid','Grid', 'List', 'Detailed List'), \
+    'plex_homevideoview'            :('Grid', 'List', 'Detailed List'), \
+    'plex_showview'                 :('List', 'Grid', 'Bookcase'), \
+    'plex_channelview'              :('List', 'Grid', 'Bookcase'), \
+
     'plex_sectionicons'              	:('Fanart', 'Apple', 'Plex'), \
     'plex_sectionicons_shared'       	:('Fanart', 'Apple', 'Plex'), \
     'plex_sectionsposition'          	:('Flow', 'Top'), \
@@ -22,35 +30,25 @@ options = { \
     'plex_library_channels'          	:('unchecked', 'checked'), \
     'plex_showtitles_library'        	:('Show All', 'Highlighted Only'), \
 
-    'libraryview_remote'        	:('TopGrid', 'Bookcase', 'List'), \
-    'sectionicons'              	:('Fanart', 'Apple', 'Plex'), \
-    'sectionicons_shared'       	:('Fanart', 'Apple', 'Plex'), \
-    'sectionsposition'          	:('Flow', 'Top'), \
-    'library_search'            	:('Show', 'Hide'), \
-    'library_ondeck'            	:('checked', 'unchecked'), \
-    'library_recentlyadded'     	:('checked', 'unchecked'), \
-    'library_channels'          	:('unchecked', 'checked'), \
-    'showtitles_library'        	:('Show All', 'Highlighted Only'), \
-    'fanart'            			:('Off', 'On'), \
-    'imageheader'               	:('Off', 'On'), \
-    'libheader'               		:('Off', 'On'), \
+#galaxy
+    'galaxy_libraryview_remote'        	:('Top Grid', 'Bookcase', 'List'), \
+    'galaxy_libraryview'              :('Grid', 'List', 'Bookcase'), \
+    'galaxy_movieview'                :('Grid', 'List', 'Detailed List'), \
+    'galaxy_homevideoview'            :('Grid', 'List', 'Detailed List'), \
+    'galaxy_showview'                 :('List', 'Grid', 'Bookcase'), \
+    'galaxy_channelview'              :('List', 'Grid', 'Bookcase'), \
+    
+    'galaxy_sectionicons'              	:('Fanart', 'Apple', 'Plex'), \
+    'galaxy_sectionicons_shared'       	:('Fanart', 'Apple', 'Plex'), \
+    'galaxy_sectionsposition'          	:('Flow', 'Top'), \
+    'galaxy_library_search'            	:('Show', 'Hide'), \
+    'galaxy_library_ondeck'            	:('checked', 'unchecked'), \
+    'galaxy_library_recentlyadded'     	:('checked', 'unchecked'), \
+    'galaxy_library_channels'          	:('unchecked', 'checked'), \
+    'galaxy_showtitles_library'        	:('Show All', 'Highlighted Only'), \
 
     
-#stoffez
-    'stoffez_libraryview_remote'        	:('TopGrid', 'Bookcase', 'List'), \
-    'stoffez_sectionicons'                  :('Apple', 'Custom'), \
-    'stoffez_sectionicons_shared'       	:('Apple', 'Custom'), \
-    'stoffez_sectionsposition'          	:('Top', 'Flow'), \
-    'stoffez_library_search'            	:('Hide', 'Show'), \
-    'stoffez_library_ondeck'            	:('checked', 'unchecked'), \
-    'stoffez_library_recentlyadded'     	:('checked', 'unchecked'), \
-    'stoffez_library_channels'          	:('unchecked', 'checked'), \
-    'stoffez_showtitles_library'        	:('Show All', 'Highlighted Only'), \
-    'stoffez_fanart'            			:('Off', 'On'), \
-    'stoffez_imageheader'               	:('Off', 'On'), \
-    'stoffez_libheader'               		:('Off', 'On'), \
 
-    
 # ===================   
 #iBaa legacy Settings     
     'libraryview' :('Grid', 'List', 'Bookcase'), \

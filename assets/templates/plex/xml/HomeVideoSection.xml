@@ -15,7 +15,8 @@
     <scroller id="com.sample.movie-showcase-grid">
       <header>
         <imageHeader>
-	      <image insets="0, 0, {{VAL(^aTVScreenResolution:1:720=480|1080=720)}}, 0" required="true">{{URL(:/fanartcache/{{LFBG("plex","{{EVAL(quote_plus("{{VAL(title1)}}"))}}","","backgrounds/plexdefault.png","{{VAL(^aTVScreenResolution)}}","fonts/OpenSans/OpenSans-Light.ttf","60","30","FFFFFF","FFFFFF","center","top","","110","","ChannelGrid")}})}}</image>
+	      <image insets="0, 0, {{VAL(^aTVScreenResolution:1:720=620|1080=930)}}, 0" required="true">{{URL(:/fanartcache/{{LFBG("plex","{{EVAL(quote_plus("{{VAL(title1)}}"))}}","","backgrounds/plexdefault.png","{{VAL(^aTVScreenResolution)}}","fonts/OpenSans/OpenSans-Light.ttf","40","","CCCCCC","","right","top","60","25","","","PlexPagedOnDeck")}})}}</image>
+	      
 	    </imageHeader>
       </header>
       
@@ -24,76 +25,58 @@
           {{CUT(@OnDeck/size:CUT:0=CUT|1=)}}
           <title>{{TEXT(On Deck)}}</title>
         </collectionDivider>
-        <shelf id="shelf_0" columnCount="5">
+        <pagedGrid id="pagedGrid_0">
           {{CUT(@OnDeck/size:CUT:0=CUT|1=)}}
-          <sections>
-            <shelfSection>
-              <items>
-                <sixteenByNinePoster id="{{VAL(key)}}" accessibilityLabel="{{VAL(title)}}" alwaysShowTitles="{{VAL($showtitles_homevideos::Highlighted Only=false|Show All=true)}}"
+                <fourByThreePoster id="{{VAL(key)}}" featured="true" accessibilityLabel="{{VAL(title)}}" alwaysShowTitles="{{VAL($showtitles_homevideos::Highlighted Only=false|Show All=true)}}"
                             onPlay="atv.loadURL('{{URL(key)}}&amp;PlexConnect=Play')"
                             onSelect="atv.loadURL('{{URL(key)}}&amp;PlexConnect=HomeVideoPrePlay')"
                             onHoldSelect="scrobbleMenu('{{URL(key)}}&amp;PlexConnect=ScrobbleMenuVideo')">
-                  {{COPY(@OnDeck/Video)}}
+                  {{PAGEDCOPY(@OnDeck/Video,4,1)}}
                   {{VAR(items:NoKey:TRUE)}}  <!--within COPY this sets the var to TRUE-->
                   <title>{{VAL(title)}}</title>
                   <subtitle>{{VAL(year:&#x00AD;)}}</subtitle>
                   <image>{{IMAGEURL(thumb::384)}}</image>
                   <defaultImage>resource://Poster.png</defaultImage>
-                </sixteenByNinePoster>
-              </items>
-            </shelfSection>
-          </sections>
-        </shelf>
+                </fourByThreePoster>
+        </pagedGrid>
 
         <collectionDivider alignment="left" accessibilityLabel="Recently Added">
           {{CUT(@RecentlyAdded/size:CUT:0=CUT|1=)}}
           <title>{{TEXT(Recently Added)}}</title>
         </collectionDivider>
-        <shelf id="shelf_1" columnCount="5">
+        <pagedGrid id="pagedGrid_1">
           {{CUT(@RecentlyAdded/size:CUT:0=CUT|1=)}}
-          <sections>
-            <shelfSection>
-              <items>
-                <sixteenByNinePoster id="{{VAL(key)}}" accessibilityLabel="{{VAL(title)}}" alwaysShowTitles="{{VAL($showtitles_homevideos::Highlighted Only=false|Show All=true)}}"
+                <fourByThreePoster id="{{VAL(key)}}" featured="true" accessibilityLabel="{{VAL(title)}}" alwaysShowTitles="{{VAL($showtitles_homevideos::Highlighted Only=false|Show All=true)}}"
                             onPlay="atv.loadURL('{{URL(key)}}&amp;PlexConnect=Play')"
                             onSelect="atv.loadURL('{{URL(key)}}&amp;PlexConnect=HomeVideoPrePlay')"
                             onHoldSelect="scrobbleMenu('{{URL(key)}}&amp;PlexConnect=ScrobbleMenuVideo')">
-                  {{COPY(@RecentlyAdded/Video)}}
+                  {{PAGEDCOPY(@RecentlyAdded/Video,4,1)}}
                   {{VAR(items:NoKey:TRUE)}}  <!--within COPY this sets the var to TRUE-->
                   <title>{{VAL(title)}}</title>
                   <subtitle>{{VAL(year:&#x00AD;)}}</subtitle>
                   <image>{{IMAGEURL(thumb::384)}}</image>
                   <defaultImage>resource://Poster.png</defaultImage>
-                </sixteenByNinePoster>
-              </items>
-            </shelfSection>
-          </sections>
-        </shelf>
+                </fourByThreePoster>
+        </pagedGrid>
 
         <collectionDivider alignment="left" accessibilityLabel="Recently Released">
           {{CUT(@RecentlyReleased/size:CUT:0=CUT|1=)}}
           <title>{{TEXT(Recently Released)}}</title>
         </collectionDivider>
-        <shelf id="shelf_2" columnCount="5">
+        <pagedGrid id="pagedGrid_2">
           {{CUT(@RecentlyReleased/size:CUT:0=CUT|1=)}}
-          <sections>
-            <shelfSection>
-              <items>
-                <sixteenByNinePoster id="{{VAL(key)}}" accessibilityLabel="{{VAL(title)}}" alwaysShowTitles="{{VAL($showtitles_homevideos::Highlighted Only=false|Show All=true)}}"
+                <fourByThreePoster id="{{VAL(key)}}" featured="true" accessibilityLabel="{{VAL(title)}}" alwaysShowTitles="{{VAL($showtitles_homevideos::Highlighted Only=false|Show All=true)}}"
                             onPlay="atv.loadURL('{{URL(key)}}&amp;PlexConnect=Play')"
                             onSelect="atv.loadURL('{{URL(key)}}&amp;PlexConnect=HomeVideoPrePlay')"
                             onHoldSelect="scrobbleMenu('{{URL(key)}}&amp;PlexConnect=ScrobbleMenuVideo')">
-                  {{COPY(@RecentlyReleased/Video)}}
+                  {{PAGEDCOPY(@RecentlyReleased/Video,4,1)}}
                   {{VAR(items:NoKey:TRUE)}}  <!--within COPY this sets the var to TRUE-->
                   <title>{{VAL(title)}}</title>
                   <subtitle>{{VAL(year:&#x00AD;)}}</subtitle>
                   <image>{{IMAGEURL(thumb::384)}}</image>
                   <defaultImage>resource://Poster.png</defaultImage>
-                </sixteenByNinePoster>
-              </items>
-            </shelfSection>
-          </sections>
-        </shelf>
+                </fourByThreePoster>
+        </pagedGrid>
       </items>
     </scroller>
     {{CUT(#items::FALSE=CUT|TRUE=)}}  <!--CUT if no item added-->

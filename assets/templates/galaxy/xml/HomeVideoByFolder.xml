@@ -7,7 +7,7 @@
     <scroller id="com.sample.homevideo-grid" volatile="true" onVolatileReload="atv.loadAndSwapURL('{{URL()}}')">
       <header>
         <imageHeader>
-	      <image insets="0, 0, {{VAL(^aTVScreenResolution:1:720=640|1080=960)}}, 0" required="true">{{URL(:/fanartcache/{{LFBG("galaxy","{{EVAL(quote_plus("{{VAL(title1)}}"))}}","{{EVAL(quote_plus("{{VAL(title2)}}"))}}","","{{VAL(^aTVScreenResolution)}}","fonts/OpenSans/OpenSans-Light.ttf","60","30","AB9871","FFFFFF","center","top","","110","","List")}})}}</image>
+	      <image insets="0, 0, {{VAL(^aTVScreenResolution:1:720=640|1080=960)}}, 0" required="true">{{URL(:/fanartcache/{{LFBG("galaxy","{{EVAL(quote_plus("{{VAL(title1)}}"))}}","{{EVAL(quote_plus("{{VAL(title2)}}"))}}","","{{VAL(^aTVScreenResolution)}}","fonts/OpenSans/OpenSans-Light.ttf","60","30","AB9871","FFFFFF","center","top","","110","","","List")}})}}</image>
 	    </imageHeader>
       </header>
       <items>
@@ -36,7 +36,7 @@
         </grid>
       </items>
     </scroller>
-  </body>{{CUT($homevideoview::Detailed=CUT|Grid=|List=CUT)}}
+  </body>{{CUT($galaxy_homevideoview::Detailed=CUT|Grid=|List=CUT)}}
   
   
 <body>
@@ -88,7 +88,7 @@
         </sections>
       </menu>
     </listWithPreview>
-  </body>{{CUT($homevideoview::Detailed=CUT|Grid=CUT|List=)}}
+  </body>{{CUT($galaxy_homevideoview::Detailed=CUT|Grid=CUT|List=)}}
   
   <body>
     <listWithPreview id="HomeVideo_DetailedList" volatile="true" onVolatileReload="atv.loadAndSwapURL('{{URL()}}')">
@@ -152,5 +152,5 @@
         </sections>
       </menu>
     </listWithPreview>
-  </body>{{CUT($homevideoview::Detailed=|Grid=CUT|List=CUT)}}
+  </body>{{CUT($galaxy_homevideoview::Detailed=|Grid=CUT|List=CUT)}}
 </atv>

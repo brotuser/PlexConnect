@@ -10,7 +10,7 @@
       <header>
         <imageHeader>
           <image insets="0, 0, {{VAL(^aTVScreenResolution:1:720=640|1080=960)}}, 0" required="true">
-           {{URL(:/fanartcache/{{LFBG("galaxy","{{EVAL(quote_plus("{{TEXT(Settings)}}"))}}","","backgrounds/settings.jpg","{{VAL(^aTVScreenResolution)}}","fonts/OpenSans/OpenSans-Light.ttf","50","","9A9A9A","","right","top","80","90","","DetailedList")}})}}
+           {{URL(:/fanartcache/{{LFBG("galaxy","{{EVAL(quote_plus("{{TEXT(Settings)}}"))}}","","backgrounds/settings.jpg","{{VAL(^aTVScreenResolution)}}","fonts/OpenSans/OpenSans-Light.ttf","50","","9A9A9A","","right","top","80","90","","","DetailedList")}})}}
           </image>
         </imageHeader>
       </header>
@@ -47,15 +47,15 @@
             <items>
               <oneLineMenuItem id="LibraryView" onSelect="toggleSettings('LibraryView', 'Settings_Library')">
                 <label>{{TEXT(Library View)}}</label>
-                <rightLabel>{{SETTING(libraryview)}}</rightLabel>
+                <rightLabel>{{SETTING(galaxy_libraryview)}}</rightLabel>
               </oneLineMenuItem>
               <oneLineMenuItem id="SectionIcons" onSelect="toggleSettings('SectionIcons', 'Settings_Library')">
                 <label>{{TEXT(Library Icons)}}</label>
-                <rightLabel>{{SETTING(sectionicons)}}</rightLabel>
+                <rightLabel>{{SETTING(galaxy_sectionicons)}}</rightLabel>
               </oneLineMenuItem>
               <oneLineMenuItem id="SectionsPosition" onSelect="toggleSettings('SectionsPosition', 'Settings_Library')">
                 <label>{{TEXT(Library Sections)}}</label>
-                <rightLabel>{{SETTING(sectionsposition)}}</rightLabel>
+                <rightLabel>{{SETTING(galaxy_sectionsposition)}}</rightLabel>
               </oneLineMenuItem>
               </items>
               </menuSection>
@@ -68,11 +68,11 @@
             <items>
                 <oneLineMenuItem id="LibraryView_Remote" onSelect="toggleSettings('LibraryView_Remote', 'Settings_Library')">
                 <label>{{TEXT(Library View)}}</label>
-                <rightLabel>{{SETTING(libraryview_remote)}}</rightLabel>
+                <rightLabel>{{SETTING(galaxy_libraryview_remote)}}</rightLabel>
               </oneLineMenuItem>
               <oneLineMenuItem id="SectionIcons_Shared" onSelect="toggleSettings('SectionIcons_Shared', 'Settings_Library')">
                 <label>{{TEXT(Library Icons)}}</label>
-                <rightLabel>{{SETTING(sectionicons_shared)}}</rightLabel>
+                <rightLabel>{{SETTING(galaxy_sectionicons_shared)}}</rightLabel>
               </oneLineMenuItem> 
                </items>
               </menuSection>
@@ -112,20 +112,20 @@
                 <label>{{TEXT(On Deck)}}</label>
                 <accessories>
                   <checkMark/>
-                </accessories>{{CUT($library_ondeck::unchecked=CUT|checked=)}}
+                </accessories>{{CUT($galaxy_library_ondeck::unchecked=CUT|checked=)}}
               </oneLineMenuItem>
 
               <oneLineMenuItem id="Library_RecentlyAdded" onSelect="toggleSettings('Library_RecentlyAdded', 'Settings_Library')">
                 <label>{{TEXT(Recently Added)}}</label>
                 <accessories>
                   <checkMark/>
-                </accessories>{{CUT($library_recentlyadded::unchecked=CUT|checked=)}}
+                </accessories>{{CUT($galaxy_library_recentlyadded::unchecked=CUT|checked=)}}
               </oneLineMenuItem>               
               <oneLineMenuItem id="Library_Channels" onSelect="toggleSettings('Library_Channels', 'Settings_Library')">
                 <label>{{TEXT(Channels)}}</label>
                 <accessories>
                   <checkMark/>
-                </accessories>{{CUT($library_channels::unchecked=CUT|checked=)}}
+                </accessories>{{CUT($galaxy_library_channels::unchecked=CUT|checked=)}}
               </oneLineMenuItem>              
             </items>
           </menuSection>

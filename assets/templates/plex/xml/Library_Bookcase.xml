@@ -10,7 +10,7 @@
     <scroller id="Library_Bookcase">
       <header>
         <imageHeader>
-	     <image insets="0, 0, {{VAL(^aTVScreenResolution:1:720=590|1080=885)}}, 0" required="true">{{URL(:/fanartcache/{{LFBG("plex","{{EVAL(quote_plus("{{TEXT(Plex Library)}}"))}}","","backgrounds/plexdefault.png","{{VAL(^aTVScreenResolution)}}","fonts/OpenSans/OpenSans-Light.ttf","50","20","FFFFFF","FFFFFF","center","top","","90","","Simple")}})}}</image>
+	     <image insets="0, 0, {{VAL(^aTVScreenResolution:1:720=590|1080=885)}}, 0" required="true">{{URL(:/fanartcache/{{LFBG("plex","{{EVAL(quote_plus("{{TEXT(Plex Library)}}"))}}","","backgrounds/plexdefault.png","{{VAL(^aTVScreenResolution)}}","fonts/OpenSans/OpenSans-Light.ttf","50","20","FFFFFF","FFFFFF","center","top","","90","","","Simple")}})}}</image>
 	   </imageHeader>
       </header>
           
@@ -19,17 +19,17 @@
         <__COPY__>
         <!-- servers -->
           {{COPY(Server:@main/size::0=|1=COPY)}}
-         <collectionDivider alignment="center" accessibilityLabel="{{VAL(title2)}}">
+         <collectionDivider alignment="left" accessibilityLabel="{{VAL(title2)}}">
           <title>{{TEXT(Sections)}}</title>
          </collectionDivider>{{CUT(@main/size:CUT:0=CUT|1=|2=CUT)}} 
-          <collectionDivider alignment="center" accessibilityLabel="Show_Bookcase_Divider">
+          <collectionDivider alignment="left" accessibilityLabel="Show_Bookcase_Divider">
             <title>{{VAL(local::0= {{TEXT(Remote)}}|0 =)}}: {{VAL(name)}}</title>
           </collectionDivider>{{CUT(@main/size:CUT:0=CUT|1=CUT|2=)}}
           
           <grid id="Library_Grid_{{VAL(name)}}" columnCount="5">
             <items>
               <!-- /library/sections -->
-              <sixteenByNinePoster id="{{VAL(key)}}" showOutline="false" featured="true" alwaysShowTitles="true"
+              <fourByThreePoster id="{{VAL(key)}}" showOutline="false" featured="true" alwaysShowTitles="true"
                            onPlay="atv.loadURL('{{URL(key)}}')"
                            onSelect="atv.loadURL('{{URL(key)}}')"
                            onHoldSelect="refreshSection('{{VAL(key)}}', '{{URL(refreshKey)}}')">
@@ -43,17 +43,17 @@
                     <defaultImage>resource://16X9.png</defaultImage>
 
                 <!--badgeCount></badgeCount-->
-              </sixteenByNinePoster>
+              </fourByThreePoster>
               
               <!-- search -->
-              <sixteenByNinePoster id="{{VAL(searchKey)}}" showOutline="false" featured="true" alwaysShowTitles="true"
+              <fourByThreePoster id="{{VAL(searchKey)}}" showOutline="false" featured="true" alwaysShowTitles="true"
                            onPlay="atv.loadURL('{{URL(searchKey)}}')"
                            onSelect="atv.loadURL('{{URL(searchKey)}}')">
                 <title>{{TEXT(Search)}}</title>
                     <image>{{URL(:/templates/plex/images/icons/search.png)}}</image>
                     <defaultImage>resource://16X9.png</defaultImage>
 
-              </sixteenByNinePoster>{{CUT($plex_library_search::Show=|Hide=CUT)}} 
+              </fourByThreePoster>{{CUT($plex_library_search::Show=|Hide=CUT)}} 
               
             </items>
           </grid>

@@ -8,7 +8,7 @@
     
     <!-- List -->
     <listWithPreview id="com.sample.menu-items-with-sections">
-    {{CUT($libraryview::=CUT|List=|List =CUT)}}
+    {{CUT($galaxy_libraryview::=CUT|List=|List =CUT)}}
       <header>
         <simpleHeader>
           <title>{{TEXT(Plex Library)}}</title>
@@ -59,7 +59,7 @@
     
     <!-- Grid -->
     <scroller id="Library_Grid">
-    {{CUT($libraryview:CUT:=CUT|Grid=|Grid =CUT)}}
+    {{CUT($galaxy_libraryview:CUT:=CUT|Grid=|Grid =CUT)}}
       <header>
         <simpleHeader>
           <title>{{TEXT(Plex Library)}}</title>
@@ -107,7 +107,7 @@
     
     <!-- Bookcase -->
     <scroller id="Library_Bookcase">
-    {{CUT($libraryview:CUT:=CUT|Bookcase=|Bookcase =CUT)}}
+    {{CUT($galaxy_libraryview:CUT:=CUT|Bookcase=|Bookcase =CUT)}}
       <header>
         <simpleHeader>
           <title>{{TEXT(Plex Library)}}</title>
