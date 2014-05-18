@@ -42,7 +42,7 @@
             <items>
               <oneLineMenuItem id="MovieView" onSelect="toggleSettings('MovieView', 'Settings_Movies')">
                 <label>{{TEXT(Movie View)}}</label>
-                <rightLabel>{{SETTING(movieview)}}</rightLabel>
+                <rightLabel>{{SETTING(plex_movieview)}}</rightLabel>
               </oneLineMenuItem> 
 
               <oneLineMenuItem id="ActorView" onSelect="toggleSettings('ActorView', 'Settings_Movies')">

@@ -301,14 +301,14 @@ def XML_PMS2aTV(PMS_address, path, options):
        template = g_ATVSettings.getSetting(options['PlexConnectUDID'], 'template')
        if template == "default":
          XMLtemplate = 'Movie_'+g_ATVSettings.getSetting(options['PlexConnectUDID'], 'movieview').replace(' ','')+'.xml'
-       elif PMS_address=='owned':
-         XMLtemplate = 'Movie_'+g_ATVSettings.getSetting(options['PlexConnectUDID'], template+'movieview').replace(' ','')+'.xml' 
+       else:
+         XMLtemplate = 'Movie_'+g_ATVSettings.getSetting(options['PlexConnectUDID'], template+'_movieview').replace(' ','')+'.xml' 
     
     elif cmd == 'AllHomeVideos':
        template = g_ATVSettings.getSetting(options['PlexConnectUDID'], 'template')
        if template == "default":
          XMLtemplate = 'HomeVideo_'+g_ATVSettings.getSetting(options['PlexConnectUDID'], 'homevideoview').replace(' ','')+'.xml'
-       elif PMS_address=='owned':
+       else:
          XMLtemplate = 'HomeVideo_'+g_ATVSettings.getSetting(options['PlexConnectUDID'], template+'_homevideoview').replace(' ','')+'.xml'  
         
     elif cmd == 'MovieSecondary':
@@ -318,7 +318,7 @@ def XML_PMS2aTV(PMS_address, path, options):
         template = g_ATVSettings.getSetting(options['PlexConnectUDID'], 'template')
         if template == "default":
           XMLtemplate = 'Show_'+g_ATVSettings.getSetting(options['PlexConnectUDID'], 'showview')+'.xml'  
-        elif PMS_address=='owned':
+        else:
           XMLtemplate = 'Show_'+g_ATVSettings.getSetting(options['PlexConnectUDID'], template+'_showview')+'.xml' 
           
     elif cmd == 'TVSecondary':
@@ -434,7 +434,7 @@ def XML_PMS2aTV(PMS_address, path, options):
         template = g_ATVSettings.getSetting(options['PlexConnectUDID'], 'template')
         if template == "default":
           XMLtemplate = 'Channel_'+g_ATVSettings.getSetting(options['PlexConnectUDID'], 'channelview')+'.xml'
-        elif PMS_address=='owned':
+        else:
           XMLtemplate = 'Channel_'+g_ATVSettings.getSetting(options['PlexConnectUDID'], template+'_channelview')+'.xml'
         path = ''
     
