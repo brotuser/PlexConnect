@@ -49,7 +49,7 @@
                 <label>{{TEXT(Library View)}}</label>
                 <rightLabel>{{SETTING(plex_libraryview)}}</rightLabel>
               </oneLineMenuItem>
-              <oneLineMenuItem id="plex_SectionIcons" onSelect="plex_toggleSettings('plex_SectionIcons', 'Settings_Library')">
+              <oneLineMenuItem id="plex_SectionIcons" onSelect="toggleSettings('plex_SectionIcons', 'Settings_Library')">
                 <label>{{TEXT(Library Icons)}}</label>
                 <rightLabel>{{SETTING(plex_sectionicons)}}</rightLabel>
               </oneLineMenuItem>

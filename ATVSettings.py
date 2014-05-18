@@ -20,15 +20,14 @@ options = { \
     'plex_homevideoview'            :('Grid', 'List', 'Detailed List'), \
     'plex_showview'                 :('List', 'Grid', 'Bookcase'), \
     'plex_channelview'              :('List', 'Grid', 'Bookcase'), \
-
-    'plex_sectionicons'              	:('Fanart', 'Apple', 'Plex'), \
-    'plex_sectionicons_shared'       	:('Fanart', 'Apple', 'Plex'), \
-    'plex_sectionsposition'          	:('Flow', 'Top'), \
-    'plex_library_search'            	:('Show', 'Hide'), \
-    'plex_library_ondeck'            	:('checked', 'unchecked'), \
-    'plex_library_recentlyadded'     	:('checked', 'unchecked'), \
-    'plex_library_channels'          	:('unchecked', 'checked'), \
-    'plex_showtitles_library'        	:('Show All', 'Highlighted Only'), \
+    'plex_sectionicons'              :('Fanart', 'Apple', 'Plex'), \
+    'plex_sectionicons_shared'       :('Fanart', 'Apple', 'Plex'), \
+    'plex_sectionsposition'          :('Flow', 'Top'), \
+    'plex_library_search'            :('Show', 'Hide'), \
+    'plex_library_ondeck'            :('checked', 'unchecked'), \
+    'plex_library_recentlyadded'     :('checked', 'unchecked'), \
+    'plex_library_channels'          :('unchecked', 'checked'), \
+    'plex_showtitles_library'        :('Show All', 'Highlighted Only'), \
 
 #galaxy
     'galaxy_libraryview_remote'        	:('Top Grid', 'Bookcase', 'List'), \
