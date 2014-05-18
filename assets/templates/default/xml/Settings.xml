@@ -74,12 +74,12 @@
                 <label>{{TEXT(Template)}}</label>
                 <rightLabel>{{SETTING(template)}}</rightLabel>
               </oneLineMenuItem>
-             <oneLineMenuItem id="LibraryView" onSelect="atv.loadURL('{{URL(:/)}})">
+              <oneLineMenuItem id="LibraryView" onSelect="atv.loadURL('{{URL(:/)}}&amp;PlexConnect=SettingsLibrary')">
                 <label>{{TEXT(Library Options)}}</label>
                 <accessories>
                   <arrow/>
                 </accessories>
-             </oneLineMenuItem>{{CUT($template::default=CUT)}}
+              </oneLineMenuItem>{{CUT($template::default=CUT)}}
              <oneLineMenuItem id="Top Level" onSelect="atv.loadURL('{{URL(:/)}}&amp;PlexConnect=SettingsTopLevel')">
                 <label>{{TEXT(Top Level Options)}}</label>
                 <accessories>
