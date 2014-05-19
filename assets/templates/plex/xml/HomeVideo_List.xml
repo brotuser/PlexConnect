@@ -8,7 +8,7 @@
     {{CUT(size:CUT:0=CUT|1=)}}
       <header>
         <imageHeader>
-	      <image insets="0, 0, {{VAL(^aTVScreenResolution:1:720=654|1080=981)}}, 0" required="true">{{URL(:/fanartcache/{{LFBG("plex","{{EVAL(quote_plus("{{VAL(title1)}}"))}}","{{EVAL(quote_plus("{{VAL(title2)}}"))}}","backgrounds/plexdefault.png","{{VAL(^aTVScreenResolution)}}","fonts/OpenSans/OpenSans-Light.ttf","40","25","fafafa","d2761f","right","top","70","25","162","","PlexParadeListSub")}})}}</image>
+	      <image insets="0, 0, {{VAL(^aTVScreenResolution:1:720=654|1080=981)}}, 0" required="true">{{URL(:/fanartcache/{{LFBG("plex","{{EVAL(quote_plus("{{VAL(title1)}}"))}}","{{EVAL(quote_plus("{{VAL(title2)}}"))}}","backgrounds/plexdefault.png","{{VAL(^aTVScreenResolution)}}","fonts/OpenSans/OpenSans-Light.ttf","40","25","CCCCCC","FF8800","right","top","70","25","162","","PlexParadeListSub")}})}}</image>
 
         </imageHeader>
       </header>
