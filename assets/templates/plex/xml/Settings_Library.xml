@@ -93,9 +93,9 @@
                 <label>{{TEXT(Poster Titles)}}</label>
                 <rightLabel>{{SETTING(plex_showtitles_library)}}</rightLabel>
               </oneLineMenuItem> 
-              <oneLineMenuItem id="ChannelView" onSelect="toggleSettings('ChannelView', 'Settings_Library')">
+              <oneLineMenuItem id="plex_ChannelView" onSelect="toggleSettings('plex_ChannelView', 'Settings_Library')">
                 <label>{{TEXT(Channel View)}}</label>
-                <rightLabel>{{SETTING(channelview)}}</rightLabel>
+                <rightLabel>{{SETTING(plex_channelview)}}</rightLabel>
               </oneLineMenuItem>            
             </items>
           </menuSection>
