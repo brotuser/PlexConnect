@@ -185,7 +185,8 @@ def XML_PMS2aTV(PMS_address, path, options):
     XMLtemplate = ''
     PMS = None
     PMSroot = None
-    
+    template = g_ATVSettings.getSetting(UDID, 'template')
+
     # XML direct request or
     # XMLtemplate defined by solely PlexConnect Cmd
     if path.endswith(".xml"):
@@ -193,7 +194,10 @@ def XML_PMS2aTV(PMS_address, path, options):
         path = ''  # clear path - we don't need PMS-XML
     
     elif cmd=='ChannelsSearch':
-        XMLtemplate = 'ChannelsSearch.xml'
+        if template == "default":
+          XMLtemplate = 'ChannelsSearch.xml'
+        else:
+          XMLtemplate = 'Channel/Search.xml'
         path = ''
         
     elif cmd=='Play':
@@ -226,155 +230,310 @@ def XML_PMS2aTV(PMS_address, path, options):
         return XML_PlayVideo_ChannelsV1('', url.replace('&','&amp;'))
 
     elif cmd=='ScrobbleMenu':
-        XMLtemplate = 'ScrobbleMenu.xml'
+        if template == "default":
+          XMLtemplate = 'ScrobbleMenu.xml'
+        else:
+          XMLtemplate = 'ScrobbleMenu/ScrobbleMenu.xml'
 
     elif cmd=='ScrobbleMenuVideo':
-        XMLtemplate = 'ScrobbleMenuVideo.xml'
+        if template == "default":
+          XMLtemplate = 'ScrobbleMenuVideo.xml'
+        else:
+          XMLtemplate = 'ScrobbleMenu/ScrobbleMenuVideo.xml'
+          
+    elif cmd=='ScrobbleMenuDirectory':
+        if template == "default":
+          XMLtemplate = 'ScrobbleMenuDirectory.xml'
+        else:
+          XMLtemplate = 'ScrobbleMenu/ScrobbleMenuDirectory.xml'
 
     elif cmd=='ScrobbleMenuTVOnDeck':
-        XMLtemplate = 'ScrobbleMenuTVOnDeck.xml'
+        if template == "default":
+          XMLtemplate = 'ScrobbleMenuTVOnDeck.xml'
+        else:
+          XMLtemplate = 'ScrobbleMenu/ScrobbleMenuTVOnDeck.xml'
         
     elif cmd=='ChangeShowArtwork':
-        XMLtemplate = 'ChangeShowArtwork.xml'
+        if template == "default":
+          XMLtemplate = 'ChangeShowArtwork.xml'
+        else:
+          XMLtemplate = 'Artwork/ChangeShowArtwork.xml'
 
     elif cmd=='ChangeSingleArtwork':
-        XMLtemplate = 'ChangeSingleArtwork.xml'
+        if template == "default":
+          XMLtemplate = 'ChangeSingleArtwork.xml'
+        else:
+          XMLtemplate = 'Artwork/ChangeSingleArtwork.xml'
 
     elif cmd=='ChangeSingleArtworkVideo':
-        XMLtemplate = 'ChangeSingleArtworkVideo.xml'
+        if template == "default":
+          XMLtemplate = 'ChangeSingleArtworkVideo.xml'
+        else:
+          XMLtemplate = 'Artwork/ChangeSingleArtworkVideo.xml'
+    
+    elif cmd=='ChangeFanartShow':
+          XMLtemplate = 'Artwork/ChangeFanartShow.xml'
+    elif cmd=='ChangeFanartSeason':
+          XMLtemplate = 'Artwork/ChangeFanartSeason.xml'
+    elif cmd=='ChangeFanartEpisode':
+          XMLtemplate = 'Artwork/ChangeFanartEpisode.xml'
+    elif cmd=='ChangeFanartMovie':
+          XMLtemplate = 'Artwork/ChangeFanartMovie.xml'
         
     elif cmd=='PhotoBrowser':
-        XMLtemplate = 'Photo_Browser.xml'
+        if template == "default":
+          XMLtemplate = 'Photo_Browser.xml'
+        else:
+          XMLtemplate = '/Photo/Browser.xml'
         
     elif cmd=='MoviePreview':
-        XMLtemplate = 'MoviePreview.xml'
+       if template == "default":
+         XMLtemplate = 'MoviePreview.xml'
+       else:
+         XMLtemplate = 'Movie/Preview.xml'
     
     elif cmd=='HomeVideoPrePlay':
-        XMLtemplate = 'HomeVideoPrePlay.xml'
+        if template == "default":
+          XMLtemplate = 'HomeVideoPrePlay.xml'
+        else:
+          XMLtemplate = 'HomeVideo/PrePlay.xml'
         
     elif cmd=='MoviePrePlay':
-        XMLtemplate = 'MoviePrePlay.xml'
+       if template == "default":
+         XMLtemplate = 'MoviePrePlay.xml'
+       else:
+         XMLtemplate = 'Movie/PrePlay.xml'
 
     elif cmd=='EpisodePrePlay':
-        XMLtemplate = 'EpisodePrePlay.xml'
+        if template == "default":
+          XMLtemplate = 'EpisodePrePlay.xml'
+        else:
+          XMLtemplate = 'TVShow/Episode/PrePlay.xml'
         
     elif cmd=='ChannelPrePlay':
-        XMLtemplate = 'ChannelPrePlay.xml'
+        if template == "default":
+          XMLtemplate = 'ChannelPrePlay.xml'
+        else:
+          XMLtemplate = 'Channel/PrePlay.xml'
     
     elif cmd=='ChannelsVideo':
-        XMLtemplate = 'ChannelsVideo.xml'
+        if template == "default":
+          XMLtemplate = 'ChannelsVideo.xml'
+        else:
+          XMLtemplate = 'Channel/Video.xml'
 
     elif cmd=='ByFolder':
         XMLtemplate = 'ByFolder.xml'
 
     elif cmd=='HomeVideoByFolder':
-        XMLtemplate = 'HomeVideoByFolder.xml'
+        if template == "default":
+          XMLtemplate = 'HomeVideoByFolder.xml'
+        else:
+          XMLtemplate = 'HomeVideo/ByFolder.xml'
 
     elif cmd == 'HomeVideoDirectory':
-        XMLtemplate = 'HomeVideoDirectory.xml'
+        if template == "default":
+          XMLtemplate = 'HomeVideoDirectory.xml'
+        else:
+          XMLtemplate = 'HomeVideo/Directory.xml'
 
     elif cmd=='MovieByFolder':
-        XMLtemplate = 'MovieByFolder.xml'
+       if template == "default":
+         XMLtemplate = 'MovieByFolder.xml'
+       else:
+         XMLtemplate = 'Movie/ByFolder/'+g_ATVSettings.getSetting(UDID, template+'_movieview').replace(' ','')+'.xml'  
 
     elif cmd == 'MovieDirectory':
-        XMLtemplate = 'MovieDirectory.xml'
+       if template == "default":
+         XMLtemplate = 'MovieDirectory.xml'
+       else:
+         XMLtemplate = 'Movie/Directory/'+g_ATVSettings.getSetting(UDID, template+'_movieview').replace(' ','')+'.xml'       
 
     elif cmd == 'MovieSection':
-        XMLtemplate = 'MovieSection.xml'
+       if template == "default":
+         XMLtemplate = 'MovieSection.xml'
+       else:
+         XMLtemplate = 'Movie/Section.xml'
     
     elif cmd == 'HomeVideoSection':
-        XMLtemplate = 'HomeVideoSection.xml'
+       if template == "default":
+         XMLtemplate = 'HomeVideoSection.xml'
+       else:
+         XMLtemplate = 'HomeVideo/Section.xml'
         
     elif cmd == 'TVSection':
-        XMLtemplate = 'TVSection.xml'
+       if template == "default":
+         XMLtemplate = 'TVSection.xml'
+       else:
+         XMLtemplate = 'TVShow/Section.xml'
     
     elif cmd == 'LibraryOnDeck':
-        XMLtemplate = 'Library_OnDeck.xml'    
+       if template == "default":
+         XMLtemplate = 'Library_OnDeck.xml'
+       else:
+         XMLtemplate = 'Library/OnDeck.xml'
         
     elif cmd == 'LibraryRecentlyAdded':
-        XMLtemplate = 'Library_RecentlyAdded.xml'
+       if template == "default":
+         XMLtemplate = 'Library_RecentlyAdded.xml'
+       else:
+         XMLtemplate = 'Library/RecentlyAdded.xml'
     
     elif cmd.find('SectionPreview') != -1:
-        XMLtemplate = cmd + '.xml'
+        if template == "default":
+          XMLtemplate = cmd + '.xml'
+        else:
+          XMLtemplate = 'SectionPreviews/' + cmd + '.xml'
     
     elif cmd == 'AllMovies':
-       template = g_ATVSettings.getSetting(options['PlexConnectUDID'], 'template')
-       if template == "default":
-         XMLtemplate = 'Movie_'+g_ATVSettings.getSetting(options['PlexConnectUDID'], 'movieview').replace(' ','')+'.xml'
-       else:
-         XMLtemplate = 'Movie_'+g_ATVSettings.getSetting(options['PlexConnectUDID'], template+'_movieview').replace(' ','')+'.xml' 
+        if template == "default":
+          XMLtemplate = 'Movie_'+g_ATVSettings.getSetting(UDID, 'movieview').replace(' ','')+'.xml'
+        else:
+          XMLtemplate = 'Movie/'+g_ATVSettings.getSetting(UDID, template+'_movieview').replace(' ','')+'.xml' 
     
     elif cmd == 'AllHomeVideos':
-       template = g_ATVSettings.getSetting(options['PlexConnectUDID'], 'template')
-       if template == "default":
-         XMLtemplate = 'HomeVideo_'+g_ATVSettings.getSetting(options['PlexConnectUDID'], 'homevideoview').replace(' ','')+'.xml'
-       else:
-         XMLtemplate = 'HomeVideo_'+g_ATVSettings.getSetting(options['PlexConnectUDID'], template+'_homevideoview').replace(' ','')+'.xml'  
+        if template == "default":
+          XMLtemplate = 'HomeVideo_'+g_ATVSettings.getSetting(UDID, 'homevideoview').replace(' ','')+'.xml'
+        else:
+          XMLtemplate = 'HomeVideo/'+g_ATVSettings.getSetting(UDID, template+'_homevideoview').replace(' ','')+'.xml'  
         
     elif cmd == 'MovieSecondary':
-        XMLtemplate = 'MovieSecondary.xml'
-    
-    elif cmd == 'AllShows':
-        template = g_ATVSettings.getSetting(options['PlexConnectUDID'], 'template')
         if template == "default":
-          XMLtemplate = 'Show_'+g_ATVSettings.getSetting(options['PlexConnectUDID'], 'showview')+'.xml'  
+         XMLtemplate = 'MovieSecondary.xml'
         else:
-          XMLtemplate = 'Show_'+g_ATVSettings.getSetting(options['PlexConnectUDID'], template+'_showview').replace(' ','')+'.xml' 
+         XMLtemplate = 'Movie/Secondary.xml'
+        
+    elif cmd == 'AllShows':
+        if template == "default":
+          XMLtemplate = 'Show_'+g_ATVSettings.getSetting(UDID, 'showview')+'.xml'  
+        else:
+          XMLtemplate = 'TVShow/'+g_ATVSettings.getSetting(UDID, template+'_showview').replace(' ','')+'.xml' 
           
     elif cmd == 'TVSecondary':
-        XMLtemplate = 'TVSecondary.xml'
+        if template == "default":
+          XMLtemplate = 'TVSecondary.xml'  
+        else:
+          XMLtemplate = 'TVShow/Secondary.xml'
         
     elif cmd == 'PhotoSecondary':
-        XMLtemplate = 'PhotoSecondary.xml'
+        if template == "default":
+          XMLtemplate = 'PhotoSecondary.xml'
+        else:
+          XMLtemplate = 'Photo/Secondary.xml'
         
     elif cmd == 'Directory':
-        XMLtemplate = 'Directory.xml'
+        if template == "default":
+          XMLtemplate = 'Directory.xml'
+        else:
+          XMLtemplate = 'Directory/Directory.xml'
     
     elif cmd == 'DirectoryWithPreview':
-        XMLtemplate = 'DirectoryWithPreview.xml'
+        if template == "default":
+          XMLtemplate = 'DirectoryWithPreview.xml'
+        else:
+          XMLtemplate = 'Directory/WithPreview.xml'
 
     elif cmd == 'DirectoryWithPreviewActors':
-        XMLtemplate = 'DirectoryWithPreviewActors.xml'
-            
+        if template == "default":
+          XMLtemplate = 'DirectoryWithPreviewActors.xml'
+        else:
+          XMLtemplate = 'Directory/WithPreviewActors.xml'
+        
     elif cmd=='Settings':
-        XMLtemplate = 'Settings.xml'
+        if template == "default":
+          XMLtemplate = 'Settings.xml'
+        else:
+          XMLtemplate = 'Settings/Settings.xml'
         path = ''  # clear path - we don't need PMS-XML
-
+        
+    elif cmd=='SettingsPrecache':
+        XMLtemplate = 'Settings/Precache.xml'
+        path = ''  # clear path - we don't need PMS-XML
+        
+    elif cmd=='SettingsTranscoder':
+        XMLtemplate = 'Settings/Transcoder.xml'
+        path = ''  # clear path - we don't need PMS-XML
+    
+    elif cmd=='SettingsTemplate':
+        XMLtemplate = 'Settings/Template/Template.xml'
+        path = ''  # clear path - we don't need PMS-XML   
+    
+    elif cmd=='SettingsTemplateBackground':
+        XMLtemplate = 'Settings/Template/Background.xml'
+        path = ''  # clear path - we don't need PMS-XML
+        
+    elif cmd=='SettingsTemplateText':
+        XMLtemplate = 'Settings/Template/Text.xml'
+        path = ''  # clear path - we don't need PMS-XML  
+        
+    elif cmd=='SettingsViews':
+        XMLtemplate = 'Settings/Views.xml'
+        path = ''  # clear path - we don't need PMS-XML
+        
     elif cmd=='SettingsTopLevel':
-        XMLtemplate = 'Settings_TopLevel.xml'
+        if template == "default":
+          XMLtemplate = 'Settings_TopLevel.xml'
+        else:
+          XMLtemplate = 'Settings/TopLevel.xml'
         path = ''  # clear path - we don't need PMS-XML
     
     elif cmd=='SettingsVideoOSD':
-        XMLtemplate = 'Settings_VideoOSD.xml'
+        if template == "default":
+          XMLtemplate = 'Settings_VideoOSD.xml'
+        else:
+          XMLtemplate = 'Settings/VideoOSD.xml'
         path = ''  # clear path - we don't need PMS-XML
     
     elif cmd=='SettingsLibrary':
-        XMLtemplate = 'Settings_Library.xml'
+        if template == "default":
+          XMLtemplate = 'Settings_Library.xml'
+        else:
+          XMLtemplate = 'Settings/Library.xml'
         path = ''  # clear path - we don't need PMS-XML
         
     elif cmd=='SettingsMovies':
-        XMLtemplate = 'Settings_Movies.xml'
-        path = ''  # clear path - we don't need PMS-XML
+       if template == "default":
+         XMLtemplate = 'Settings_Movies.xml'
+       else:
+         XMLtemplate = 'Settings/Movies.xml'
+       path = ''  # clear path - we don't need PMS-XML
         
     elif cmd=='SettingsTVShows':
-        XMLtemplate = 'Settings_TVShows.xml'
+        if template == "default":
+          XMLtemplate = 'Settings_TVShows.xml'
+        else:
+          XMLtemplate = 'Settings/TVShows.xml'
         path = ''  # clear path - we don't need PMS-XML
  
     elif cmd=='SettingsHomeVideos':
-        XMLtemplate = 'Settings_HomeVideos.xml'
+        if template == "default":
+          XMLtemplate = 'Settings_HomeVideos.xml'
+        else:
+          XMLtemplate = 'Settings/HomeVideos.xml'
         path = ''  # clear path - we don't need PMS-XML
 
     elif cmd=='SettingsChannels':
-        XMLtemplate = 'Settings_Channels.xml'
+        if template == "default":
+          XMLtemplate = 'Settings_Channels.xml'
+        else:
+          XMLtemplate = 'Settings/Channels.xml'
         path = ''  # clear path - we don't need PMS-XML
+        
+    elif cmd.startswith('purgeFanart'):
+        import PILBackgrounds
+        PILBackgrounds.purgeFanart()  
+        #opt = cmd[len('purgeFanart:'):]  # cut command:
+        #parts = opt.split('+')
+        #XMLtemplate = parts[1] + ".xml"
+        dprint(__name__, 1, 'purging: {0}', "Fanart Cache")  # Debug 
+        path = ''  # clear path - we don't need PMS-XML  
         
     elif cmd.startswith('SettingsToggle:'):
         opt = cmd[len('SettingsToggle:'):]  # cut command:
         parts = opt.split('+')
-        g_ATVSettings.toggleSetting(options['PlexConnectUDID'], parts[0].lower())
+        g_ATVSettings.toggleSetting(UDID, parts[0].lower())
         XMLtemplate = parts[1] + ".xml"
         dprint(__name__, 2, "ATVSettings->Toggle: {0} in template: {1}", parts[0], parts[1])
-        
         path = ''  # clear path - we don't need PMS-XML
         
     elif cmd==('MyPlexLogin'):
@@ -409,33 +568,39 @@ def XML_PMS2aTV(PMS_address, path, options):
         
         return XML_Error('PlexConnect', 'Discover!')  # not an error - but aTV won't care anyways.
     
-    elif path.startswith('/search?'):
+        
+    elif '/search?' in path:
         XMLtemplate = 'Search_Results.xml'
     
     elif path.find('serviceSearch') != -1 or (path.find('video') != -1 and path.lower().find('search') != -1):
-        XMLtemplate = 'ChannelsVideoSearchResults.xml'
+        if template == "default":
+          XMLtemplate = 'ChannelsVideoSearchResults.xml'
+        else:
+          XMLtemplate = 'Channel/VideoSearchResults.xml'
     
     elif path.find('SearchResults') != -1:
-        XMLtemplate = 'ChannelsVideoSearchResults.xml'
+        if template == "default":
+          XMLtemplate = 'ChannelsVideoSearchResults.xml'
+        else:
+          XMLtemplate = 'Channel/VideoSearchResults.xml'
     
     elif path=='/library/sections':
-        template = g_ATVSettings.getSetting(options['PlexConnectUDID'], 'template')
         if template == "default":
           XMLtemplate = 'Library.xml' 
         else:
           if PMS_address=='owned': 
-            XMLtemplate = 'Library_'+g_ATVSettings.getSetting(options['PlexConnectUDID'], template+'_libraryview').replace(' ','')+'.xml'
+            XMLtemplate = 'Library/'+g_ATVSettings.getSetting(UDID, template+'_libraryview').replace(' ','')+'.xml'
           else:
-            XMLtemplate = 'Library_'+g_ATVSettings.getSetting(options['PlexConnectUDID'], template+'_libraryview_remote').replace(' ','')+'.xml'
+            XMLtemplate = 'Library/'+g_ATVSettings.getSetting(UDID, template+'_libraryview_remote').replace(' ','')+'.xml'
         
 
     
     elif path=='/channels/all':
-        template = g_ATVSettings.getSetting(options['PlexConnectUDID'], 'template')
+        template = g_ATVSettings.getSetting(UDID, 'template')
         if template == "default":
-          XMLtemplate = 'Channel_'+g_ATVSettings.getSetting(options['PlexConnectUDID'], 'channelview')+'.xml'
+          XMLtemplate = 'Channel_'+g_ATVSettings.getSetting(UDID, 'channelview')+'.xml'
         else:
-          XMLtemplate = 'Channel_'+g_ATVSettings.getSetting(options['PlexConnectUDID'], template+'_channelview')+'.xml'
+          XMLtemplate = 'Channel/'+g_ATVSettings.getSetting(UDID, template+'_channelview')+'.xml'
         path = ''
     
     # request PMS XML
@@ -461,17 +626,35 @@ def XML_PMS2aTV(PMS_address, path, options):
     elif not XMLtemplate=='':
         pass  # template already selected
 
+
+
     elif PMSroot.get('viewGroup','')=="secondary" and (PMSroot.get('art','').find('video') != -1 or PMSroot.get('thumb','').find('video') != -1):
-        XMLtemplate = 'HomeVideoSectionTopLevel.xml'
+        if template == "default":
+          XMLtemplate = 'HomeVideoSectionTopLevel.xml'
+        else:
+          XMLtemplate = 'HomeVideo/SectionTopLevel.xml'
 
     elif PMSroot.get('viewGroup','')=="secondary" and (PMSroot.get('art','').find('movie') != -1 or PMSroot.get('thumb','').find('movie') != -1):
-        XMLtemplate = 'MovieSectionTopLevel.xml'
+        if template == "default":
+          XMLtemplate = 'MovieSectionTopLevel.xml'
+        else:
+          XMLtemplate = 'Movie/SectionTopLevel.xml'
     
     elif PMSroot.get('viewGroup','')=="secondary" and (PMSroot.get('art','').find('show') != -1 or PMSroot.get('thumb','').find('show') != -1):
-        XMLtemplate = 'TVSectionTopLevel.xml'
+        if template == "default":
+          XMLtemplate = 'TVSectionTopLevel.xml'
+        else:
+          XMLtemplate = 'TVShow/SectionTopLevel.xml'
         
     elif PMSroot.get('viewGroup','')=="secondary" and (PMSroot.get('art','').find('photo') != -1 or PMSroot.get('thumb','').find('photo') != -1):
-        XMLtemplate = 'PhotoSectionTopLevel.xml'
+        if template == "default":
+          XMLtemplate = 'PhotoSectionTopLevel.xml'
+        else:
+          XMLtemplate = 'Photo/SectionTopLevel.xml'
+        
+        
+        
+        
         
     elif PMSroot.get('viewGroup','')=="secondary":
         XMLtemplate = 'Directory.xml'
@@ -482,11 +665,14 @@ def XML_PMS2aTV(PMS_address, path, options):
           XMLtemplate = 'ByFolder.xml'
         else:
           # TV Show grid view
-          XMLtemplate = 'Show_'+g_ATVSettings.getSetting(options['PlexConnectUDID'], 'showview')+'.xml'
+          XMLtemplate = 'Show_'+g_ATVSettings.getSetting(UDID, 'showview')+'.xml'
         
     elif PMSroot.get('viewGroup','')=='season':
-        # TV Season view
-        XMLtemplate = 'Season_'+g_ATVSettings.getSetting(options['PlexConnectUDID'], 'seasonview')+'.xml'
+        if template == "default":
+          # TV Season view
+          XMLtemplate = 'Season_'+g_ATVSettings.getSetting(UDID, 'seasonview')+'.xml'
+        else:
+          XMLtemplate = 'TVShow/Season/'+g_ATVSettings.getSetting(UDID, 'seasonview')+'.xml'
 
     elif PMSroot.get('viewGroup','')=='movie' and PMSroot.get('thumb','').find('video') != -1:
         if PMSroot.get('title2')=='By Folder':
@@ -494,7 +680,7 @@ def XML_PMS2aTV(PMS_address, path, options):
           XMLtemplate = 'HomeVideoByFolder.xml'
         else:
           # Home Video listing
-          XMLtemplate = 'HomeVideo_'+g_ATVSettings.getSetting(options['PlexConnectUDID'], 'homevideoview').replace(' ','')+'.xml'
+          XMLtemplate = 'HomeVideo_'+g_ATVSettings.getSetting(UDID, 'homevideoview').replace(' ','')+'.xml'
     
     elif PMSroot.get('viewGroup','')=='movie' and PMSroot.get('thumb','').find('movie') != -1:
         if PMSroot.get('title2')=='By Folder':
@@ -502,7 +688,7 @@ def XML_PMS2aTV(PMS_address, path, options):
           XMLtemplate = 'MovieByFolder.xml'
         else:
           # Movie listing
-          XMLtemplate = 'Movie_'+g_ATVSettings.getSetting(options['PlexConnectUDID'], 'homevideoview').replace(' ','')+'.xml'
+          XMLtemplate = 'Movie_'+g_ATVSettings.getSetting(UDID, 'homevideoview').replace(' ','')+'.xml'
           
     elif PMSroot.get('viewGroup','')=='track':
         XMLtemplate = 'Music_Track.xml'
@@ -513,10 +699,18 @@ def XML_PMS2aTV(PMS_address, path, options):
            PMSroot.get('title2')=='Recently Aired' or \
            PMSroot.get('title2')=='Recently Added':
             # TV On Deck View
-            XMLtemplate = 'TV_OnDeck.xml'
+            
+           if template == "default":
+             XMLtemplate = 'TV_OnDeck.xml'  
+           else:
+             XMLtemplate = 'TVShow/OnDeck.xml'
+            
         else:
-            # TV Episode view
-            XMLtemplate = 'Episode.xml'
+            if template == "default":
+              XMLtemplate = 'Episode.xml'  
+            else:
+              # TV Episode view
+              XMLtemplate = 'TVShow/Episode/List.xml'
     
     elif PMSroot.get('viewGroup','')=='photo' or \
        path.startswith('/photos') or \
@@ -534,7 +728,7 @@ def XML_PMS2aTV(PMS_address, path, options):
     dprint(__name__, 1, "XMLTemplate: "+XMLtemplate)
 
     # get XMLtemplate
-    template = g_ATVSettings.getSetting(options['PlexConnectUDID'], 'template')
+    template = g_ATVSettings.getSetting(UDID, 'template')
     if template == "default":
       aTVTree = etree.parse(sys.path[0]+'/assets/templates/default/xml/'+XMLtemplate)
     else:
@@ -734,7 +928,16 @@ class CCommandHelper():
         self.PMSroot = {'main': PMSroot}
         self.PMS_address = PMS_address  # default PMS if nothing else specified
         self.path = {'main': path}
-        
+        self.PC_MenuIndex = '0'
+        if 'PlexConnect' in options:
+          if options['PlexConnect'] == 'Settings': 
+            template = g_ATVSettings.getSetting(options['PlexConnectUDID'], 'template')
+            if (template=='default' or template == 'galaxy'):
+              self.PC_MenuIndex = 3
+            else:
+              self.PC_MenuIndex = 4
+         
+          
         self.ATV_udid = options['PlexConnectUDID']
         self.PMS_uuid = PlexAPI.getPMSFromAddress(self.ATV_udid, PMS_address)
         self.PMS_baseURL = PlexAPI.getPMSProperty(self.ATV_udid, self.PMS_uuid, 'baseURL')
@@ -1247,6 +1450,44 @@ class CCommandCollection(CCommandHelper):
             res = res + PMS_mark + self.path[srcXML] + '/' + key
         
         return res
+
+    def ATTRIB_stripChildrenURL(self, src, srcXML, param):
+        key, leftover, dfltd = self.getKey(src, srcXML, param)
+        key = str(key).replace('/children','')
+
+        # compare PMS_mark in PlexAPI/getXMLFromMultiplePMS()
+        PMS_mark = '/PMS(' + PlexAPI.getPMSProperty(self.ATV_udid, self.PMS_uuid, 'ip') + ')'
+        
+        # overwrite with URL embedded PMS address
+        cmd_start = key.find('PMS(')
+        cmd_end = key.find(')', cmd_start)
+        if cmd_start>-1 and cmd_end>-1 and cmd_end>cmd_start:
+            PMS_mark = '/'+key[cmd_start:cmd_end+1]
+            key = key[cmd_end+1:]
+        
+        res = g_param['baseURL']  # base address to PlexConnect
+        
+        if key.endswith('.js'):  # link to PlexConnect owned .js stuff
+            res = res + key
+        elif key.startswith('http://') or key.startswith('https://'):  # external server
+            res = key
+            """
+            parts = urlparse.urlsplit(key)  # (scheme, networklocation, path, ...)
+            key = urlparse.urlunsplit(('', '', parts[2], parts[3], parts[4]))  # keep path only
+            PMS_uuid = PlexAPI.getPMSFromIP(g_param['PMS_list'], parts.hostname)
+            PMSaddress = PlexAPI.getAddress(g_param['PMS_list'], PMS_uuid)  # get PMS address (might be local as well!?!)
+            res = res + '/PMS(' + quote_plus(PMSaddress) + ')' + key
+            """
+        elif key.startswith('/'):  # internal full path.
+            res = res + PMS_mark + key
+        elif key == '':  # internal path
+            res = res + PMS_mark + self.path[srcXML]
+        else:  # internal path, add-on
+            res = res + PMS_mark + self.path[srcXML] + '/' + key
+
+
+        return res
+
     
     def ATTRIB_VIDEOURL(self, src, srcXML, param):
         Video, leftover = self.getElement(src, srcXML, param)
@@ -1440,6 +1681,20 @@ class CCommandCollection(CCommandHelper):
           res = sys.path[0]+'/assets/fanart/bg.jpg'     
         dprint(__name__, 1, 'serving: {0}', res+".png")  # Debug 
         return res
+
+    def ATTRIB_FanartCOUNT(self, src, srcXML, param):
+        isfile = os.path.isfile
+        join = os.path.join
+        
+        directory = sys.path[0]+"/assets/fanartcache" 
+        res = sum(1 for item in os.listdir(directory) if isfile(join(directory, item)))
+        
+        return str(res)
+        
+    
+    
+    
+
 
 
 if __name__=="__main__":

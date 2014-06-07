@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<atv>
+  <head>
+    <script src="{{URL(:/js/utils.js)}}" />
+    <script src="{{URL(:/js/settings.js)}}" />
+  </head>
+
+  <body>
+    <itemCollectionWithImageHeader id="SettingsPage_Library">
+      <header>
+        <imageHeader>
+          <image insets="0, 0, {{VAL(^aTVScreenResolution:1:720=640|1080=960)}}, 0" required="true">
+           {{URL(:/fanartcache/{{LFBG("galaxy","{{EVAL(quote_plus("{{TEXT(Settings)}}"))}}","","backgrounds/settings.jpg","{{VAL(^aTVScreenResolution)}}","fonts/OpenSans/OpenSans-Light.ttf","50","","9A9A9A","","right","top","80","90","","","DetailedList")}})}}
+          </image>
+        </imageHeader>
+      </header>
+      <preview>
+        <keyedPreview>
+          <title>&#x00AD;<!--soft-hyphen--></title>
+          <summary/>
+          <metadataKeys>
+            <label>{{TEXT(Version)}}</label>
+            <label>{{TEXT(Authors)}}</label>
+            <label>{{TEXT(Wiki/Docs)}}</label>
+            <label>{{TEXT(Homepage)}}</label>
+            <label>{{TEXT(Forum)}}</label>
+          </metadataKeys>
+          <metadataValues>
+            <label>{{EVAL(__VERSION__)}}</label>
+            <label>Baa, roidy</label>
+            <label>f00b4r, meltman</label>
+            <label>https://github.com/ibaa/plexconnect</label>
+            <label>http://forums.plexapp.com/...plexconnect</label>
+          </metadataValues>
+          <image>{{URL(:/templates/galaxy/images/PlexConnectLogo.png)}}</image>
+        </keyedPreview>
+      </preview>
+
+      <menu>
+        <sections>
+		<menuSection>
+           <header>
+              <horizontalDivider alignment="left">
+                <title>{{TEXT(Library)}}</title>
+              </horizontalDivider>
+            </header>
+            <items>
+              <oneLineMenuItem id="galaxy_LibraryView" onSelect="toggleSettings('galaxy_LibraryView', 'Settings/Library')">
+                <label>{{TEXT(Library View)}}</label>
+                <rightLabel>{{SETTING(galaxy_libraryview)}}</rightLabel>
+              </oneLineMenuItem>
+              <oneLineMenuItem id="galaxy_SectionIcons" onSelect="toggleSettings('galaxy_SectionIcons', 'Settings/Library')">
+                <label>{{TEXT(Library Icons)}}</label>
+                <rightLabel>{{SETTING(galaxy_sectionicons)}}</rightLabel>
+              </oneLineMenuItem>
+              <oneLineMenuItem id="galaxy_SectionsPosition" onSelect="toggleSettings('galaxy_SectionsPosition', 'Settings/Library')">
+                <label>{{TEXT(Library Sections)}}</label>
+                <rightLabel>{{SETTING(galaxy_sectionsposition)}}</rightLabel>
+              </oneLineMenuItem>
+              </items>
+              </menuSection>
+              <menuSection>
+             <header>
+              <horizontalDivider alignment="left">
+                <title>{{TEXT(Shared Library)}}</title>
+              </horizontalDivider>
+            </header>
+            <items>
+                <oneLineMenuItem id="galaxy_LibraryView_Remote" onSelect="toggleSettings('galaxy_LibraryView_Remote', 'Settings/Library')">
+                <label>{{TEXT(Library View)}}</label>
+                <rightLabel>{{SETTING(galaxy_libraryview_remote)}}</rightLabel>
+              </oneLineMenuItem>
+              <oneLineMenuItem id="galaxy_SectionIcons_Shared" onSelect="toggleSettings('galaxy_SectionIcons_Shared', 'Settings/Library')">
+                <label>{{TEXT(Library Icons)}}</label>
+                <rightLabel>{{SETTING(galaxy_sectionicons_shared)}}</rightLabel>
+              </oneLineMenuItem> 
+               </items>
+              </menuSection>
+        <!--Removed Below iOS 6.0-->
+             
+              <menuSection>
+           <header>
+              <horizontalDivider alignment="left">
+                <title>{{TEXT(Appearance)}}</title>
+              </horizontalDivider>
+            </header>
+            <items>
+              <oneLineMenuItem id="galaxy_Library_Search" onSelect="toggleSettings('galaxy_Library_Search', 'Settings/Library')">
+                <label>{{TEXT(Search Section)}}</label>
+                <rightLabel>{{SETTING(galaxy_Library_search)}}</rightLabel>
+              </oneLineMenuItem>
+              <oneLineMenuItem id="galaxy_ShowTitles_Library" onSelect="toggleSettings('galaxy_ShowTitles_Library', 'Settings/Library')">
+                <label>{{TEXT(Poster Titles)}}</label>
+                <rightLabel>{{SETTING(galaxy_showtitles_library)}}</rightLabel>
+              </oneLineMenuItem> 
+              <oneLineMenuItem id="galaxy_ChannelView" onSelect="toggleSettings('galaxy_ChannelView', 'Settings/Library')">
+                <label>{{TEXT(Channel View)}}</label>
+                <rightLabel>{{SETTING(galaxy_channelview)}}</rightLabel>
+              </oneLineMenuItem>            
+            </items>
+          </menuSection>
+
+          <menuSection>
+            <header>
+              <horizontalDivider alignment="left">
+                <title>{{TEXT(Library Extras)}}</title>
+              </horizontalDivider>
+            </header>
+            <items>
+
+              <oneLineMenuItem id="galaxy_Library_OnDeck" onSelect="toggleSettings('galaxy_Library_OnDeck', 'Settings/Library')">
+                <label>{{TEXT(On Deck)}}</label>
+                <accessories>
+                  <checkMark/>
+                </accessories>{{CUT($galaxy_library_ondeck::unchecked=CUT|checked=)}}
+              </oneLineMenuItem>
+
+              <oneLineMenuItem id="galaxy_Library_RecentlyAdded" onSelect="toggleSettings('galaxy_Library_RecentlyAdded', 'Settings/Library')">
+                <label>{{TEXT(Recently Added)}}</label>
+                <accessories>
+                  <checkMark/>
+                </accessories>{{CUT($galaxy_library_recentlyadded::unchecked=CUT|checked=)}}
+              </oneLineMenuItem>               
+              <oneLineMenuItem id="galaxy_Library_Channels" onSelect="toggleSettings('galaxy_Library_Channels', 'Settings/Library')">
+                <label>{{TEXT(Channels)}}</label>
+                <accessories>
+                  <checkMark/>
+                </accessories>{{CUT($galaxy_library_channels::unchecked=CUT|checked=)}}
+              </oneLineMenuItem>              
+            </items>
+          </menuSection>
+        </sections>
+      </menu>
+    </itemCollectionWithImageHeader>
+  </body>
+</atv>

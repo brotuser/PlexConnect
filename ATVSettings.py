@@ -14,11 +14,12 @@ options = { \
 #TemplateSettings
 
 #plex
+#   library view
     'plex_libraryview_remote'       :('Top Paged Grid', 'Top Grid', 'Bookcase', 'List'), \
     'plex_libraryview'              :('Paged Grid', 'Grid', 'List', 'Bookcase'), \
     'plex_movieview'                :('Paged Grid', 'Grid', 'List', 'Detailed List'), \
     'plex_homevideoview'            :('Paged Grid', 'Grid', 'List', 'Detailed List'), \
-    'plex_showview'                 :('Paged Grid', 'List', 'Grid', 'Bookcase'), \
+    'plex_showview'                 :('Paged Grid', 'List', 'Flow', 'Grid', 'Bookcase'), \
     'plex_channelview'              :('List', 'Grid', 'Bookcase'), \
     'plex_sectionicons'              :('Fanart', 'Apple', 'Plex'), \
     'plex_sectionicons_shared'       :('Fanart', 'Apple', 'Plex'), \
@@ -26,8 +27,26 @@ options = { \
     'plex_library_search'            :('Show', 'Hide'), \
     'plex_library_ondeck'            :('checked', 'unchecked'), \
     'plex_library_recentlyadded'     :('checked', 'unchecked'), \
-    'plex_library_channels'          :('unchecked', 'checked'), \
+    'plex_library_channels'          :('checked', 'unchecked'), \
     'plex_showtitles_library'        :('Show All', 'Highlighted Only'), \
+#   template options
+    'plex_subtitlecolor'             :('Plex Orange', 'White', 'Grey', 'Apple Blue'), \
+    'plex_titlecolor'                :('Grey', 'Plex Orange', 'White',  'Apple Blue'), \
+    'plex_tabletitlecolor'             :('Plex Orange', 'White', 'Grey', 'Apple Blue'), \
+    'plex_metadatacolor'                :('Grey', 'White'), \
+    'plex_fanartblur'                :('0', '1', '2', '3'), \
+    'plex_fanarttint'                :('On', 'Off'), \
+    'plex_gridtint'                :('Off', 'On'), \
+    'plex_listtint'                :('On', 'Off'), \
+    'plex_paradelisttint'          :('Off', 'On'), \
+    'plex_menuhint'                :('Off', 'On'), \
+    'plex_menubackground'                :('Grey', 'Plex Orange', 'Apple Blue', 'Green'), \
+    'plex_mainmenulabel'                :('Text', 'Icons', 'Icons and Text'), \
+    'plex_showplayinfos'            :('True', 'False'), \
+
+
+
+
 
 #galaxy
     'galaxy_libraryview_remote'        	:('Top Grid', 'Bookcase', 'List'), \
@@ -36,7 +55,6 @@ options = { \
     'galaxy_homevideoview'            :('Grid', 'List', 'Detailed List'), \
     'galaxy_showview'                 :('List', 'Grid', 'Bookcase'), \
     'galaxy_channelview'              :('List', 'Grid', 'Bookcase'), \
-    
     'galaxy_sectionicons'              	:('Fanart', 'Apple', 'Plex'), \
     'galaxy_sectionicons_shared'       	:('Fanart', 'Apple', 'Plex'), \
     'galaxy_sectionsposition'          	:('Flow', 'Top'), \

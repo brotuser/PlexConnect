@@ -380,6 +380,64 @@ function changeArtwork(PMS_baseURL, accessToken, ratingKey, posterURL, shelf)
 };
 
 /*
+ * Update Plex library with new artwork
+ */
+function changeFanart(PMS_baseURL, accessToken, ratingKey, posterURL, shelf, path)
+{
+  if (shelf != '')
+  {
+    // Selector logic for Show/Season level artwork
+    var root = document.rootElement;
+    var shelf = document.getElementById(shelf);
+    if (shelf == null) return;
+    var items = shelf.getElementsByTagName('goldenPoster');
+    if (items == null) return;
+  
+    for (var i=0; i<items.length; i++)
+    {
+      if (items[i].getAttribute('id') == posterURL) 
+      {
+      items[i].getElementByTagName('title').textContent = "Selected";
+      }
+      else
+      { 
+        items[i].getElementByTagName('title').textContent = "";
+      }
+    }
+  }
+  
+  // Test if art is from library or external location
+  if (posterURL.indexOf('library') !== -1)
+	{
+		var urlParts = posterURL.split('=');
+		posterURL = urlParts[1];
+	}
+   else
+  {
+    posterURL = encodeURIComponent(posterURL);
+  }
+    
+  var url = PMS_baseURL + "/library/metadata/" + ratingKey + "/art?url=" + posterURL;
+  if (accessToken!='') url = url + '&X-Plex-Token=' + accessToken;
+    
+  var req = new XMLHttpRequest();
+  req.open('PUT', url, true);
+  req.send();
+  
+  req.onreadystatechange = function() {
+    try {
+      if(req.readyState == 4) atv.loadAndSwapURL(path);
+    }
+    catch(e) {
+      req.abort();
+    }
+  }
+};
+
+
+
+
+/*
  * ScrobbleMenu
  */
  function scrobbleMenu(url)
@@ -421,6 +479,7 @@ function changeArtwork(PMS_baseURL, accessToken, ratingKey, posterURL, shelf)
     req.send();
   }
 }
+
 
 /*
  * xml updater Major Hack :)

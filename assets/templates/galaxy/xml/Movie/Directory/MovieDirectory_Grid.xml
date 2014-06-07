@@ -1,0 +1,42 @@
+<atv>
+  <head>
+    <script src="{{URL(:/js/utils.js)}}" />
+  </head>
+  
+  <body>
+    <scroller id="com.sample.homevideo-grid">
+      <header>
+ 	  <imageHeader>
+	      <image insets="0, 0, {{VAL(^aTVScreenResolution:1:720=590|1080=930)}}, 0" required="true">{{URL(:/fanartcache/{{LFBG("galaxy","{{EVAL(quote_plus("{{VAL(title1)}}"))}}","","backgrounds/movie.jpg","{{VAL(^aTVScreenResolution)}}","fonts/OpenSans/OpenSans-Light.ttf","50","20","6a9acf","FFFFFF","center","top","","90","","","Simple")}})}}</image>
+	    </imageHeader>
+      </header>
+      <items>
+      <collectionDivider alignment="center" accessibilityLabel="{{VAL(title2)}}">
+        <title>{{VAL(title2)}}</title>
+      </collectionDivider>
+        <grid columnCount="8" id="grid_0">
+          <items>
+            <sixteenByNinePoster id="{{VAL(key)}}" featured="true" alwaysShowTitles="{{VAL($showtitles_movies::Highlighted Only=false|Show All=true)}}" 
+                             onPlay="atv.loadURL('{{URL(key)}}&amp;PlexConnect=MovieByFolder')"
+                             onSelect="atv.loadURL('{{URL(key)}}&amp;PlexConnect=MovieByFolder')">
+              {{COPY(Directory)}}
+              <title>{{VAL(title)}}</title>
+              <subtitle>{{VAL(year:&#x00AD;)}}</subtitle>
+              <image>{{URL(:/templates/galaxy/images/Folder.png)}}</image>
+              <defaultImage>resource://Poster.png</defaultImage>
+            </sixteenByNinePoster>
+            
+            <sixteenByNinePoster id="{{VAL(key)}}" featured="true" alwaysShowTitles="{{VAL($showtitles_movies::Highlighted Only=false|Show All=true)}}"
+                             onPlay="atv.loadURL('{{URL(key)}}&amp;PlexConnect=Play')"
+                             onSelect="atv.loadURL('{{URL(key)}}&amp;PlexConnect=MoviePrePlay')">
+              {{COPY(Video)}}
+              <title>{{VAL(title)}}</title>
+              <subtitle>{{VAL(year:&#x00AD;)}}</subtitle>
+              <image>{{IMAGEURL(thumb::384)}}</image>
+              <defaultImage>resource://Poster.png</defaultImage>
+            </sixteenByNinePoster>
+          </items>
+        </grid>
+      </items>
+    </scroller>
+  </body>
